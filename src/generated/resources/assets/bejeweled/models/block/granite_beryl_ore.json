@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "bejeweled:block/granite_beryl_ore"
+  }
+}

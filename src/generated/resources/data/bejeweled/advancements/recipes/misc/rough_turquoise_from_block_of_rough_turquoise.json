@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_block_of_rough_turquoise": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bejeweled:block_of_rough_turquoise"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "bejeweled:rough_turquoise_from_block_of_rough_turquoise"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_block_of_rough_turquoise",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "bejeweled:rough_turquoise_from_block_of_rough_turquoise"
+    ]
+  },
+  "sends_telemetry_event": false
+}

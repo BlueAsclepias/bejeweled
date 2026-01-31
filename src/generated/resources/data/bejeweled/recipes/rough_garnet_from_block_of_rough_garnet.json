@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "bejeweled:block_of_rough_garnet"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "bejeweled:rough_garnet"
+  }
+}

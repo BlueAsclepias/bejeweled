@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_block_of_cut_jade": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bejeweled:block_of_cut_jade"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "bejeweled:cut_jade_from_block_of_cut_jade"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_block_of_cut_jade",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "bejeweled:cut_jade_from_block_of_cut_jade"
+    ]
+  },
+  "sends_telemetry_event": false
+}

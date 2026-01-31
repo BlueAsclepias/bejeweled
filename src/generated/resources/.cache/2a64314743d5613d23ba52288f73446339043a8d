@@ -1,0 +1,6 @@
+// 1.20.1	2026-01-31T01:25:52.652170676	Global Loot Modifiers : bejeweled
+7d2a0c9856dcf73ae742aba335578ba39bb4ea74 data/bejeweled/loot_modifiers/replace_deepslate_diamond.json
+d40b139a46cfb20410027b8e08991a4a761ac46c data/bejeweled/loot_modifiers/replace_deepslate_emerald.json
+1270e7057d1139c1bd3711ec75b942ac403ac6f3 data/bejeweled/loot_modifiers/replace_diamond.json
+41a34caf1e8d77f947a0a60673d010d19730fbbd data/bejeweled/loot_modifiers/replace_emerald.json
+f38ed9651d7b89a926aacee2dbdd631344bcf6ea data/forge/loot_modifiers/global_loot_modifiers.json

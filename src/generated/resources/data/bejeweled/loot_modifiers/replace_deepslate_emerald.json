@@ -1,0 +1,10 @@
+{
+  "type": "bejeweled:replace_gem",
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:blocks/deepslate_emerald_ore"
+    }
+  ],
+  "replacement": "bejeweled:rough_emerald"
+}

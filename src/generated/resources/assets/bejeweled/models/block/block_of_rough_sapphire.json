@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "bejeweled:block/block_of_rough_sapphire"
+  }
+}

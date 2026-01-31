@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "bejeweled:block/basalt_blue_corundum_ore"
+  }
+}

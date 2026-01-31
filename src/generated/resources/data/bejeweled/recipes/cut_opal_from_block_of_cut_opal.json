@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "bejeweled:block_of_cut_opal"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "bejeweled:cut_opal"
+  }
+}

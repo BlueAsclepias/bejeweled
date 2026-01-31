@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_rough_ruby_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bejeweled:basalt_red_corundum_ore"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "bejeweled:rough_ruby_from_blasting_basalt_red_corundum_ore"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_rough_ruby_ore",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "bejeweled:rough_ruby_from_blasting_basalt_red_corundum_ore"
+    ]
+  },
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,9 @@
+{
+  "entries": [
+    "bejeweled:replace_deepslate_diamond",
+    "bejeweled:replace_diamond",
+    "bejeweled:replace_emerald",
+    "bejeweled:replace_deepslate_emerald"
+  ],
+  "replace": false
+}

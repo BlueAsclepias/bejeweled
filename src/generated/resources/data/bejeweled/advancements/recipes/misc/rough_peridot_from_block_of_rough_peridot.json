@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_block_of_rough_peridot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bejeweled:block_of_rough_peridot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "bejeweled:rough_peridot_from_block_of_rough_peridot"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_block_of_rough_peridot",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "bejeweled:rough_peridot_from_block_of_rough_peridot"
+    ]
+  },
+  "sends_telemetry_event": false
+}
