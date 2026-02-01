@@ -27,6 +27,8 @@ public class Bejeweled {
         ModCreativeTabs.register(modEventBus);
         LOGGER.info("Registering Bejeweled loot modifiers...");
         ModLootModifiers.MODIFIERS.register(modEventBus);
+
         MinecraftForge.EVENT_BUS.register(this);
     }
+
 }

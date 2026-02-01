@@ -1,6 +1,7 @@
 package net.blueasclepias.bejeweled.registry;
 
 import net.blueasclepias.bejeweled.Bejeweled;
+import net.blueasclepias.bejeweled.block.CoralPolypBlock;
 import net.blueasclepias.bejeweled.enums.OreBase;
 import net.blueasclepias.bejeweled.oretypes.OreTypes;
 import net.blueasclepias.bejeweled.record.OreType;
@@ -82,6 +83,17 @@ public class ModBlocks {
         registerBlockOf("cut_coral", cutGemBlock(MapColor.COLOR_ORANGE));
         registerBlockOf("cut_peridot", cutGemBlock(MapColor.COLOR_LIGHT_GREEN));
     }
+
+    public static final RegistryObject<Block> CORAL_POLYP =
+            BLOCKS.register("coral_polyp",
+                    () -> new CoralPolypBlock(
+                            BlockBehaviour.Properties.of()
+                                    .mapColor(MapColor.COLOR_PINK)
+                                    .strength(0.3f)
+                                    .sound(SoundType.CALCITE)
+                                    .noOcclusion()
+                    ));
+
 
     private static void registerBlockOf(String name,  BlockBehaviour.Properties properties) {
         STORAGE_BLOCKS.add(BLOCKS.register(

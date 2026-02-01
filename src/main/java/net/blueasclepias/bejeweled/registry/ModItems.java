@@ -25,6 +25,11 @@ public class ModItems {
         registerBlocksOfItem();
     }
 
+    public static final RegistryObject<Item> CORAL_POLYP = ITEMS.register(
+            ModBlocks.CORAL_POLYP.getId().getPath(),
+            () -> new BlockItem(ModBlocks.CORAL_POLYP.get(), new Item.Properties())
+    );
+
     // ===== ROUGH GEMS =====
     public static final RegistryObject<Item> ROUGH_AQUAMARINE = ITEMS.register(
             "rough_aquamarine",
@@ -125,7 +130,25 @@ public class ModItems {
 
     // TODO: Onyx, Jaspe, Sodalite, Aventurine, Unakite, Fluorine
 
+    // ===== JEWEL BASES =====
+    // TODO: THESE SHOULD BE CURIOS NOT REGULAR ITEMS
+    public static final RegistryObject<Item> GEM_SOCKET =
+            ITEMS.register("gem_socket", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> RING =
+            ITEMS.register("ring", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> BRACELET =
+            ITEMS.register("bracelet", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> AMULET =
+            ITEMS.register("amulet", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> CIRCLET =
+            ITEMS.register("circlet", () -> new Item(new Item.Properties()));
+
     // ===== BLOCK ITEMS =====
+
     // === STORAGE BLOCK ===
     private static void registerBlocksOfItem() {
         ModBlocks.STORAGE_BLOCKS.forEach(storageBlock -> {

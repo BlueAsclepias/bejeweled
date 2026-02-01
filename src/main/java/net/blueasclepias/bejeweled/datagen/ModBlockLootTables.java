@@ -2,6 +2,7 @@ package net.blueasclepias.bejeweled.datagen;
 
 
 import net.blueasclepias.bejeweled.registry.ModBlocks;
+import net.blueasclepias.bejeweled.registry.ModItems;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
@@ -29,6 +30,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                 );
             });
         });
+
+        add(ModBlocks.CORAL_POLYP.get(), createSingleItemTable(ModItems.ROUGH_CORAL_POLYP.get()));
     }
 
     @Override

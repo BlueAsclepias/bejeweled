@@ -16,6 +16,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
+        // Non-block items >> basicItem
         ModItems.ITEMS.getEntries().stream()
                 .map(RegistryObject::get)
                 .filter(item -> !(item instanceof BlockItem))

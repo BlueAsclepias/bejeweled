@@ -1,4 +1,7 @@
-// 1.20.1	2026-01-30T23:27:36.161034987	Item Models: bejeweled
+// 1.20.1	2026-01-31T19:18:04.02319534	Item Models: bejeweled
+2e13a71ed34caeb5a5b93f5591b3f6041d9eb975 assets/bejeweled/models/item/amulet.json
+5f9bac1a2e51f8c178aa0536c4215eb6829c934a assets/bejeweled/models/item/bracelet.json
+bc19f0d81e3f94fd6d98e33d8988911d64913e4c assets/bejeweled/models/item/circlet.json
 0ec318aff0ed2c7ddab205e05976545de09a65d5 assets/bejeweled/models/item/cut_amethyst.json
 f6202b964a6cec4f063883357d314986b99af71a assets/bejeweled/models/item/cut_aquamarine.json
 7af19ef4f4d642957c9befb800a8d0e89ea27942 assets/bejeweled/models/item/cut_coral.json
@@ -10,7 +13,9 @@ e850ddb6b2949b46c1dbc6321ee9ba3ee217cfa0 assets/bejeweled/models/item/cut_opal.j
 25806656ab2c08753ebc077ac6b024d45fafecb1 assets/bejeweled/models/item/cut_sapphire.json
 140c4a83b2a83ab42e1a9432c58c756ce25cc64a assets/bejeweled/models/item/cut_topaz.json
 f3804b9461a68a964627518642f2629d6dd64356 assets/bejeweled/models/item/cut_turquoise.json
+930cac876c8678f49908c9f05f3ff9b7a86238be assets/bejeweled/models/item/gem_socket.json
 cce3bfc175b78eb4e2068ba0c87a4821c2933a6f assets/bejeweled/models/item/pearl.json
+c1a515da919304c5a2bd768bf286892b390355c2 assets/bejeweled/models/item/ring.json
 95a66b640fed0ba27500eef330566f40538a066b assets/bejeweled/models/item/rough_aquamarine.json
 3c09c2758b891858ebd1d2a8c03e37d84395fdf0 assets/bejeweled/models/item/rough_coral_polyp.json
 92864e1f49f7e0e1c69b0d80b4a757b31ce0bc13 assets/bejeweled/models/item/rough_diamond.json

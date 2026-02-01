@@ -1,4 +1,4 @@
-// 1.20.1	2026-01-31T01:43:00.252157495	Loot Tables
+// 1.20.1	2026-01-31T21:45:53.956216369	Loot Tables
 fb6de345482197c32aa9094c2fbbb622751a2665 data/bejeweled/loot_tables/blocks/basalt_blue_corundum_ore.json
 44d9921a83f7982f9a5335844f8188b36092910a data/bejeweled/loot_tables/blocks/basalt_red_corundum_ore.json
 ef415f029052f7f1cc6871ebc4e7ae8278f57ca5 data/bejeweled/loot_tables/blocks/block_of_cut_amethyst.json
@@ -25,6 +25,7 @@ e36437f3ff3c49d6a5d3c2e05867bb0a45250c26 data/bejeweled/loot_tables/blocks/block
 d61a4df5772f3e52ec61910bab532d276076b441 data/bejeweled/loot_tables/blocks/block_of_rough_sapphire.json
 792e0f26ea55324c1d1c1d25953f8c390981f55f data/bejeweled/loot_tables/blocks/block_of_rough_topaz.json
 f829e187129e14af11a0f4e94ba87584e3e9e1d9 data/bejeweled/loot_tables/blocks/block_of_rough_turquoise.json
+3d13cfc7c7e439dbed2f99bdc135d045f346bbae data/bejeweled/loot_tables/blocks/coral_polyp.json
 d8a5c05c5192221794e2276136971131a86b68ad data/bejeweled/loot_tables/blocks/deepslate_blue_corundum_ore.json
 a5be651e9ffd6f2a9b02a28e737d463a0547e075 data/bejeweled/loot_tables/blocks/deepslate_garnet_ore.json
 911e6d2087abbd356585c8bae1ed565a6ee880c8 data/bejeweled/loot_tables/blocks/deepslate_jadeite_ore.json

@@ -1,21 +1,125 @@
 package net.blueasclepias.bejeweled.block;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.DirectionalBlock;
+import net.minecraft.core.Direction;
+import net.minecraft.tags.FluidTags;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class CoralPolypBlock extends DirectionalBlock {
+public class CoralPolypBlock extends HorizontalDirectionalBlock implements SimpleWaterloggedBlock {
 
-    public CoralPolypBlock(Properties props) {
-        super(props);
+    public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
+    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
+
+    // Attached to NORTH wall (positive Z)
+    private static final VoxelShape NORTH_SHAPE =
+            Block.box(5, 5, 10, 11, 11, 16);
+    // Attached to SOUTH wall (negative Z)
+    private static final VoxelShape SOUTH_SHAPE =
+            Block.box(5, 5, 0, 11, 11, 6);
+    // Attached to WEST wall (positive X)
+    private static final VoxelShape WEST_SHAPE =
+            Block.box(10, 5, 5, 16, 11, 11);
+    // Attached to EAST wall (negative X)
+    private static final VoxelShape EAST_SHAPE =
+            Block.box(0, 5, 5, 6, 11, 11);
+
+    public CoralPolypBlock(Properties properties) {
+        super(properties);
+        this.registerDefaultState(this.stateDefinition.any()
+                .setValue(FACING, Direction.NORTH)
+                .setValue(WATERLOGGED, true));
     }
 
-    // TODO: has to be waterlogged, has growth, restricted to warm sea biomes, only spawns in red and orange coral blocks
     @Override
-    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        BlockPos attached = pos.relative(state.getValue(FACING).getOpposite());
-        return level.getBlockState(attached).isSolid();
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(FACING, WATERLOGGED);
     }
-}
 
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        Direction face = context.getClickedFace();
+
+        // Only horizontal placement allowed
+        if (!face.getAxis().isHorizontal()) {
+            return null;
+        }
+
+        BlockPos pos = context.getClickedPos();
+        Level level = context.getLevel();
+
+        // FACING points TOWARD the supporting block
+        Direction facing = face;
+
+        if (!canAttach(level, pos, facing)) {
+            return null;
+        }
+
+        return this.defaultBlockState()
+                .setValue(FACING, facing)
+                .setValue(WATERLOGGED, level.getFluidState(pos).is(FluidTags.WATER));
+    }
+
+    @Override
+    public BlockState updateShape(
+            BlockState state,
+            Direction direction,
+            BlockState neighborState,
+            LevelAccessor level,
+            BlockPos pos,
+            BlockPos neighborPos
+    ) {
+        Direction facing = state.getValue(FACING);
+
+        if (direction == facing.getOpposite() && !canAttach(level, pos, facing)) {
+            return Blocks.AIR.defaultBlockState();
+        }
+
+        return state;
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
+        return switch (state.getValue(FACING).getOpposite()) {
+            case NORTH -> SOUTH_SHAPE;
+            case SOUTH -> NORTH_SHAPE;
+            case WEST  -> EAST_SHAPE;
+            case EAST  -> WEST_SHAPE;
+            default    -> NORTH_SHAPE;
+        };
+    }
+
+
+    @Override
+    public FluidState getFluidState(BlockState state) {
+        return state.getValue(WATERLOGGED)
+                ? Fluids.WATER.getSource(false)
+                : super.getFluidState(state);
+    }
+
+    private boolean canAttach(LevelAccessor level, BlockPos pos, Direction facing) {
+        BlockPos supportPos = pos.relative(facing.getOpposite());
+        BlockState support = level.getBlockState(supportPos);
+
+        return support.isFaceSturdy(level, supportPos, facing)
+                && (support.is(Blocks.FIRE_CORAL_BLOCK)
+                || support.is(Blocks.BRAIN_CORAL_BLOCK));
+    }
+
+
+}

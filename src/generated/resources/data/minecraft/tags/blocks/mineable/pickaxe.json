@@ -1,15 +1,11 @@
 {
   "values": [
     {
-      "id": "bejeweled:terracotta_opal_ore",
+      "id": "bejeweled:stone_red_corundum_ore",
       "required": false
     },
     {
-      "id": "bejeweled:deepslate_olivine_ore",
-      "required": false
-    },
-    {
-      "id": "bejeweled:stone_beryl_ore",
+      "id": "bejeweled:basalt_red_corundum_ore",
       "required": false
     },
     {
@@ -17,31 +13,11 @@
       "required": false
     },
     {
-      "id": "bejeweled:deepslate_blue_corundum_ore",
+      "id": "bejeweled:stone_beryl_ore",
       "required": false
     },
     {
-      "id": "bejeweled:basalt_blue_corundum_ore",
-      "required": false
-    },
-    {
-      "id": "bejeweled:deepslate_topaz_ore",
-      "required": false
-    },
-    {
-      "id": "bejeweled:stone_topaz_ore",
-      "required": false
-    },
-    {
-      "id": "bejeweled:granite_topaz_ore",
-      "required": false
-    },
-    {
-      "id": "bejeweled:deepslate_jadeite_ore",
-      "required": false
-    },
-    {
-      "id": "bejeweled:stone_jadeite_ore",
+      "id": "bejeweled:terracotta_opal_ore",
       "required": false
     },
     {
@@ -53,7 +29,11 @@
       "required": false
     },
     {
-      "id": "bejeweled:stone_turquoise_ore",
+      "id": "bejeweled:deepslate_jadeite_ore",
+      "required": false
+    },
+    {
+      "id": "bejeweled:stone_jadeite_ore",
       "required": false
     },
     {
@@ -65,11 +45,31 @@
       "required": false
     },
     {
-      "id": "bejeweled:stone_red_corundum_ore",
+      "id": "bejeweled:deepslate_topaz_ore",
       "required": false
     },
     {
-      "id": "bejeweled:basalt_red_corundum_ore",
+      "id": "bejeweled:granite_topaz_ore",
+      "required": false
+    },
+    {
+      "id": "bejeweled:stone_topaz_ore",
+      "required": false
+    },
+    {
+      "id": "bejeweled:deepslate_olivine_ore",
+      "required": false
+    },
+    {
+      "id": "bejeweled:deepslate_blue_corundum_ore",
+      "required": false
+    },
+    {
+      "id": "bejeweled:basalt_blue_corundum_ore",
+      "required": false
+    },
+    {
+      "id": "bejeweled:stone_turquoise_ore",
       "required": false
     }
   ]

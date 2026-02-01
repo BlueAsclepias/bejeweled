@@ -1,4 +1,4 @@
-// 1.20.1	2026-01-31T01:43:00.253915962	Block States: bejeweled
+// 1.20.1	2026-02-01T14:21:16.110235995	Block States: bejeweled
 6c7a893a114be99e7c48c8d0cba69d9764853920 assets/bejeweled/blockstates/basalt_blue_corundum_ore.json
 b771bcb564189088b88519dafaa8d74b77de8773 assets/bejeweled/blockstates/basalt_red_corundum_ore.json
 c9f234dd8fbe1f50ffacb398f7f410934470a424 assets/bejeweled/blockstates/block_of_cut_amethyst.json
@@ -25,6 +25,7 @@ ccc6af3900da52cdc2e62f5b954c1eda3b234a4d assets/bejeweled/blockstates/block_of_r
 46f5c07d2aea98c4d951665bc3152d8a03e6047f assets/bejeweled/blockstates/block_of_rough_sapphire.json
 3cae8c4ffd900dc642f3e2fd38a85f918a191b8e assets/bejeweled/blockstates/block_of_rough_topaz.json
 06130d2e83530e7875450c0a884f28d32ad9e14e assets/bejeweled/blockstates/block_of_rough_turquoise.json
+35f548351f1fda32bb25aed812334510a31db019 assets/bejeweled/blockstates/coral_polyp.json
 209292fa3a71472e871fb39af426eb195dc9592c assets/bejeweled/blockstates/deepslate_blue_corundum_ore.json
 acbbab89d5bc6f0d3bdca8eebfc204e38b23206b assets/bejeweled/blockstates/deepslate_garnet_ore.json
 d1cf088c85f710f6a3c5762ef17d563dce421b37 assets/bejeweled/blockstates/deepslate_jadeite_ore.json
@@ -67,6 +68,7 @@ b0e7a1a423cb6f5c2745c5e3204cc495c12ac317 assets/bejeweled/models/block/block_of_
 8f5c5e86c693d1a312de3f92a67b5814dffa184f assets/bejeweled/models/block/block_of_rough_sapphire.json
 80726d310ab92e06196fbdc27410014fca8da815 assets/bejeweled/models/block/block_of_rough_topaz.json
 b46ff1f1f07561b3b28563e60c1d3fcdb2670650 assets/bejeweled/models/block/block_of_rough_turquoise.json
+eb6cd18051612c2113d270a09ad3a0c822f5dd10 assets/bejeweled/models/block/coral_polyp.json
 147ae9064cb34331d12e4d6848e4ea2aedc2d2ae assets/bejeweled/models/block/deepslate_blue_corundum_ore.json
 e7f4e135fd2c16cdde610e9cfb690505e3bc7ab1 assets/bejeweled/models/block/deepslate_garnet_ore.json
 493d366e512902d552952c998b94f556f8218c54 assets/bejeweled/models/block/deepslate_jadeite_ore.json
@@ -109,6 +111,7 @@ a181429a5b6e61d54776fefa8bf4f09f793ed84b assets/bejeweled/models/item/block_of_r
 977c4d2b15e3e20e5cd77a5c8e522b5fc22a829f assets/bejeweled/models/item/block_of_rough_sapphire.json
 4e7c47b18aca697b1db3be793982646626a82a20 assets/bejeweled/models/item/block_of_rough_topaz.json
 ae525db70fee909e0821da0698811cc7827daea7 assets/bejeweled/models/item/block_of_rough_turquoise.json
+5d6cc1f4f3d7b61f28b5ad2d9ff2af4999a25b9a assets/bejeweled/models/item/coral_polyp.json
 84efd2dd11350cca128ebefdbbb4e8c7a0874fe9 assets/bejeweled/models/item/deepslate_blue_corundum_ore.json
 de59321e0f2201eecc0dccc0c4b9f39defd07f3b assets/bejeweled/models/item/deepslate_garnet_ore.json
 18780ffd30a447faaf64e8deb8160345d68578ba assets/bejeweled/models/item/deepslate_jadeite_ore.json

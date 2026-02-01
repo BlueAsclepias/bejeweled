@@ -1,9 +1,13 @@
 package net.blueasclepias.bejeweled.datagen;
 
 import net.blueasclepias.bejeweled.Bejeweled;
+import net.blueasclepias.bejeweled.block.CoralPolypBlock;
 import net.blueasclepias.bejeweled.registry.ModBlocks;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class ModBlockStateProvider extends BlockStateProvider {
@@ -25,7 +29,34 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 simpleBlockWithItem(block.get(), cubeAll(block.get()));
             });
         });
+
+        // Coral Polyp (custom)
+        coralPolyp(ModBlocks.CORAL_POLYP.get());
     }
 
+    private void coralPolyp(Block block) {
+        ModelFile model = models()
+                .withExistingParent("coral_polyp", mcLoc("block/block"))
+                .texture("texture", modLoc("block/coral_polyp"))
+                .texture("particle", modLoc("block/coral_polyp"))
+                .element()
+                .from(5, 5, 10) // 10
+                .to(11, 11, 16) // 16
+                .allFaces((dir, face) ->
+                        face.texture("#texture").uvs(0, 0, 16, 16))
+                .end();
+
+        getVariantBuilder(block)
+                .forAllStatesExcept(state ->
+                                ConfiguredModel.builder()
+                                        .modelFile(model)
+                                        .rotationY(
+                                                ((int) state.getValue(CoralPolypBlock.FACING).getOpposite().toYRot()))
+                                        .build(),
+                        CoralPolypBlock.WATERLOGGED
+                );
+
+        simpleBlockItem(block, model);
+    }
 
 }
