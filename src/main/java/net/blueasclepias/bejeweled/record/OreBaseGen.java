@@ -1,4 +1,8 @@
 package net.blueasclepias.bejeweled.record;
 
-public record OreBaseGen() {
-}
+import net.blueasclepias.bejeweled.enums.OreBase;
+
+public record OreBaseGen(
+        OreBase base,
+        OreGenSettings genSettings
+) {}

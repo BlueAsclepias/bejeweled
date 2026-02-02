@@ -1,0 +1,8 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:is_beach",
+  "features": [
+    "bejeweled:deepslate_nephrite_ore"
+  ],
+  "step": "underground_ores"
+}

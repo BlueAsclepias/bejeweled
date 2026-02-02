@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "bejeweled:rough_fire_coral_polyp"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "bejeweled:blocks/fire_coral_block_polyp"
+}

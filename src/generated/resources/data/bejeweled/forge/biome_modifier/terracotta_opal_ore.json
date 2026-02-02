@@ -1,0 +1,8 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:is_badlands",
+  "features": [
+    "bejeweled:terracotta_opal_ore"
+  ],
+  "step": "underground_ores"
+}

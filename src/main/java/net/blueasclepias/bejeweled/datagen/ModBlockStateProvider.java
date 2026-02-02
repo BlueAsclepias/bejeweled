@@ -1,6 +1,5 @@
 package net.blueasclepias.bejeweled.datagen;
 
-import net.blueasclepias.bejeweled.Bejeweled;
 import net.blueasclepias.bejeweled.block.CoralPolypBlock;
 import net.blueasclepias.bejeweled.registry.ModBlocks;
 import net.minecraft.data.PackOutput;
@@ -10,10 +9,12 @@ import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
+import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
+
 public class ModBlockStateProvider extends BlockStateProvider {
 
     public ModBlockStateProvider(PackOutput output, ExistingFileHelper helper) {
-        super(output, Bejeweled.MOD_ID, helper);
+        super(output, MOD_ID, helper);
     }
 
     @Override
@@ -30,15 +31,17 @@ public class ModBlockStateProvider extends BlockStateProvider {
             });
         });
 
-        // Coral Polyp (custom)
-        coralPolyp(ModBlocks.CORAL_POLYP.get());
+        // Coral Polyp blocks
+        ModBlocks.CORAL_POLYP_BLOCKS.forEach(block -> {
+            coralPolyp(block.getId().getPath(), block.get());
+        });
     }
 
-    private void coralPolyp(Block block) {
+    private void coralPolyp(String name, Block block) {
         ModelFile model = models()
-                .withExistingParent("coral_polyp", mcLoc("block/block"))
-                .texture("texture", modLoc("block/coral_polyp"))
-                .texture("particle", modLoc("block/coral_polyp"))
+                .withExistingParent(name, mcLoc("block/block"))
+                .texture("texture", modLoc("block/" + name))
+                .texture("particle", modLoc("block/" + name))
                 .element()
                 .from(5, 5, 10) // 10
                 .to(11, 11, 16) // 16

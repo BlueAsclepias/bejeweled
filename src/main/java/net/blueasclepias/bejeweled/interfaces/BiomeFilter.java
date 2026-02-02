@@ -1,4 +1,12 @@
 package net.blueasclepias.bejeweled.interfaces;
 
-public interface BiomeFilter {
+import net.minecraft.resources.ResourceLocation;
+
+import java.util.Set;
+
+public sealed interface BiomeFilter
+        permits BiomeFilter.Tag, BiomeFilter.List {
+    record Tag(ResourceLocation tag) implements BiomeFilter {}
+    record List(Set<ResourceLocation> biomes) implements BiomeFilter {}
 }
+

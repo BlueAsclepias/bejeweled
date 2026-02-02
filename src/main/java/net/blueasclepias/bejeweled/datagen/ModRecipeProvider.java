@@ -1,6 +1,5 @@
 package net.blueasclepias.bejeweled.datagen;
 
-import net.blueasclepias.bejeweled.Bejeweled;
 import net.blueasclepias.bejeweled.registry.ModBlocks;
 import net.blueasclepias.bejeweled.registry.ModItems;
 import net.minecraft.data.PackOutput;
@@ -10,11 +9,13 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Consumer;
 
+import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 import static net.minecraft.resources.ResourceLocation.fromNamespaceAndPath;
 
 public class ModRecipeProvider extends RecipeProvider {
@@ -65,7 +66,7 @@ public class ModRecipeProvider extends RecipeProvider {
                     .requires(block.get())
                     .unlockedBy("has_" + blockName, has(block.get()))
                     .save(consumer, fromNamespaceAndPath(
-                            Bejeweled.MOD_ID,
+                            MOD_ID,
                             itemName + "_from_" + blockName
                     ));
         });
@@ -76,12 +77,33 @@ public class ModRecipeProvider extends RecipeProvider {
                     Item result = type.drop().get();
                     gemOreCooking(consumer,
                             result,
-                            Bejeweled.MOD_ID,
+                            MOD_ID,
                             ForgeRegistries.ITEMS.getKey(result).getPath(),
                             block.get().asItem()
                             );
                 })
         );
+
+        // TODO: add recipes for crafting vanilla coral blocks using rough polyps
+        ModItems.ROUGH_CORAL_POLYPS
+                .forEach(item -> {
+                    String itemName = item.getId().getPath();
+                    String blockName = itemName
+                            .replace("_polyp", "_block")
+                            .replace("rough_", "");
+                    Block block = ForgeRegistries.BLOCKS.getValue(
+                            fromNamespaceAndPath("minecraft", blockName)
+                    );
+                    ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, block)
+                            .define('#', item.get())
+                            .pattern("###")
+                            .pattern("###")
+                            .pattern("###")
+                            .unlockedBy("has_" + itemName, has(item.get()))
+                            .save(consumer);
+                });
+
+        // ===== VANILLA GEMS COOKING =====
         gemOreCooking(consumer,
                 ModItems.ROUGH_DIAMOND.get(),
                 "minecraft",

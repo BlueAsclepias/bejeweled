@@ -1,6 +1,5 @@
 package net.blueasclepias.bejeweled.datagen;
 
-import net.blueasclepias.bejeweled.Bejeweled;
 import net.blueasclepias.bejeweled.registry.ModBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -11,10 +10,12 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.concurrent.CompletableFuture;
 
+import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
+
 public class ModBlockTagsProvider extends BlockTagsProvider {
 
     public ModBlockTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookup) {
-        super(output, lookup, Bejeweled.MOD_ID, null);
+        super(output, lookup, MOD_ID, null);
     }
 
     @Override

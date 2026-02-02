@@ -1,6 +1,5 @@
 package net.blueasclepias.bejeweled.datagen;
 
-import net.blueasclepias.bejeweled.Bejeweled;
 import net.blueasclepias.bejeweled.registry.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.LanguageProvider;
@@ -9,10 +8,12 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
+
 public class ModLangProvider extends LanguageProvider {
 
     public ModLangProvider(PackOutput output) {
-        super(output, Bejeweled.MOD_ID, "en_us");
+        super(output, MOD_ID, "en_us");
     }
 
     @Override

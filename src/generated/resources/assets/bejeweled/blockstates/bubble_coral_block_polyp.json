@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "bejeweled:block/bubble_coral_block_polyp",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "bejeweled:block/bubble_coral_block_polyp"
+    },
+    "facing=south": {
+      "model": "bejeweled:block/bubble_coral_block_polyp",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bejeweled:block/bubble_coral_block_polyp",
+      "y": 270
+    }
+  }
+}

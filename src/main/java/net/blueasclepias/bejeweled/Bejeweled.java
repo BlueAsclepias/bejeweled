@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import net.blueasclepias.bejeweled.modifier.ModLootModifiers;
 import net.blueasclepias.bejeweled.registry.ModBlocks;
 import net.blueasclepias.bejeweled.registry.ModCreativeTabs;
+import net.blueasclepias.bejeweled.registry.ModFeatures;
 import net.blueasclepias.bejeweled.registry.ModItems;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -26,7 +27,9 @@ public class Bejeweled {
         LOGGER.info("Registering Bejeweled creative tab...");
         ModCreativeTabs.register(modEventBus);
         LOGGER.info("Registering Bejeweled loot modifiers...");
-        ModLootModifiers.MODIFIERS.register(modEventBus);
+        ModLootModifiers.register(modEventBus);
+        LOGGER.info("Registering Features");
+        ModFeatures.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }

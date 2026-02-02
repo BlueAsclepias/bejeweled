@@ -1,6 +1,5 @@
 package net.blueasclepias.bejeweled.registry;
 
-import net.blueasclepias.bejeweled.Bejeweled;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BlockItem;
@@ -16,19 +15,17 @@ import net.minecraftforge.registries.RegistryObject;
 import javax.annotation.Nullable;
 import java.util.List;
 
+import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
+
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
-            DeferredRegister.create(ForgeRegistries.ITEMS, Bejeweled.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
 
     static {
         registerOreBlocksItemType();
         registerBlocksOfItem();
+        registerCoralPolypBlockItem();
     }
-
-    public static final RegistryObject<Item> CORAL_POLYP = ITEMS.register(
-            ModBlocks.CORAL_POLYP.getId().getPath(),
-            () -> new BlockItem(ModBlocks.CORAL_POLYP.get(), new Item.Properties())
-    );
 
     // ===== ROUGH GEMS =====
     public static final RegistryObject<Item> ROUGH_AQUAMARINE = ITEMS.register(
@@ -76,11 +73,6 @@ public class ModItems {
             () -> new RawGemItem(new Item.Properties())
     );
 
-    public static final RegistryObject<Item> ROUGH_CORAL_POLYP = ITEMS.register(
-            "rough_coral_polyp",
-            () -> new RawGemItem(new Item.Properties())
-    );
-
     public static final RegistryObject<Item> ROUGH_PERIDOT = ITEMS.register(
             "rough_peridot",
             () -> new RawGemItem(new Item.Properties())
@@ -90,6 +82,18 @@ public class ModItems {
             "rough_diamond",
             () -> new RawGemItem(new Item.Properties())
     );
+
+    // ===== CORAL POLYPS =====
+    public static final RegistryObject<Item> ROUGH_TUBE_CORAL_POLYP =
+            ITEMS.register("rough_tube_coral_polyp", () -> new RawGemItem(new Item.Properties()));
+    public static final RegistryObject<Item> ROUGH_BRAIN_CORAL_POLYP =
+            ITEMS.register("rough_brain_coral_polyp", () -> new RawGemItem(new Item.Properties()));
+    public static final RegistryObject<Item> ROUGH_BUBBLE_CORAL_POLYP =
+            ITEMS.register("rough_bubble_coral_polyp", () -> new RawGemItem(new Item.Properties()));
+    public static final RegistryObject<Item> ROUGH_FIRE_CORAL_POLYP =
+            ITEMS.register("rough_fire_coral_polyp", () -> new RawGemItem(new Item.Properties()));
+    public static final RegistryObject<Item> ROUGH_HORN_CORAL_POLYP =
+            ITEMS.register("rough_horn_coral_polyp", () -> new RawGemItem(new Item.Properties()));
 
     // ===== GEMS =====
     public static final RegistryObject<Item> CUT_AQUAMARINE =
@@ -116,17 +120,28 @@ public class ModItems {
     public static final RegistryObject<Item> CUT_JADE =
             ITEMS.register("cut_jade", () -> new Item(new Item.Properties()));
 
+    // TODO: BLACK OPAL
     public static final RegistryObject<Item> CUT_OPAL =
             ITEMS.register("cut_opal", () -> new Item(new Item.Properties()));
 
+    // TODO: BLACK PEARL
     public static final RegistryObject<Item> PEARL =
             ITEMS.register("pearl", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> CUT_CORAL =
-            ITEMS.register("cut_coral", () -> new Item(new Item.Properties()));
-
     public static final RegistryObject<Item> CUT_PERIDOT =
             ITEMS.register("cut_peridot", () -> new Item(new Item.Properties()));
+
+    // CORAL GEMS
+    public static final RegistryObject<Item> TUBE_CORAL_GEM =
+            ITEMS.register("tube_coral_gem", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BRAIN_CORAL_GEM =
+            ITEMS.register("brain_coral_gem", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BUBBLE_CORAL_GEM =
+            ITEMS.register("bubble_coral_gem", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> FIRE_CORAL_GEM =
+            ITEMS.register("fire_coral_gem", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> HORN_CORAL_GEM =
+            ITEMS.register("horn_coral_gem", () -> new Item(new Item.Properties()));
 
     // TODO: Onyx, Jaspe, Sodalite, Aventurine, Unakite, Fluorine
 
@@ -147,7 +162,7 @@ public class ModItems {
     public static final RegistryObject<Item> CIRCLET =
             ITEMS.register("circlet", () -> new Item(new Item.Properties()));
 
-    // ===== BLOCK ITEMS =====
+    //                          ===== BLOCK ITEMS =====
 
     // === STORAGE BLOCK ===
     private static void registerBlocksOfItem() {
@@ -167,6 +182,17 @@ public class ModItems {
         });
     }
 
+    // === CORAL POLYP BLOCKS ===
+    public static void registerCoralPolypBlockItem(){
+        ModBlocks.CORAL_POLYP_BLOCKS.forEach(block -> {
+            ITEMS.register(
+                    block.getId().getPath(),
+                    () -> new BlockItem(block.get(), new Item.Properties())
+            );
+        });
+    }
+
+    // TODO: make one for cut gems
     // ===== Item Distinction =====
     public static class RawGemItem extends Item {
         public RawGemItem(Properties properties) {
@@ -187,4 +213,45 @@ public class ModItems {
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
+
+    public static List<RegistryObject<Item>> ROUGH_GEMS = List.of(
+            ROUGH_AQUAMARINE,
+            ROUGH_RUBY,
+            ROUGH_SAPPHIRE,
+            ROUGH_GARNET,
+            ROUGH_TOPAZ,
+            ROUGH_TURQUOISE,
+            ROUGH_JADE,
+            ROUGH_OPAL,
+            ROUGH_EMERALD,
+            ROUGH_PERIDOT,
+            ROUGH_DIAMOND
+    );
+
+    public static List<RegistryObject<Item>> ROUGH_CORAL_POLYPS = List.of(
+            ROUGH_TUBE_CORAL_POLYP,
+            ROUGH_BRAIN_CORAL_POLYP,
+            ROUGH_BUBBLE_CORAL_POLYP,
+            ROUGH_FIRE_CORAL_POLYP,
+            ROUGH_HORN_CORAL_POLYP
+    );
+
+    public static List<RegistryObject<Item>> GEMS = List.of(
+            CUT_AQUAMARINE,
+            CUT_RUBY,
+            CUT_SAPPHIRE,
+            CUT_GARNET,
+            CUT_TOPAZ,
+            CUT_TURQUOISE,
+            CUT_JADE,
+            CUT_OPAL,
+            // TODO: REPLACE EMERALD
+            CUT_PERIDOT,
+            // TODO: REPLACE DIAMOND
+            TUBE_CORAL_GEM,
+            BRAIN_CORAL_GEM,
+            BUBBLE_CORAL_GEM,
+            FIRE_CORAL_GEM,
+            HORN_CORAL_GEM
+    );
 }

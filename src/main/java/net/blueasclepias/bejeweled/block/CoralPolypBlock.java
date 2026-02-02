@@ -25,6 +25,7 @@ public class CoralPolypBlock extends HorizontalDirectionalBlock implements Simpl
 
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
+    private final Block supportBlock;
 
     // Attached to NORTH wall (positive Z)
     private static final VoxelShape NORTH_SHAPE =
@@ -39,8 +40,9 @@ public class CoralPolypBlock extends HorizontalDirectionalBlock implements Simpl
     private static final VoxelShape EAST_SHAPE =
             Block.box(0, 5, 5, 6, 11, 11);
 
-    public CoralPolypBlock(Properties properties) {
+    public CoralPolypBlock(Block supportBlock, Properties properties) {
         super(properties);
+        this.supportBlock = supportBlock;
         this.registerDefaultState(this.stateDefinition.any()
                 .setValue(FACING, Direction.NORTH)
                 .setValue(WATERLOGGED, true));
@@ -54,24 +56,14 @@ public class CoralPolypBlock extends HorizontalDirectionalBlock implements Simpl
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         Direction face = context.getClickedFace();
-
-        // Only horizontal placement allowed
-        if (!face.getAxis().isHorizontal()) {
-            return null;
-        }
-
         BlockPos pos = context.getClickedPos();
         Level level = context.getLevel();
 
-        // FACING points TOWARD the supporting block
-        Direction facing = face;
-
-        if (!canAttach(level, pos, facing)) {
+        if (!face.getAxis().isHorizontal() || !canSurvive(level, pos, face))
             return null;
-        }
 
         return this.defaultBlockState()
-                .setValue(FACING, facing)
+                .setValue(FACING, face)
                 .setValue(WATERLOGGED, level.getFluidState(pos).is(FluidTags.WATER));
     }
 
@@ -86,7 +78,7 @@ public class CoralPolypBlock extends HorizontalDirectionalBlock implements Simpl
     ) {
         Direction facing = state.getValue(FACING);
 
-        if (direction == facing.getOpposite() && !canAttach(level, pos, facing)) {
+        if (direction == facing.getOpposite() && !canSurvive(level, pos, facing)) {
             return Blocks.AIR.defaultBlockState();
         }
 
@@ -112,14 +104,12 @@ public class CoralPolypBlock extends HorizontalDirectionalBlock implements Simpl
                 : super.getFluidState(state);
     }
 
-    private boolean canAttach(LevelAccessor level, BlockPos pos, Direction facing) {
+    private boolean canSurvive(LevelAccessor level, BlockPos pos, Direction facing) {
         BlockPos supportPos = pos.relative(facing.getOpposite());
         BlockState support = level.getBlockState(supportPos);
 
         return support.isFaceSturdy(level, supportPos, facing)
-                && (support.is(Blocks.FIRE_CORAL_BLOCK)
-                || support.is(Blocks.BRAIN_CORAL_BLOCK));
+                && support.is(supportBlock);
     }
-
 
 }

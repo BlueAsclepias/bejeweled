@@ -1,11 +1,12 @@
 package net.blueasclepias.bejeweled.datagen;
 
-import net.blueasclepias.bejeweled.Bejeweled;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = Bejeweled.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
+
+@Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class DataGenerators {
 
     @SubscribeEvent
@@ -28,6 +29,12 @@ public class DataGenerators {
             ));
             gen.addProvider(true, new ModLootTableProvider(packOutput));
             gen.addProvider(true, new ModLootModifierProvider(packOutput));
+
+            // TODO: USE THIS INSTEAD OF ORE WORLD GEN.
+            gen.addProvider(true, new ModDatapackEntries(packOutput, event.getLookupProvider()));
+            gen.addProvider(true, new ModBiomeModifierProvider(packOutput));
+
+            gen.addProvider(true, new ModOreWorldGenProvider(packOutput));
         }
     }
 }

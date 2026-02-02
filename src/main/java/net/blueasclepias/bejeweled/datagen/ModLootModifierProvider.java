@@ -1,6 +1,5 @@
 package net.blueasclepias.bejeweled.datagen;
 
-import net.blueasclepias.bejeweled.Bejeweled;
 import net.blueasclepias.bejeweled.modifier.VanillaOreDropModifier;
 import net.blueasclepias.bejeweled.registry.ModItems;
 import net.minecraft.data.PackOutput;
@@ -8,12 +7,13 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
 import net.minecraftforge.common.loot.LootTableIdCondition;
 
+import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 import static net.minecraft.resources.ResourceLocation.fromNamespaceAndPath;
 
 public class ModLootModifierProvider extends GlobalLootModifierProvider {
 
     public ModLootModifierProvider(PackOutput output) {
-        super(output, Bejeweled.MOD_ID);
+        super(output, MOD_ID);
     }
 
     @Override
