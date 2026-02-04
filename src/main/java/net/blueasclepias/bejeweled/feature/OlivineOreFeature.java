@@ -7,8 +7,8 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
-public class NephriteOreFeature extends Feature<NoneFeatureConfiguration> {
-    public NephriteOreFeature() {
+public class OlivineOreFeature extends Feature<NoneFeatureConfiguration> {
+    public OlivineOreFeature()  {
         super(NoneFeatureConfiguration.CODEC);
     }
 

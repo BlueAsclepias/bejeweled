@@ -24,19 +24,53 @@ public class ModWorldGen {
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
         context.register(
-                ModConfiguredFeatures.CORAL_POLYPS_CONFIGURED,
+                ModConfiguredFeatures.CORAL_POLYP_CONFIGURED,
                 new ConfiguredFeature<>(
                         ModFeatures.CORAL_POLYP.get(),
                         NoneFeatureConfiguration.INSTANCE
                 )
         );
+
         context.register(
-                ModConfiguredFeatures.GEM_ORES_CONFIGURED,
+                ModConfiguredFeatures.BASIC_GEM_CONFIGURED,
                 new ConfiguredFeature<>(
                         ModFeatures.BASIC_GEM_ORE.get(),
                         NoneFeatureConfiguration.INSTANCE
                 )
         );
+
+        context.register(
+                ModConfiguredFeatures.STONE_BERYL_CONFIGURED,
+                new ConfiguredFeature<>(
+                        ModFeatures.STONE_BERYL.get(),
+                        NoneFeatureConfiguration.INSTANCE
+                )
+        );
+
+        context.register(
+                ModConfiguredFeatures.GRANITE_BERYL_CONFIGURED,
+                new ConfiguredFeature<>(
+                        ModFeatures.GRANITE_BERYL.get(),
+                        NoneFeatureConfiguration.INSTANCE
+                )
+        );
+
+        context.register(
+                ModConfiguredFeatures.TURQUOISE_CONFIGURED,
+                new ConfiguredFeature<>(
+                        ModFeatures.TURQUOISE.get(),
+                        NoneFeatureConfiguration.INSTANCE
+                )
+        );
+
+        context.register(
+                ModConfiguredFeatures.OLIVINE_CONFIGURED,
+                new ConfiguredFeature<>(
+                        ModFeatures.OLIVINE_CONFIGURED.get(),
+                        NoneFeatureConfiguration.INSTANCE
+                )
+        );
+
     }
 
     public static void bootstrapPlaced(BootstapContext<PlacedFeature> context) {
@@ -46,7 +80,7 @@ public class ModWorldGen {
         context.register(
                 ModPlacedFeature.ALL.get("coral_polyp"),
                 new PlacedFeature(
-                        configured.getOrThrow(ModConfiguredFeatures.CORAL_POLYPS_CONFIGURED),
+                        configured.getOrThrow(ModConfiguredFeatures.CORAL_POLYP_CONFIGURED),
                         List.of(
                                 CountPlacement.of(8),
                                 InSquarePlacement.spread(),
@@ -58,9 +92,9 @@ public class ModWorldGen {
         OreTypes.ALL.forEach(type ->
             type.features().forEach(feature -> {
                 context.register(
-                        feature.resourceKey(),
+                        feature.placedFeature(),
                         new PlacedFeature(
-                                configured.getOrThrow(ModConfiguredFeatures.GEM_ORES_CONFIGURED),
+                                configured.getOrThrow(feature.configuredFeature()),
                                 feature.placementModifiers()
                         )
                 );

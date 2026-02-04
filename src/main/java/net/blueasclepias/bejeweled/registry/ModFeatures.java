@@ -25,26 +25,21 @@ public class ModFeatures {
             FEATURES.register("basic_gem_ore",
                     BasicGemOreFeature::new);
 
-    public static final RegistryObject<Feature<NoneFeatureConfiguration>> BASALT_BLUE_CORUNDUM =
-            FEATURES.register("basalt_blue_corundum",
-                    BasaltBlueCorundumOreFeature::new);
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> STONE_BERYL =
+            FEATURES.register("stone_beryl",
+                    StoneBerylOreFeature::new);
+
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> GRANITE_BERYL =
+            FEATURES.register("granite_beryl",
+                    GraniteBerylOreFeature::new);
 
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> TURQUOISE =
             FEATURES.register("turquoise",
                     TurquoiseOreFeature::new);
 
-    public static final RegistryObject<Feature<NoneFeatureConfiguration>> NEPHRITE =
-            FEATURES.register("nephrite",
-                    NephriteOreFeature::new);
-
-    public static final RegistryObject<Feature<NoneFeatureConfiguration>> JADEITE =
-                FEATURES.register("jadeite",
-                    JadeiteOreFeature::new);
-
-    public static final RegistryObject<Feature<NoneFeatureConfiguration>> OPAL =
-            FEATURES.register("opal",
-                    OpalOreFeature::new);
-
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> OLIVINE_CONFIGURED =
+            FEATURES.register("olivine",
+                    OlivineOreFeature::new);
 
     public static void register(IEventBus modEventBus){
         FEATURES.register(modEventBus);

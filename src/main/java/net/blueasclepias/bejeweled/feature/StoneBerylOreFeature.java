@@ -7,8 +7,8 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
-public class JadeiteOreFeature extends Feature<NoneFeatureConfiguration> {
-    public JadeiteOreFeature() {
+public class StoneBerylOreFeature extends Feature<NoneFeatureConfiguration> {
+    public StoneBerylOreFeature()  {
         super(NoneFeatureConfiguration.CODEC);
     }
 

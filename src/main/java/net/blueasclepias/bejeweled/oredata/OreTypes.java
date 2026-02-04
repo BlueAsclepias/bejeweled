@@ -2,6 +2,7 @@ package net.blueasclepias.bejeweled.oredata;
 
 import net.blueasclepias.bejeweled.enums.OreBase;
 import net.blueasclepias.bejeweled.feature.biomeplacement.ModBiomePlacements;
+import net.blueasclepias.bejeweled.feature.configuredfeature.ModConfiguredFeatures;
 import net.blueasclepias.bejeweled.feature.placedfeature.ModPlacedFeature;
 import net.blueasclepias.bejeweled.interfaces.BiomeFilter;
 import net.blueasclepias.bejeweled.record.OreFeature;
@@ -27,6 +28,7 @@ public final class OreTypes {
             Set.of(
                     new OreFeature(
                             OreBase.STONE,
+                            ModConfiguredFeatures.STONE_BERYL_CONFIGURED, // only near granite in caves
                             ModPlacedFeature.create("stone_beryl_ore"),
                             List.of(
                                     RarityFilter.onAverageOnceEvery(12),
@@ -40,10 +42,10 @@ public final class OreTypes {
                                     "basic_gem_ore",
                                     ModPlacedFeature.ALL.get("stone_beryl_ore")
                             )
-                            // only near granite in caves
                     ),
                     new OreFeature(
                             OreBase.GRANITE,
+                            ModConfiguredFeatures.GRANITE_BERYL_CONFIGURED, // only in caves
                             ModPlacedFeature.create("granite_beryl_ore"),
                             List.of(
                                     RarityFilter.onAverageOnceEvery(6),
@@ -57,7 +59,6 @@ public final class OreTypes {
                                     "basic_gem_ore",
                                     ModPlacedFeature.ALL.get("granite_beryl_ore")
                             )
-                            // only in caves
                     )
             ),
             () -> ModItems.ROUGH_AQUAMARINE.get()
@@ -68,6 +69,7 @@ public final class OreTypes {
             Set.of(
                     new OreFeature(
                             OreBase.STONE,
+                            ModConfiguredFeatures.BASIC_GEM_CONFIGURED,
                             ModPlacedFeature.create("stone_red_corundum_ore"),
                             List.of(
                                     RarityFilter.onAverageOnceEvery(8),
@@ -84,6 +86,7 @@ public final class OreTypes {
                     ),
                     new OreFeature(
                             OreBase.DEEPSLATE,
+                            ModConfiguredFeatures.BASIC_GEM_CONFIGURED,
                             ModPlacedFeature.create("deepslate_red_corundum_ore"),
                             List.of(
                                     RarityFilter.onAverageOnceEvery(4),
@@ -107,6 +110,7 @@ public final class OreTypes {
             Set.of(
                     new OreFeature(
                             OreBase.DEEPSLATE,
+                            ModConfiguredFeatures.BASIC_GEM_CONFIGURED,
                             ModPlacedFeature.create("deepslate_blue_corundum_ore"),
                             List.of(
                                     RarityFilter.onAverageOnceEvery(6),
@@ -123,6 +127,7 @@ public final class OreTypes {
                     ),
                     new OreFeature(
                             OreBase.BASALT,
+                            ModConfiguredFeatures.BASIC_GEM_CONFIGURED, 
                             ModPlacedFeature.create("basalt_blue_corundum_ore"),
                             List.of(
                                     RarityFilter.onAverageOnceEvery(6),
@@ -152,6 +157,7 @@ public final class OreTypes {
             Set.of(
                     new OreFeature(
                             OreBase.STONE,
+                            ModConfiguredFeatures.BASIC_GEM_CONFIGURED,
                             ModPlacedFeature.create("stone_garnet_ore"),
                             List.of(
                                     CountPlacement.of(8),
@@ -168,6 +174,7 @@ public final class OreTypes {
                     ),
                     new OreFeature(
                             OreBase.DEEPSLATE,
+                            ModConfiguredFeatures.BASIC_GEM_CONFIGURED,
                             ModPlacedFeature.create("deepslate_garnet_ore"),
                             List.of(
                                     RarityFilter.onAverageOnceEvery(4),
@@ -191,6 +198,7 @@ public final class OreTypes {
             Set.of(
                     new OreFeature(
                             OreBase.STONE,
+                            ModConfiguredFeatures.BASIC_GEM_CONFIGURED,
                             ModPlacedFeature.create("stone_topaz_ore"),
                             List.of(
                                     RarityFilter.onAverageOnceEvery(4),
@@ -207,6 +215,7 @@ public final class OreTypes {
                     ),
                     new OreFeature(
                             OreBase.GRANITE,
+                            ModConfiguredFeatures.BASIC_GEM_CONFIGURED,
                             ModPlacedFeature.create("granite_topaz_ore"),
                             List.of(
                                     CountPlacement.of(5),
@@ -223,6 +232,7 @@ public final class OreTypes {
                     ),
                     new OreFeature(
                             OreBase.DEEPSLATE,
+                            ModConfiguredFeatures.BASIC_GEM_CONFIGURED,
                             ModPlacedFeature.create("deepslate_topaz_ore"),
                             List.of(
                                     RarityFilter.onAverageOnceEvery(4),
@@ -246,6 +256,7 @@ public final class OreTypes {
             Set.of(
                     new OreFeature(
                             OreBase.STONE,
+                            ModConfiguredFeatures.TURQUOISE_CONFIGURED, // near copper near water
                             ModPlacedFeature.create("stone_turquoise_ore"),
                             List.of(
                                     RarityFilter.onAverageOnceEvery(6),
@@ -272,7 +283,6 @@ public final class OreTypes {
                                     ),
                                     GenerationStep.Decoration.UNDERGROUND_ORES
                             )
-                            // near copper near water
                     )
             ),
             () -> ModItems.ROUGH_TURQUOISE.get()
@@ -283,6 +293,7 @@ public final class OreTypes {
             Set.of(
                     new OreFeature(
                             OreBase.STONE,
+                            ModConfiguredFeatures.BASIC_GEM_CONFIGURED, 
                             ModPlacedFeature.create("stone_nephrite_ore"),
                             List.of(
                                     RarityFilter.onAverageOnceEvery(4),
@@ -303,6 +314,7 @@ public final class OreTypes {
                     ),
                     new OreFeature(
                             OreBase.DEEPSLATE,
+                            ModConfiguredFeatures.BASIC_GEM_CONFIGURED, 
                             ModPlacedFeature.create("deepslate_nephrite_ore"),
                             List.of(
                                     CountPlacement.of(5),
@@ -326,6 +338,7 @@ public final class OreTypes {
             Set.of(
                     new OreFeature(
                             OreBase.STONE,
+                            ModConfiguredFeatures.BASIC_GEM_CONFIGURED, 
                             ModPlacedFeature.create("stone_jadeite_ore"),
                             List.of(
                                     RarityFilter.onAverageOnceEvery(2),
@@ -346,6 +359,7 @@ public final class OreTypes {
                     ),
                     new OreFeature(
                             OreBase.DEEPSLATE,
+                            ModConfiguredFeatures.BASIC_GEM_CONFIGURED,
                             ModPlacedFeature.create("deepslate_jadeite_ore"),
                             List.of(
                                     CountPlacement.of(2),
@@ -370,6 +384,7 @@ public final class OreTypes {
             Set.of(
                     new OreFeature(
                             OreBase.TERRACOTTA,
+                            ModConfiguredFeatures.BASIC_GEM_CONFIGURED,
                             ModPlacedFeature.create("terracotta_opal_ore"),
                             List.of(
                                     RarityFilter.onAverageOnceEvery(8),
@@ -397,6 +412,7 @@ public final class OreTypes {
             Set.of(
                     new OreFeature(
                             OreBase.DEEPSLATE,
+                            ModConfiguredFeatures.OLIVINE_CONFIGURED,  // only next to lava
                             ModPlacedFeature.create("deepslate_olivine_ore"),
                             List.of(
                                     CountPlacement.of(2),
@@ -410,7 +426,6 @@ public final class OreTypes {
                                     "basic_gem_ore",
                                     ModPlacedFeature.ALL.get("deepslate_olivine_ore")
                             )
-                            // only next to lava
                     )
             ),
             () -> ModItems.ROUGH_PERIDOT.get()

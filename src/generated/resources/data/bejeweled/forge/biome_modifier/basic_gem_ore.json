@@ -2,17 +2,17 @@
   "type": "forge:add_features",
   "biomes": "#minecraft:is_overworld",
   "features": [
+    "bejeweled:deepslate_garnet_ore",
+    "bejeweled:granite_beryl_ore",
     "bejeweled:stone_garnet_ore",
     "bejeweled:stone_red_corundum_ore",
-    "bejeweled:deepslate_topaz_ore",
-    "bejeweled:granite_beryl_ore",
-    "bejeweled:deepslate_garnet_ore",
-    "bejeweled:granite_topaz_ore",
     "bejeweled:deepslate_olivine_ore",
+    "bejeweled:granite_topaz_ore",
+    "bejeweled:stone_beryl_ore",
     "bejeweled:stone_topaz_ore",
     "bejeweled:deepslate_red_corundum_ore",
-    "bejeweled:deepslate_blue_corundum_ore",
-    "bejeweled:stone_beryl_ore"
+    "bejeweled:deepslate_topaz_ore",
+    "bejeweled:deepslate_blue_corundum_ore"
   ],
   "step": "underground_ores"
 }
