@@ -21,6 +21,9 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
+/**
+ * Coral Polyp Block that can be attached to coral walls underwater.
+ */
 public class CoralPolypBlock extends HorizontalDirectionalBlock implements SimpleWaterloggedBlock {
 
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;

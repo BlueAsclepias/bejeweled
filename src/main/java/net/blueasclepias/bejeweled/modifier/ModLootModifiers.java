@@ -9,6 +9,9 @@ import net.minecraftforge.registries.RegistryObject;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
+/**
+ * Registers Loot Modifiers for the mod.
+ */
 public class ModLootModifiers {
     public static final DeferredRegister<Codec<? extends IGlobalLootModifier>> MODIFIERS =
             DeferredRegister.create(

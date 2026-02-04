@@ -9,6 +9,9 @@ import net.minecraftforge.registries.RegistryObject;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
+/**
+ * Provides item models data for the mod.
+ */
 public class ModItemModelProvider extends ItemModelProvider {
 
     public ModItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {

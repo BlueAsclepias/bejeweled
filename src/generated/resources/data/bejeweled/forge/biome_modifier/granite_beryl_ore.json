@@ -1,8 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#minecraft:is_overworld",
-  "features": [
-    "bejeweled:granite_beryl_ore"
-  ],
-  "step": "underground_ores"
-}

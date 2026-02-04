@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "bejeweled:item/horn_coral_gem"
+    "layer0": "bejeweled:item/fire_coral_bead"
   }
 }

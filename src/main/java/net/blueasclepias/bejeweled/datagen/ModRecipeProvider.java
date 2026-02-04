@@ -18,6 +18,9 @@ import java.util.function.Consumer;
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 import static net.minecraft.resources.ResourceLocation.fromNamespaceAndPath;
 
+/**
+ * Provides crafting, smelting, and blasting recipes for data the mod.
+ */
 public class ModRecipeProvider extends RecipeProvider {
 
     public ModRecipeProvider(PackOutput output) {

@@ -11,6 +11,9 @@ import java.util.concurrent.CompletableFuture;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
+/**
+ * Automate the registration of mod datapack entries such as worldgen features.
+ */
 public class ModDatapackEntries extends DatapackBuiltinEntriesProvider {
 
     public static final RegistrySetBuilder BUILDER =

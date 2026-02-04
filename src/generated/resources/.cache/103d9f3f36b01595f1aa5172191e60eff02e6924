@@ -1,3 +1,5 @@
-// 1.20.1	2026-02-02T15:22:20.350033808	Registries
+// 1.20.1	2026-02-02T20:53:39.373850514	Registries
+80a78fb4dc186d6fdc170cabc73cf25ae88df63a data/bejeweled/worldgen/configured_feature/basic_ore.json
 6a44458abd8becc88daac63a917d4e6c9243aeaa data/bejeweled/worldgen/configured_feature/coral_polyp.json
+f7fdc79ae106c70ad2042bc11540785074bd9045 data/bejeweled/worldgen/placed_feature/basic_ore.json
 ac13f7a9d4360f7798f96628fef0f1dee5346a59 data/bejeweled/worldgen/placed_feature/coral_polyp.json

@@ -12,6 +12,9 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
+/**
+ * Main mod class
+ */
 @Mod(Bejeweled.MOD_ID)
 public class Bejeweled {
     public static final String MOD_ID = "bejeweled";

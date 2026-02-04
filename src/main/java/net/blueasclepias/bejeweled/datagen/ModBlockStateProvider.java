@@ -11,6 +11,9 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
+/**
+ * Generates Block States and Models for the mod.
+ */
 public class ModBlockStateProvider extends BlockStateProvider {
 
     public ModBlockStateProvider(PackOutput output, ExistingFileHelper helper) {

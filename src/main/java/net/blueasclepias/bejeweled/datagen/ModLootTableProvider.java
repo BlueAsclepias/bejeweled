@@ -6,7 +6,9 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 
 import java.util.List;
 import java.util.Set;
-
+/**
+ * Provides loot tables data for the mod.
+ */
 public class ModLootTableProvider extends LootTableProvider {
 
     public ModLootTableProvider(PackOutput output) {

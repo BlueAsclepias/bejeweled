@@ -30,11 +30,8 @@ public class DataGenerators {
             gen.addProvider(true, new ModLootTableProvider(packOutput));
             gen.addProvider(true, new ModLootModifierProvider(packOutput));
 
-            // TODO: USE THIS INSTEAD OF ORE WORLD GEN.
             gen.addProvider(true, new ModDatapackEntries(packOutput, event.getLookupProvider()));
             gen.addProvider(true, new ModBiomeModifierProvider(packOutput));
-
-            gen.addProvider(true, new ModOreWorldGenProvider(packOutput));
         }
     }
 }

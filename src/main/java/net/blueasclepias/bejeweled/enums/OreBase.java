@@ -4,6 +4,10 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 
+/**
+ * Different base blocks that ores can generate in.
+ * Soon to be Deprecated in favor of a more flexible system.
+ */
 public enum OreBase {
     STONE(Blocks.STONE, 3.0f, 3.0f, SoundType.STONE),
     DEEPSLATE(Blocks.DEEPSLATE, 4.5f, 3.0f, SoundType.DEEPSLATE),

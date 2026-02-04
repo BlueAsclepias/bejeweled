@@ -12,6 +12,10 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.registries.ForgeRegistries;
 
+/**
+ * A loot modifier that replaces the default drop of vanilla ores with a specified item,
+ * unless the tool used has the Silk Touch enchantment.
+ */
 public class VanillaOreDropModifier extends LootModifier {
 
     private final Item replacement;

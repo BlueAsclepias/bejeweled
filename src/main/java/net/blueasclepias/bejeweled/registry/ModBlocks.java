@@ -3,7 +3,7 @@ package net.blueasclepias.bejeweled.registry;
 import net.blueasclepias.bejeweled.block.CoralPolypBlock;
 import net.blueasclepias.bejeweled.enums.OreBase;
 import net.blueasclepias.bejeweled.oredata.OreTypes;
-import net.blueasclepias.bejeweled.record.OreBaseGen;
+import net.blueasclepias.bejeweled.record.OreFeature;
 import net.blueasclepias.bejeweled.record.OreType;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Block;
@@ -24,6 +24,9 @@ import java.util.Map;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
+/**
+ * Register Mod Blocks
+ */
 public class ModBlocks {
 
     public static final DeferredRegister<Block> BLOCKS =
@@ -48,7 +51,7 @@ public class ModBlocks {
                 .sound(SoundType.STONE);
     }
 
-    // ===== ORE BLOCKS =====
+    // ===== Static Initializer =====
     static {
         registerOreBlockType(OreTypes.BERYL);
         registerOreBlockType(OreTypes.RED_CORUNDUM);
@@ -132,10 +135,10 @@ public class ModBlocks {
     private static void registerOreBlockType(OreType type) {
         Map<OreBase, RegistryObject<Block>> variants = new HashMap<>();
 
-        for (OreBaseGen base : type.bases()) {
+        for (OreFeature feature : type.features()) {
             variants.put(
-                    base.base(),
-                    registerOreBlock(type.name(), base.base())
+                    feature.base(),
+                    registerOreBlock(type.name(), feature.base())
             );
         }
 

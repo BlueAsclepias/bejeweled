@@ -19,6 +19,9 @@ import net.minecraftforge.registries.RegistryObject;
 
 import javax.annotation.Nullable;
 
+/**
+ * Feature that places coral polyp blocks adjacent to existing coral blocks underwater.
+ */
 public class CoralPolypFeature extends Feature<NoneFeatureConfiguration> {
     public CoralPolypFeature() {
         super(NoneFeatureConfiguration.CODEC);

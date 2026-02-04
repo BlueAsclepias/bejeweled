@@ -1,9 +1,9 @@
 {
-  "feature": "bejeweled:deepslate_topaz_ore",
+  "feature": "bejeweled:basic_ore",
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": 1
+      "type": "minecraft:rarity_filter",
+      "chance": 100
     },
     {
       "type": "minecraft:in_square"
@@ -11,17 +11,14 @@
     {
       "type": "minecraft:height_range",
       "height": {
-        "type": "minecraft:uniform",
+        "type": "minecraft:trapezoid",
         "max_inclusive": {
-          "absolute": 16
+          "absolute": 64
         },
         "min_inclusive": {
-          "absolute": -32
+          "above_bottom": 0
         }
       }
-    },
-    {
-      "type": "minecraft:biome"
     }
   ]
 }

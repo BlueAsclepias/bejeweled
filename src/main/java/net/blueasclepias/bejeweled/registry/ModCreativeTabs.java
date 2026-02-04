@@ -10,6 +10,9 @@ import net.minecraftforge.registries.RegistryObject;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
+/**
+ * Register Mod Creative Tabs
+ */
 public class ModCreativeTabs {
 
     public static final DeferredRegister<CreativeModeTab> TABS =

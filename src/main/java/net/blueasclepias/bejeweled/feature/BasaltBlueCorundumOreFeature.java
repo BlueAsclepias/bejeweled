@@ -7,8 +7,8 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
-public class BasicGemOreFeature extends Feature<NoneFeatureConfiguration> {
-    public BasicGemOreFeature() {
+public class BasaltBlueCorundumOreFeature extends Feature<NoneFeatureConfiguration> {
+    public BasaltBlueCorundumOreFeature() {
         super(NoneFeatureConfiguration.CODEC);
     }
 
@@ -18,7 +18,7 @@ public class BasicGemOreFeature extends Feature<NoneFeatureConfiguration> {
         RandomSource random = ctx.random();
         BlockPos origin = ctx.origin();
 
-        // TODO: every ore uses the same feature, but different biome modifiers (is it possible?)
+        // TODO: something
 
         return false;
     }

@@ -9,7 +9,9 @@ import net.minecraftforge.common.loot.LootTableIdCondition;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 import static net.minecraft.resources.ResourceLocation.fromNamespaceAndPath;
-
+/**
+ * Modifies vanilla loot tables data.
+ */
 public class ModLootModifierProvider extends GlobalLootModifierProvider {
 
     public ModLootModifierProvider(PackOutput output) {

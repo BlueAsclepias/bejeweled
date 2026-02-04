@@ -10,6 +10,9 @@ import java.util.stream.Collectors;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
+/**
+ * Provides language translations for the mod.
+ */
 public class ModLangProvider extends LanguageProvider {
 
     public ModLangProvider(PackOutput output) {
@@ -18,9 +21,13 @@ public class ModLangProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
-        add("creativetab.bejeweled.jewelry", "Jewelry & Gems");
-        add("tooltip.bejeweled.raw_gem", "Can be cut or polished in the Jeweler Table");
-        add("item.minecraft.amethyst_shard", "Rough Amethyst"); // vanilla amethyst is our rough version
+        add("creativetab.bejeweled.jewelry", "Bejeweled");
+        add("tooltip.bejeweled.raw_gem", "Can be cut in the Jeweler table");
+        add("tooltip.bejeweled.raw_bead", "Can be polished with a Grindstone");
+
+        add("item.minecraft.amethyst_shard", "Rough Amethyst");
+        add("item.minecraft.emerald", "Cut Emerald");
+        add("item.minecraft.diamond", "Cut Diamond");
 
         ModItems.ITEMS.getEntries().forEach(item ->
                 add(item.get(), formatName(item.getId().getPath()))

@@ -12,6 +12,9 @@ import java.util.concurrent.CompletableFuture;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
+/**
+ * Generates Block Tags for the mod.
+ */
 public class ModBlockTagsProvider extends BlockTagsProvider {
 
     public ModBlockTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookup) {
