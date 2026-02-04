@@ -4,7 +4,7 @@
   "cookingtime": 200,
   "experience": 1.0,
   "ingredient": {
-    "item": "bejeweled:basalt_red_corundum_ore"
+    "item": "bejeweled:deepslate_red_corundum_ore"
   },
   "result": "bejeweled:rough_ruby"
 }

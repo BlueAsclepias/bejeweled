@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "bejeweled:basalt_red_corundum_ore"
+              "bejeweled:deepslate_red_corundum_ore"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "bejeweled:rough_ruby_from_blasting_basalt_red_corundum_ore"
+        "recipe": "bejeweled:rough_ruby_from_blasting_deepslate_red_corundum_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "bejeweled:rough_ruby_from_blasting_basalt_red_corundum_ore"
+      "bejeweled:rough_ruby_from_blasting_deepslate_red_corundum_ore"
     ]
   },
   "sends_telemetry_event": false

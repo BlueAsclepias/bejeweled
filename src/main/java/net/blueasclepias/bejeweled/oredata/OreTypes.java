@@ -2,9 +2,12 @@ package net.blueasclepias.bejeweled.oredata;
 
 import net.blueasclepias.bejeweled.enums.OreBase;
 import net.blueasclepias.bejeweled.feature.biomeplacement.ModBiomePlacements;
+import net.blueasclepias.bejeweled.feature.placedfeature.ModPlacedFeature;
+import net.blueasclepias.bejeweled.interfaces.BiomeFilter;
 import net.blueasclepias.bejeweled.record.OreFeature;
 import net.blueasclepias.bejeweled.record.OreType;
 import net.blueasclepias.bejeweled.registry.ModItems;
+import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.placement.CountPlacement;
 import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
@@ -15,6 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import static net.minecraft.resources.ResourceLocation.fromNamespaceAndPath;
+
 public final class OreTypes {
 
     public static final OreType BERYL = new OreType(
@@ -22,6 +27,7 @@ public final class OreTypes {
             Set.of(
                     new OreFeature(
                             OreBase.STONE,
+                            ModPlacedFeature.create("stone_beryl_ore"),
                             List.of(
                                     RarityFilter.onAverageOnceEvery(12),
                                     InSquarePlacement.spread(),
@@ -30,11 +36,15 @@ public final class OreTypes {
                                             VerticalAnchor.absolute(64)
                                     )
                             ),
-                            ModBiomePlacements.BASIC_GEM_ORE
+                            ModBiomePlacements.addPlacedFeature(
+                                    "basic_gem_ore",
+                                    ModPlacedFeature.ALL.get("stone_beryl_ore")
+                            )
                             // only near granite in caves
                     ),
                     new OreFeature(
                             OreBase.GRANITE,
+                            ModPlacedFeature.create("granite_beryl_ore"),
                             List.of(
                                     RarityFilter.onAverageOnceEvery(6),
                                     InSquarePlacement.spread(),
@@ -43,7 +53,10 @@ public final class OreTypes {
                                             VerticalAnchor.absolute(64)
                                             )
                             ),
-                            ModBiomePlacements.BASIC_GEM_ORE
+                            ModBiomePlacements.addPlacedFeature(
+                                    "basic_gem_ore",
+                                    ModPlacedFeature.ALL.get("granite_beryl_ore")
+                            )
                             // only in caves
                     )
             ),
@@ -55,6 +68,7 @@ public final class OreTypes {
             Set.of(
                     new OreFeature(
                             OreBase.STONE,
+                            ModPlacedFeature.create("stone_red_corundum_ore"),
                             List.of(
                                     RarityFilter.onAverageOnceEvery(8),
                                     InSquarePlacement.spread(),
@@ -63,10 +77,14 @@ public final class OreTypes {
                                             VerticalAnchor.absolute(32)
                                     )
                             ),
-                            ModBiomePlacements.BASIC_GEM_ORE
+                            ModBiomePlacements.addPlacedFeature(
+                                    "basic_gem_ore",
+                                    ModPlacedFeature.ALL.get("stone_red_corundum_ore")
+                            )
                     ),
                     new OreFeature(
                             OreBase.DEEPSLATE,
+                            ModPlacedFeature.create("deepslate_red_corundum_ore"),
                             List.of(
                                     RarityFilter.onAverageOnceEvery(4),
                                     InSquarePlacement.spread(),
@@ -75,7 +93,10 @@ public final class OreTypes {
                                             VerticalAnchor.absolute(7)
                                     )
                             ),
-                            ModBiomePlacements.BASIC_GEM_ORE
+                            ModBiomePlacements.addPlacedFeature(
+                                    "basic_gem_ore",
+                                    ModPlacedFeature.ALL.get("deepslate_red_corundum_ore")
+                            )
                     )
             ),
             () -> ModItems.ROUGH_RUBY.get()
@@ -86,6 +107,7 @@ public final class OreTypes {
             Set.of(
                     new OreFeature(
                             OreBase.DEEPSLATE,
+                            ModPlacedFeature.create("deepslate_blue_corundum_ore"),
                             List.of(
                                     RarityFilter.onAverageOnceEvery(6),
                                     InSquarePlacement.spread(),
@@ -94,10 +116,14 @@ public final class OreTypes {
                                             VerticalAnchor.absolute(7)
                                     )
                             ),
-                            ModBiomePlacements.BASIC_GEM_ORE
+                            ModBiomePlacements.addPlacedFeature(
+                                    "basic_gem_ore",
+                                    ModPlacedFeature.ALL.get("deepslate_blue_corundum_ore")
+                            )
                     ),
                     new OreFeature(
                             OreBase.BASALT,
+                            ModPlacedFeature.create("basalt_blue_corundum_ore"),
                             List.of(
                                     RarityFilter.onAverageOnceEvery(6),
                                     InSquarePlacement.spread(),
@@ -106,7 +132,16 @@ public final class OreTypes {
                                             VerticalAnchor.absolute(128)
                                     )
                             ),
-                            ModBiomePlacements.BASALT_BLUE_CORUNDUM
+                            ModBiomePlacements.createOrUpdate(
+                                    "basalt_blue_corundum_ore",
+                                    Set.of(ModPlacedFeature.ALL.get("basalt_blue_corundum_ore")),
+                                    new BiomeFilter.List(
+                                            Set.of(
+                                                    fromNamespaceAndPath("minecraft", "basalt_deltas")
+                                            )
+                                    ),
+                                    GenerationStep.Decoration.UNDERGROUND_ORES
+                            )
                     )
             ),
             () -> ModItems.ROUGH_SAPPHIRE.get()
@@ -117,6 +152,7 @@ public final class OreTypes {
             Set.of(
                     new OreFeature(
                             OreBase.STONE,
+                            ModPlacedFeature.create("stone_garnet_ore"),
                             List.of(
                                     CountPlacement.of(8),
                                     InSquarePlacement.spread(),
@@ -125,10 +161,14 @@ public final class OreTypes {
                                             VerticalAnchor.absolute(96)
                                     )
                             ),
-                            ModBiomePlacements.BASIC_GEM_ORE
+                            ModBiomePlacements.addPlacedFeature(
+                                    "basic_gem_ore",
+                                    ModPlacedFeature.ALL.get("stone_garnet_ore")
+                            )
                     ),
                     new OreFeature(
                             OreBase.DEEPSLATE,
+                            ModPlacedFeature.create("deepslate_garnet_ore"),
                             List.of(
                                     RarityFilter.onAverageOnceEvery(4),
                                     InSquarePlacement.spread(),
@@ -137,7 +177,10 @@ public final class OreTypes {
                                             VerticalAnchor.absolute(32)
                                     )
                             ),
-                            ModBiomePlacements.BASIC_GEM_ORE
+                            ModBiomePlacements.addPlacedFeature(
+                                    "basic_gem_ore",
+                                    ModPlacedFeature.ALL.get("deepslate_garnet_ore")
+                            )
                     )
             ),
             () -> ModItems.ROUGH_GARNET.get()
@@ -148,6 +191,7 @@ public final class OreTypes {
             Set.of(
                     new OreFeature(
                             OreBase.STONE,
+                            ModPlacedFeature.create("stone_topaz_ore"),
                             List.of(
                                     RarityFilter.onAverageOnceEvery(4),
                                     InSquarePlacement.spread(),
@@ -156,10 +200,14 @@ public final class OreTypes {
                                             VerticalAnchor.absolute(96)
                                     )
                             ),
-                            ModBiomePlacements.BASIC_GEM_ORE
+                            ModBiomePlacements.addPlacedFeature(
+                                    "basic_gem_ore",
+                                    ModPlacedFeature.ALL.get("stone_topaz_ore")
+                            )
                     ),
                     new OreFeature(
                             OreBase.GRANITE,
+                            ModPlacedFeature.create("granite_topaz_ore"),
                             List.of(
                                     CountPlacement.of(5),
                                     InSquarePlacement.spread(),
@@ -168,10 +216,14 @@ public final class OreTypes {
                                             VerticalAnchor.absolute(96)
                                     )
                             ),
-                            ModBiomePlacements.BASIC_GEM_ORE
+                            ModBiomePlacements.addPlacedFeature(
+                                    "basic_gem_ore",
+                                    ModPlacedFeature.ALL.get("granite_topaz_ore")
+                            )
                     ),
                     new OreFeature(
                             OreBase.DEEPSLATE,
+                            ModPlacedFeature.create("deepslate_topaz_ore"),
                             List.of(
                                     RarityFilter.onAverageOnceEvery(4),
                                     InSquarePlacement.spread(),
@@ -180,7 +232,10 @@ public final class OreTypes {
                                             VerticalAnchor.absolute(8)
                                     )
                             ),
-                            ModBiomePlacements.BASIC_GEM_ORE
+                            ModBiomePlacements.addPlacedFeature(
+                                    "basic_gem_ore",
+                                    ModPlacedFeature.ALL.get("deepslate_topaz_ore")
+                            )
                     )
             ),
             () -> ModItems.ROUGH_TOPAZ.get()
@@ -191,6 +246,7 @@ public final class OreTypes {
             Set.of(
                     new OreFeature(
                             OreBase.STONE,
+                            ModPlacedFeature.create("stone_turquoise_ore"),
                             List.of(
                                     RarityFilter.onAverageOnceEvery(6),
                                     InSquarePlacement.spread(),
@@ -199,7 +255,23 @@ public final class OreTypes {
                                             VerticalAnchor.absolute(96)
                                     )
                             ),
-                            ModBiomePlacements.TURQUOISE
+                            ModBiomePlacements.createOrUpdate(
+                                    "stone_turquoise_ore",
+                                    Set.of(ModPlacedFeature.ALL.get("stone_turquoise_ore")),
+                                    new BiomeFilter.List(
+                                            Set.of(
+                                                    fromNamespaceAndPath("minecraft", "desert"),
+                                                    fromNamespaceAndPath("minecraft", "badlands"),
+                                                    fromNamespaceAndPath("minecraft", "wooded_badlands"),
+                                                    fromNamespaceAndPath("minecraft", "eroded_badlands"),
+                                                    fromNamespaceAndPath("minecraft", "savanna"),
+                                                    fromNamespaceAndPath("minecraft", "savanna_plateau"),
+                                                    fromNamespaceAndPath("minecraft", "windswept_savanna")
+
+                                            )
+                                    ),
+                                    GenerationStep.Decoration.UNDERGROUND_ORES
+                            )
                             // near copper near water
                     )
             ),
@@ -211,6 +283,7 @@ public final class OreTypes {
             Set.of(
                     new OreFeature(
                             OreBase.STONE,
+                            ModPlacedFeature.create("stone_nephrite_ore"),
                             List.of(
                                     RarityFilter.onAverageOnceEvery(4),
                                     InSquarePlacement.spread(),
@@ -219,10 +292,18 @@ public final class OreTypes {
                                             VerticalAnchor.absolute(16)
                                     )
                             ),
-                            ModBiomePlacements.NEPHRITE
+                            ModBiomePlacements.createOrUpdate(
+                                    "all_nephrite_ore",
+                                    Set.of(ModPlacedFeature.ALL.get("stone_nephrite_ore")),
+                                    new BiomeFilter.Tag(
+                                            fromNamespaceAndPath("minecraft", "is_beach")
+                                    ),
+                                    GenerationStep.Decoration.UNDERGROUND_ORES
+                            )
                     ),
                     new OreFeature(
                             OreBase.DEEPSLATE,
+                            ModPlacedFeature.create("deepslate_nephrite_ore"),
                             List.of(
                                     CountPlacement.of(5),
                                     InSquarePlacement.spread(),
@@ -231,7 +312,10 @@ public final class OreTypes {
                                             VerticalAnchor.absolute(8)
                                     )
                             ),
-                            ModBiomePlacements.NEPHRITE
+                            ModBiomePlacements.addPlacedFeature(
+                                    "all_nephrite_ore",
+                                    ModPlacedFeature.ALL.get("deepslate_nephrite_ore")
+                            )
                     )
             ),
             () -> ModItems.ROUGH_JADE.get()
@@ -242,6 +326,7 @@ public final class OreTypes {
             Set.of(
                     new OreFeature(
                             OreBase.STONE,
+                            ModPlacedFeature.create("stone_jadeite_ore"),
                             List.of(
                                     RarityFilter.onAverageOnceEvery(2),
                                     InSquarePlacement.spread(),
@@ -250,10 +335,18 @@ public final class OreTypes {
                                             VerticalAnchor.absolute(16)
                                     )
                             ),
-                            ModBiomePlacements.JADEITE
+                            ModBiomePlacements.createOrUpdate(
+                                    "all_jadeite_ore",
+                                    Set.of(ModPlacedFeature.ALL.get("stone_jadeite_ore")),
+                                    new BiomeFilter.Tag(
+                                            fromNamespaceAndPath("minecraft", "is_mountain")
+                                    ),
+                                    GenerationStep.Decoration.UNDERGROUND_ORES
+                            )
                     ),
                     new OreFeature(
                             OreBase.DEEPSLATE,
+                            ModPlacedFeature.create("deepslate_jadeite_ore"),
                             List.of(
                                     CountPlacement.of(2),
                                     InSquarePlacement.spread(),
@@ -262,7 +355,10 @@ public final class OreTypes {
                                             VerticalAnchor.absolute(0)
                                     )
                             ),
-                            ModBiomePlacements.JADEITE
+                            ModBiomePlacements.addPlacedFeature(
+                                    "all_jadeite_ore",
+                                    ModPlacedFeature.ALL.get("deepslate_jadeite_ore")
+                            )
                     )
             ),
             () -> ModItems.ROUGH_JADE.get()
@@ -274,6 +370,7 @@ public final class OreTypes {
             Set.of(
                     new OreFeature(
                             OreBase.TERRACOTTA,
+                            ModPlacedFeature.create("terracotta_opal_ore"),
                             List.of(
                                     RarityFilter.onAverageOnceEvery(8),
                                     InSquarePlacement.spread(),
@@ -282,7 +379,14 @@ public final class OreTypes {
                                             VerticalAnchor.absolute(96)
                                     )
                             ),
-                            ModBiomePlacements.OPAL
+                            ModBiomePlacements.createOrUpdate(
+                                    "terracotta_opal_ore",
+                                    Set.of(ModPlacedFeature.ALL.get("terracotta_opal_ore")),
+                                    new BiomeFilter.Tag(
+                                            fromNamespaceAndPath("minecraft", "is_badlands")
+                                    ),
+                                    GenerationStep.Decoration.UNDERGROUND_ORES
+                            )
                     )
             ),
             () -> ModItems.ROUGH_OPAL.get()
@@ -293,6 +397,7 @@ public final class OreTypes {
             Set.of(
                     new OreFeature(
                             OreBase.DEEPSLATE,
+                            ModPlacedFeature.create("deepslate_olivine_ore"),
                             List.of(
                                     CountPlacement.of(2),
                                     InSquarePlacement.spread(),
@@ -301,7 +406,10 @@ public final class OreTypes {
                                             VerticalAnchor.absolute(-32)
                                     )
                             ),
-                            ModBiomePlacements.BASIC_GEM_ORE
+                            ModBiomePlacements.addPlacedFeature(
+                                    "basic_gem_ore",
+                                    ModPlacedFeature.ALL.get("deepslate_olivine_ore")
+                            )
                             // only next to lava
                     )
             ),
@@ -309,7 +417,7 @@ public final class OreTypes {
     );
 
     // Allow Addons to modify this so they don't need to replicate our systems
-    public static List<OreType> ALL = new ArrayList<>();
+    public static final List<OreType> ALL = new ArrayList<>();
 
     // ===== Static Initializer =====
     static {
@@ -323,6 +431,5 @@ public final class OreTypes {
         ALL.add(JADEITE);
         ALL.add(OPAL);
         ALL.add(OLIVINE);
-        ALL.add(BERYL);
     }
 }

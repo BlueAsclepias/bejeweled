@@ -1,6 +1,5 @@
 {
   "block.bejeweled.basalt_blue_corundum_ore": "Basalt Blue Corundum Ore",
-  "block.bejeweled.basalt_red_corundum_ore": "Basalt Red Corundum Ore",
   "block.bejeweled.block_of_cut_amethyst": "Block of Cut Amethyst",
   "block.bejeweled.block_of_cut_aquamarine": "Block of Cut Aquamarine",
   "block.bejeweled.block_of_cut_garnet": "Block of Cut Garnet",
@@ -30,6 +29,7 @@
   "block.bejeweled.deepslate_jadeite_ore": "Deepslate Jadeite Ore",
   "block.bejeweled.deepslate_nephrite_ore": "Deepslate Nephrite Ore",
   "block.bejeweled.deepslate_olivine_ore": "Deepslate Olivine Ore",
+  "block.bejeweled.deepslate_red_corundum_ore": "Deepslate Red Corundum Ore",
   "block.bejeweled.deepslate_topaz_ore": "Deepslate Topaz Ore",
   "block.bejeweled.fire_coral_block_polyp": "Fire Coral Block Polyp",
   "block.bejeweled.granite_beryl_ore": "Granite Beryl Ore",

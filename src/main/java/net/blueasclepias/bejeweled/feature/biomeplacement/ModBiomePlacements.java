@@ -2,11 +2,11 @@ package net.blueasclepias.bejeweled.feature.biomeplacement;
 
 import net.blueasclepias.bejeweled.feature.placedfeature.ModPlacedFeature;
 import net.blueasclepias.bejeweled.interfaces.BiomeFilter;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static net.minecraft.resources.ResourceLocation.fromNamespaceAndPath;
 
@@ -21,7 +21,8 @@ public class ModBiomePlacements {
     // ===== Generics =====
     public static final BiomeFeaturePlacement BASIC_GEM_ORE =
             new BiomeFeaturePlacement(
-                    ModPlacedFeature.create("basic_gem_ore"),
+                    "basic_gem_ore",
+                    Set.of(),
                     new BiomeFilter.Tag(
                             fromNamespaceAndPath("minecraft", "is_overworld")
                     ),
@@ -30,7 +31,8 @@ public class ModBiomePlacements {
 
     public static final BiomeFeaturePlacement CORAL_POLYP =
             new BiomeFeaturePlacement(
-                    ModPlacedFeature.create("coral_polyp"),
+                    "coral_polyp",
+                    Set.of(ModPlacedFeature.ALL.get("coral_polyp")),
                     new BiomeFilter.List(
                             Set.of(
                                     fromNamespaceAndPath("minecraft", "warm_ocean")
@@ -39,74 +41,44 @@ public class ModBiomePlacements {
                     GenerationStep.Decoration.VEGETAL_DECORATION
             );
 
-    // ===== Specifics =====
-    public static final BiomeFeaturePlacement BASALT_BLUE_CORUNDUM =
-            new BiomeFeaturePlacement(
-                    ModPlacedFeature.create("basalt_blue_corundum"),
-                    new BiomeFilter.List(
-                            Set.of(
-                                    fromNamespaceAndPath("minecraft", "basalt_deltas")
-                            )
-                    ),
-                    GenerationStep.Decoration.UNDERGROUND_ORES
-            );
-
-    public static final BiomeFeaturePlacement TURQUOISE =
-            new BiomeFeaturePlacement(
-                    ModPlacedFeature.create("turquoise"),
-                    new BiomeFilter.List(
-                            Set.of(
-                                    fromNamespaceAndPath("minecraft", "desert"),
-                                    fromNamespaceAndPath("minecraft", "badlands"),
-                                    fromNamespaceAndPath("minecraft", "wooded_badlands"),
-                                    fromNamespaceAndPath("minecraft", "eroded_badlands"),
-                                    fromNamespaceAndPath("minecraft", "savanna"),
-                                    fromNamespaceAndPath("minecraft", "savanna_plateau"),
-                                    fromNamespaceAndPath("minecraft", "windswept_savanna")
-
-                            )
-                    ),
-                    GenerationStep.Decoration.UNDERGROUND_ORES
-            );
-
-    public static final BiomeFeaturePlacement NEPHRITE =
-            new BiomeFeaturePlacement(
-                    ModPlacedFeature.create("nephrite"),
-                    new BiomeFilter.Tag(
-                            fromNamespaceAndPath("minecraft", "is_beach")
-                    ),
-                    GenerationStep.Decoration.UNDERGROUND_ORES
-            );
-
-    public static final BiomeFeaturePlacement JADEITE =
-            new BiomeFeaturePlacement(
-                    ModPlacedFeature.create("jadeite"),
-                    new BiomeFilter.Tag(
-                            fromNamespaceAndPath("minecraft", "is_mountain")
-                    ),
-                    GenerationStep.Decoration.UNDERGROUND_ORES
-            );
-    public static final BiomeFeaturePlacement OPAL =
-            new BiomeFeaturePlacement(
-                    ModPlacedFeature.create("opal"),
-                    new BiomeFilter.Tag(
-                            fromNamespaceAndPath("minecraft", "is_badlands")
-                    ),
-                    GenerationStep.Decoration.UNDERGROUND_ORES
-            );
-
     // ===== Static Initializer =====
     static {
         // === generics ===
         ALL.add(CORAL_POLYP);
         ALL.add(BASIC_GEM_ORE);
+    }
 
-        // === specifics ===
-        ALL.add(BASALT_BLUE_CORUNDUM);
-        ALL.add(TURQUOISE);
-        ALL.add(NEPHRITE);
-        ALL.add(JADEITE);
-        ALL.add(OPAL);
+    public static BiomeFeaturePlacement addPlacedFeature(String name,
+                                                         ResourceKey<PlacedFeature> placedFeature) {
+        Optional<BiomeFeaturePlacement> existing = ALL.stream().filter(p -> p.name().equals(name)).findFirst();
+        if(existing.isPresent()){
+            BiomeFeaturePlacement updatedExisting = existing.get();
+            updatedExisting.features().add(placedFeature);
+            return updatedExisting;
+        } else {
+            throw new IllegalArgumentException("No BiomeFeaturePlacement with name " + name + " exists.");
+        }
+    }
+
+    public static BiomeFeaturePlacement createOrUpdate(String name,
+                                                       Set<ResourceKey<PlacedFeature>> placedFeatures,
+                                                       BiomeFilter biomeFilter,
+                                                       GenerationStep.Decoration step) {
+        BiomeFeaturePlacement placement = new BiomeFeaturePlacement(
+                name,
+                placedFeatures,
+                biomeFilter,
+                step
+        );
+        Optional<BiomeFeaturePlacement> existing = ALL.stream().filter(placement::equals).findFirst();
+        if(existing.isPresent()){
+            BiomeFeaturePlacement updatedExisting = existing.get();
+            updatedExisting.features().addAll(placedFeatures);
+            return updatedExisting;
+        } else {
+            ALL.add(placement);
+            return placement;
+        }
     }
 }
 

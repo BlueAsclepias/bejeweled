@@ -18,6 +18,10 @@ public class ModPlacedFeature {
     // ===== Lists and Maps =====
     public static final Map<String, ResourceKey<PlacedFeature>> ALL = new HashMap<>();
 
+    static {
+        create("coral_polyp");
+    }
+
     public static ResourceKey<PlacedFeature> create(String name){
         ResourceKey<PlacedFeature> resourceKey = ResourceKey.create(
                 Registries.PLACED_FEATURE,

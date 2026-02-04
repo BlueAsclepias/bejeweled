@@ -36,7 +36,7 @@ public class ModBlocks {
     public static final List<RegistryObject<Block>> STORAGE_BLOCKS = new ArrayList<>();
     public static final List<RegistryObject<Block>> CORAL_POLYP_BLOCKS = new ArrayList<>();
 
-    // Shared properties for gem blocks
+    // Shared properties for gem/rough gem blocks
     private static BlockBehaviour.Properties cutGemBlock(MapColor color) {
         return BlockBehaviour.Properties.of()
                 .mapColor(color)

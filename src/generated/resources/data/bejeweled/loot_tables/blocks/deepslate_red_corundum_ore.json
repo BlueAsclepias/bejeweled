@@ -24,7 +24,7 @@
                   }
                 }
               ],
-              "name": "bejeweled:basalt_red_corundum_ore"
+              "name": "bejeweled:deepslate_red_corundum_ore"
             },
             {
               "type": "minecraft:item",
@@ -46,5 +46,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "bejeweled:blocks/basalt_red_corundum_ore"
+  "random_sequence": "bejeweled:blocks/deepslate_red_corundum_ore"
 }

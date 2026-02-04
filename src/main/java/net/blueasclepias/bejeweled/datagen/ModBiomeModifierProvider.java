@@ -8,6 +8,8 @@ import net.blueasclepias.bejeweled.interfaces.BiomeFilter;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -43,7 +45,9 @@ public class ModBiomeModifierProvider implements DataProvider {
             }
 
             JsonArray features = new JsonArray();
-            features.add(placement.feature().location().toString());
+            for (ResourceKey<PlacedFeature> feature : placement.features()) {
+                features.add(feature.location().toString());
+            }
             json.add("features", features);
 
             json.addProperty(
@@ -53,7 +57,7 @@ public class ModBiomeModifierProvider implements DataProvider {
 
             Path path = output.getOutputFolder().resolve(
                     "data/bejeweled/forge/biome_modifier/"
-                            + placement.feature().location().getPath()
+                            + placement.name()
                             + ".json"
             );
 

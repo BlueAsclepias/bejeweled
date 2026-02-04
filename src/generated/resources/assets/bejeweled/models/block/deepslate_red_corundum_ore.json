@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "bejeweled:block/basalt_red_corundum_ore"
+    "all": "bejeweled:block/deepslate_red_corundum_ore"
   }
 }

@@ -58,7 +58,7 @@ public class ModWorldGen {
         OreTypes.ALL.forEach(type ->
             type.features().forEach(feature -> {
                 context.register(
-                        feature.biomeFeature().feature(),
+                        feature.resourceKey(),
                         new PlacedFeature(
                                 configured.getOrThrow(ModConfiguredFeatures.GEM_ORES_CONFIGURED),
                                 feature.placementModifiers()

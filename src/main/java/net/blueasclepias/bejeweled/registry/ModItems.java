@@ -171,7 +171,63 @@ public class ModItems {
     public static final RegistryObject<Item> CIRCLET =
             ITEMS.register("circlet", () -> new Item(new Item.Properties()));
 
-    //                          ===== BLOCK ITEMS =====
+    // ===== Static Initializer =====
+    static {
+        // === Block Items ===
+        registerOreBlocksItemType();
+        registerBlocksOfItem();
+        registerCoralPolypBlockItem();
+
+        // === Items ===
+        ROUGH_GEMS.addAll(
+                List.of(
+                        ROUGH_AQUAMARINE,
+                        ROUGH_RUBY,
+                        ROUGH_SAPPHIRE,
+                        ROUGH_GARNET,
+                        ROUGH_TOPAZ,
+                        ROUGH_TURQUOISE,
+                        ROUGH_JADE,
+                        ROUGH_OPAL,
+                        ROUGH_EMERALD,
+                        ROUGH_PERIDOT,
+                        ROUGH_DIAMOND
+                )
+        );
+
+        ROUGH_CORAL_POLYPS.addAll(
+                List.of(
+                        ROUGH_TUBE_CORAL_POLYP,
+                        ROUGH_BRAIN_CORAL_POLYP,
+                        ROUGH_BUBBLE_CORAL_POLYP,
+                        ROUGH_FIRE_CORAL_POLYP,
+                        ROUGH_HORN_CORAL_POLYP
+                )
+        );
+
+        GEMS.addAll(
+                List.of(
+                        CUT_AQUAMARINE,
+                        CUT_RUBY,
+                        CUT_SAPPHIRE,
+                        CUT_GARNET,
+                        CUT_TOPAZ,
+                        CUT_TURQUOISE,
+                        CUT_JADE,
+                        CUT_OPAL,
+                        // TODO: REPLACE EMERALD ONCE WE ADD NBTs
+                        CUT_PERIDOT,
+                        // TODO: REPLACE DIAMOND ONCE WE ADD NBTs
+                        TUBE_CORAL_BEAD,
+                        BRAIN_CORAL_BEAD,
+                        BUBBLE_CORAL_BEAD,
+                        FIRE_CORAL_BEAD,
+                        HORN_CORAL_BEAD
+                )
+        );
+    }
+
+    // ===== BLOCK ITEMS =====
 
     // === STORAGE BLOCK ===
     private static void registerBlocksOfItem() {
@@ -237,61 +293,5 @@ public class ModItems {
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
-    }
-
-    // ===== Static Initializer =====
-    static {
-        // === Block Items ===
-        registerOreBlocksItemType();
-        registerBlocksOfItem();
-        registerCoralPolypBlockItem();
-
-        // === Items ===
-        ROUGH_GEMS.addAll(
-                List.of(
-                        ROUGH_AQUAMARINE,
-                        ROUGH_RUBY,
-                        ROUGH_SAPPHIRE,
-                        ROUGH_GARNET,
-                        ROUGH_TOPAZ,
-                        ROUGH_TURQUOISE,
-                        ROUGH_JADE,
-                        ROUGH_OPAL,
-                        ROUGH_EMERALD,
-                        ROUGH_PERIDOT,
-                        ROUGH_DIAMOND
-                )
-        );
-
-        ROUGH_CORAL_POLYPS.addAll(
-                List.of(
-                        ROUGH_TUBE_CORAL_POLYP,
-                        ROUGH_BRAIN_CORAL_POLYP,
-                        ROUGH_BUBBLE_CORAL_POLYP,
-                        ROUGH_FIRE_CORAL_POLYP,
-                        ROUGH_HORN_CORAL_POLYP
-                )
-        );
-
-        GEMS.addAll(
-                List.of(
-                        CUT_AQUAMARINE,
-                        CUT_RUBY,
-                        CUT_SAPPHIRE,
-                        CUT_GARNET,
-                        CUT_TOPAZ,
-                        CUT_TURQUOISE,
-                        CUT_JADE,
-                        CUT_OPAL,
-                        // TODO: REPLACE EMERALD ONCE WE ADD NBTs
-                        CUT_PERIDOT,
-                        // TODO: REPLACE DIAMOND ONCE WE ADD NBTs
-                        TUBE_CORAL_BEAD,
-                        BRAIN_CORAL_BEAD,
-                        BUBBLE_CORAL_BEAD,
-                        FIRE_CORAL_BEAD,
-                        HORN_CORAL_BEAD
-                )
-        );
     }
 }
