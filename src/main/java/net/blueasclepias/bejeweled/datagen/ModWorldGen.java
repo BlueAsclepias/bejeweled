@@ -27,21 +27,14 @@ import java.util.List;
 public class ModWorldGen {
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
-        context.register(
-                ModConfiguredFeatures.ALL_CORAL_POLYP_CONFIGURED,
-                new ConfiguredFeature<>(
-                        ModFeatures.CORAL_POLYP.get(),
-                        NoneFeatureConfiguration.INSTANCE
-                )
-        );
 
-        OreTypes.ALL.stream().forEach(type ->{
+        OreTypes.ALL.forEach(type ->{
             type.features().stream()
                     .filter(OreFeature::isGeneric)
                     .forEach(feature -> {
                         context.register(
                                 feature.configuredFeature(),
-                                new ConfiguredFeature(
+                                new ConfiguredFeature<>(
                                         Feature.ORE,
                                         new OreConfiguration(
                                                 List.of(
@@ -59,6 +52,14 @@ public class ModWorldGen {
                         );
                     });
         });
+
+        context.register(
+                ModConfiguredFeatures.ALL_CORAL_POLYP_CONFIGURED,
+                new ConfiguredFeature<>(
+                        ModFeatures.CORAL_POLYP.get(),
+                        NoneFeatureConfiguration.INSTANCE
+                )
+        );
 
         context.register(
                 ModConfiguredFeatures.STONE_BERYL_CONFIGURED,

@@ -1,3 +1,3 @@
-// 1.20.1	2026-02-05T00:47:36.939149742	Tags for minecraft:block mod id bejeweled
-f349327c09ca4569ccec0929c120768cabde3479 data/minecraft/tags/blocks/mineable/pickaxe.json
-f349327c09ca4569ccec0929c120768cabde3479 data/minecraft/tags/blocks/needs_iron_tool.json
+// 1.20.1	2026-02-05T12:10:06.411922463	Tags for minecraft:block mod id bejeweled
+e106952a7ca05c2bacc6c7e6f6295e82e41dacd6 data/minecraft/tags/blocks/mineable/pickaxe.json
+e106952a7ca05c2bacc6c7e6f6295e82e41dacd6 data/minecraft/tags/blocks/needs_iron_tool.json
