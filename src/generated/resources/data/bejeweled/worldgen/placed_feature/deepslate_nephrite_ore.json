@@ -1,9 +1,9 @@
 {
-  "feature": "bejeweled:basic_gem",
+  "feature": "bejeweled:deepslate_nephrite_ore",
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": 5
+      "type": "minecraft:rarity_filter",
+      "chance": 2
     },
     {
       "type": "minecraft:in_square"

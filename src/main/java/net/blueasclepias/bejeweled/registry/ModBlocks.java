@@ -1,8 +1,8 @@
 package net.blueasclepias.bejeweled.registry;
 
 import net.blueasclepias.bejeweled.block.CoralPolypBlock;
-import net.blueasclepias.bejeweled.enums.OreBase;
-import net.blueasclepias.bejeweled.oredata.OreTypes;
+import net.blueasclepias.bejeweled.oretype.OreTypes;
+import net.blueasclepias.bejeweled.record.OreBase;
 import net.blueasclepias.bejeweled.record.OreFeature;
 import net.blueasclepias.bejeweled.record.OreType;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -122,11 +122,11 @@ public class ModBlocks {
 
     private static RegistryObject<Block> registerOreBlock(String name, OreBase base) {
         return BLOCKS.register(
-                base.name().toLowerCase() + "_" + name + "_ore",
+                base.name() + "_" + name + "_ore",
                 () -> new DropExperienceBlock(
                         BlockBehaviour.Properties.of()
                                 .strength(base.hardness(), base.resistance())
-                                .sound(base.sound())
+                                .sound(base.soundType())
                                 .requiresCorrectToolForDrops(),
                         UniformInt.of(1, 3))
         );

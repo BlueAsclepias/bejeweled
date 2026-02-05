@@ -18,7 +18,7 @@ public class TurquoiseOreFeature extends Feature<NoneFeatureConfiguration> {
         RandomSource random = ctx.random();
         BlockPos origin = ctx.origin();
 
-        // TODO: something
+        // TODO: only next to copper ore AND close to water (how close?)
 
         return false;
     }

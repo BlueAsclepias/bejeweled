@@ -18,7 +18,7 @@ public class GraniteBerylOreFeature extends Feature<NoneFeatureConfiguration> {
         RandomSource random = ctx.random();
         BlockPos origin = ctx.origin();
 
-        // TODO: something
+        // TODO: only in caves or surrounded by other granite
 
         return false;
     }

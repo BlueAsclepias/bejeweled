@@ -1,7 +1,7 @@
 package net.blueasclepias.bejeweled.record;
 
-import net.blueasclepias.bejeweled.enums.OreBase;
 import net.blueasclepias.bejeweled.feature.biomeplacement.BiomeFeaturePlacement;
+import net.blueasclepias.bejeweled.feature.configuredfeature.ModConfiguredFeatures;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
@@ -15,5 +15,10 @@ public record OreFeature(
         @NotNull ResourceKey<ConfiguredFeature<?, ?>> configuredFeature,
         @NotNull ResourceKey<PlacedFeature> placedFeature,
         @NotNull List<PlacementModifier> placementModifiers,
-        @NotNull BiomeFeaturePlacement biomeFeature
-) {}
+        @NotNull BiomeFeaturePlacement biomeFeature,
+        int size
+) {
+    public boolean isGeneric() {
+        return ModConfiguredFeatures.GENERICS.contains(configuredFeature);
+    }
+}

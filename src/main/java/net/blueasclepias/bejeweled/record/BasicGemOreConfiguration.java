@@ -1,24 +1,19 @@
 package net.blueasclepias.bejeweled.record;
 
 import com.mojang.serialization.Codec;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration.TargetBlockState;
 
 import java.util.List;
-import java.util.function.Predicate;
 
-public record GemOreConfiguration(
+public record BasicGemOreConfiguration(
         List<TargetBlockState> targets
 ) implements FeatureConfiguration {
-    public static final Codec<GemOreConfiguration> CODEC =
+    public static final Codec<BasicGemOreConfiguration> CODEC =
             TargetBlockState.CODEC.listOf()
                     .fieldOf("targets")
-                    .xmap(GemOreConfiguration::new, GemOreConfiguration::targets)
+                    .xmap(BasicGemOreConfiguration::new, BasicGemOreConfiguration::targets)
                     .codec();
-
-
-
 }
 
 

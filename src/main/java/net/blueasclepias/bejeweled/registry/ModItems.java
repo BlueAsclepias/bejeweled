@@ -123,22 +123,24 @@ public class ModItems {
     public static final RegistryObject<Item> CUT_JADE =
             ITEMS.register("cut_jade", () -> new Item(new Item.Properties()));
 
-    // TODO: BLACK OPAL
     public static final RegistryObject<Item> CUT_OPAL =
             ITEMS.register("cut_opal", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> CUT_PERIDOT =
             ITEMS.register("cut_peridot", () -> new Item(new Item.Properties()));
 
-    // TODO: FLUORINE
-    // TODO: UNAKITE
-    // TODO: AVENTURINE
-    // TODO: SODALITE
-    // TODO: JASPE
-    // TODO: ONYX
-    // TODO: BLOODSTONE
-
+    // TODO: BLACK OPAL
     // TODO: BLACK PEARL
+    // TODO: FLUORITE
+    // TODO: JASPER
+    // TODO: ONYX
+    // TODO: AGATE
+    // TODO: ALEXANDRITE
+    // TODO: CIRTINE
+    // TODO: ZIRCON
+    // TODO: BLOODSTONE
+    // TODO: AMBAR (Bead)
+
     public static final RegistryObject<Item> PEARL =
             ITEMS.register("pearl", () -> new RawBeadItem(new Item.Properties()));
 

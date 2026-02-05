@@ -28,7 +28,7 @@ public class ModBiomeModifierProvider implements DataProvider {
     public CompletableFuture<?> run(CachedOutput cache) {
         List<CompletableFuture<?>> futures = new ArrayList<>();
 
-        for (BiomeFeaturePlacement placement : ModBiomePlacements.ALL) {
+        for (BiomeFeaturePlacement placement : ModBiomePlacements.ALL.values()) {
             JsonObject json = new JsonObject();
             json.addProperty("type", "forge:add_features");
 

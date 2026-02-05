@@ -72,7 +72,7 @@ public class CoralPolypFeature extends Feature<NoneFeatureConfiguration> {
         return null;
     }
 
-    protected boolean placeFeature(LevelAccessor level, RandomSource random, BlockPos pos, Block block) {
+    private boolean placeFeature(LevelAccessor level, RandomSource random, BlockPos pos, Block block) {
         for(Direction direction : Direction.Plane.HORIZONTAL) {
             BlockPos supportPos = pos.relative(direction);
             BlockState supportState = level.getBlockState(supportPos);

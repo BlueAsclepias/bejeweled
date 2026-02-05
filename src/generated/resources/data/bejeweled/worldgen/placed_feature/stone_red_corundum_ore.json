@@ -1,9 +1,9 @@
 {
-  "feature": "bejeweled:basic_gem",
+  "feature": "bejeweled:stone_red_corundum_ore",
   "placement": [
     {
       "type": "minecraft:rarity_filter",
-      "chance": 8
+      "chance": 4
     },
     {
       "type": "minecraft:in_square"

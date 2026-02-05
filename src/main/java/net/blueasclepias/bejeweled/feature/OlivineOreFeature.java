@@ -18,7 +18,7 @@ public class OlivineOreFeature extends Feature<NoneFeatureConfiguration> {
         RandomSource random = ctx.random();
         BlockPos origin = ctx.origin();
 
-        // TODO: something
+        // TODO: near lava
 
         return false;
     }

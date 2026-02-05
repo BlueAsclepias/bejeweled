@@ -21,10 +21,6 @@ public class ModFeatures {
             FEATURES.register("coral_polyp",
                     CoralPolypFeature::new);
 
-    public static final RegistryObject<Feature<NoneFeatureConfiguration>> BASIC_GEM_ORE =
-            FEATURES.register("basic_gem_ore",
-                    BasicGemOreFeature::new);
-
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> STONE_BERYL =
             FEATURES.register("stone_beryl",
                     StoneBerylOreFeature::new);
