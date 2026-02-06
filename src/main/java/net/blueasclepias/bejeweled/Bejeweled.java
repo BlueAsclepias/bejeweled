@@ -6,14 +6,9 @@ import net.blueasclepias.bejeweled.registry.ModBlocks;
 import net.blueasclepias.bejeweled.registry.ModCreativeTabs;
 import net.blueasclepias.bejeweled.registry.ModFeatures;
 import net.blueasclepias.bejeweled.registry.ModItems;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 

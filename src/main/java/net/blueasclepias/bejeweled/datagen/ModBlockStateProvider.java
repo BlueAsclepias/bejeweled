@@ -3,7 +3,6 @@ package net.blueasclepias.bejeweled.datagen;
 import net.blueasclepias.bejeweled.block.CoralPolypBlock;
 import net.blueasclepias.bejeweled.record.OreBase;
 import net.blueasclepias.bejeweled.registry.ModBlocks;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
