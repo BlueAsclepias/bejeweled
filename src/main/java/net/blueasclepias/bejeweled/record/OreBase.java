@@ -7,6 +7,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public record OreBase (
         Block block,
+        boolean hasTop,
+        boolean hasSide,
         RuleTest ruleTest,
         float hardness,
         float resistance,

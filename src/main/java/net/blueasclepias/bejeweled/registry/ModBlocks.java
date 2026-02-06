@@ -3,7 +3,6 @@ package net.blueasclepias.bejeweled.registry;
 import net.blueasclepias.bejeweled.block.CoralPolypBlock;
 import net.blueasclepias.bejeweled.oretype.OreTypes;
 import net.blueasclepias.bejeweled.record.OreBase;
-import net.blueasclepias.bejeweled.record.OreFeature;
 import net.blueasclepias.bejeweled.record.OreType;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Block;
@@ -53,16 +52,16 @@ public class ModBlocks {
 
     // ===== Static Initializer =====
     static {
-        registerOreBlockType(OreTypes.BERYL);
-        registerOreBlockType(OreTypes.RED_CORUNDUM);
-        registerOreBlockType(OreTypes.BLUE_CORUNDUM);
-        registerOreBlockType(OreTypes.GARNET);
-        registerOreBlockType(OreTypes.TOPAZ);
-        registerOreBlockType(OreTypes.TURQUOISE);
-        registerOreBlockType(OreTypes.NEPHRITE);
-        registerOreBlockType(OreTypes.JADEITE);
-        registerOreBlockType(OreTypes.OPAL);
-        registerOreBlockType(OreTypes.OLIVINE);
+        registerGemOreBlockType(OreTypes.BERYL);
+        registerGemOreBlockType(OreTypes.RED_CORUNDUM);
+        registerGemOreBlockType(OreTypes.BLUE_CORUNDUM);
+        registerGemOreBlockType(OreTypes.GARNET);
+        registerGemOreBlockType(OreTypes.TOPAZ);
+        registerGemOreBlockType(OreTypes.TURQUOISE);
+        registerGemOreBlockType(OreTypes.NEPHRITE);
+        registerGemOreBlockType(OreTypes.JADEITE);
+        registerGemOreBlockType(OreTypes.OPAL);
+        registerGemOreBlockType(OreTypes.OLIVINE);
 
         registerCoralPolypType(Blocks.FIRE_CORAL_BLOCK);
         registerCoralPolypType(Blocks.BRAIN_CORAL_BLOCK);
@@ -92,7 +91,7 @@ public class ModBlocks {
         registerBlockOf("cut_jade", cutGemBlock(MapColor.COLOR_LIGHT_GREEN));
         registerBlockOf("cut_opal", cutGemBlock(MapColor.COLOR_LIGHT_GRAY));
         registerBlockOf("pearl", cutGemBlock(MapColor.COLOR_LIGHT_GRAY));
-        // TODO: BLOCK OF CUT CORAL TYPES
+        // TODO: BLOCK OF CUT CORAL TYPES THROUGH TINTING
         //registerBlockOf("cut_coral", cutGemBlock(MapColor.COLOR_ORANGE));
         registerBlockOf("cut_peridot", cutGemBlock(MapColor.COLOR_LIGHT_GREEN));
     }
@@ -113,36 +112,31 @@ public class ModBlocks {
         );
     }
 
+    private static void registerGemOreBlockType(OreType type){
+        Map<OreBase, RegistryObject<Block>> variants = new HashMap<>();
+        type.features().forEach(
+                feature -> variants.put(
+                        feature.base(),
+                        BLOCKS.register(
+                                feature.base().name() + "_" + type.name() + "_ore",
+                                () -> new DropExperienceBlock(
+                                        BlockBehaviour.Properties.of()
+                                                .strength(feature.base().hardness(), feature.base().resistance())
+                                                .sound(feature.base().soundType())
+                                                .requiresCorrectToolForDrops(),
+                                        UniformInt.of(2, 4)
+                                )
+                        )
+                )
+        );
+        ORE_BLOCKS.put(type, variants);
+    }
+
     private static void registerBlockOf(String name,  BlockBehaviour.Properties properties) {
         STORAGE_BLOCKS.add(BLOCKS.register(
                 "block_of_" + name,
                 () -> new Block(properties)
         ));
-    }
-
-    private static RegistryObject<Block> registerOreBlock(String name, OreBase base) {
-        return BLOCKS.register(
-                base.name() + "_" + name + "_ore",
-                () -> new DropExperienceBlock(
-                        BlockBehaviour.Properties.of()
-                                .strength(base.hardness(), base.resistance())
-                                .sound(base.soundType())
-                                .requiresCorrectToolForDrops(),
-                        UniformInt.of(1, 3))
-        );
-    }
-
-    private static void registerOreBlockType(OreType type) {
-        Map<OreBase, RegistryObject<Block>> variants = new HashMap<>();
-
-        for (OreFeature feature : type.features()) {
-            variants.put(
-                    feature.base(),
-                    registerOreBlock(type.name(), feature.base())
-            );
-        }
-
-        ORE_BLOCKS.put(type, variants);
     }
 
     public static void register(IEventBus eventBus) {

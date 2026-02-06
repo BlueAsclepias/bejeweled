@@ -1,6 +1,92 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/cube",
+  "elements": [
+    {
+      "faces": {
+        "down": {
+          "cullface": "down",
+          "texture": "#up"
+        },
+        "east": {
+          "cullface": "east",
+          "texture": "#north"
+        },
+        "north": {
+          "cullface": "north",
+          "texture": "#north"
+        },
+        "south": {
+          "cullface": "south",
+          "texture": "#north"
+        },
+        "up": {
+          "cullface": "up",
+          "texture": "#up"
+        },
+        "west": {
+          "cullface": "west",
+          "texture": "#north"
+        }
+      },
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ]
+    },
+    {
+      "faces": {
+        "down": {
+          "cullface": "down",
+          "texture": "#overlay"
+        },
+        "east": {
+          "cullface": "east",
+          "texture": "#overlay"
+        },
+        "north": {
+          "cullface": "north",
+          "texture": "#overlay"
+        },
+        "south": {
+          "cullface": "south",
+          "texture": "#overlay"
+        },
+        "up": {
+          "cullface": "up",
+          "texture": "#overlay"
+        },
+        "west": {
+          "cullface": "west",
+          "texture": "#overlay"
+        }
+      },
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ]
+    }
+  ],
+  "render_type": "minecraft:cutout",
   "textures": {
-    "all": "bejeweled:block/stone_beryl_ore"
+    "down": "minecraft:block/stone",
+    "east": "minecraft:block/stone",
+    "north": "minecraft:block/stone",
+    "overlay": "bejeweled:block/beryl_ore",
+    "particle": "minecraft:block/stone",
+    "south": "minecraft:block/stone",
+    "up": "minecraft:block/stone",
+    "west": "minecraft:block/stone"
   }
 }

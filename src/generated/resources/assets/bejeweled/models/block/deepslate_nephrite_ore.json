@@ -1,6 +1,92 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/cube",
+  "elements": [
+    {
+      "faces": {
+        "down": {
+          "cullface": "down",
+          "texture": "#up"
+        },
+        "east": {
+          "cullface": "east",
+          "texture": "#north"
+        },
+        "north": {
+          "cullface": "north",
+          "texture": "#north"
+        },
+        "south": {
+          "cullface": "south",
+          "texture": "#north"
+        },
+        "up": {
+          "cullface": "up",
+          "texture": "#up"
+        },
+        "west": {
+          "cullface": "west",
+          "texture": "#north"
+        }
+      },
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ]
+    },
+    {
+      "faces": {
+        "down": {
+          "cullface": "down",
+          "texture": "#overlay"
+        },
+        "east": {
+          "cullface": "east",
+          "texture": "#overlay"
+        },
+        "north": {
+          "cullface": "north",
+          "texture": "#overlay"
+        },
+        "south": {
+          "cullface": "south",
+          "texture": "#overlay"
+        },
+        "up": {
+          "cullface": "up",
+          "texture": "#overlay"
+        },
+        "west": {
+          "cullface": "west",
+          "texture": "#overlay"
+        }
+      },
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ]
+    }
+  ],
+  "render_type": "minecraft:cutout",
   "textures": {
-    "all": "bejeweled:block/deepslate_nephrite_ore"
+    "down": "minecraft:block/deepslate_top",
+    "east": "minecraft:block/deepslate",
+    "north": "minecraft:block/deepslate",
+    "overlay": "bejeweled:block/nephrite_ore",
+    "particle": "minecraft:block/deepslate",
+    "south": "minecraft:block/deepslate",
+    "up": "minecraft:block/deepslate_top",
+    "west": "minecraft:block/deepslate"
   }
 }
