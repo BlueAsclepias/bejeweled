@@ -1,43 +1,7 @@
 {
   "values": [
     {
-      "id": "bejeweled:stone_garnet_ore",
-      "required": false
-    },
-    {
-      "id": "bejeweled:deepslate_garnet_ore",
-      "required": false
-    },
-    {
-      "id": "bejeweled:stone_turquoise_ore",
-      "required": false
-    },
-    {
-      "id": "bejeweled:basalt_blue_corundum_ore",
-      "required": false
-    },
-    {
-      "id": "bejeweled:deepslate_blue_corundum_ore",
-      "required": false
-    },
-    {
       "id": "bejeweled:deepslate_olivine_ore",
-      "required": false
-    },
-    {
-      "id": "bejeweled:stone_nephrite_ore",
-      "required": false
-    },
-    {
-      "id": "bejeweled:deepslate_nephrite_ore",
-      "required": false
-    },
-    {
-      "id": "bejeweled:stone_red_corundum_ore",
-      "required": false
-    },
-    {
-      "id": "bejeweled:deepslate_red_corundum_ore",
       "required": false
     },
     {
@@ -49,11 +13,39 @@
       "required": false
     },
     {
-      "id": "bejeweled:granite_topaz_ore",
+      "id": "bejeweled:stone_red_corundum_ore",
       "required": false
     },
     {
-      "id": "bejeweled:stone_topaz_ore",
+      "id": "bejeweled:deepslate_red_corundum_ore",
+      "required": false
+    },
+    {
+      "id": "bejeweled:basalt_blue_corundum_ore",
+      "required": false
+    },
+    {
+      "id": "bejeweled:deepslate_blue_corundum_ore",
+      "required": false
+    },
+    {
+      "id": "bejeweled:stone_garnet_ore",
+      "required": false
+    },
+    {
+      "id": "bejeweled:deepslate_garnet_ore",
+      "required": false
+    },
+    {
+      "id": "bejeweled:terracotta_opal_ore",
+      "required": false
+    },
+    {
+      "id": "bejeweled:stone_turquoise_ore",
+      "required": false
+    },
+    {
+      "id": "bejeweled:granite_topaz_ore",
       "required": false
     },
     {
@@ -61,7 +53,7 @@
       "required": false
     },
     {
-      "id": "bejeweled:terracotta_opal_ore",
+      "id": "bejeweled:stone_topaz_ore",
       "required": false
     },
     {
@@ -70,6 +62,14 @@
     },
     {
       "id": "bejeweled:stone_beryl_ore",
+      "required": false
+    },
+    {
+      "id": "bejeweled:stone_nephrite_ore",
+      "required": false
+    },
+    {
+      "id": "bejeweled:deepslate_nephrite_ore",
       "required": false
     }
   ]

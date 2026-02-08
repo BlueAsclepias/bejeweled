@@ -50,6 +50,49 @@ public class ModBlocks {
                 .sound(SoundType.STONE);
     }
 
+    private static void registerCoralPolypType(Block block){
+        String name = ForgeRegistries.BLOCKS.getKey(block).getPath() + "_polyp";
+        CORAL_POLYP_BLOCKS.add(
+          BLOCKS.register(name,
+                  () -> new CoralPolypBlock(
+                          block,
+                          BlockBehaviour.Properties.of()
+                                  .mapColor(block.defaultMapColor())
+                                  .strength(0.3f)
+                                  .sound(SoundType.CORAL_BLOCK)
+                                  .noOcclusion()
+                  )
+          )
+        );
+    }
+
+    private static void registerGemOreBlockType(OreType type){
+        Map<OreBase, RegistryObject<Block>> variants = new HashMap<>();
+        type.features().forEach(
+                feature -> variants.put(
+                        feature.base(),
+                        BLOCKS.register(
+                                feature.base().name() + "_" + type.name() + "_ore",
+                                () -> new DropExperienceBlock(
+                                        BlockBehaviour.Properties.of()
+                                                .strength(feature.base().hardness(), feature.base().resistance())
+                                                .sound(feature.base().soundType())
+                                                .requiresCorrectToolForDrops(),
+                                        UniformInt.of(2, 4)
+                                )
+                        )
+                )
+        );
+        ORE_BLOCKS.put(type, variants);
+    }
+
+    private static void registerBlockOf(String name,  BlockBehaviour.Properties properties) {
+        STORAGE_BLOCKS.add(BLOCKS.register(
+                "block_of_" + name,
+                () -> new Block(properties)
+        ));
+    }
+
     // ===== Static Initializer =====
     static {
         registerGemOreBlockType(OreTypes.BERYL);
@@ -99,49 +142,6 @@ public class ModBlocks {
         registerBlockOf("polished_brain_coral_bead", cutGemBlock(MapColor.COLOR_ORANGE));
         registerBlockOf("polished_bubble_coral_bead", cutGemBlock(MapColor.COLOR_ORANGE));
         registerBlockOf("polished_pearl", cutGemBlock(MapColor.COLOR_LIGHT_GRAY));
-    }
-
-    private static void registerCoralPolypType(Block block){
-        String name = ForgeRegistries.BLOCKS.getKey(block).getPath() + "_polyp";
-        CORAL_POLYP_BLOCKS.add(
-          BLOCKS.register(name,
-                  () -> new CoralPolypBlock(
-                          block,
-                          BlockBehaviour.Properties.of()
-                                  .mapColor(block.defaultMapColor())
-                                  .strength(0.3f)
-                                  .sound(SoundType.CORAL_BLOCK)
-                                  .noOcclusion()
-                  )
-          )
-        );
-    }
-
-    private static void registerGemOreBlockType(OreType type){
-        Map<OreBase, RegistryObject<Block>> variants = new HashMap<>();
-        type.features().forEach(
-                feature -> variants.put(
-                        feature.base(),
-                        BLOCKS.register(
-                                feature.base().name() + "_" + type.name() + "_ore",
-                                () -> new DropExperienceBlock(
-                                        BlockBehaviour.Properties.of()
-                                                .strength(feature.base().hardness(), feature.base().resistance())
-                                                .sound(feature.base().soundType())
-                                                .requiresCorrectToolForDrops(),
-                                        UniformInt.of(2, 4)
-                                )
-                        )
-                )
-        );
-        ORE_BLOCKS.put(type, variants);
-    }
-
-    private static void registerBlockOf(String name,  BlockBehaviour.Properties properties) {
-        STORAGE_BLOCKS.add(BLOCKS.register(
-                "block_of_" + name,
-                () -> new Block(properties)
-        ));
     }
 
     public static void register(IEventBus eventBus) {

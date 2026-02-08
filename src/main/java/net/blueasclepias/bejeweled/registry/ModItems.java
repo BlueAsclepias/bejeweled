@@ -142,6 +142,10 @@ public class ModItems {
     public static final RegistryObject<Item> CIRCLET =
             ITEMS.register("circlet", () -> new Item(new Item.Properties()));
 
+    public ModItems(){
+
+    }
+
     private static RegistryObject<Item> registerRoughGemItem(CoreType type, String name) {
         RegistryObject<Item> registry = ITEMS.register(name, () -> new RoughGemItem(new Item.Properties()));
         ROUGH_GEMS.put(registry, type);

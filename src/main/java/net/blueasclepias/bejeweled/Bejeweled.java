@@ -1,11 +1,7 @@
 package net.blueasclepias.bejeweled;
 
 import com.mojang.logging.LogUtils;
-import net.blueasclepias.bejeweled.loot.ModLootModifiers;
-import net.blueasclepias.bejeweled.registry.ModBlocks;
-import net.blueasclepias.bejeweled.registry.ModCreativeTabs;
-import net.blueasclepias.bejeweled.registry.ModFeatures;
-import net.blueasclepias.bejeweled.registry.ModItems;
+import net.blueasclepias.bejeweled.registry.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;

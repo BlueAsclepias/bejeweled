@@ -43,10 +43,12 @@ public class DataGenerators {
                     existingFileHelper)
             );
 
-            gen.addProvider(true, new ModLootTableProvider(packOutput));
-            gen.addProvider(true, new ModLootModifierProvider(packOutput));
             gen.addProvider(true, new ModDatapackEntries(packOutput, event.getLookupProvider()));
             gen.addProvider(true, new ModBiomeModifierProvider(packOutput));
+
+            gen.addProvider(true, new ModLootTableProvider(packOutput));
+            gen.addProvider(true, new ModLootModifierProvider(packOutput));
+
             gen.addProvider(true, new ModRecipeProvider(packOutput));
         }
     }
