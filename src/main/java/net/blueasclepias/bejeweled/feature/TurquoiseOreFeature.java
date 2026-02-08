@@ -1,8 +1,8 @@
 package net.blueasclepias.bejeweled.feature;
 
-import net.blueasclepias.bejeweled.oretype.OreBases;
-import net.blueasclepias.bejeweled.oretype.OreTypes;
 import net.blueasclepias.bejeweled.registry.ModBlocks;
+import net.blueasclepias.bejeweled.types.ore.OreBases;
+import net.blueasclepias.bejeweled.types.ore.OreTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;

@@ -2,6 +2,7 @@ package net.blueasclepias.bejeweled.datagen;
 
 import net.blueasclepias.bejeweled.registry.ModBlocks;
 import net.blueasclepias.bejeweled.registry.ModItems;
+import net.blueasclepias.bejeweled.types.gem.CoreTypes;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
@@ -87,10 +88,10 @@ public class ModRecipeProvider extends RecipeProvider {
                 })
         );
 
-        // TODO: add recipes for crafting vanilla coral blocks using rough polyps
-        ModItems.ROUGH_CORAL_POLYPS
-                .forEach(item -> {
-                    String itemName = item.getId().getPath();
+        ModItems.ROUGH_BEADS
+                .forEach((k, v) -> {
+                    if(v.equals(CoreTypes.PEARL)) return;
+                    String itemName = v.name();
                     String blockName = itemName
                             .replace("_polyp", "_block")
                             .replace("rough_", "");
@@ -98,11 +99,11 @@ public class ModRecipeProvider extends RecipeProvider {
                             fromNamespaceAndPath("minecraft", blockName)
                     );
                     ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, block)
-                            .define('#', item.get())
+                            .define('#', k.get())
                             .pattern("###")
                             .pattern("###")
                             .pattern("###")
-                            .unlockedBy("has_" + itemName, has(item.get()))
+                            .unlockedBy("has_" + itemName, has(k.get()))
                             .save(consumer);
                 });
 

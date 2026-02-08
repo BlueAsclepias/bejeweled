@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "bejeweled:item/polished_brain_coral_bead"
+  }
+}

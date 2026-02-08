@@ -34,19 +34,12 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
         // === Coral Polyps ===
         ModBlocks.CORAL_POLYP_BLOCKS.forEach(block -> {
-            String name = "rough_" + block.getId().getPath().replace("_block", "");
-            ModItems.ROUGH_CORAL_POLYPS.stream()
-                    .filter(
-                            item -> item.getId().getPath().equals(name)
-                    )
-                    .findFirst()
-                    .map(RegistryObject::get)
-                    .ifPresent(
-                            itemRegistryObject ->
-                                    add(
-                                            block.get(), createSingleItemTable(itemRegistryObject)
-                                    )
-                    );
+            String name = block.getId().getPath().replace("_block", "");
+            ModItems.ROUGH_BEADS.forEach((k, v) -> {
+                if (name.contains(v.name())) {
+                    add(block.get(), createSingleItemTable(k.get()));
+                }
+            });
         });
     }
 

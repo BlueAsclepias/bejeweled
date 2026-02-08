@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "bejeweled:block_of_unpolished_pearl"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_unpolished_pearl": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bejeweled:unpolished_pearl"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_unpolished_pearl",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "bejeweled:block_of_unpolished_pearl"
+    ]
+  },
+  "sends_telemetry_event": false
+}

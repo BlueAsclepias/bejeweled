@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "bejeweled:block_of_cut_turquoise"
+          "name": "minecraft:air"
         }
       ],
       "rolls": 1.0

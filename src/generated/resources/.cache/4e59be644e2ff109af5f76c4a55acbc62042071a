@@ -1,8 +1,6 @@
-// 1.20.1	2026-02-02T20:53:39.3722175	Item Models: bejeweled
+// 1.20.1	2026-02-08T11:12:47.830326575	Item Models: bejeweled
 2e13a71ed34caeb5a5b93f5591b3f6041d9eb975 assets/bejeweled/models/item/amulet.json
 5f9bac1a2e51f8c178aa0536c4215eb6829c934a assets/bejeweled/models/item/bracelet.json
-a9ec085ef8644ece76403a21f49d76f5320f636f assets/bejeweled/models/item/brain_coral_bead.json
-645f6d8ad55fdbe03ee24774c04b5d9bcaef15c3 assets/bejeweled/models/item/bubble_coral_bead.json
 bc19f0d81e3f94fd6d98e33d8988911d64913e4c assets/bejeweled/models/item/circlet.json
 0ec318aff0ed2c7ddab205e05976545de09a65d5 assets/bejeweled/models/item/cut_amethyst.json
 f6202b964a6cec4f063883357d314986b99af71a assets/bejeweled/models/item/cut_aquamarine.json
@@ -14,10 +12,13 @@ e850ddb6b2949b46c1dbc6321ee9ba3ee217cfa0 assets/bejeweled/models/item/cut_opal.j
 25806656ab2c08753ebc077ac6b024d45fafecb1 assets/bejeweled/models/item/cut_sapphire.json
 140c4a83b2a83ab42e1a9432c58c756ce25cc64a assets/bejeweled/models/item/cut_topaz.json
 f3804b9461a68a964627518642f2629d6dd64356 assets/bejeweled/models/item/cut_turquoise.json
-b95d6d30e23783362097652fb451356b6a88aca2 assets/bejeweled/models/item/fire_coral_bead.json
 930cac876c8678f49908c9f05f3ff9b7a86238be assets/bejeweled/models/item/gem_socket.json
-d38c0f000a5b36eaba8079c101b0d2ae27be611a assets/bejeweled/models/item/horn_coral_bead.json
-cce3bfc175b78eb4e2068ba0c87a4821c2933a6f assets/bejeweled/models/item/pearl.json
+770cd8a19c2480419dfb19efce3214432cf2f8f3 assets/bejeweled/models/item/polished_brain_coral_bead.json
+6fdaab388c7cfb9658683da16a83ec134a70836a assets/bejeweled/models/item/polished_bubble_coral_bead.json
+06c212eae48dd0345e61282d21081cb330ba7c4c assets/bejeweled/models/item/polished_fire_coral_bead.json
+f5626f549262792529b406965ab130689b4fcb7b assets/bejeweled/models/item/polished_horn_coral_bead.json
+3f5a4ce40f7cbf99f2177d5a6ab13b5695ade44b assets/bejeweled/models/item/polished_pearl.json
+8dc13f6d0af11bb80fffd1e1859b6c0ba177c994 assets/bejeweled/models/item/polished_tube_coral_bead.json
 c1a515da919304c5a2bd768bf286892b390355c2 assets/bejeweled/models/item/ring.json
 95a66b640fed0ba27500eef330566f40538a066b assets/bejeweled/models/item/rough_aquamarine.json
 9d27a546a5954f8bb941c3e662b261d5c19ab628 assets/bejeweled/models/item/rough_brain_coral_polyp.json
@@ -35,4 +36,4 @@ d4d7500634d6d20fc4304e878a51deabc1e57a68 assets/bejeweled/models/item/rough_ruby
 c8cfe69745c602b754738c47ab26c4fc1f376e74 assets/bejeweled/models/item/rough_topaz.json
 d4d8a10b8a90d5946fa50b533e570e8d8ea678ac assets/bejeweled/models/item/rough_tube_coral_polyp.json
 8ff34856db4e8294e68313ef10aaaaa3eb860e0a assets/bejeweled/models/item/rough_turquoise.json
-61a2ea022655c8378d0804f0ef6f30d6c2bc0eaa assets/bejeweled/models/item/tube_coral_bead.json
+cc0e63a6f46aadcbadcdbbe73cf5321423cb1bf8 assets/bejeweled/models/item/unpolished_pearl.json

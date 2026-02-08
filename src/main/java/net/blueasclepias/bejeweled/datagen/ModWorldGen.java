@@ -2,10 +2,10 @@ package net.blueasclepias.bejeweled.datagen;
 
 import net.blueasclepias.bejeweled.feature.configuredfeature.ModConfiguredFeatures;
 import net.blueasclepias.bejeweled.feature.placedfeature.ModPlacedFeature;
-import net.blueasclepias.bejeweled.oretype.OreTypes;
 import net.blueasclepias.bejeweled.record.OreFeature;
 import net.blueasclepias.bejeweled.registry.ModBlocks;
 import net.blueasclepias.bejeweled.registry.ModFeatures;
+import net.blueasclepias.bejeweled.types.ore.OreTypes;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;

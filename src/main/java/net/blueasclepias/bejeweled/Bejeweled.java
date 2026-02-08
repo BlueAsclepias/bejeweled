@@ -1,7 +1,7 @@
 package net.blueasclepias.bejeweled;
 
 import com.mojang.logging.LogUtils;
-import net.blueasclepias.bejeweled.modifier.ModLootModifiers;
+import net.blueasclepias.bejeweled.loot.ModLootModifiers;
 import net.blueasclepias.bejeweled.registry.ModBlocks;
 import net.blueasclepias.bejeweled.registry.ModCreativeTabs;
 import net.blueasclepias.bejeweled.registry.ModFeatures;

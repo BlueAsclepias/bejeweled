@@ -1,9 +1,9 @@
 package net.blueasclepias.bejeweled.registry;
 
 import net.blueasclepias.bejeweled.block.CoralPolypBlock;
-import net.blueasclepias.bejeweled.oretype.OreTypes;
 import net.blueasclepias.bejeweled.record.OreBase;
 import net.blueasclepias.bejeweled.record.OreType;
+import net.blueasclepias.bejeweled.types.ore.OreTypes;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -39,14 +39,14 @@ public class ModBlocks {
     private static BlockBehaviour.Properties cutGemBlock(MapColor color) {
         return BlockBehaviour.Properties.of()
                 .mapColor(color)
-                .strength(5.0f, 6.0f)
+                .strength(.5f, 1f)
                 .sound(SoundType.AMETHYST);
     }
 
     private static BlockBehaviour.Properties roughGemBlock(MapColor color) {
         return BlockBehaviour.Properties.of()
                 .mapColor(color)
-                .strength(5.0f, 6.0f)
+                .strength(.5f, 1f)
                 .sound(SoundType.STONE);
     }
 
@@ -80,6 +80,7 @@ public class ModBlocks {
         registerBlockOf("rough_opal", roughGemBlock(MapColor.COLOR_LIGHT_GRAY));
         registerBlockOf("rough_peridot", roughGemBlock(MapColor.COLOR_LIGHT_GREEN));
         registerBlockOf("rough_diamond", roughGemBlock(MapColor.COLOR_CYAN));
+        registerBlockOf("unpolished_pearl", cutGemBlock(MapColor.COLOR_LIGHT_GRAY));
 
         registerBlockOf("cut_aquamarine", cutGemBlock(MapColor.COLOR_CYAN));
         registerBlockOf("cut_ruby", cutGemBlock(MapColor.COLOR_RED));
@@ -90,10 +91,14 @@ public class ModBlocks {
         registerBlockOf("cut_turquoise", cutGemBlock(MapColor.COLOR_CYAN));
         registerBlockOf("cut_jade", cutGemBlock(MapColor.COLOR_LIGHT_GREEN));
         registerBlockOf("cut_opal", cutGemBlock(MapColor.COLOR_LIGHT_GRAY));
-        registerBlockOf("pearl", cutGemBlock(MapColor.COLOR_LIGHT_GRAY));
-        // TODO: BLOCK OF CUT CORAL TYPES THROUGH TINTING
-        //registerBlockOf("cut_coral", cutGemBlock(MapColor.COLOR_ORANGE));
         registerBlockOf("cut_peridot", cutGemBlock(MapColor.COLOR_LIGHT_GREEN));
+
+        registerBlockOf("polished_tube_coral_bead", cutGemBlock(MapColor.COLOR_ORANGE));
+        registerBlockOf("polished_fire_coral_bead", cutGemBlock(MapColor.COLOR_ORANGE));
+        registerBlockOf("polished_horn_coral_bead", cutGemBlock(MapColor.COLOR_ORANGE));
+        registerBlockOf("polished_brain_coral_bead", cutGemBlock(MapColor.COLOR_ORANGE));
+        registerBlockOf("polished_bubble_coral_bead", cutGemBlock(MapColor.COLOR_ORANGE));
+        registerBlockOf("polished_pearl", cutGemBlock(MapColor.COLOR_LIGHT_GRAY));
     }
 
     private static void registerCoralPolypType(Block block){

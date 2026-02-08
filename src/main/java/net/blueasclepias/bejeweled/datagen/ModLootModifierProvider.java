@@ -1,6 +1,7 @@
 package net.blueasclepias.bejeweled.datagen;
 
-import net.blueasclepias.bejeweled.modifier.VanillaOreDropModifier;
+import net.blueasclepias.bejeweled.loot.AddGemsAndBeadsToChestsModifier;
+import net.blueasclepias.bejeweled.loot.VanillaOreDropModifier;
 import net.blueasclepias.bejeweled.registry.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
@@ -61,6 +62,12 @@ public class ModLootModifierProvider extends GlobalLootModifierProvider {
                                 ).build(),
                         },
                         ModItems.ROUGH_EMERALD.get()
+                )
+        );
+
+        add("add_gems_and_beads_to_chests",
+                new AddGemsAndBeadsToChestsModifier(
+                        new LootItemCondition[]{}
                 )
         );
     }

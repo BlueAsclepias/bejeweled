@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "bejeweled:river_archaeology",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 8,
+    "separation": 4,
+    "salt": 91328471
+  }
+}
