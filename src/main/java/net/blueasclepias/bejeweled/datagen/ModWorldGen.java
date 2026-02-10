@@ -1,11 +1,11 @@
 package net.blueasclepias.bejeweled.datagen;
 
+import net.blueasclepias.bejeweled.content.ore.OreDefinitions;
 import net.blueasclepias.bejeweled.feature.configuredfeature.ModConfiguredFeatures;
 import net.blueasclepias.bejeweled.feature.placedfeature.ModPlacedFeature;
-import net.blueasclepias.bejeweled.record.OreFeature;
+import net.blueasclepias.bejeweled.record.ore.OreFeature;
 import net.blueasclepias.bejeweled.registry.ModBlocks;
 import net.blueasclepias.bejeweled.registry.ModFeatures;
-import net.blueasclepias.bejeweled.types.ore.OreTypes;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
@@ -28,8 +28,8 @@ public class ModWorldGen {
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
 
-        OreTypes.ALL.forEach(type ->{
-            type.features().stream()
+        OreDefinitions.ALL.forEach(def ->{
+            def.features().stream()
                     .filter(OreFeature::isGeneric)
                     .forEach(feature -> {
                         context.register(
@@ -39,9 +39,9 @@ public class ModWorldGen {
                                         new OreConfiguration(
                                                 List.of(
                                                         OreConfiguration.target(
-                                                                feature.base().ruleTest(),
-                                                                ModBlocks.ORE_BLOCKS.get(type)
-                                                                        .get(feature.base())
+                                                                feature.variant().ruleTest(),
+                                                                ModBlocks.ORE_BLOCKS.get(def)
+                                                                        .get(feature.variant())
                                                                         .get()
                                                                         .defaultBlockState()
                                                         )
@@ -111,8 +111,8 @@ public class ModWorldGen {
                 )
         );
 
-        OreTypes.ALL.forEach(type ->
-            type.features().forEach(feature -> {
+        OreDefinitions.ALL.forEach(def ->
+            def.features().forEach(feature -> {
                 context.register(
                         feature.placedFeature(),
                         new PlacedFeature(

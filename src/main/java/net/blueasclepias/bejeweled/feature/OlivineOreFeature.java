@@ -1,8 +1,8 @@
 package net.blueasclepias.bejeweled.feature;
 
+import net.blueasclepias.bejeweled.content.ore.OreDefinitions;
+import net.blueasclepias.bejeweled.content.ore.OreVariants;
 import net.blueasclepias.bejeweled.registry.ModBlocks;
-import net.blueasclepias.bejeweled.types.ore.OreBases;
-import net.blueasclepias.bejeweled.types.ore.OreTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
@@ -30,8 +30,8 @@ public class OlivineOreFeature extends Feature<NoneFeatureConfiguration> {
         level.setBlock(
                 origin,
                 ModBlocks.ORE_BLOCKS
-                        .get(OreTypes.OLIVINE)
-                        .get(OreBases.DEEPSLATE)
+                        .get(OreDefinitions.OLIVINE)
+                        .get(OreVariants.DEEPSLATE)
                         .get()
                         .defaultBlockState(),
                 2

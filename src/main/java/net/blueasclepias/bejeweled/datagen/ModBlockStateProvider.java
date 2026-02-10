@@ -1,7 +1,7 @@
 package net.blueasclepias.bejeweled.datagen;
 
 import net.blueasclepias.bejeweled.block.CoralPolypBlock;
-import net.blueasclepias.bejeweled.record.OreBase;
+import net.blueasclepias.bejeweled.record.ore.OreVariant;
 import net.blueasclepias.bejeweled.registry.ModBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -33,9 +33,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
         );
 
         // Ore blocks
-        ModBlocks.ORE_BLOCKS.forEach((type, variants) -> {
-            variants.forEach((base, block) -> {
-                oreBlock(type.name(), base, block.get());
+        ModBlocks.ORE_BLOCKS.forEach((def, variants) -> {
+            variants.forEach((variant, block) -> {
+                oreBlock(def.name(), variant, block.get());
             });
         });
 
@@ -43,17 +43,20 @@ public class ModBlockStateProvider extends BlockStateProvider {
         ModBlocks.CORAL_POLYP_BLOCKS.forEach(block -> {
             coralPolyp(block.getId().getPath(), block.get());
         });
+
+        // TODO: PROPER TEXTURES FOR A CUSTOM MODEL BLOCK
+        simpleBlockWithItem(ModBlocks.GEM_CUTTING_TABLE.get(), cubeAll(ModBlocks.GEM_CUTTING_TABLE.get()));
     }
 
-    private void oreBlock(String name, OreBase base, Block block){
+    private void oreBlock(String name, OreVariant variant, Block block){
         String path = BuiltInRegistries.BLOCK.getKey(block).getPath();
-        String baseName = BuiltInRegistries.BLOCK.getKey(base.block()).getPath();
+        String baseName = BuiltInRegistries.BLOCK.getKey(variant.block()).getPath();
 
-        ResourceLocation vertical = base.hasTop()
+        ResourceLocation vertical = variant.hasTop()
                 ? mcLoc("block/" + baseName + "_top")
                 : mcLoc("block/" + baseName);
 
-        ResourceLocation horizontal = base.hasSide()
+        ResourceLocation horizontal = variant.hasSide()
                 ? mcLoc("block/" + baseName + "_side")
                 : mcLoc("block/" + baseName);
 

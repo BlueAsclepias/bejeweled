@@ -1,8 +1,8 @@
 package net.blueasclepias.bejeweled.feature;
 
+import net.blueasclepias.bejeweled.content.ore.OreDefinitions;
+import net.blueasclepias.bejeweled.content.ore.OreVariants;
 import net.blueasclepias.bejeweled.registry.ModBlocks;
-import net.blueasclepias.bejeweled.types.ore.OreBases;
-import net.blueasclepias.bejeweled.types.ore.OreTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
@@ -32,8 +32,8 @@ public class TurquoiseOreFeature extends Feature<NoneFeatureConfiguration> {
         level.setBlock(
                 origin,
                 ModBlocks.ORE_BLOCKS
-                        .get(OreTypes.TURQUOISE)
-                        .get(OreBases.STONE)
+                        .get(OreDefinitions.TURQUOISE)
+                        .get(OreVariants.STONE)
                         .get()
                         .defaultBlockState(),
                 2

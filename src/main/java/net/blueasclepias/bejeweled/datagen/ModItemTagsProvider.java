@@ -28,72 +28,72 @@ public class ModItemTagsProvider extends ItemTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
 
-        ModItems.ORE_BLOCK_ITEMS.forEach((item, type) -> {
+        ModItems.ORE_BLOCK_ITEMS.forEach((item, def) -> {
             tag(ModTags.Items.FORGE_GENERIC_ORES).add(item.get());
             tag(ModTags.Items.CROSS_GENERIC_ORES).add(item.get());
             tag(TagKey.create(Registries.ITEM,
-                    fromNamespaceAndPath("forge", "ores/" + type.name()))).add(item.get());
+                    fromNamespaceAndPath("forge", "ores/" + def.name()))).add(item.get());
             tag(TagKey.create(Registries.ITEM,
-                    fromNamespaceAndPath("c", "ores/" + type.name()))).add(item.get());
+                    fromNamespaceAndPath("c", "ores/" + def.name()))).add(item.get());
         });
 
-        ModItems.STORAGE_BLOCK_ITEMS.forEach((item, type) -> {
+        ModItems.STORAGE_BLOCK_ITEMS.forEach((item, name) -> {
             tag(ModTags.Items.FORGE_GENERIC_STORAGE_BLOCKS).add(item.get());
             tag(ModTags.Items.CROSS_GENERIC_STORAGE_BLOCKS).add(item.get());
             tag(TagKey.create(Registries.ITEM,
                     fromNamespaceAndPath("forge", "storage_blocks/" +
-                            type))).add(item.get());
+                            name))).add(item.get());
             tag(TagKey.create(Registries.ITEM,
                     fromNamespaceAndPath("c", "storage_blocks/" +
-                            type))).add(item.get());
+                            name))).add(item.get());
         });
 
-        ModItems.ROUGH_GEMS.forEach((item, type) -> {
+        ModItems.ROUGH_GEMSTONES.forEach((item, def) -> {
             tag(ModTags.Items.ROUGH_GEMS).add(item.get());
             tag(ModTags.Items.CROSS_GENERIC_GEMS).add(item.get());
             tag(ModTags.Items.FORGE_GENERIC_GEMS).add(item.get());
             tag(TagKey.create(Registries.ITEM,
-                    fromNamespaceAndPath("forge", "gems/" + type.name()))).add(item.get());
+                    fromNamespaceAndPath("forge", "gems/" + def.name()))).add(item.get());
             tag(TagKey.create(Registries.ITEM,
-                    fromNamespaceAndPath("c", "gems/" + type.name()))).add(item.get());
+                    fromNamespaceAndPath("c", "gems/" + def.name()))).add(item.get());
             tag(TagKey.create(Registries.ITEM,
-                    fromNamespaceAndPath("forge", "raw_materials/" + type.name()))).add(item.get());
+                    fromNamespaceAndPath("forge", "raw_materials/" + def.name()))).add(item.get());
             tag(TagKey.create(Registries.ITEM,
-                    fromNamespaceAndPath("c", "raw_materials/" + type.name()))).add(item.get());
+                    fromNamespaceAndPath("c", "raw_materials/" + def.name()))).add(item.get());
         });
 
-        ModItems.ROUGH_BEADS.forEach((item, type) -> {
+        ModItems.ROUGH_BEADS.forEach((item, def) -> {
             tag(ModTags.Items.ROUGH_BEADS).add(item.get());
             tag(ModTags.Items.CROSS_GENERIC_GEMS).add(item.get());
             tag(ModTags.Items.FORGE_GENERIC_GEMS).add(item.get());
             tag(TagKey.create(Registries.ITEM,
-                    fromNamespaceAndPath("forge", "gems/" + type.name()))).add(item.get());
+                    fromNamespaceAndPath("forge", "gems/" + def.name()))).add(item.get());
             tag(TagKey.create(Registries.ITEM,
-                    fromNamespaceAndPath("c", "gems/" + type.name()))).add(item.get());
+                    fromNamespaceAndPath("c", "gems/" + def.name()))).add(item.get());
             tag(TagKey.create(Registries.ITEM,
-                    fromNamespaceAndPath("forge", "raw_materials/" + type.name()))).add(item.get());
+                    fromNamespaceAndPath("forge", "raw_materials/" + def.name()))).add(item.get());
             tag(TagKey.create(Registries.ITEM,
-                    fromNamespaceAndPath("c", "raw_materials/" + type.name()))).add(item.get());
+                    fromNamespaceAndPath("c", "raw_materials/" + def.name()))).add(item.get());
         });
 
-        ModItems.CUT_GEMS.forEach((item, type) -> {
+        ModItems.CUT_GEMSTONES.forEach((item, def) -> {
             tag(ModTags.Items.CUT_GEMS).add(item.get());
             tag(ModTags.Items.CROSS_GENERIC_GEMS).add(item.get());
             tag(ModTags.Items.FORGE_GENERIC_GEMS).add(item.get());
             tag(TagKey.create(Registries.ITEM,
-                    fromNamespaceAndPath("forge", "gems/" + type.name()))).add(item.get());
+                    fromNamespaceAndPath("forge", "gems/" + def.name()))).add(item.get());
             tag(TagKey.create(Registries.ITEM,
-                    fromNamespaceAndPath("c", "gems/" + type.name()))).add(item.get());
+                    fromNamespaceAndPath("c", "gems/" + def.name()))).add(item.get());
         });
 
-        ModItems.POLISHED_BEADS.forEach((item, type) -> {
+        ModItems.POLISHED_BEADS.forEach((item, def) -> {
             tag(ModTags.Items.POLISHED_BEADS).add(item.get());
             tag(ModTags.Items.CROSS_GENERIC_GEMS).add(item.get());
             tag(ModTags.Items.FORGE_GENERIC_GEMS).add(item.get());
             tag(TagKey.create(Registries.ITEM,
-                    fromNamespaceAndPath("forge", "gems/" + type.name()))).add(item.get());
+                    fromNamespaceAndPath("forge", "gems/" + def.name()))).add(item.get());
             tag(TagKey.create(Registries.ITEM,
-                    fromNamespaceAndPath("c", "gems/" + type.name()))).add(item.get());
+                    fromNamespaceAndPath("c", "gems/" + def.name()))).add(item.get());
         });
     }
 }

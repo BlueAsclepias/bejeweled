@@ -1,9 +1,10 @@
 package net.blueasclepias.bejeweled.registry;
 
 import net.blueasclepias.bejeweled.block.CoralPolypBlock;
-import net.blueasclepias.bejeweled.record.OreBase;
-import net.blueasclepias.bejeweled.record.OreType;
-import net.blueasclepias.bejeweled.types.ore.OreTypes;
+import net.blueasclepias.bejeweled.block.GemCuttingTableBlock;
+import net.blueasclepias.bejeweled.content.ore.OreDefinitions;
+import net.blueasclepias.bejeweled.record.ore.OreDefinition;
+import net.blueasclepias.bejeweled.record.ore.OreVariant;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -31,12 +32,22 @@ public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, MOD_ID);
 
-    public static final Map<OreType, Map<OreBase, RegistryObject<Block>>> ORE_BLOCKS = new HashMap<>();
+    public static final Map<OreDefinition, Map<OreVariant, RegistryObject<Block>>> ORE_BLOCKS = new HashMap<>();
     public static final List<RegistryObject<Block>> STORAGE_BLOCKS = new ArrayList<>();
     public static final List<RegistryObject<Block>> CORAL_POLYP_BLOCKS = new ArrayList<>();
 
-    // Shared properties for gem/rough gem blocks
-    private static BlockBehaviour.Properties cutGemBlock(MapColor color) {
+    // ===== Workstation =====
+    public static final RegistryObject<Block> GEM_CUTTING_TABLE =
+            BLOCKS.register(
+                    "gem_cutting_table",
+                    () -> new GemCuttingTableBlock(
+                            BlockBehaviour.Properties.copy(Blocks.CRAFTING_TABLE)
+                    )
+            );
+
+
+    // === Shared properties for gem/rough gem blocks ===
+    private static BlockBehaviour.Properties gemBlock(MapColor color) {
         return BlockBehaviour.Properties.of()
                 .mapColor(color)
                 .strength(.5f, 1f)
@@ -50,7 +61,9 @@ public class ModBlocks {
                 .sound(SoundType.STONE);
     }
 
-    private static void registerCoralPolypType(Block block){
+    // ===== Registration Helpers =====
+    // === Coral Polyp Blocks ===
+    private static void registerCoralPolyp(Block block){
         String name = ForgeRegistries.BLOCKS.getKey(block).getPath() + "_polyp";
         CORAL_POLYP_BLOCKS.add(
           BLOCKS.register(name,
@@ -66,26 +79,28 @@ public class ModBlocks {
         );
     }
 
-    private static void registerGemOreBlockType(OreType type){
-        Map<OreBase, RegistryObject<Block>> variants = new HashMap<>();
-        type.features().forEach(
+    // === Gem Ore Blocks ===
+    private static void registerGemOreBlock(OreDefinition def){
+        Map<OreVariant, RegistryObject<Block>> variants = new HashMap<>();
+        def.features().forEach(
                 feature -> variants.put(
-                        feature.base(),
+                        feature.variant(),
                         BLOCKS.register(
-                                feature.base().name() + "_" + type.name() + "_ore",
+                                feature.variant().name() + "_" + def.name() + "_ore",
                                 () -> new DropExperienceBlock(
                                         BlockBehaviour.Properties.of()
-                                                .strength(feature.base().hardness(), feature.base().resistance())
-                                                .sound(feature.base().soundType())
+                                                .strength(feature.variant().hardness(), feature.variant().resistance())
+                                                .sound(feature.variant().soundType())
                                                 .requiresCorrectToolForDrops(),
                                         UniformInt.of(2, 4)
                                 )
                         )
                 )
         );
-        ORE_BLOCKS.put(type, variants);
+        ORE_BLOCKS.put(def, variants);
     }
 
+    // === Storage Blocks ===
     private static void registerBlockOf(String name,  BlockBehaviour.Properties properties) {
         STORAGE_BLOCKS.add(BLOCKS.register(
                 "block_of_" + name,
@@ -95,22 +110,22 @@ public class ModBlocks {
 
     // ===== Static Initializer =====
     static {
-        registerGemOreBlockType(OreTypes.BERYL);
-        registerGemOreBlockType(OreTypes.RED_CORUNDUM);
-        registerGemOreBlockType(OreTypes.BLUE_CORUNDUM);
-        registerGemOreBlockType(OreTypes.GARNET);
-        registerGemOreBlockType(OreTypes.TOPAZ);
-        registerGemOreBlockType(OreTypes.TURQUOISE);
-        registerGemOreBlockType(OreTypes.NEPHRITE);
-        registerGemOreBlockType(OreTypes.JADEITE);
-        registerGemOreBlockType(OreTypes.OPAL);
-        registerGemOreBlockType(OreTypes.OLIVINE);
+        registerGemOreBlock(OreDefinitions.BERYL);
+        registerGemOreBlock(OreDefinitions.RED_CORUNDUM);
+        registerGemOreBlock(OreDefinitions.BLUE_CORUNDUM);
+        registerGemOreBlock(OreDefinitions.GARNET);
+        registerGemOreBlock(OreDefinitions.TOPAZ);
+        registerGemOreBlock(OreDefinitions.TURQUOISE);
+        registerGemOreBlock(OreDefinitions.NEPHRITE);
+        registerGemOreBlock(OreDefinitions.JADEITE);
+        registerGemOreBlock(OreDefinitions.OPAL);
+        registerGemOreBlock(OreDefinitions.OLIVINE);
 
-        registerCoralPolypType(Blocks.FIRE_CORAL_BLOCK);
-        registerCoralPolypType(Blocks.BRAIN_CORAL_BLOCK);
-        registerCoralPolypType(Blocks.BUBBLE_CORAL_BLOCK);
-        registerCoralPolypType(Blocks.HORN_CORAL_BLOCK);
-        registerCoralPolypType(Blocks.TUBE_CORAL_BLOCK);
+        registerCoralPolyp(Blocks.FIRE_CORAL_BLOCK);
+        registerCoralPolyp(Blocks.BRAIN_CORAL_BLOCK);
+        registerCoralPolyp(Blocks.BUBBLE_CORAL_BLOCK);
+        registerCoralPolyp(Blocks.HORN_CORAL_BLOCK);
+        registerCoralPolyp(Blocks.TUBE_CORAL_BLOCK);
 
         registerBlockOf("rough_aquamarine", roughGemBlock(MapColor.COLOR_CYAN));
         registerBlockOf("rough_ruby", roughGemBlock(MapColor.COLOR_RED));
@@ -123,25 +138,25 @@ public class ModBlocks {
         registerBlockOf("rough_opal", roughGemBlock(MapColor.COLOR_LIGHT_GRAY));
         registerBlockOf("rough_peridot", roughGemBlock(MapColor.COLOR_LIGHT_GREEN));
         registerBlockOf("rough_diamond", roughGemBlock(MapColor.COLOR_CYAN));
-        registerBlockOf("unpolished_pearl", cutGemBlock(MapColor.COLOR_LIGHT_GRAY));
+        registerBlockOf("unpolished_pearl", gemBlock(MapColor.COLOR_LIGHT_GRAY));
 
-        registerBlockOf("cut_aquamarine", cutGemBlock(MapColor.COLOR_CYAN));
-        registerBlockOf("cut_ruby", cutGemBlock(MapColor.COLOR_RED));
-        registerBlockOf("cut_sapphire", cutGemBlock(MapColor.COLOR_BLUE));
-        registerBlockOf("cut_garnet", cutGemBlock(MapColor.COLOR_RED));
-        registerBlockOf("cut_amethyst", cutGemBlock(MapColor.COLOR_PURPLE));
-        registerBlockOf("cut_topaz", cutGemBlock(MapColor.COLOR_ORANGE));
-        registerBlockOf("cut_turquoise", cutGemBlock(MapColor.COLOR_CYAN));
-        registerBlockOf("cut_jade", cutGemBlock(MapColor.COLOR_LIGHT_GREEN));
-        registerBlockOf("cut_opal", cutGemBlock(MapColor.COLOR_LIGHT_GRAY));
-        registerBlockOf("cut_peridot", cutGemBlock(MapColor.COLOR_LIGHT_GREEN));
+        registerBlockOf("cut_aquamarine", gemBlock(MapColor.COLOR_CYAN));
+        registerBlockOf("cut_ruby", gemBlock(MapColor.COLOR_RED));
+        registerBlockOf("cut_sapphire", gemBlock(MapColor.COLOR_BLUE));
+        registerBlockOf("cut_garnet", gemBlock(MapColor.COLOR_RED));
+        registerBlockOf("cut_amethyst", gemBlock(MapColor.COLOR_PURPLE));
+        registerBlockOf("cut_topaz", gemBlock(MapColor.COLOR_ORANGE));
+        registerBlockOf("cut_turquoise", gemBlock(MapColor.COLOR_CYAN));
+        registerBlockOf("cut_jade", gemBlock(MapColor.COLOR_LIGHT_GREEN));
+        registerBlockOf("cut_opal", gemBlock(MapColor.COLOR_LIGHT_GRAY));
+        registerBlockOf("cut_peridot", gemBlock(MapColor.COLOR_LIGHT_GREEN));
 
-        registerBlockOf("polished_tube_coral_bead", cutGemBlock(MapColor.COLOR_ORANGE));
-        registerBlockOf("polished_fire_coral_bead", cutGemBlock(MapColor.COLOR_ORANGE));
-        registerBlockOf("polished_horn_coral_bead", cutGemBlock(MapColor.COLOR_ORANGE));
-        registerBlockOf("polished_brain_coral_bead", cutGemBlock(MapColor.COLOR_ORANGE));
-        registerBlockOf("polished_bubble_coral_bead", cutGemBlock(MapColor.COLOR_ORANGE));
-        registerBlockOf("polished_pearl", cutGemBlock(MapColor.COLOR_LIGHT_GRAY));
+        registerBlockOf("polished_tube_coral_bead", gemBlock(MapColor.COLOR_ORANGE));
+        registerBlockOf("polished_fire_coral_bead", gemBlock(MapColor.COLOR_ORANGE));
+        registerBlockOf("polished_horn_coral_bead", gemBlock(MapColor.COLOR_ORANGE));
+        registerBlockOf("polished_brain_coral_bead", gemBlock(MapColor.COLOR_ORANGE));
+        registerBlockOf("polished_bubble_coral_bead", gemBlock(MapColor.COLOR_ORANGE));
+        registerBlockOf("polished_pearl", gemBlock(MapColor.COLOR_LIGHT_GRAY));
     }
 
     public static void register(IEventBus eventBus) {

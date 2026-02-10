@@ -23,11 +23,11 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         ModBlocks.STORAGE_BLOCKS.forEach(block -> dropSelf(block.get()));
 
         // === Ores ===
-        ModBlocks.ORE_BLOCKS.forEach((type, variants) -> {
-            variants.forEach((base, block) -> {
+        ModBlocks.ORE_BLOCKS.forEach((def, variants) -> {
+            variants.forEach((variant, block) -> {
                 add(
                         block.get(),
-                        createOreDrop(block.get(), type.drop().get())
+                        createOreDrop(block.get(), def.drop().get())
                 );
             });
         });
@@ -35,12 +35,15 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         // === Coral Polyps ===
         ModBlocks.CORAL_POLYP_BLOCKS.forEach(block -> {
             String name = block.getId().getPath().replace("_block", "");
-            ModItems.ROUGH_BEADS.forEach((k, v) -> {
-                if (name.contains(v.name())) {
-                    add(block.get(), createSingleItemTable(k.get()));
+            ModItems.ROUGH_BEADS.forEach((item, def) -> {
+                if (name.contains(def.name())) {
+                    add(block.get(), createSingleItemTable(item.get()));
                 }
             });
         });
+
+        // === Workstation ===
+        dropSelf(ModBlocks.GEM_CUTTING_TABLE.get());
     }
 
     @Override

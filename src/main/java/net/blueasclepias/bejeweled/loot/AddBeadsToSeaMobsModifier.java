@@ -3,7 +3,7 @@ package net.blueasclepias.bejeweled.loot;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import net.blueasclepias.bejeweled.record.CoreType;
+import net.blueasclepias.bejeweled.record.gem.GemDefinition;
 import net.blueasclepias.bejeweled.registry.ModItems;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
@@ -88,7 +88,7 @@ public class AddBeadsToSeaMobsModifier extends LootModifier {
             int looting
     ) {
         float processedChance = processedBase * multiplier + looting * LOOTING_BONUS;
-        float rawChance       = rawBase       * multiplier + looting * LOOTING_BONUS;
+        float rawChance = rawBase * multiplier + looting * LOOTING_BONUS;
 
         float roll = random.nextFloat();
 
@@ -115,7 +115,7 @@ public class AddBeadsToSeaMobsModifier extends LootModifier {
         return .5f; // Drowned
     }
 
-    private static Item pickWeighted(RandomSource random, Map<Supplier<Item>, CoreType> gems) {
+    private static Item pickWeighted(RandomSource random, Map<Supplier<Item>, GemDefinition> gems) {
         int total = gems.values().stream().mapToInt(v -> v.rarity().weight).sum();
         if (total <= 0)
             throw new IllegalStateException("No weighted entries for gem pool");

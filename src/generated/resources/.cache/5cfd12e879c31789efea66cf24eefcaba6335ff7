@@ -1,4 +1,4 @@
-// 1.20.1	2026-02-08T11:12:47.834334329	Block States: bejeweled
+// 1.20.1	2026-02-10T10:39:31.604205088	Block States: bejeweled
 6c7a893a114be99e7c48c8d0cba69d9764853920 assets/bejeweled/blockstates/basalt_blue_corundum_ore.json
 c9f234dd8fbe1f50ffacb398f7f410934470a424 assets/bejeweled/blockstates/block_of_cut_amethyst.json
 9e72576a7d7b93781b85f7e3fad62bc8f2d02bb8 assets/bejeweled/blockstates/block_of_cut_aquamarine.json
@@ -38,6 +38,7 @@ d1cf088c85f710f6a3c5762ef17d563dce421b37 assets/bejeweled/blockstates/deepslate_
 618255719d1724342f131c051c0a16cf93767ea6 assets/bejeweled/blockstates/deepslate_red_corundum_ore.json
 4b4431a19611f91570f5b5c05977de80c70fa914 assets/bejeweled/blockstates/deepslate_topaz_ore.json
 4a0b960fac18082103aed4f3851d90651ce28110 assets/bejeweled/blockstates/fire_coral_block_polyp.json
+9e836d7557c6aa2be2fdb9dd6029766cc16caf63 assets/bejeweled/blockstates/gem_cutting_table.json
 c2813952e326a1c7f3da1620f6e19b5cf025f4cf assets/bejeweled/blockstates/granite_beryl_ore.json
 9341ad43699b5a7a7f353364bb1303354292cf28 assets/bejeweled/blockstates/granite_topaz_ore.json
 050e58a248707c68446f1b229b4a4c4ecc5dbb7b assets/bejeweled/blockstates/horn_coral_block_polyp.json
@@ -89,6 +90,7 @@ ae06f5e087fc82a04fad4fe6885bda5b7ebc24c6 assets/bejeweled/models/block/deepslate
 b5fc0fc206d2cd83741d8074f20bef28efc415b9 assets/bejeweled/models/block/deepslate_red_corundum_ore.json
 19ad5243912fb935898e2e213a1cd0a7fcfbcc6d assets/bejeweled/models/block/deepslate_topaz_ore.json
 df1e253812566a5fc701208ed628e0518c4faad8 assets/bejeweled/models/block/fire_coral_block_polyp.json
+ba46dbc46a1e1886d6014200ec1b0359b4006356 assets/bejeweled/models/block/gem_cutting_table.json
 6bbec4c128ad71dfb87683487621e78a7f6fe0a1 assets/bejeweled/models/block/granite_beryl_ore.json
 b77e6233159919badd6d183ce8e94cc77fa64d88 assets/bejeweled/models/block/granite_topaz_ore.json
 70ab1b1c58887eee6de651853bf342dab73d13ef assets/bejeweled/models/block/horn_coral_block_polyp.json
@@ -140,6 +142,7 @@ de59321e0f2201eecc0dccc0c4b9f39defd07f3b assets/bejeweled/models/item/deepslate_
 b1f2b5b04c64dfc8d1e02ada76d6870f4a741344 assets/bejeweled/models/item/deepslate_red_corundum_ore.json
 8c4471d62b7a06bfde1bf6938b5c2f2ffcfcccbd assets/bejeweled/models/item/deepslate_topaz_ore.json
 a23d5d9defd74e697b3c062e199628d85a6cff87 assets/bejeweled/models/item/fire_coral_block_polyp.json
+5d5132cea44368d64df9140df8c96be557493a19 assets/bejeweled/models/item/gem_cutting_table.json
 45e8409791ae7b72522650572db0f9fbb236ac46 assets/bejeweled/models/item/granite_beryl_ore.json
 5a7fa9a6faab235bee871f4f04c770fa8bc5fc4e assets/bejeweled/models/item/granite_topaz_ore.json
 4472615f41261d9cd40309c78aad2ecd076ca938 assets/bejeweled/models/item/horn_coral_block_polyp.json

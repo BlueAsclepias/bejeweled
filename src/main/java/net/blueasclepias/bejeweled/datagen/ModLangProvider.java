@@ -22,8 +22,10 @@ public class ModLangProvider extends LanguageProvider {
     @Override
     protected void addTranslations() {
         add("creativetab.bejeweled.jewelry", "Bejeweled");
-        add("tooltip.bejeweled.rough_gem", "Can be cut in the Jeweler table");
+        add("tooltip.bejeweled.rough_gemstone", "Can be cut in the gem cutting table");
         add("tooltip.bejeweled.rough_bead", "Can be polished with a Grindstone");
+        add("container.bejeweled.gem_cutting_table", "Gem Cutting Table");
+        add("container.bejeweled.gem_cutting", "Gem Cutting");
 
         add("item.minecraft.amethyst_shard", "Rough Amethyst");
         add("item.minecraft.emerald", "Cut Emerald");

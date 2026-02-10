@@ -2,7 +2,7 @@ package net.blueasclepias.bejeweled.registry;
 
 import com.mojang.serialization.Codec;
 import net.blueasclepias.bejeweled.loot.AddBeadsToSeaMobsModifier;
-import net.blueasclepias.bejeweled.loot.AddGemsAndBeadsToChestsModifier;
+import net.blueasclepias.bejeweled.loot.AddGemsToChestsModifier;
 import net.blueasclepias.bejeweled.loot.VanillaOreDropModifier;
 import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -27,10 +27,10 @@ public class ModLootModifiers {
                     "replace_gem",
                     () -> VanillaOreDropModifier.CODEC);
 
-    public static final RegistryObject<Codec<AddGemsAndBeadsToChestsModifier>> ADD_GEMS_AND_BEADS_TO_CHESTS =
+    public static final RegistryObject<Codec<AddGemsToChestsModifier>> ADD_GEMS_TO_CHESTS =
             LOOT_MODIFIERS.register(
-                    "add_gems_and_beads_to_chests",
-                    () -> AddGemsAndBeadsToChestsModifier.CODEC
+                    "add_gems_to_chests",
+                    () -> AddGemsToChestsModifier.CODEC
             );
 
     public static final RegistryObject<Codec<AddBeadsToSeaMobsModifier>> ADD_BEADS_TO_SEA_MOBS =

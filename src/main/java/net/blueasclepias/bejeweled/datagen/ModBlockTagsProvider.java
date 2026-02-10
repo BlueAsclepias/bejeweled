@@ -28,8 +28,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         TagAppender<Block> pickaxe = tag(BlockTags.MINEABLE_WITH_PICKAXE);
         TagAppender<Block> iron = tag(BlockTags.NEEDS_IRON_TOOL);
 
-        ModBlocks.ORE_BLOCKS.forEach((type, entry) -> {
-            entry.forEach( (base, block) -> {
+        ModBlocks.ORE_BLOCKS.forEach((def, entry) -> {
+            entry.forEach( (variant, block) -> {
                 pickaxe.addOptional(ForgeRegistries.BLOCKS.getKey(block.get()));
                 iron.addOptional(ForgeRegistries.BLOCKS.getKey(block.get()));
             });

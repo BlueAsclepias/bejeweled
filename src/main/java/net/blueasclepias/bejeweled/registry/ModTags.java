@@ -12,16 +12,16 @@ public class ModTags {
     public static class Items {
         // === MOD TAGS ===
         public static final TagKey<Item> ROUGH_GEMS =
-                TagKey.create(Registries.ITEM, fromNamespaceAndPath(MOD_ID, "rough_gems"));
+                TagKey.create(Registries.ITEM, fromNamespaceAndPath(MOD_ID, "rough_gemstones"));
 
         public static final TagKey<Item> CUT_GEMS =
-                TagKey.create(Registries.ITEM, fromNamespaceAndPath(MOD_ID, "cut_gems"));
+                TagKey.create(Registries.ITEM, fromNamespaceAndPath(MOD_ID, "cut_gemstones"));
 
         public static final TagKey<Item> ROUGH_BEADS =
-                TagKey.create(Registries.ITEM, fromNamespaceAndPath(MOD_ID, "rough_gems"));
+                TagKey.create(Registries.ITEM, fromNamespaceAndPath(MOD_ID, "rough_beads"));
 
         public static final TagKey<Item> POLISHED_BEADS =
-                TagKey.create(Registries.ITEM, fromNamespaceAndPath(MOD_ID, "cut_gems"));
+                TagKey.create(Registries.ITEM, fromNamespaceAndPath(MOD_ID, "polished_beads"));
 
         // === LOADER TAGS ===
         public static final TagKey<Item> FORGE_GENERIC_GEMS =

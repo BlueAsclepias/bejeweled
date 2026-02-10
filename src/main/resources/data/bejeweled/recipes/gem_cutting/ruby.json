@@ -1,0 +1,9 @@
+{
+  "type": "bejeweled:gem_cutting",
+  "input": {
+    "item": "bejeweled:rough_ruby"
+  },
+  "output": {
+    "item": "bejeweled:cut_ruby"
+  }
+}

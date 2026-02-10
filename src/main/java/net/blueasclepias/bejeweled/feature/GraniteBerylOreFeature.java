@@ -1,8 +1,8 @@
 package net.blueasclepias.bejeweled.feature;
 
+import net.blueasclepias.bejeweled.content.ore.OreDefinitions;
+import net.blueasclepias.bejeweled.content.ore.OreVariants;
 import net.blueasclepias.bejeweled.registry.ModBlocks;
-import net.blueasclepias.bejeweled.types.ore.OreBases;
-import net.blueasclepias.bejeweled.types.ore.OreTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.WorldGenLevel;
@@ -31,8 +31,8 @@ public class GraniteBerylOreFeature extends Feature<NoneFeatureConfiguration> {
         level.setBlock(
                 origin,
                 ModBlocks.ORE_BLOCKS
-                        .get(OreTypes.BERYL)
-                        .get(OreBases.GRANITE)
+                        .get(OreDefinitions.BERYL)
+                        .get(OreVariants.GRANITE)
                         .get()
                         .defaultBlockState(),
                 2

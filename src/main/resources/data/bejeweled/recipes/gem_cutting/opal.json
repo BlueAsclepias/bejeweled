@@ -1,0 +1,9 @@
+{
+  "type": "bejeweled:gem_cutting",
+  "input": {
+    "item": "bejeweled:rough_opal"
+  },
+  "output": {
+    "item": "bejeweled:cut_opal"
+  }
+}

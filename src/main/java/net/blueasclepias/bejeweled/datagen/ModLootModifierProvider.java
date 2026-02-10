@@ -1,7 +1,7 @@
 package net.blueasclepias.bejeweled.datagen;
 
 import net.blueasclepias.bejeweled.loot.AddBeadsToSeaMobsModifier;
-import net.blueasclepias.bejeweled.loot.AddGemsAndBeadsToChestsModifier;
+import net.blueasclepias.bejeweled.loot.AddGemsToChestsModifier;
 import net.blueasclepias.bejeweled.loot.VanillaOreDropModifier;
 import net.blueasclepias.bejeweled.registry.ModItems;
 import net.minecraft.advancements.critereon.EntityPredicate;
@@ -72,7 +72,7 @@ public class ModLootModifierProvider extends GlobalLootModifierProvider {
         );
 
         add("add_gems_and_beads_to_chests",
-                new AddGemsAndBeadsToChestsModifier(
+                new AddGemsToChestsModifier(
                         new LootItemCondition[]{}
                 )
         );

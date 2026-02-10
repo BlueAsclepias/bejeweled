@@ -1,11 +1,12 @@
 package net.blueasclepias.bejeweled.datagen;
 
+import net.blueasclepias.bejeweled.content.gem.GemDefinitions;
 import net.blueasclepias.bejeweled.registry.ModBlocks;
 import net.blueasclepias.bejeweled.registry.ModItems;
-import net.blueasclepias.bejeweled.types.gem.CoreTypes;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -76,9 +77,9 @@ public class ModRecipeProvider extends RecipeProvider {
         });
 
         // ===== Smelting =====
-        ModBlocks.ORE_BLOCKS.forEach((type, entry) ->
-                entry.forEach((base, block) -> {
-                    Item result = type.drop().get();
+        ModBlocks.ORE_BLOCKS.forEach((def, entry) ->
+                entry.forEach((variant, block) -> {
+                    Item result = def.drop().get();
                     gemOreCooking(consumer,
                             result,
                             MOD_ID,
@@ -89,9 +90,9 @@ public class ModRecipeProvider extends RecipeProvider {
         );
 
         ModItems.ROUGH_BEADS
-                .forEach((k, v) -> {
-                    if(v.equals(CoreTypes.PEARL)) return;
-                    String itemName = v.name();
+                .forEach((item, def) -> {
+                    if(def.equals(GemDefinitions.PEARL)) return;
+                    String itemName = def.name();
                     String blockName = itemName
                             .replace("_polyp", "_block")
                             .replace("rough_", "");
@@ -99,11 +100,11 @@ public class ModRecipeProvider extends RecipeProvider {
                             fromNamespaceAndPath("minecraft", blockName)
                     );
                     ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, block)
-                            .define('#', k.get())
+                            .define('#', item.get())
                             .pattern("###")
                             .pattern("###")
                             .pattern("###")
-                            .unlockedBy("has_" + itemName, has(k.get()))
+                            .unlockedBy("has_" + itemName, has(item.get()))
                             .save(consumer);
                 });
 
@@ -121,6 +122,18 @@ public class ModRecipeProvider extends RecipeProvider {
                 "emerald",
                 Items.EMERALD_ORE, Items.DEEPSLATE_EMERALD_ORE
         );
+
+        // ===== Workstation =====
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.GEM_CUTTING_TABLE.get())
+                .define('s', Items.SHEARS)
+                .define('g', Items.SPYGLASS)
+                .define('w', ItemTags.PLANKS)
+                .pattern("sg ")
+                .pattern("ww ")
+                .pattern("ww ")
+                .unlockedBy("has_shears", has(Items.SHEARS))
+                .unlockedBy("has_spyglass", has(Items.SPYGLASS))
+                .save(consumer);
     }
 
     private void gemOreCooking(
