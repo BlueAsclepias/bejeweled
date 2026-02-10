@@ -1,16 +1,16 @@
 {
   "values": [
+    "minecraft:diamond",
     "bejeweled:cut_peridot",
     "bejeweled:cut_sapphire",
     "bejeweled:cut_garnet",
-    "minecraft:emerald",
     "bejeweled:cut_amethyst",
     "bejeweled:cut_ruby",
     "bejeweled:cut_topaz",
     "bejeweled:cut_opal",
     "bejeweled:cut_jade",
+    "minecraft:emerald",
     "bejeweled:cut_aquamarine",
-    "bejeweled:cut_turquoise",
-    "minecraft:diamond"
+    "bejeweled:cut_turquoise"
   ]
 }

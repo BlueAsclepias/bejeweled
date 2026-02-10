@@ -1,9 +1,9 @@
-// 1.20.1	2026-02-10T18:09:46.526207834	Tags for minecraft:item mod id bejeweled
-bd7f383ca8bc7c700194dbba9bd9c034920a5a65 data/bejeweled/tags/items/cut_gemstones.json
+// 1.20.1	2026-02-10T20:52:08.702829089	Tags for minecraft:item mod id bejeweled
+a0e1fcc3392614cb7f9605a04ae94599542f2630 data/bejeweled/tags/items/cut_gemstones.json
 15e074579b81e2bfe52a2a65de4762625d84820d data/bejeweled/tags/items/polished_beads.json
 e81243e03dd693abd8da0c5c6b86b3230ae44caf data/bejeweled/tags/items/rough_beads.json
-b760b587d40b80ba68919fd1582693c877a1e10e data/bejeweled/tags/items/rough_gemstones.json
-9aae80c66be6b25cc0d98e1a68919a26af769f45 data/c/tags/items/gems.json
+8bca46048bc3f6620b02ab0d2f3d920fb4058ffe data/bejeweled/tags/items/rough_gemstones.json
+b1e72cdac8d57fb025bb1a0615089fbb6b8fb326 data/c/tags/items/gems.json
 77f9c241ace69bbd51dd38449dea063f8e69dec6 data/c/tags/items/gems/amethyst.json
 0cd1014f1ca0d8f4b47577bbed9c117271ccaf21 data/c/tags/items/gems/aquamarine.json
 4910d02d0e084cda6b064abbb4a491ec419ac23b data/c/tags/items/gems/brain_coral.json
@@ -22,7 +22,7 @@ ff2cb0143130700427575529a32b2f2f4c36f68b data/c/tags/items/gems/pearl.json
 ecf9dbec37b685a57a38699b1d687edfbc2389b3 data/c/tags/items/gems/topaz.json
 d1f6c00d7ef054ea14313e63849483dc97544612 data/c/tags/items/gems/tube_coral.json
 de3f5a8b62188cb51555bb08d660ab1b76507fd1 data/c/tags/items/gems/turquoise.json
-74dcb50f36a5f051ab6031848b1ad81f53851b80 data/c/tags/items/ores.json
+35dd7c07857a7fada6d633473d150e25d7c9ed3e data/c/tags/items/ores.json
 bf35c0f1b8441c46b7cd428bcfc6aec06b3aeecb data/c/tags/items/ores/beryl.json
 06e8ecee7ccf6944752fbdf5a78b54d80ba2a0b8 data/c/tags/items/ores/blue_corundum.json
 1fe643c644f40a286bcabfa1d7d2022d02b34d0c data/c/tags/items/ores/garnet.json
@@ -51,7 +51,7 @@ ff2cb0143130700427575529a32b2f2f4c36f68b data/c/tags/items/raw_materials/pearl.j
 e4accd28f63bba00ddb39b0c1617139f2fcc2282 data/c/tags/items/raw_materials/topaz.json
 243388e971e10c46219a7b57641c09cd1272ff72 data/c/tags/items/raw_materials/tube_coral.json
 4374b113b1fd55926737314c006e2d42ac5db3f1 data/c/tags/items/raw_materials/turquoise.json
-9aae80c66be6b25cc0d98e1a68919a26af769f45 data/forge/tags/items/gems.json
+b1e72cdac8d57fb025bb1a0615089fbb6b8fb326 data/forge/tags/items/gems.json
 77f9c241ace69bbd51dd38449dea063f8e69dec6 data/forge/tags/items/gems/amethyst.json
 0cd1014f1ca0d8f4b47577bbed9c117271ccaf21 data/forge/tags/items/gems/aquamarine.json
 4910d02d0e084cda6b064abbb4a491ec419ac23b data/forge/tags/items/gems/brain_coral.json
@@ -70,7 +70,7 @@ ff2cb0143130700427575529a32b2f2f4c36f68b data/forge/tags/items/gems/pearl.json
 ecf9dbec37b685a57a38699b1d687edfbc2389b3 data/forge/tags/items/gems/topaz.json
 d1f6c00d7ef054ea14313e63849483dc97544612 data/forge/tags/items/gems/tube_coral.json
 de3f5a8b62188cb51555bb08d660ab1b76507fd1 data/forge/tags/items/gems/turquoise.json
-74dcb50f36a5f051ab6031848b1ad81f53851b80 data/forge/tags/items/ores.json
+35dd7c07857a7fada6d633473d150e25d7c9ed3e data/forge/tags/items/ores.json
 bf35c0f1b8441c46b7cd428bcfc6aec06b3aeecb data/forge/tags/items/ores/beryl.json
 06e8ecee7ccf6944752fbdf5a78b54d80ba2a0b8 data/forge/tags/items/ores/blue_corundum.json
 1fe643c644f40a286bcabfa1d7d2022d02b34d0c data/forge/tags/items/ores/garnet.json

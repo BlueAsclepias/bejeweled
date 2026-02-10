@@ -79,7 +79,6 @@ public class GemCuttingTableBlockEntity extends BlockEntity implements MenuProvi
         return getMatchingRecipe().isPresent();
     }
 
-
     public boolean processOnce() {
         /* TODO: will be used later once minigame is implemented and player completes it.
         if (!canProcess()) return false;

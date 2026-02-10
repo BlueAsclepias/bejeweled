@@ -1,0 +1,9 @@
+{
+  "type": "bejeweled:bead_polishing",
+  "input": {
+    "item": "bejeweled:rough_bubble_coral_polyp"
+  },
+  "output": {
+    "item": "bejeweled:polished_bubble_coral_bead"
+  }
+}
