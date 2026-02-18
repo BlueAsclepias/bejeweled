@@ -1,9 +1,9 @@
 {
   "type": "bejeweled:gem_cutting",
   "input": {
-    "item": "bejeweled:rough_turquoise"
+    "item": "bejeweled:raw_turquoise"
   },
   "output": {
-    "item": "bejeweled:cut_turquoise"
+    "item": "bejeweled:turquoise"
   }
 }

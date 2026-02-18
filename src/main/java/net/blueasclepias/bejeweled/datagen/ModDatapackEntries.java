@@ -1,5 +1,6 @@
 package net.blueasclepias.bejeweled.datagen;
 
+import net.blueasclepias.bejeweled.bootstrap.WorldGenBootstrap;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
@@ -18,8 +19,8 @@ public class ModDatapackEntries extends DatapackBuiltinEntriesProvider {
 
     public static final RegistrySetBuilder BUILDER =
             new RegistrySetBuilder()
-                    .add(Registries.CONFIGURED_FEATURE, ModWorldGen::bootstrap)
-                    .add(Registries.PLACED_FEATURE, ModWorldGen::bootstrapPlaced);
+                    .add(Registries.CONFIGURED_FEATURE, WorldGenBootstrap::bootstrap)
+                    .add(Registries.PLACED_FEATURE, WorldGenBootstrap::bootstrapPlaced);
 
     public ModDatapackEntries(PackOutput output,
                               CompletableFuture<HolderLookup.Provider> registries) {

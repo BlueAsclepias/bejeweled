@@ -1,8 +1,8 @@
-// 1.20.1	2026-02-09T13:01:58.070505307	Global Loot Modifiers : bejeweled
+// 1.20.1	2026-02-17T20:09:30.500804075	Global Loot Modifiers : bejeweled
 a6d63bef9246aa0ba61dadb550252407bcf6dd4c data/bejeweled/loot_modifiers/add_beads_to_sea_mobs.json
 a1244d346a412aa1bc34e166c7c29e94ba49e613 data/bejeweled/loot_modifiers/add_gems_and_beads_to_chests.json
-7d2a0c9856dcf73ae742aba335578ba39bb4ea74 data/bejeweled/loot_modifiers/replace_deepslate_diamond.json
-d40b139a46cfb20410027b8e08991a4a761ac46c data/bejeweled/loot_modifiers/replace_deepslate_emerald.json
-1270e7057d1139c1bd3711ec75b942ac403ac6f3 data/bejeweled/loot_modifiers/replace_diamond.json
-41a34caf1e8d77f947a0a60673d010d19730fbbd data/bejeweled/loot_modifiers/replace_emerald.json
+974f6e21e9ce6ec63b433cb6195ee134d4b885db data/bejeweled/loot_modifiers/replace_deepslate_diamond.json
+98b62a53dcf40007c94bab1cd6a4c2dd694f02af data/bejeweled/loot_modifiers/replace_deepslate_emerald.json
+0ce32301c6579b9aea61cd6cbfa3dcd729e33733 data/bejeweled/loot_modifiers/replace_diamond.json
+0c7acc2c722f64288d6058179ef1144d09570a8f data/bejeweled/loot_modifiers/replace_emerald.json
 01d9b92be5511f0c1397d70e5b684ae6b0a2de03 data/forge/loot_modifiers/global_loot_modifiers.json

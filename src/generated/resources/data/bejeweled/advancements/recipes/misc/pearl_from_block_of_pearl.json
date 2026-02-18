@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_block_of_pearl": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bejeweled:block_of_pearl"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "bejeweled:pearl_from_block_of_pearl"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_block_of_pearl",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "bejeweled:pearl_from_block_of_pearl"
+    ]
+  },
+  "sends_telemetry_event": false
+}

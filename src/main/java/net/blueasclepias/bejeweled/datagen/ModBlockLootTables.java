@@ -1,14 +1,23 @@
 package net.blueasclepias.bejeweled.datagen;
 
 
+import net.blueasclepias.bejeweled.material.registry.ModOreRegistry;
 import net.blueasclepias.bejeweled.registry.ModBlocks;
-import net.blueasclepias.bejeweled.registry.ModItems;
 import net.minecraft.data.loot.BlockLootSubProvider;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
 import java.util.Set;
+
+import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
+import static net.minecraft.resources.ResourceLocation.fromNamespaceAndPath;
 
 public class ModBlockLootTables extends BlockLootSubProvider {
 
@@ -20,26 +29,25 @@ public class ModBlockLootTables extends BlockLootSubProvider {
     protected void generate() {
 
         // === Storage blocks ===
-        ModBlocks.STORAGE_BLOCKS.forEach(block -> dropSelf(block.get()));
+        ModBlocks.storageBlocks().forEach(this::dropSelf);
 
         // === Ores ===
-        ModBlocks.ORE_BLOCKS.forEach((def, variants) -> {
-            variants.forEach((variant, block) -> {
-                add(
-                        block.get(),
-                        createOreDrop(block.get(), def.drop().get())
-                );
-            });
+        ModOreRegistry.allBlocksByFeature().forEach((feat, block) -> {
+            Item item = Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(feat.definition().drop()));
+            if(item == Items.AIR)
+                throw new IllegalStateException("No drop for "
+                        + feat.variant().id() + "_" + feat.id() + "_ore");
+            add(block, createOreDrop(block, item));
         });
 
         // === Coral Polyps ===
-        ModBlocks.CORAL_POLYP_BLOCKS.forEach(block -> {
-            String name = block.getId().getPath().replace("_block", "");
-            ModItems.ROUGH_BEADS.forEach((item, def) -> {
-                if (name.contains(def.name())) {
-                    add(block.get(), createSingleItemTable(item.get()));
-                }
-            });
+        ModBlocks.coralPolypBlocks().forEach(block -> {
+            ResourceLocation blockId = Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block));
+            String path = "raw_" + blockId.getPath().replace("_block", "");
+            Item item = Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(fromNamespaceAndPath(MOD_ID, path)));
+            if(item == Items.AIR)
+                throw new IllegalStateException("Missing item for coral polyp drop: " + path);
+            add(block, createSingleItemTable(item));
         });
 
         // === Workstation ===
@@ -47,7 +55,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
     }
 
     @Override
-    protected Iterable<Block> getKnownBlocks() {
+    protected @NotNull Iterable<Block> getKnownBlocks() {
         return ModBlocks.BLOCKS.getEntries()
                 .stream()
                 .map(RegistryObject::get)

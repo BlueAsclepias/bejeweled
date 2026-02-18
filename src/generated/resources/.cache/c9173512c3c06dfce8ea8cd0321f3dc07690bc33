@@ -1,3 +1,8 @@
-// 1.20.1	2026-02-10T20:52:08.702653138	Tags for minecraft:block mod id bejeweled
-ddc6c8fbda7478270a79f005de93ccc3d3959739 data/minecraft/tags/blocks/mineable/pickaxe.json
-ddc6c8fbda7478270a79f005de93ccc3d3959739 data/minecraft/tags/blocks/needs_iron_tool.json
+// 1.20.1	2026-02-17T22:44:53.569650172	Tags for minecraft:block mod id bejeweled
+cd0bcd1eb1571c8b73f93ffe00e0e348431381b3 data/bejeweled/tags/blocks/coral_polyps.json
+91670b360a4e3e4e5db67ae1c69d8f8b3e1d483c data/bejeweled/tags/blocks/gem_ores.json
+e32a03a9303b808eb4968091a5d2f5cf9e1be99a data/bejeweled/tags/blocks/storage_blocks.json
+91670b360a4e3e4e5db67ae1c69d8f8b3e1d483c data/c/tags/blocks/ores.json
+91670b360a4e3e4e5db67ae1c69d8f8b3e1d483c data/forge/tags/blocks/ores.json
+91670b360a4e3e4e5db67ae1c69d8f8b3e1d483c data/minecraft/tags/blocks/mineable/pickaxe.json
+91670b360a4e3e4e5db67ae1c69d8f8b3e1d483c data/minecraft/tags/blocks/needs_iron_tool.json

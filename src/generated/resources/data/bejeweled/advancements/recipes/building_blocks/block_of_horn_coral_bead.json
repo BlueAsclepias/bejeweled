@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_horn_coral_bead": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bejeweled:horn_coral_bead"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "bejeweled:block_of_horn_coral_bead"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_horn_coral_bead",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "bejeweled:block_of_horn_coral_bead"
+    ]
+  },
+  "sends_telemetry_event": false
+}

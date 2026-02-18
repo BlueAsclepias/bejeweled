@@ -1,6 +1,6 @@
 package net.blueasclepias.bejeweled.registry;
 
-import net.blueasclepias.bejeweled.record.packet.ProcessGemCuttingPacket;
+import net.blueasclepias.bejeweled.network.ProcessGemCuttingPacket;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
 

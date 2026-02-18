@@ -57,7 +57,7 @@ public class GemCuttingTableBlockEntity extends BlockEntity implements MenuProvi
     }
 
     public boolean canPlaceInInput(@NotNull ItemStack stack) {
-        return stack.is(ModTags.Items.ROUGH_GEMS);
+        return stack.is(ModTags.Items.RAW_GEMSTONES);
     }
 
     public void tryProcessRecipe() {

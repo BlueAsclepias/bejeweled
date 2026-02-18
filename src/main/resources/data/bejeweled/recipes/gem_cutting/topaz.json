@@ -1,9 +1,9 @@
 {
   "type": "bejeweled:gem_cutting",
   "input": {
-    "item": "bejeweled:rough_topaz"
+    "item": "bejeweled:raw_topaz"
   },
   "output": {
-    "item": "bejeweled:cut_topaz"
+    "item": "bejeweled:topaz"
   }
 }

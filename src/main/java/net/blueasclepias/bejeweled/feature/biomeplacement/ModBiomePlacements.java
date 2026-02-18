@@ -15,6 +15,7 @@ import static net.minecraft.resources.ResourceLocation.fromNamespaceAndPath;
 /**
  * Defines biome placements for the mod's features.
  */
+
 public class ModBiomePlacements {
 
     // Allow Addons to modify this so they don't need to replicate our systems
@@ -41,7 +42,7 @@ public class ModBiomePlacements {
             ),
             GenerationStep.Decoration.VEGETAL_DECORATION);
 
-        public static BiomeFeaturePlacement create(String name,
+    public static BiomeFeaturePlacement create(String name,
                                                Set<ResourceKey<PlacedFeature>> placedFeatures,
                                                BiomeFilter biomeFilter,
                                                GenerationStep.Decoration step) {
@@ -62,7 +63,7 @@ public class ModBiomePlacements {
             updatedExisting.features().add(placedFeature);
             return updatedExisting;
         } else {
-            throw new IllegalArgumentException("No BiomeFeaturePlacement with name " + existing.name() + " exists.");
+            throw new IllegalArgumentException("No BiomeFeaturePlacement with id " + existing.name() + " exists.");
         }
     }
 
@@ -73,7 +74,7 @@ public class ModBiomePlacements {
             updatedExisting.features().add(placedFeature);
             return updatedExisting;
         } else {
-            throw new IllegalArgumentException("No BiomeFeaturePlacement with name " + name + " exists.");
+            throw new IllegalArgumentException("No BiomeFeaturePlacement with id " + name + " exists.");
         }
     }
 }

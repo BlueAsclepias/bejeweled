@@ -34,7 +34,7 @@ public class ModLootModifierProvider extends GlobalLootModifierProvider {
                                         fromNamespaceAndPath("minecraft", "blocks/diamond_ore")
                                 ).build(),
                         },
-                        ModItems.ROUGH_DIAMOND.get()
+                        ModItems.RAW_DIAMOND.get()
                 )
         );
 
@@ -45,7 +45,7 @@ public class ModLootModifierProvider extends GlobalLootModifierProvider {
                                         fromNamespaceAndPath("minecraft", "blocks/deepslate_diamond_ore")
                                 ).build(),
                         },
-                        ModItems.ROUGH_DIAMOND.get()
+                        ModItems.RAW_DIAMOND.get()
                 )
         );
 
@@ -56,7 +56,7 @@ public class ModLootModifierProvider extends GlobalLootModifierProvider {
                                         fromNamespaceAndPath("minecraft", "blocks/emerald_ore")
                                 ).build(),
                         },
-                        ModItems.ROUGH_EMERALD.get()
+                        ModItems.RAW_EMERALD.get()
                 )
         );
 
@@ -67,7 +67,7 @@ public class ModLootModifierProvider extends GlobalLootModifierProvider {
                                         fromNamespaceAndPath("minecraft", "blocks/deepslate_emerald_ore")
                                 ).build(),
                         },
-                        ModItems.ROUGH_EMERALD.get()
+                        ModItems.RAW_EMERALD.get()
                 )
         );
 

@@ -23,12 +23,6 @@ public class GemCuttingTableMenu extends AbstractContainerMenu {
     private static final int OUTPUT_SLOT = 1;
     private static final int CONTAINER_SLOT_COUNT = 2;
 
-    private static final int PLAYER_INV_START = CONTAINER_SLOT_COUNT;
-    private static final int PLAYER_INV_END = PLAYER_INV_START + 27; // 2–28
-
-    private static final int HOTBAR_START = PLAYER_INV_END + 1; // 29
-    private static final int HOTBAR_END = HOTBAR_START + 8;     // 37
-
     // Simple stub inventory (2 slots)
     private final SimpleContainer container = new SimpleContainer(2);
 
@@ -50,11 +44,11 @@ public class GemCuttingTableMenu extends AbstractContainerMenu {
                 return 1;
             }
             @Override
-            public int getMaxStackSize(ItemStack stack) {
+            public int getMaxStackSize(@NotNull ItemStack stack) {
                 return 1;
             }
             @Override
-            public boolean mayPlace(ItemStack stack) {
+            public boolean mayPlace(@NotNull ItemStack stack) {
                 return blockEntity.canPlaceInInput(stack);
             }
         });
@@ -62,7 +56,7 @@ public class GemCuttingTableMenu extends AbstractContainerMenu {
         // === Output slot ===
         this.addSlot(new Slot(container, 1, 152, 35) {
             @Override
-            public boolean mayPlace(ItemStack stack) {
+            public boolean mayPlace(@NotNull ItemStack stack) {
                 return false;
             }
         });
@@ -86,11 +80,11 @@ public class GemCuttingTableMenu extends AbstractContainerMenu {
     }
 
     @Override
-    public ItemStack quickMoveStack(Player player, int index) {
+    public @NotNull ItemStack quickMoveStack(@NotNull Player player, int index) {
         ItemStack result = ItemStack.EMPTY;
         Slot slot = this.slots.get(index);
 
-        if (slot != null && slot.hasItem()) {
+        if (slot.hasItem()) {
             ItemStack stack = slot.getItem();
             result = stack.copy();
 
@@ -170,7 +164,7 @@ public class GemCuttingTableMenu extends AbstractContainerMenu {
     }
 
     @Override
-    public boolean stillValid(Player player) {
+    public boolean stillValid(@NotNull Player player) {
         return isBlockEntityValid() &&
                 player.distanceToSqr(
                         blockEntity.getBlockPos().getCenter()

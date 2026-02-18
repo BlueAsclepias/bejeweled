@@ -3,8 +3,10 @@ package net.blueasclepias.bejeweled.loot;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import net.blueasclepias.bejeweled.record.gem.GemDefinition;
-import net.blueasclepias.bejeweled.registry.ModItems;
+import net.blueasclepias.bejeweled.material.definition.gem.GemDefinition;
+import net.blueasclepias.bejeweled.material.definition.gem.GemGrade;
+import net.blueasclepias.bejeweled.material.instance.gem.GemInstanceData;
+import net.blueasclepias.bejeweled.material.registry.ModGemRegistry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -17,36 +19,13 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.loot.LootModifier;
 
-import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Supplier;
 
 public class AddGemsToChestsModifier extends LootModifier {
 
     public static final Codec<AddGemsToChestsModifier> CODEC =
             RecordCodecBuilder.create(inst ->
                     codecStart(inst).apply(inst, AddGemsToChestsModifier::new));
-
-    // Lazy cached pools
-    private static Map<Supplier<Item>, GemDefinition> PROCESSED_POOL;
-    private static Map<Supplier<Item>, GemDefinition> processedPool() {
-        if (PROCESSED_POOL == null) {
-            PROCESSED_POOL = new HashMap<>();
-            PROCESSED_POOL.putAll(ModItems.CUT_GEMSTONES);
-            PROCESSED_POOL.putAll(ModItems.POLISHED_BEADS);
-        }
-        return PROCESSED_POOL;
-    }
-
-    private static Map<Supplier<Item>, GemDefinition> RAW_POOL;
-    private static Map<Supplier<Item>, GemDefinition> rawPool() {
-        if (RAW_POOL == null) {
-            RAW_POOL = new HashMap<>();
-            RAW_POOL.putAll(ModItems.ROUGH_GEMSTONES);
-            RAW_POOL.putAll(ModItems.ROUGH_BEADS);
-        }
-        return RAW_POOL;
-    }
 
     public AddGemsToChestsModifier(LootItemCondition[] conditions) {
         super(conditions);
@@ -75,16 +54,16 @@ public class AddGemsToChestsModifier extends LootModifier {
         double depthFactor = Mth.clamp((64 - y) / 64.0, 0.0, 1.0);
 
         // Base chances
-        double roughChance = 0.125;
-        double cutChance   = 0.075;
+        double rawChance = 0.125;
+        double processedChance   = 0.075;
 
         // Scale with depth
-        roughChance += depthFactor * 0.05; // up to +5%
-        cutChance   += depthFactor * 0.025; // up to +2.5%
+        rawChance += depthFactor * 0.05; // up to +5%
+        processedChance   += depthFactor * 0.025; // up to +2.5%
 
         // Luck scaling (1% per luck point)
         float luck = Mth.clamp(context.getLuck(), 0.0f, 10f);
-        roughChance += luck * 0.01;
+        rawChance += luck * 0.01;
 
         ResourceLocation lootTable = context.getQueriedLootTableId();
         String path = lootTable.getPath();
@@ -95,28 +74,30 @@ public class AddGemsToChestsModifier extends LootModifier {
         boolean isMineshaft = path.contains("abandoned_mineshaft");
 
         if (isMineshaft)
-            roughChance *= 1.5;
+            rawChance *= 1.5;
         if(isBuriedTreasure)
-            cutChance *= 1.5;
+            processedChance *= 1.5;
         if(isDungeon) {
-            roughChance *= 1.2;
-            cutChance *= 1.2;
+            rawChance *= 1.2;
+            processedChance *= 1.2;
         }
 
-        // Roll for cut gems
-        if (random.nextFloat() < cutChance) {
-            generatedLoot.add(new ItemStack(pickWeighted(random, processedPool())));
+        // Roll for gems
+        if (random.nextFloat() < processedChance) {
+            ItemStack result = pickWeighted(random, ModGemRegistry.getAllProcessed());
+            GemInstanceData.setGem(result, GemGrade.random(random));
+            generatedLoot.add(result);
         }
 
-        // Roll for rough gems
-        if (random.nextFloat() < roughChance) {
-            generatedLoot.add(new ItemStack(pickWeighted(random, rawPool())));
+        // Roll for raw gems
+        if (random.nextFloat() < rawChance) {
+            generatedLoot.add(pickWeighted(random, ModGemRegistry.getAllRaw()));
         }
 
         return generatedLoot;
     }
 
-    private static Item pickWeighted(RandomSource random, Map<Supplier<Item>, GemDefinition> gems) {
+    private static ItemStack pickWeighted(RandomSource random, Map<Item, GemDefinition> gems) {
         int total = gems.values().stream().mapToInt(v -> v.rarity().weight).sum();
         if (total <= 0)
             throw new IllegalStateException("No weighted entries for gem pool");
@@ -124,7 +105,7 @@ public class AddGemsToChestsModifier extends LootModifier {
 
         for (var entry : gems.entrySet()) {
             roll -= entry.getValue().rarity().weight;
-            if (roll < 0) return entry.getKey().get();
+            if (roll < 0) return new ItemStack(entry.getKey());
         }
         throw new IllegalStateException("Weighted roll failed");
     }

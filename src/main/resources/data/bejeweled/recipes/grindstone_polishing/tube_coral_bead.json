@@ -1,9 +1,9 @@
 {
   "type": "bejeweled:bead_polishing",
   "input": {
-    "item": "bejeweled:rough_tube_coral_polyp"
+    "item": "bejeweled:raw_tube_coral_polyp"
   },
   "output": {
-    "item": "bejeweled:polished_tube_coral_bead"
+    "item": "bejeweled:tube_coral_bead"
   }
 }

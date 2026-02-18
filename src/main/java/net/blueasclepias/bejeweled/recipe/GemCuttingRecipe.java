@@ -1,8 +1,11 @@
 package net.blueasclepias.bejeweled.recipe;
 
+import net.blueasclepias.bejeweled.material.definition.gem.GemGrade;
+import net.blueasclepias.bejeweled.material.instance.gem.GemInstanceData;
 import net.blueasclepias.bejeweled.registry.ModRecipes;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -31,7 +34,11 @@ public class GemCuttingRecipe implements Recipe<Container> {
 
     @Override
     public ItemStack assemble(Container container, RegistryAccess access) {
-        return output.copy();
+        ItemStack result = output.copy();
+        RandomSource random = RandomSource.create();
+        GemGrade gemGrade = GemGrade.random(random);
+        GemInstanceData.setGem(result, gemGrade);
+        return result;
     }
 
     @Override

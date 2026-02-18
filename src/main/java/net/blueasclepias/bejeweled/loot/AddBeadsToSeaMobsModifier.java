@@ -3,8 +3,11 @@ package net.blueasclepias.bejeweled.loot;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import net.blueasclepias.bejeweled.record.gem.GemDefinition;
-import net.blueasclepias.bejeweled.registry.ModItems;
+import net.blueasclepias.bejeweled.material.definition.gem.GemCategory;
+import net.blueasclepias.bejeweled.material.definition.gem.GemDefinition;
+import net.blueasclepias.bejeweled.material.definition.gem.GemGrade;
+import net.blueasclepias.bejeweled.material.instance.gem.GemInstanceData;
+import net.blueasclepias.bejeweled.material.registry.ModGemRegistry;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.monster.ElderGuardian;
@@ -18,7 +21,6 @@ import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.common.loot.LootModifier;
 
 import java.util.Map;
-import java.util.function.Supplier;
 
 
 public class AddBeadsToSeaMobsModifier extends LootModifier {
@@ -50,7 +52,7 @@ public class AddBeadsToSeaMobsModifier extends LootModifier {
         float multiplier = mobMultiplier(context);
 
         // === Main roll ===
-        Item result = rollExclusive(
+        ItemStack result = rollExclusive(
                 random,
                 BASE_RAW_CHANCE,
                 BASE_PROCESSED_CHANCE,
@@ -59,12 +61,12 @@ public class AddBeadsToSeaMobsModifier extends LootModifier {
         );
 
         if (result != null) {
-            generatedLoot.add(new ItemStack(result));
+            generatedLoot.add(result);
         }
 
         // === Extra looting rolls ===
         for (int i = 0; i < extraRolls(looting); i++) {
-            Item extra = rollExclusive(
+            ItemStack extra = rollExclusive(
                     random,
                     BASE_RAW_CHANCE,
                     BASE_PROCESSED_CHANCE,
@@ -73,14 +75,14 @@ public class AddBeadsToSeaMobsModifier extends LootModifier {
             );
 
             if (extra != null) {
-                generatedLoot.add(new ItemStack(extra));
+                generatedLoot.add(extra);
             }
         }
 
         return generatedLoot;
     }
 
-    private static Item rollExclusive(
+    private static ItemStack rollExclusive(
             RandomSource random,
             float rawBase,
             float processedBase,
@@ -93,11 +95,14 @@ public class AddBeadsToSeaMobsModifier extends LootModifier {
         float roll = random.nextFloat();
 
         // Mutually Exclusive Rolls
-        if (roll < processedChance)
-            return pickWeighted(random, ModItems.POLISHED_BEADS);
+        if (roll < processedChance) {
+            ItemStack result = pickWeighted(random, ModGemRegistry.getAll(GemCategory.BEAD, true));
+            GemInstanceData.setGem(result, GemGrade.random(random));
+            return result;
+        }
 
         if (roll < processedChance + rawChance)
-            return pickWeighted(random, ModItems.ROUGH_BEADS);
+            return pickWeighted(random, ModGemRegistry.getAll(GemCategory.BEAD, false));
 
         return null;
     }
@@ -115,7 +120,7 @@ public class AddBeadsToSeaMobsModifier extends LootModifier {
         return .5f; // Drowned
     }
 
-    private static Item pickWeighted(RandomSource random, Map<Supplier<Item>, GemDefinition> gems) {
+    private static ItemStack pickWeighted(RandomSource random, Map<Item, GemDefinition> gems) {
         int total = gems.values().stream().mapToInt(v -> v.rarity().weight).sum();
         if (total <= 0)
             throw new IllegalStateException("No weighted entries for gem pool");
@@ -123,7 +128,7 @@ public class AddBeadsToSeaMobsModifier extends LootModifier {
 
         for (var entry : gems.entrySet()) {
             roll -= entry.getValue().rarity().weight;
-            if (roll < 0) return entry.getKey().get();
+            if (roll < 0) return new ItemStack(entry.getKey());
         }
         throw new IllegalStateException("Weighted roll failed");
     }

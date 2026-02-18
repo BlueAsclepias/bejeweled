@@ -1,9 +1,9 @@
 {
   "type": "bejeweled:bead_polishing",
   "input": {
-    "item": "bejeweled:unpolished_pearl"
+    "item": "bejeweled:raw_pearl"
   },
   "output": {
-    "item": "bejeweled:polished_pearl"
+    "item": "bejeweled:pearl"
   }
 }

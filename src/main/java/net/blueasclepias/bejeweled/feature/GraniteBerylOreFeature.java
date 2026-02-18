@@ -1,11 +1,12 @@
 package net.blueasclepias.bejeweled.feature;
 
-import net.blueasclepias.bejeweled.content.ore.OreDefinitions;
-import net.blueasclepias.bejeweled.content.ore.OreVariants;
-import net.blueasclepias.bejeweled.registry.ModBlocks;
+import net.blueasclepias.bejeweled.material.instance.ore.OreDefinitions;
+import net.blueasclepias.bejeweled.material.instance.ore.OreVariants;
+import net.blueasclepias.bejeweled.material.registry.ModOreRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -28,13 +29,13 @@ public class GraniteBerylOreFeature extends Feature<NoneFeatureConfiguration> {
 
         if (isInCaveGranitePatch(level, origin)) return false;
 
+        Block block = ModOreRegistry
+                .getBlock(OreDefinitions.BERYL, OreVariants.GRANITE)
+                .orElseThrow();
+
         level.setBlock(
                 origin,
-                ModBlocks.ORE_BLOCKS
-                        .get(OreDefinitions.BERYL)
-                        .get(OreVariants.GRANITE)
-                        .get()
-                        .defaultBlockState(),
+                block.defaultBlockState(),
                 2
         );
 

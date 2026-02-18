@@ -43,7 +43,6 @@ public class GemCuttingTableBlock extends BaseEntityBlock {
         return InteractionResult.sidedSuccess(level.isClientSide);
     }
 
-
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new GemCuttingTableBlockEntity(pos, state);

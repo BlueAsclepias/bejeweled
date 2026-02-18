@@ -1,0 +1,24 @@
+{
+  "values": [
+    {
+      "id": "bejeweled:fire_coral_block_polyp",
+      "required": false
+    },
+    {
+      "id": "bejeweled:brain_coral_block_polyp",
+      "required": false
+    },
+    {
+      "id": "bejeweled:bubble_coral_block_polyp",
+      "required": false
+    },
+    {
+      "id": "bejeweled:horn_coral_block_polyp",
+      "required": false
+    },
+    {
+      "id": "bejeweled:tube_coral_block_polyp",
+      "required": false
+    }
+  ]
+}

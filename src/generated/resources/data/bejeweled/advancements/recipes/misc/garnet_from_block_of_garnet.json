@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_block_of_garnet": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bejeweled:block_of_garnet"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "bejeweled:garnet_from_block_of_garnet"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_block_of_garnet",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "bejeweled:garnet_from_block_of_garnet"
+    ]
+  },
+  "sends_telemetry_event": false
+}

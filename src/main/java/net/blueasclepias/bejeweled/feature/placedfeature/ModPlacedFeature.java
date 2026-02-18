@@ -4,9 +4,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 import static net.minecraft.resources.ResourceLocation.fromNamespaceAndPath;
 
@@ -14,9 +11,6 @@ import static net.minecraft.resources.ResourceLocation.fromNamespaceAndPath;
  * Registers Placed Features for the mod.
  */
 public class ModPlacedFeature {
-
-    // ===== Lists and Maps =====
-    public static final Map<String, ResourceKey<PlacedFeature>> ALL = new HashMap<>();
 
     public static final ResourceKey<PlacedFeature> CORAL_POLYP = create("coral_polyp");
     public static final ResourceKey<PlacedFeature> STONE_BERYL_ORE = create("stone_beryl_ore");
@@ -39,10 +33,8 @@ public class ModPlacedFeature {
     public static final ResourceKey<PlacedFeature> DEEPSLATE_OLIVINE_ORE = create("deepslate_olivine_ore");
 
     public static ResourceKey<PlacedFeature> create(String name){
-        ResourceKey<PlacedFeature> resourceKey = ResourceKey.create(
+        return ResourceKey.create(
                 Registries.PLACED_FEATURE,
                 fromNamespaceAndPath(MOD_ID, name));
-        ALL.put(name, resourceKey);
-        return resourceKey;
     }
 }

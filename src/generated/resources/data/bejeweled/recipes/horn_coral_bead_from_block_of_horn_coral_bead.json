@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "bejeweled:block_of_horn_coral_bead"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "bejeweled:horn_coral_bead"
+  }
+}

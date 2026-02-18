@@ -1,12 +1,13 @@
 package net.blueasclepias.bejeweled.feature;
 
-import net.blueasclepias.bejeweled.content.ore.OreDefinitions;
-import net.blueasclepias.bejeweled.content.ore.OreVariants;
-import net.blueasclepias.bejeweled.registry.ModBlocks;
+import net.blueasclepias.bejeweled.material.instance.ore.OreDefinitions;
+import net.blueasclepias.bejeweled.material.instance.ore.OreVariants;
+import net.blueasclepias.bejeweled.material.registry.ModOreRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
@@ -27,13 +28,13 @@ public class OlivineOreFeature extends Feature<NoneFeatureConfiguration> {
         if (!current.is(BlockTags.DEEPSLATE_ORE_REPLACEABLES)) return false;
         if (!isNearLava(level, origin)) return false;
 
+        Block block = ModOreRegistry
+                .getBlock(OreDefinitions.OLIVINE, OreVariants.DEEPSLATE)
+                .orElseThrow();
+
         level.setBlock(
                 origin,
-                ModBlocks.ORE_BLOCKS
-                        .get(OreDefinitions.OLIVINE)
-                        .get(OreVariants.DEEPSLATE)
-                        .get()
-                        .defaultBlockState(),
+                block.defaultBlockState(),
                 2
         );
 

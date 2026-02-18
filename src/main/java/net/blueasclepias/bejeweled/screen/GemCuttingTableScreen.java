@@ -1,7 +1,7 @@
 package net.blueasclepias.bejeweled.screen;
 
 import net.blueasclepias.bejeweled.container.GemCuttingTableMenu;
-import net.blueasclepias.bejeweled.record.packet.ProcessGemCuttingPacket;
+import net.blueasclepias.bejeweled.network.ProcessGemCuttingPacket;
 import net.blueasclepias.bejeweled.registry.ModNetwork;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;

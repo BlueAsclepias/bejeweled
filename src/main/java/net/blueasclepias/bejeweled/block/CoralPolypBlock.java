@@ -99,7 +99,6 @@ public class CoralPolypBlock extends HorizontalDirectionalBlock implements Simpl
         };
     }
 
-
     @Override
     public FluidState getFluidState(BlockState state) {
         return state.getValue(WATERLOGGED)
@@ -107,12 +106,11 @@ public class CoralPolypBlock extends HorizontalDirectionalBlock implements Simpl
                 : super.getFluidState(state);
     }
 
-    private boolean canSurvive(LevelAccessor level, BlockPos pos, Direction facing) {
+    public boolean canSurvive(LevelAccessor level, BlockPos pos, Direction facing) {
         BlockPos supportPos = pos.relative(facing.getOpposite());
         BlockState support = level.getBlockState(supportPos);
 
         return support.isFaceSturdy(level, supportPos, facing)
                 && support.is(supportBlock);
     }
-
 }

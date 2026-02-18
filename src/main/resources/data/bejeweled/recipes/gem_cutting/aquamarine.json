@@ -1,9 +1,9 @@
 {
   "type": "bejeweled:gem_cutting",
   "input": {
-    "item": "bejeweled:rough_aquamarine"
+    "item": "bejeweled:raw_aquamarine"
   },
   "output": {
-    "item": "bejeweled:cut_aquamarine"
+    "item": "bejeweled:aquamarine"
   }
 }

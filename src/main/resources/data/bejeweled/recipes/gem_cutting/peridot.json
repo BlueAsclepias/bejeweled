@@ -1,9 +1,9 @@
 {
   "type": "bejeweled:gem_cutting",
   "input": {
-    "item": "bejeweled:rough_peridot"
+    "item": "bejeweled:raw_peridot"
   },
   "output": {
-    "item": "bejeweled:cut_peridot"
+    "item": "bejeweled:peridot"
   }
 }

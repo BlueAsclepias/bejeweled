@@ -22,15 +22,15 @@ public class ModLangProvider extends LanguageProvider {
     @Override
     protected void addTranslations() {
         add("creativetab.bejeweled.jewelry", "Bejeweled");
-        add("tooltip.bejeweled.rough_gemstone", "Can be cut in the gem cutting table");
-        add("tooltip.bejeweled.rough_bead", "Can be polished with a Grindstone");
+        add("tooltip.bejeweled.raw_gemstone", "Can be cut at the Gem Cutting Table");
+        add("tooltip.bejeweled.raw_bead", "Can be polished with a Grindstone");
+        add("tooltip.bejeweled.processed_gem_category", "Processed Gems");
+        add("tooltip.bejeweled.grade", "Grade: ");
         add("container.bejeweled.gem_cutting_table", "Gem Cutting Table");
         add("container.bejeweled.gem_cutting", "Gem Cutting");
 
-        add("item.minecraft.amethyst_shard", "Rough Amethyst");
-        add("item.minecraft.emerald", "Cut Emerald");
-        add("item.minecraft.diamond", "Cut Diamond");
-
+        add("item.minecraft.amethyst_shard", "Raw Amethyst");
+        add("item.minecraft.amethyst_block", "Block of Raw Amethyst");
         ModItems.ITEMS.getEntries().forEach(item ->
                 add(item.get(), formatName(item.getId().getPath()))
         );

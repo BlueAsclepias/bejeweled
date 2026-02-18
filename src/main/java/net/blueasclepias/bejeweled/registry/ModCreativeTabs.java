@@ -21,7 +21,7 @@ public class ModCreativeTabs {
     public static final RegistryObject<CreativeModeTab> JEWELRY_TAB =
             TABS.register("jewelry", () -> CreativeModeTab.builder()
                     .title(Component.translatable("creativetab.bejeweled.jewelry"))
-                    .icon(() -> new ItemStack(ModItems.CUT_GARNET.get()))
+                    .icon(() -> new ItemStack(ModItems.GARNET.get()))
                     .displayItems((params, output) -> {
                         ModItems.ITEMS.getEntries()
                                 .forEach(item -> output.accept(item.get()));

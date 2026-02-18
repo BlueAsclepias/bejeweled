@@ -1,6 +1,9 @@
 package net.blueasclepias.bejeweled.datagen;
 
-import net.blueasclepias.bejeweled.content.gem.GemDefinitions;
+import net.blueasclepias.bejeweled.material.definition.gem.GemCategory;
+import net.blueasclepias.bejeweled.material.instance.gem.GemDefinitions;
+import net.blueasclepias.bejeweled.material.registry.ModGemRegistry;
+import net.blueasclepias.bejeweled.material.registry.ModOreRegistry;
 import net.blueasclepias.bejeweled.registry.ModBlocks;
 import net.blueasclepias.bejeweled.registry.ModItems;
 import net.minecraft.data.PackOutput;
@@ -13,8 +16,8 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 
+import java.util.Objects;
 import java.util.function.Consumer;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
@@ -32,92 +35,79 @@ public class ModRecipeProvider extends RecipeProvider {
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
 
-        ModBlocks.STORAGE_BLOCKS.forEach(block -> {
-            ResourceLocation blockId = ForgeRegistries.BLOCKS.getKey(block.get());
-            if (blockId == null) return;
-
+        ModBlocks.storageBlocks().forEach(block -> {
+            ResourceLocation blockId = Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block));
             String blockName = blockId.getPath();
-
-            // Determine item name
-            String itemName;
-            if (blockName.startsWith("block_of_")) {
-                itemName = blockName.replace("block_of_", "");
-            } else {
-                return;
-            }
-
-            RegistryObject<Item> item = ModItems.ITEMS.getEntries().stream()
-                    .filter(i -> i.getId().getPath().equals(itemName))
-                    .findFirst()
-                    .orElse(null);
-
-            if (item == null) return;
-
+            String itemPath = blockName.replace("block_of_", "");
+            Item item = Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(fromNamespaceAndPath(MOD_ID, itemPath)));
+            if(item == Items.AIR)
+                throw new IllegalStateException("No item for storage block recipe: " + itemPath);
             // ===== Compression (9 → 1) =====
-            ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, block.get())
-                    .define('#', item.get())
+            ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, block)
+                    .define('#', item)
                     .pattern("###")
                     .pattern("###")
                     .pattern("###")
-                    .unlockedBy("has_" + itemName, has(item.get()))
+                    .unlockedBy("has_" + itemPath, has(item))
                     .save(consumer);
 
             // ===== Decompression (1 → 9) =====
             ShapelessRecipeBuilder.shapeless(
                             RecipeCategory.MISC,
-                            item.get(),
+                            item,
                             9
                     )
-                    .requires(block.get())
-                    .unlockedBy("has_" + blockName, has(block.get()))
+                    .requires(block)
+                    .unlockedBy("has_" + blockName, has(block))
                     .save(consumer, fromNamespaceAndPath(
                             MOD_ID,
-                            itemName + "_from_" + blockName
+                            itemPath + "_from_" + blockName
                     ));
         });
 
         // ===== Smelting =====
-        ModBlocks.ORE_BLOCKS.forEach((def, entry) ->
-                entry.forEach((variant, block) -> {
-                    Item result = def.drop().get();
-                    gemOreCooking(consumer,
-                            result,
-                            MOD_ID,
-                            ForgeRegistries.ITEMS.getKey(result).getPath(),
-                            block.get().asItem()
-                            );
-                })
-        );
+        ModOreRegistry.allBlocksByFeature().forEach((feat, block) -> {
+            ResourceLocation id = feat.definition().drop();
+            Item result = Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(id));
+            if(result == Items.AIR)
+                throw new IllegalStateException("No item for storage block recipe: " + id);
+            gemOreCooking(consumer,
+                    result,
+                    MOD_ID,
+                    id.getPath(),
+                    block.asItem()
+            );
+        });
 
-        ModItems.ROUGH_BEADS
+        ModGemRegistry.getAll(GemCategory.BEAD, false)
                 .forEach((item, def) -> {
                     if(def.equals(GemDefinitions.PEARL)) return;
-                    String itemName = def.name();
+                    String itemName = def.id();
                     String blockName = itemName
                             .replace("_polyp", "_block")
-                            .replace("rough_", "");
-                    Block block = ForgeRegistries.BLOCKS.getValue(
-                            fromNamespaceAndPath("minecraft", blockName)
+                            .replace("raw_", "");
+                    Block block = Objects.requireNonNull(
+                            ForgeRegistries.BLOCKS.getValue(fromNamespaceAndPath("minecraft", blockName))
                     );
                     ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, block)
-                            .define('#', item.get())
+                            .define('#', item)
                             .pattern("###")
                             .pattern("###")
                             .pattern("###")
-                            .unlockedBy("has_" + itemName, has(item.get()))
+                            .unlockedBy("has_" + itemName, has(item))
                             .save(consumer);
                 });
 
         // ===== VANILLA GEMS COOKING =====
         gemOreCooking(consumer,
-                ModItems.ROUGH_DIAMOND.get(),
+                ModItems.RAW_DIAMOND.get(),
                 "minecraft",
                 "diamond",
                 Items.DIAMOND_ORE, Items.DEEPSLATE_DIAMOND_ORE
         );
 
         gemOreCooking(consumer,
-                ModItems.ROUGH_EMERALD.get(),
+                ModItems.RAW_EMERALD.get(),
                 "minecraft",
                 "emerald",
                 Items.EMERALD_ORE, Items.DEEPSLATE_EMERALD_ORE
@@ -140,20 +130,20 @@ public class ModRecipeProvider extends RecipeProvider {
             Consumer<FinishedRecipe> consumer,
             ItemLike result,
             String namespace,
-            String name,
+            String path,
             ItemLike... ores
     ) {
         for(ItemLike ore : ores){
             Item itemIngredient = ore.asItem();
-            String itemIngredientName = ForgeRegistries.ITEMS.getKey(itemIngredient).getPath();
+            String itemIngredientName = Objects.requireNonNull(ForgeRegistries.ITEMS.getKey(itemIngredient)).getPath();
             SimpleCookingRecipeBuilder.smelting(
                             Ingredient.of(itemIngredient),
                             RecipeCategory.MISC,
                             result,
                             1.0f,
                             200)
-                    .unlockedBy("has_" + name + "_ore", has(ore.asItem()))
-                    .save(consumer, fromNamespaceAndPath(namespace, name + "_from_smelting_" + itemIngredientName));
+                    .unlockedBy("has_" + path + "_ore", has(ore.asItem()))
+                    .save(consumer, fromNamespaceAndPath(namespace, path + "_from_smelting_" + itemIngredientName));
 
             SimpleCookingRecipeBuilder.blasting(
                             Ingredient.of(itemIngredient),
@@ -161,8 +151,8 @@ public class ModRecipeProvider extends RecipeProvider {
                             result,
                             1.0f,
                             100)
-                    .unlockedBy("has_" + name + "_ore", has(ore.asItem()))
-                    .save(consumer, fromNamespaceAndPath(namespace, name + "_from_blasting_" + itemIngredientName));
+                    .unlockedBy("has_" + path + "_ore", has(ore.asItem()))
+                    .save(consumer, fromNamespaceAndPath(namespace, path + "_from_blasting_" + itemIngredientName));
         }
     }
 

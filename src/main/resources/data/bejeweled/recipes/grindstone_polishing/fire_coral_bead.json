@@ -1,9 +1,9 @@
 {
   "type": "bejeweled:bead_polishing",
   "input": {
-    "item": "bejeweled:rough_fire_coral_polyp"
+    "item": "bejeweled:raw_fire_coral_polyp"
   },
   "output": {
-    "item": "bejeweled:polished_fire_coral_bead"
+    "item": "bejeweled:fire_coral_bead"
   }
 }

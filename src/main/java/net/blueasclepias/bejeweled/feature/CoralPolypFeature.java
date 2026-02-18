@@ -14,8 +14,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 
 import javax.annotation.Nullable;
 
@@ -33,25 +31,13 @@ public class CoralPolypFeature extends Feature<NoneFeatureConfiguration> {
         RandomSource random = ctx.random();
         BlockPos origin = ctx.origin();
 
-        BlockPos anchor = findCoralAnchor(level, random, origin);
-        if (anchor == null) {
-            return false;
-        }
+        BlockPos anchorPos = findCoralAnchor(level, random, origin);
+        if (anchorPos == null) return false;
 
-        Block coralType = level.getBlockState(anchor).getBlock();
-        Block polypVariant = getPolypVariantFor(coralType);
+        Block anchorBlock = level.getBlockState(anchorPos).getBlock();
+        CoralPolypBlock polypVariant = ModBlocks.getPolypVariantFor(anchorBlock);
 
-        return placeFeature(level, random, anchor, polypVariant);
-    }
-
-    private Block getPolypVariantFor(Block coralBlock) {
-        String name = ForgeRegistries.BLOCKS.getKey(coralBlock).getPath() + "_polyp";
-
-        return ModBlocks.CORAL_POLYP_BLOCKS.stream()
-                .filter(cpb -> cpb.getId().getPath().equals(name))
-                .findFirst()
-                .map(RegistryObject::get)
-                .orElse(null);
+        return placeFeature(level, random, anchorPos, polypVariant);
     }
 
     @Nullable
@@ -65,38 +51,28 @@ public class CoralPolypFeature extends Feature<NoneFeatureConfiguration> {
 
             BlockState state = level.getBlockState(candidate);
 
-            if (state.is(BlockTags.CORAL_BLOCKS)) {
-                return candidate;
-            }
+            if (state.is(BlockTags.CORAL_BLOCKS)) return candidate;
         }
         return null;
     }
 
-    private boolean placeFeature(LevelAccessor level, RandomSource random, BlockPos pos, Block block) {
+    private boolean placeFeature(LevelAccessor level, RandomSource random, BlockPos pos, CoralPolypBlock block) {
         for(Direction direction : Direction.Plane.HORIZONTAL) {
             BlockPos supportPos = pos.relative(direction);
             BlockState supportState = level.getBlockState(supportPos);
             if (!supportState.is(Blocks.WATER)) {
                 continue;
             }
-            if (random.nextFloat() < 0.7F) {
-                BlockPos relativeBlockPos = pos.relative(direction);
-                if (level.getBlockState(relativeBlockPos).is(Blocks.WATER)) {
-                    String name = ForgeRegistries.BLOCKS.getKey(block).getPath();
-                    ModBlocks.CORAL_POLYP_BLOCKS.stream()
-                            .filter(cpb -> cpb.getId().getPath().equals(name))
-                            .findFirst().ifPresent(b -> {
-                                BlockState defaultBlockState = b.get().defaultBlockState();
-                                if (defaultBlockState.hasProperty(CoralPolypBlock.FACING)) {
-                                    defaultBlockState = defaultBlockState.setValue(CoralPolypBlock.FACING, direction);
-                                }
-                                if (defaultBlockState.hasProperty(CoralPolypBlock.WATERLOGGED)) {
-                                    defaultBlockState = defaultBlockState.setValue(CoralPolypBlock.WATERLOGGED, true);
-                                }
-                                level.setBlock(relativeBlockPos, defaultBlockState, 2);
-                            });
-                    return true;
+            if (random.nextFloat() < 0.7F && level.getBlockState(supportPos).is(Blocks.WATER)) {
+                BlockState defaultBlockState = block.defaultBlockState();
+                if (defaultBlockState.hasProperty(CoralPolypBlock.FACING)) {
+                    defaultBlockState = defaultBlockState.setValue(CoralPolypBlock.FACING, direction);
                 }
+                if (defaultBlockState.hasProperty(CoralPolypBlock.WATERLOGGED)) {
+                    defaultBlockState = defaultBlockState.setValue(CoralPolypBlock.WATERLOGGED, true);
+                }
+                level.setBlock(supportPos, defaultBlockState, 2);
+                return true;
             }
         }
         return false;

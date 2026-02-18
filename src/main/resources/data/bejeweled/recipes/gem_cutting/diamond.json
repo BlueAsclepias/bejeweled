@@ -1,7 +1,7 @@
 {
   "type": "bejeweled:gem_cutting",
   "input": {
-    "item": "bejeweled:rough_diamond"
+    "item": "bejeweled:raw_diamond"
   },
   "output": {
     "item": "minecraft:diamond"
