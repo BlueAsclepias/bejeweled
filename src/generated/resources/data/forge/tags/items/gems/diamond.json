@@ -1,6 +1,6 @@
 {
   "values": [
-    "bejeweled:raw_diamond",
-    "minecraft:diamond"
+    "minecraft:diamond",
+    "bejeweled:diamond"
   ]
 }

@@ -1,9 +1,9 @@
 {
   "type": "bejeweled:gem_cutting",
   "input": {
-    "item": "bejeweled:raw_emerald"
+    "item": "minecraft:emerald"
   },
   "output": {
-    "item": "minecraft:emerald"
+    "item": "bejeweled:emerald"
   }
 }

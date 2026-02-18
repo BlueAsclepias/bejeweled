@@ -1,10 +1,10 @@
 {
   "values": [
-    "bejeweled:bubble_coral_bead",
-    "bejeweled:horn_coral_bead",
-    "bejeweled:tube_coral_bead",
-    "bejeweled:pearl",
+    "bejeweled:brain_coral_bead",
     "bejeweled:fire_coral_bead",
-    "bejeweled:brain_coral_bead"
+    "bejeweled:tube_coral_bead",
+    "bejeweled:bubble_coral_bead",
+    "bejeweled:pearl",
+    "bejeweled:horn_coral_bead"
   ]
 }

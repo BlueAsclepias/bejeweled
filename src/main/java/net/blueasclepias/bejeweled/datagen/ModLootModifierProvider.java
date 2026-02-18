@@ -27,50 +27,6 @@ public class ModLootModifierProvider extends GlobalLootModifierProvider {
 
     @Override
     protected void start() {
-        add("replace_diamond",
-                new VanillaOreDropModifier(
-                        new LootItemCondition[]{
-                                LootTableIdCondition.builder(
-                                        fromNamespaceAndPath("minecraft", "blocks/diamond_ore")
-                                ).build(),
-                        },
-                        ModItems.RAW_DIAMOND.get()
-                )
-        );
-
-        add("replace_deepslate_diamond",
-                new VanillaOreDropModifier(
-                        new LootItemCondition[]{
-                                LootTableIdCondition.builder(
-                                        fromNamespaceAndPath("minecraft", "blocks/deepslate_diamond_ore")
-                                ).build(),
-                        },
-                        ModItems.RAW_DIAMOND.get()
-                )
-        );
-
-        add("replace_emerald",
-                new VanillaOreDropModifier(
-                        new LootItemCondition[]{
-                                LootTableIdCondition.builder(
-                                        fromNamespaceAndPath("minecraft", "blocks/emerald_ore")
-                                ).build(),
-                        },
-                        ModItems.RAW_EMERALD.get()
-                )
-        );
-
-        add("replace_deepslate_emerald",
-                new VanillaOreDropModifier(
-                        new LootItemCondition[]{
-                                LootTableIdCondition.builder(
-                                        fromNamespaceAndPath("minecraft", "blocks/deepslate_emerald_ore")
-                                ).build(),
-                        },
-                        ModItems.RAW_EMERALD.get()
-                )
-        );
-
         add("add_gems_and_beads_to_chests",
                 new AddGemsToChestsModifier(
                         new LootItemCondition[]{}

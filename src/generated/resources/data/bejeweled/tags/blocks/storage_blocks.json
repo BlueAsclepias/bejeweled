@@ -17,10 +17,6 @@
       "required": false
     },
     {
-      "id": "bejeweled:block_of_raw_emerald",
-      "required": false
-    },
-    {
       "id": "bejeweled:block_of_raw_topaz",
       "required": false
     },
@@ -41,75 +37,7 @@
       "required": false
     },
     {
-      "id": "bejeweled:block_of_raw_diamond",
-      "required": false
-    },
-    {
       "id": "bejeweled:block_of_raw_pearl",
-      "required": false
-    },
-    {
-      "id": "bejeweled:block_of_aquamarine",
-      "required": false
-    },
-    {
-      "id": "bejeweled:block_of_ruby",
-      "required": false
-    },
-    {
-      "id": "bejeweled:block_of_sapphire",
-      "required": false
-    },
-    {
-      "id": "bejeweled:block_of_garnet",
-      "required": false
-    },
-    {
-      "id": "bejeweled:block_of_amethyst",
-      "required": false
-    },
-    {
-      "id": "bejeweled:block_of_topaz",
-      "required": false
-    },
-    {
-      "id": "bejeweled:block_of_turquoise",
-      "required": false
-    },
-    {
-      "id": "bejeweled:block_of_jade",
-      "required": false
-    },
-    {
-      "id": "bejeweled:block_of_opal",
-      "required": false
-    },
-    {
-      "id": "bejeweled:block_of_peridot",
-      "required": false
-    },
-    {
-      "id": "bejeweled:block_of_tube_coral_bead",
-      "required": false
-    },
-    {
-      "id": "bejeweled:block_of_fire_coral_bead",
-      "required": false
-    },
-    {
-      "id": "bejeweled:block_of_horn_coral_bead",
-      "required": false
-    },
-    {
-      "id": "bejeweled:block_of_brain_coral_bead",
-      "required": false
-    },
-    {
-      "id": "bejeweled:block_of_bubble_coral_bead",
-      "required": false
-    },
-    {
-      "id": "bejeweled:block_of_pearl",
       "required": false
     }
   ]

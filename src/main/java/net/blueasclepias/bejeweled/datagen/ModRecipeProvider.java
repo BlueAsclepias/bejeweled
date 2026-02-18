@@ -52,11 +52,7 @@ public class ModRecipeProvider extends RecipeProvider {
                     .save(consumer);
 
             // ===== Decompression (1 → 9) =====
-            ShapelessRecipeBuilder.shapeless(
-                            RecipeCategory.MISC,
-                            item,
-                            9
-                    )
+            ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, item, 9)
                     .requires(block)
                     .unlockedBy("has_" + blockName, has(block))
                     .save(consumer, fromNamespaceAndPath(
@@ -97,21 +93,6 @@ public class ModRecipeProvider extends RecipeProvider {
                             .unlockedBy("has_" + itemName, has(item))
                             .save(consumer);
                 });
-
-        // ===== VANILLA GEMS COOKING =====
-        gemOreCooking(consumer,
-                ModItems.RAW_DIAMOND.get(),
-                "minecraft",
-                "diamond",
-                Items.DIAMOND_ORE, Items.DEEPSLATE_DIAMOND_ORE
-        );
-
-        gemOreCooking(consumer,
-                ModItems.RAW_EMERALD.get(),
-                "minecraft",
-                "emerald",
-                Items.EMERALD_ORE, Items.DEEPSLATE_EMERALD_ORE
-        );
 
         // ===== Workstation =====
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.GEM_CUTTING_TABLE.get())

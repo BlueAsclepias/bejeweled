@@ -99,8 +99,6 @@ public class ModBlocks {
             registerStorageBlock("block_of_raw_sapphire", rawGemBlock(MapColor.COLOR_BLUE));
     public static final RegistryObject<Block> BLOCK_OF_RAW_GARNET =
             registerStorageBlock("block_of_raw_garnet", rawGemBlock(MapColor.COLOR_RED));
-    public static final RegistryObject<Block> BLOCK_OF_RAW_EMERALD =
-            registerStorageBlock("block_of_raw_emerald", rawGemBlock(MapColor.COLOR_GREEN));
     public static final RegistryObject<Block> BLOCK_OF_RAW_TOPAZ =
             registerStorageBlock("block_of_raw_topaz", rawGemBlock(MapColor.COLOR_ORANGE));
     public static final RegistryObject<Block> BLOCK_OF_RAW_TURQUOISE =
@@ -111,46 +109,8 @@ public class ModBlocks {
             registerStorageBlock("block_of_raw_opal", rawGemBlock(MapColor.COLOR_LIGHT_GRAY));
     public static final RegistryObject<Block> BLOCK_OF_RAW_PERIDOT =
             registerStorageBlock("block_of_raw_peridot", rawGemBlock(MapColor.COLOR_LIGHT_GREEN));
-    public static final RegistryObject<Block> BLOCK_OF_RAW_DIAMOND =
-            registerStorageBlock("block_of_raw_diamond", rawGemBlock(MapColor.COLOR_CYAN));
     public static final RegistryObject<Block> BLOCK_OF_RAW_PEARL =
             registerStorageBlock("block_of_raw_pearl", rawGemBlock(MapColor.COLOR_LIGHT_GRAY));
-
-    // === PROCESSED ===
-    // == GEMSTONES ==
-    public static final RegistryObject<Block> BLOCK_OF_AQUAMARINE =
-            registerStorageBlock("block_of_aquamarine", gemBlock(MapColor.COLOR_CYAN));
-    public static final RegistryObject<Block> BLOCK_OF_RUBY =
-            registerStorageBlock("block_of_ruby", gemBlock(MapColor.COLOR_RED));
-    public static final RegistryObject<Block> BLOCK_OF_SAPPHIRE =
-            registerStorageBlock("block_of_sapphire", gemBlock(MapColor.COLOR_BLUE));
-    public static final RegistryObject<Block> BLOCK_OF_GARNET =
-            registerStorageBlock("block_of_garnet", gemBlock(MapColor.COLOR_RED));
-    public static final RegistryObject<Block> BLOCK_OF_AMETHYST =
-            registerStorageBlock("block_of_amethyst", gemBlock(MapColor.COLOR_PURPLE));
-    public static final RegistryObject<Block> BLOCK_OF_TOPAZ =
-            registerStorageBlock("block_of_topaz", gemBlock(MapColor.COLOR_ORANGE));
-    public static final RegistryObject<Block> BLOCK_OF_TURQUOISE =
-            registerStorageBlock("block_of_turquoise", gemBlock(MapColor.COLOR_CYAN));
-    public static final RegistryObject<Block> BLOCK_OF_JADE =
-            registerStorageBlock("block_of_jade", gemBlock(MapColor.COLOR_LIGHT_GREEN));
-    public static final RegistryObject<Block> BLOCK_OF_OPAL =
-            registerStorageBlock("block_of_opal", gemBlock(MapColor.COLOR_LIGHT_GRAY));
-    public static final RegistryObject<Block> BLOCK_OF_PERIDOT =
-            registerStorageBlock("block_of_peridot", gemBlock(MapColor.COLOR_LIGHT_GREEN));
-    // == BEADS ==
-    public static final RegistryObject<Block> BLOCK_OF_TUBE_CORAL_BEAD =
-            registerStorageBlock("block_of_tube_coral_bead", gemBlock(MapColor.COLOR_ORANGE));
-    public static final RegistryObject<Block> BLOCK_OF_FIRE_CORAL_BEAD =
-            registerStorageBlock("block_of_fire_coral_bead", gemBlock(MapColor.COLOR_ORANGE));
-    public static final RegistryObject<Block> BLOCK_OF_HORN_CORAL_BEAD =
-            registerStorageBlock("block_of_horn_coral_bead", gemBlock(MapColor.COLOR_ORANGE));
-    public static final RegistryObject<Block> BLOCK_OF_BRAIN_CORAL_BEAD =
-            registerStorageBlock("block_of_brain_coral_bead", gemBlock(MapColor.COLOR_ORANGE));
-    public static final RegistryObject<Block> BLOCK_OF_BUBBLE_CORAL_BEAD =
-            registerStorageBlock("block_of_bubble_coral_bead", gemBlock(MapColor.COLOR_ORANGE));
-    public static final RegistryObject<Block> BLOCK_OF_PEARL =
-            registerStorageBlock("block_of_pearl", gemBlock(MapColor.COLOR_LIGHT_GRAY));
 
     // ===== CORAL POLYP BLOCKS =====
     public static final RegistryObject<Block> FIRE_CORAL_BLOCK_POLYP =

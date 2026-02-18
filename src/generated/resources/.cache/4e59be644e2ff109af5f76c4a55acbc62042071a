@@ -1,4 +1,4 @@
-// 1.20.1	2026-02-17T20:09:30.499772215	Item Models: bejeweled
+// 1.20.1	2026-02-18T15:20:23.701576135	Item Models: bejeweled
 22630412b269a69bc6fe5b3fd2a9f2c1513991c2 assets/bejeweled/models/item/amethyst.json
 2e13a71ed34caeb5a5b93f5591b3f6041d9eb975 assets/bejeweled/models/item/amulet.json
 bf5ac05f34b4c5094e46f9bcd5009b052e50ab3b assets/bejeweled/models/item/aquamarine.json
@@ -6,6 +6,8 @@ bf5ac05f34b4c5094e46f9bcd5009b052e50ab3b assets/bejeweled/models/item/aquamarine
 a9ec085ef8644ece76403a21f49d76f5320f636f assets/bejeweled/models/item/brain_coral_bead.json
 645f6d8ad55fdbe03ee24774c04b5d9bcaef15c3 assets/bejeweled/models/item/bubble_coral_bead.json
 bc19f0d81e3f94fd6d98e33d8988911d64913e4c assets/bejeweled/models/item/circlet.json
+700f35fee02421deb0ed0d367fd9650b33ab2ff7 assets/bejeweled/models/item/diamond.json
+72355869fcc0fc8eda5ac0936e82992c6a6b0abe assets/bejeweled/models/item/emerald.json
 b95d6d30e23783362097652fb451356b6a88aca2 assets/bejeweled/models/item/fire_coral_bead.json
 cd99532afd01fe7837acdd3c85e3c90f3c474482 assets/bejeweled/models/item/garnet.json
 930cac876c8678f49908c9f05f3ff9b7a86238be assets/bejeweled/models/item/gem_socket.json
@@ -17,8 +19,6 @@ cce3bfc175b78eb4e2068ba0c87a4821c2933a6f assets/bejeweled/models/item/pearl.json
 a8f3cdbdd2a02cd24286d56df4d94c8b6f1a8490 assets/bejeweled/models/item/raw_aquamarine.json
 3095fdbb44801892c87d21bb3e291fd3f2f5593e assets/bejeweled/models/item/raw_brain_coral_polyp.json
 be7daf958bc66e0ee076b6adbbea38a2135b9914 assets/bejeweled/models/item/raw_bubble_coral_polyp.json
-a91bc76b7df818f7382d6ba3ec2e471a8dc3adb1 assets/bejeweled/models/item/raw_diamond.json
-45f493e80a1abc389795f5524db4103198aefffb assets/bejeweled/models/item/raw_emerald.json
 55650cceb4ea51486422609bc172f94655e7fa11 assets/bejeweled/models/item/raw_fire_coral_polyp.json
 e5fe1434873f8f5a2a6d9a4db59e2792e698c138 assets/bejeweled/models/item/raw_garnet.json
 c34248fa813aa8cd199456ead0216992dfc714e4 assets/bejeweled/models/item/raw_horn_coral_polyp.json

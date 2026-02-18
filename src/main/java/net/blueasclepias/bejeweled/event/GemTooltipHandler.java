@@ -31,12 +31,6 @@ public class GemTooltipHandler {
             };
             tooltip.add(1,
                     Component
-                            .translatable("tooltip.bejeweled.processed_gem_category")
-                            .withStyle(ChatFormatting.BLUE)
-
-            );
-            tooltip.add(2,
-                    Component
                             .translatable("tooltip.bejeweled.grade")
                             .append(Component.literal(grade.name())
                                     .withStyle(format, ChatFormatting.BOLD)

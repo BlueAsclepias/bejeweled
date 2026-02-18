@@ -31,6 +31,11 @@ public class ModLangProvider extends LanguageProvider {
 
         add("item.minecraft.amethyst_shard", "Raw Amethyst");
         add("item.minecraft.amethyst_block", "Block of Raw Amethyst");
+        add("item.minecraft.diamond", "Raw Diamond");
+        add("item.minecraft.diamond_block", "Block of Raw Diamond");
+        add("item.minecraft.emerald", "Raw Emerald");
+        add("item.minecraft.emerald_block", "Block of Raw Emerald");
+
         ModItems.ITEMS.getEntries().forEach(item ->
                 add(item.get(), formatName(item.getId().getPath()))
         );

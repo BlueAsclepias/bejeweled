@@ -52,13 +52,8 @@ public class ModItems {
             registerRawGemItem("raw_jade", GemDefinitions.JADE);
     public static final RegistryObject<Item> RAW_OPAL =
             registerRawGemItem("raw_opal", GemDefinitions.OPAL);
-    public static final RegistryObject<Item> RAW_EMERALD =
-            registerRawGemItem("raw_emerald", GemDefinitions.EMERALD);
     public static final RegistryObject<Item> RAW_PERIDOT =
             registerRawGemItem("raw_peridot", GemDefinitions.PERIDOT);
-    public static final RegistryObject<Item> RAW_DIAMOND =
-            registerRawGemItem("raw_diamond", GemDefinitions.DIAMOND);
-
     // === PROCESSED ===
     public static final RegistryObject<Item> AQUAMARINE =
             registerProcessedGemItem("aquamarine", GemDefinitions.AQUAMARINE);
@@ -70,6 +65,10 @@ public class ModItems {
             registerProcessedGemItem("garnet", GemDefinitions.GARNET);
     public static final RegistryObject<Item> AMETHYST =
             registerProcessedGemItem("amethyst", GemDefinitions.AMETHYST);
+    public static final RegistryObject<Item> DIAMOND =
+            registerProcessedGemItem("diamond", GemDefinitions.DIAMOND);
+    public static final RegistryObject<Item> EMERALD =
+            registerProcessedGemItem("emerald", GemDefinitions.EMERALD);
     public static final RegistryObject<Item> TOPAZ =
             registerProcessedGemItem("topaz", GemDefinitions.TOPAZ);
     public static final RegistryObject<Item> TURQUOISE =
@@ -171,8 +170,6 @@ public class ModItems {
             registerBlockItem("block_of_raw_sapphire", ModBlocks.BLOCK_OF_RAW_SAPPHIRE);
     public static final RegistryObject<Item> BLOCK_OF_RAW_GARNET =
             registerBlockItem("block_of_raw_garnet", ModBlocks.BLOCK_OF_RAW_GARNET);
-    public static final RegistryObject<Item> BLOCK_OF_RAW_EMERALD =
-            registerBlockItem("block_of_raw_emerald", ModBlocks.BLOCK_OF_RAW_EMERALD);
     public static final RegistryObject<Item> BLOCK_OF_RAW_TOPAZ =
             registerBlockItem("block_of_raw_topaz", ModBlocks.BLOCK_OF_RAW_TOPAZ);
     public static final RegistryObject<Item> BLOCK_OF_RAW_TURQUOISE =
@@ -183,48 +180,8 @@ public class ModItems {
             registerBlockItem("block_of_raw_opal", ModBlocks.BLOCK_OF_RAW_OPAL);
     public static final RegistryObject<Item> BLOCK_OF_RAW_PERIDOT =
             registerBlockItem("block_of_raw_peridot", ModBlocks.BLOCK_OF_RAW_PERIDOT);
-    public static final RegistryObject<Item> BLOCK_OF_RAW_DIAMOND =
-            registerBlockItem("block_of_raw_diamond", ModBlocks.BLOCK_OF_RAW_DIAMOND);
     public static final RegistryObject<Item> BLOCK_OF_RAW_PEARL =
             registerBlockItem("block_of_raw_pearl", ModBlocks.BLOCK_OF_RAW_PEARL);
-
-    // === PROCESSED ===
-
-    // = GEMSTONES =
-    public static final RegistryObject<Item> BLOCK_OF_AQUAMARINE =
-            registerBlockItem("block_of_aquamarine", ModBlocks.BLOCK_OF_AQUAMARINE);
-    public static final RegistryObject<Item> BLOCK_OF_RUBY =
-            registerBlockItem("block_of_ruby", ModBlocks.BLOCK_OF_RUBY);
-    public static final RegistryObject<Item> BLOCK_OF_SAPPHIRE =
-            registerBlockItem("block_of_sapphire", ModBlocks.BLOCK_OF_SAPPHIRE);
-    public static final RegistryObject<Item> BLOCK_OF_GARNET =
-            registerBlockItem("block_of_garnet", ModBlocks.BLOCK_OF_GARNET);
-    public static final RegistryObject<Item> BLOCK_OF_AMETHYST =
-            registerBlockItem("block_of_amethyst", ModBlocks.BLOCK_OF_AMETHYST);
-    public static final RegistryObject<Item> BLOCK_OF_TOPAZ =
-            registerBlockItem("block_of_topaz", ModBlocks.BLOCK_OF_TOPAZ);
-    public static final RegistryObject<Item> BLOCK_OF_TURQUOISE =
-            registerBlockItem("block_of_turquoise", ModBlocks.BLOCK_OF_TURQUOISE);
-    public static final RegistryObject<Item> BLOCK_OF_JADE =
-            registerBlockItem("block_of_jade", ModBlocks.BLOCK_OF_JADE);
-    public static final RegistryObject<Item> BLOCK_OF_OPAL =
-            registerBlockItem("block_of_opal", ModBlocks.BLOCK_OF_OPAL);
-    public static final RegistryObject<Item> BLOCK_OF_PERIDOT =
-            registerBlockItem("block_of_peridot", ModBlocks.BLOCK_OF_PERIDOT);
-
-    // = BEADS =
-    public static final RegistryObject<Item> BLOCK_OF_TUBE_CORAL_BEAD =
-            registerBlockItem("block_of_tube_coral_bead", ModBlocks.BLOCK_OF_TUBE_CORAL_BEAD);
-    public static final RegistryObject<Item> BLOCK_OF_FIRE_CORAL_BEAD =
-            registerBlockItem("block_of_fire_coral_bead", ModBlocks.BLOCK_OF_FIRE_CORAL_BEAD);
-    public static final RegistryObject<Item> BLOCK_OF_HORN_CORAL_BEAD =
-            registerBlockItem("block_of_horn_coral_bead", ModBlocks.BLOCK_OF_HORN_CORAL_BEAD);
-    public static final RegistryObject<Item> BLOCK_OF_BRAIN_CORAL_BEAD =
-            registerBlockItem("block_of_brain_coral_bead", ModBlocks.BLOCK_OF_BRAIN_CORAL_BEAD);
-    public static final RegistryObject<Item> BLOCK_OF_BUBBLE_CORAL_BEAD =
-            registerBlockItem("block_of_bubble_coral_bead", ModBlocks.BLOCK_OF_BUBBLE_CORAL_BEAD);
-    public static final RegistryObject<Item> BLOCK_OF_PEARL =
-            registerBlockItem("block_of_pearl", ModBlocks.BLOCK_OF_PEARL);
 
     // ==== CORAL POLYP BLOCKS ====
     public static final RegistryObject<Item> FIRE_CORAL_BLOCK_POLYP =
