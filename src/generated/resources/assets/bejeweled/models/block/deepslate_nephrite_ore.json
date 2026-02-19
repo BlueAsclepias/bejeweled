@@ -83,7 +83,7 @@
     "down": "minecraft:block/deepslate_top",
     "east": "minecraft:block/deepslate",
     "north": "minecraft:block/deepslate",
-    "overlay": "bejeweled:block/nephrite_ore",
+    "overlay": "bejeweled:block/ore/nephrite",
     "particle": "minecraft:block/deepslate",
     "south": "minecraft:block/deepslate",
     "up": "minecraft:block/deepslate_top",

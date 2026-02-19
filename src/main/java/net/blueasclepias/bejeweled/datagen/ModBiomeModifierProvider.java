@@ -10,6 +10,7 @@ import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import org.jetbrains.annotations.NotNull;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class ModBiomeModifierProvider implements DataProvider {
     }
 
     @Override
-    public CompletableFuture<?> run(CachedOutput cache) {
+    public @NotNull CompletableFuture<?> run(@NotNull CachedOutput cache) {
         List<CompletableFuture<?>> futures = new ArrayList<>();
 
         for (BiomeFeaturePlacement placement : ModBiomePlacements.ALL.values()) {
@@ -70,7 +71,7 @@ public class ModBiomeModifierProvider implements DataProvider {
     }
 
     @Override
-    public String getName() {
+    public @NotNull String getName() {
         return "Bejeweled Biome Modifiers";
     }
 }

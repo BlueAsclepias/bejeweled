@@ -83,7 +83,7 @@
     "down": "minecraft:block/stone",
     "east": "minecraft:block/stone",
     "north": "minecraft:block/stone",
-    "overlay": "bejeweled:block/beryl_ore",
+    "overlay": "bejeweled:block/ore/beryl",
     "particle": "minecraft:block/stone",
     "south": "minecraft:block/stone",
     "up": "minecraft:block/stone",

@@ -1,16 +1,16 @@
 package net.blueasclepias.bejeweled.datagen;
 
-import net.blueasclepias.bejeweled.registry.ModBlocks;
+import net.blueasclepias.bejeweled.material.registry.ModCoralPolypRegistry;
+import net.blueasclepias.bejeweled.material.registry.ModOreRegistry;
+import net.blueasclepias.bejeweled.material.registry.ModStorageBlockRegistry;
 import net.blueasclepias.bejeweled.registry.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.BlockTagsProvider;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
@@ -34,23 +34,23 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         TagAppender<Block> forgeOre = tag(ModTags.Blocks.FORGE_GENERIC_ORES);
         TagAppender<Block> crossOre = tag(ModTags.Blocks.CROSS_GENERIC_ORES);
 
-        ModBlocks.oreBlocks().forEach(block -> {
-            pickaxe.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block)));
-            iron.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block)));
-            gemOres.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block)));
-            forgeOre.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block)));
-            crossOre.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block)));
+        ModOreRegistry.all().forEach((id, feat) -> {
+            pickaxe.addOptional(id);
+            iron.addOptional(id);
+            gemOres.addOptional(id);
+            forgeOre.addOptional(id);
+            crossOre.addOptional(id);
         });
 
         TagAppender<Block> storage = tag(ModTags.Blocks.STORAGE_BLOCKS);
-        ModBlocks.storageBlocks().forEach(block ->
-                storage.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block)))
+        ModStorageBlockRegistry.all().forEach((id, block) ->
+                storage.addOptional(id)
         );
 
         TagAppender<Block> polyps = tag(ModTags.Blocks.CORAL_POLYPS);
-        ModBlocks.coralPolypBlocks().forEach(block -> {
-            polyps.addOptional(Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block)));
-        });
+        ModCoralPolypRegistry.all().forEach((id, block) ->
+                polyps.addOptional(id)
+        );
     }
 }
 

@@ -9,6 +9,7 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
+import org.jetbrains.annotations.NotNull;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 import static net.minecraft.resources.ResourceLocation.fromNamespaceAndPath;
@@ -117,7 +118,7 @@ public class GemCuttingTableScreen extends AbstractContainerScreen<GemCuttingTab
 
     @Override
     public void render(
-            GuiGraphics gui,
+            @NotNull GuiGraphics gui,
             int mouseX,
             int mouseY,
             float partialTick

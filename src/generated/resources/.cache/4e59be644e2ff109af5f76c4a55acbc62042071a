@@ -1,4 +1,4 @@
-// 1.20.1	2026-02-18T15:20:23.701576135	Item Models: bejeweled
+// 1.20.1	2026-02-19T11:46:32.11637962	Item Models: bejeweled
 22630412b269a69bc6fe5b3fd2a9f2c1513991c2 assets/bejeweled/models/item/amethyst.json
 2e13a71ed34caeb5a5b93f5591b3f6041d9eb975 assets/bejeweled/models/item/amulet.json
 bf5ac05f34b4c5094e46f9bcd5009b052e50ab3b assets/bejeweled/models/item/aquamarine.json
@@ -10,7 +10,6 @@ bc19f0d81e3f94fd6d98e33d8988911d64913e4c assets/bejeweled/models/item/circlet.js
 72355869fcc0fc8eda5ac0936e82992c6a6b0abe assets/bejeweled/models/item/emerald.json
 b95d6d30e23783362097652fb451356b6a88aca2 assets/bejeweled/models/item/fire_coral_bead.json
 cd99532afd01fe7837acdd3c85e3c90f3c474482 assets/bejeweled/models/item/garnet.json
-930cac876c8678f49908c9f05f3ff9b7a86238be assets/bejeweled/models/item/gem_socket.json
 d38c0f000a5b36eaba8079c101b0d2ae27be611a assets/bejeweled/models/item/horn_coral_bead.json
 fa835486b5b3811647fe826b780fee6c16251726 assets/bejeweled/models/item/jade.json
 8b8c765958d606bae3ea10186e06eeb3668f4ee4 assets/bejeweled/models/item/opal.json

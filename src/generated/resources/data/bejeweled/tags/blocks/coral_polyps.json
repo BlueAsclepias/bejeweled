@@ -1,7 +1,7 @@
 {
   "values": [
     {
-      "id": "bejeweled:fire_coral_block_polyp",
+      "id": "bejeweled:bubble_coral_block_polyp",
       "required": false
     },
     {
@@ -9,7 +9,7 @@
       "required": false
     },
     {
-      "id": "bejeweled:bubble_coral_block_polyp",
+      "id": "bejeweled:tube_coral_block_polyp",
       "required": false
     },
     {
@@ -17,7 +17,7 @@
       "required": false
     },
     {
-      "id": "bejeweled:tube_coral_block_polyp",
+      "id": "bejeweled:fire_coral_block_polyp",
       "required": false
     }
   ]

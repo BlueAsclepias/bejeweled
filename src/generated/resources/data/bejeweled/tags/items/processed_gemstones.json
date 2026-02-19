@@ -1,16 +1,16 @@
 {
   "values": [
-    "bejeweled:garnet",
-    "bejeweled:ruby",
-    "bejeweled:sapphire",
-    "bejeweled:turquoise",
-    "bejeweled:diamond",
-    "bejeweled:amethyst",
     "bejeweled:peridot",
-    "bejeweled:emerald",
-    "bejeweled:topaz",
     "bejeweled:jade",
+    "bejeweled:sapphire",
     "bejeweled:opal",
-    "bejeweled:aquamarine"
+    "bejeweled:garnet",
+    "bejeweled:aquamarine",
+    "bejeweled:amethyst",
+    "bejeweled:ruby",
+    "bejeweled:emerald",
+    "bejeweled:diamond",
+    "bejeweled:turquoise",
+    "bejeweled:topaz"
   ]
 }

@@ -11,6 +11,7 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * A loot modifier that replaces the default drop of vanilla ores with a specified item,
@@ -29,7 +30,7 @@ public class VanillaOreDropModifier extends LootModifier {
     }
 
     @Override
-    protected ObjectArrayList<ItemStack> doApply(
+    protected @NotNull ObjectArrayList<ItemStack> doApply(
             ObjectArrayList<ItemStack> generatedLoot,
             LootContext context
     ) {

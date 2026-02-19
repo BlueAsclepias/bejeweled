@@ -83,7 +83,7 @@
     "down": "minecraft:block/basalt_top",
     "east": "minecraft:block/basalt_side",
     "north": "minecraft:block/basalt_side",
-    "overlay": "bejeweled:block/blue_corundum_ore",
+    "overlay": "bejeweled:block/ore/blue_corundum",
     "particle": "minecraft:block/basalt_side",
     "south": "minecraft:block/basalt_side",
     "up": "minecraft:block/basalt_top",

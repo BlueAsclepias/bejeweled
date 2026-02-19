@@ -19,6 +19,7 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.common.loot.LootModifier;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
@@ -43,7 +44,7 @@ public class AddBeadsToSeaMobsModifier extends LootModifier {
     }
 
     @Override
-    protected ObjectArrayList<ItemStack> doApply(
+    protected @NotNull ObjectArrayList<ItemStack> doApply(
             ObjectArrayList<ItemStack> generatedLoot,
             LootContext context
     ) {
@@ -54,8 +55,6 @@ public class AddBeadsToSeaMobsModifier extends LootModifier {
         // === Main roll ===
         ItemStack result = rollExclusive(
                 random,
-                BASE_RAW_CHANCE,
-                BASE_PROCESSED_CHANCE,
                 multiplier,
                 looting
         );
@@ -68,8 +67,6 @@ public class AddBeadsToSeaMobsModifier extends LootModifier {
         for (int i = 0; i < extraRolls(looting); i++) {
             ItemStack extra = rollExclusive(
                     random,
-                    BASE_RAW_CHANCE,
-                    BASE_PROCESSED_CHANCE,
                     multiplier,
                     0 // looting bonus already consumed
             );
@@ -84,13 +81,11 @@ public class AddBeadsToSeaMobsModifier extends LootModifier {
 
     private static ItemStack rollExclusive(
             RandomSource random,
-            float rawBase,
-            float processedBase,
             float multiplier,
             int looting
     ) {
-        float processedChance = processedBase * multiplier + looting * LOOTING_BONUS;
-        float rawChance = rawBase * multiplier + looting * LOOTING_BONUS;
+        float processedChance = AddBeadsToSeaMobsModifier.BASE_PROCESSED_CHANCE * multiplier + looting * LOOTING_BONUS;
+        float rawChance = AddBeadsToSeaMobsModifier.BASE_RAW_CHANCE * multiplier + looting * LOOTING_BONUS;
 
         float roll = random.nextFloat();
 

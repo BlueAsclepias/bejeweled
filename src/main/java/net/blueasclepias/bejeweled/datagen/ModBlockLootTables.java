@@ -1,10 +1,11 @@
 package net.blueasclepias.bejeweled.datagen;
 
 
+import net.blueasclepias.bejeweled.material.registry.ModCoralPolypRegistry;
 import net.blueasclepias.bejeweled.material.registry.ModOreRegistry;
+import net.blueasclepias.bejeweled.material.registry.ModStorageBlockRegistry;
 import net.blueasclepias.bejeweled.registry.ModBlocks;
 import net.minecraft.data.loot.BlockLootSubProvider;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -29,21 +30,19 @@ public class ModBlockLootTables extends BlockLootSubProvider {
     protected void generate() {
 
         // === Storage blocks ===
-        ModBlocks.storageBlocks().forEach(this::dropSelf);
+        ModStorageBlockRegistry.allBlocks().forEach(this::dropSelf);
 
         // === Ores ===
         ModOreRegistry.allBlocksByFeature().forEach((feat, block) -> {
             Item item = Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(feat.definition().drop()));
             if(item == Items.AIR)
-                throw new IllegalStateException("No drop for "
-                        + feat.variant().id() + "_" + feat.id() + "_ore");
+                throw new IllegalStateException("No drop for " + feat.id());
             add(block, createOreDrop(block, item));
         });
 
         // === Coral Polyps ===
-        ModBlocks.coralPolypBlocks().forEach(block -> {
-            ResourceLocation blockId = Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block));
-            String path = "raw_" + blockId.getPath().replace("_block", "");
+        ModCoralPolypRegistry.all().forEach((id, block) -> {
+            String path = "raw_" + id.getPath().replace("_block", "");
             Item item = Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(fromNamespaceAndPath(MOD_ID, path)));
             if(item == Items.AIR)
                 throw new IllegalStateException("Missing item for coral polyp drop: " + path);

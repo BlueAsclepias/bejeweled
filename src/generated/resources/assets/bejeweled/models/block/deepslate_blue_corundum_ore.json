@@ -83,7 +83,7 @@
     "down": "minecraft:block/deepslate_top",
     "east": "minecraft:block/deepslate",
     "north": "minecraft:block/deepslate",
-    "overlay": "bejeweled:block/blue_corundum_ore",
+    "overlay": "bejeweled:block/ore/blue_corundum",
     "particle": "minecraft:block/deepslate",
     "south": "minecraft:block/deepslate",
     "up": "minecraft:block/deepslate_top",

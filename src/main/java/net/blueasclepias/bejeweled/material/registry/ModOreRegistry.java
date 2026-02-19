@@ -15,31 +15,27 @@ import java.util.*;
 public class ModOreRegistry {
 
     private static final Map<ResourceLocation, OreFeature> FEATURES = new HashMap<>();
-    private static final Map<ResourceLocation, OreVariant> VARIANTS = new HashMap<>();
-    private static final Map<ResourceLocation, OreDefinition> DEFINITIONS = new HashMap<>();
-    private static final Map<Block, OreFeature> BLOCK_BINDINGS = new HashMap<>();
     private static final Multimap<OreFeature, Block> BLOCKS_BY_FEATURE = HashMultimap.create();
 
     public static void registerFeature(ResourceLocation id, OreFeature feat) {
         FEATURES.put(id, feat);
     }
 
-    public static void registerVariant(ResourceLocation id, OreVariant var) {
-        VARIANTS.put(id,var);
-    }
-
-    public static void registerDefinition(ResourceLocation id, OreDefinition def) {
-        DEFINITIONS.put(id, def);
-    }
-
     public static void bind(Block block, @NotNull ResourceLocation id) {
         OreFeature feat = Objects.requireNonNull(FEATURES.get(id));
-        BLOCK_BINDINGS.put(block,feat);
         BLOCKS_BY_FEATURE.put(feat,block);
+    }
+
+    public static Map<ResourceLocation, OreFeature> all(){
+        return FEATURES;
     }
 
     public static Collection<OreFeature> allFeatures() {
         return FEATURES.values();
+    }
+
+    public static Collection<Block> allBlocks() {
+        return BLOCKS_BY_FEATURE.values();
     }
 
     public static Multimap<OreFeature, Block> allBlocksByGenericFeatures() {

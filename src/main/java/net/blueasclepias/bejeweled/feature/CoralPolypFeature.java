@@ -1,7 +1,7 @@
 package net.blueasclepias.bejeweled.feature;
 
 import net.blueasclepias.bejeweled.block.CoralPolypBlock;
-import net.blueasclepias.bejeweled.registry.ModBlocks;
+import net.blueasclepias.bejeweled.material.registry.ModCoralPolypRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
@@ -16,6 +16,7 @@ import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
 import javax.annotation.Nullable;
+import java.util.Objects;
 
 /**
  * Feature that places coral polyp blocks adjacent to existing coral blocks underwater.
@@ -35,7 +36,7 @@ public class CoralPolypFeature extends Feature<NoneFeatureConfiguration> {
         if (anchorPos == null) return false;
 
         Block anchorBlock = level.getBlockState(anchorPos).getBlock();
-        CoralPolypBlock polypVariant = ModBlocks.getPolypVariantFor(anchorBlock);
+        CoralPolypBlock polypVariant = Objects.requireNonNull(ModCoralPolypRegistry.findCoralPolyp(anchorBlock));
 
         return placeFeature(level, random, anchorPos, polypVariant);
     }

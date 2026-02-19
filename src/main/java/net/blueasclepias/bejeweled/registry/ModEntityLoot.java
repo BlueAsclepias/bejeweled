@@ -11,6 +11,7 @@ import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.predicates.LootItemKilledByPlayerCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceWithLootingCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.stream.Stream;
 
@@ -21,7 +22,7 @@ public class ModEntityLoot extends EntityLootSubProvider {
     }
 
     @Override
-    protected Stream<EntityType<?>> getKnownEntityTypes() {
+    protected @NotNull Stream<EntityType<?>> getKnownEntityTypes() {
         return Stream.of(
                 EntityType.DROWNED,
                 EntityType.GUARDIAN,

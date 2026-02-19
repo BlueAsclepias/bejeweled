@@ -18,6 +18,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
 import java.util.Optional;
 
 public class GemCuttingTableBlockEntity extends BlockEntity implements MenuProvider {
@@ -32,7 +33,7 @@ public class GemCuttingTableBlockEntity extends BlockEntity implements MenuProvi
     }
 
     @Override
-    public Component getDisplayName() {
+    public @NotNull Component getDisplayName() {
         return Component.translatable(
                 "container.bejeweled.gem_cutting"
         );
@@ -42,8 +43,8 @@ public class GemCuttingTableBlockEntity extends BlockEntity implements MenuProvi
     @Override
     public AbstractContainerMenu createMenu(
             int id,
-            Inventory playerInventory,
-            Player player
+            @NotNull Inventory playerInventory,
+            @NotNull Player player
     ) {
         return new GemCuttingTableMenu(
                 id,
@@ -65,7 +66,7 @@ public class GemCuttingTableBlockEntity extends BlockEntity implements MenuProvi
         if (recipeOpt.isEmpty()) return;
 
         GemCuttingRecipe recipe = recipeOpt.get();
-        ItemStack result = recipe.assemble(inventory, level.registryAccess());
+        ItemStack result = recipe.assemble(inventory, Objects.requireNonNull(level).registryAccess());
 
         inventory.setItem(INPUT_SLOT, ItemStack.EMPTY);
         inventory.setItem(OUTPUT_SLOT, result);

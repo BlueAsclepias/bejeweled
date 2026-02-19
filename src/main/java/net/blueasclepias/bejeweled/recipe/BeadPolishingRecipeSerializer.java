@@ -7,11 +7,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.ShapedRecipe;
+import org.jetbrains.annotations.NotNull;
 
 public class BeadPolishingRecipeSerializer implements RecipeSerializer<BeadPolishingRecipe> {
 
     @Override
-    public BeadPolishingRecipe fromJson(
+    public @NotNull BeadPolishingRecipe fromJson(
             ResourceLocation id,
             JsonObject json
     ) {
@@ -22,8 +23,8 @@ public class BeadPolishingRecipeSerializer implements RecipeSerializer<BeadPolis
 
     @Override
     public BeadPolishingRecipe fromNetwork(
-            ResourceLocation id,
-            FriendlyByteBuf buf
+            @NotNull ResourceLocation id,
+            @NotNull FriendlyByteBuf buf
     ) {
         Ingredient input = Ingredient.fromNetwork(buf);
         ItemStack output = buf.readItem();
@@ -32,7 +33,7 @@ public class BeadPolishingRecipeSerializer implements RecipeSerializer<BeadPolis
 
     @Override
     public void toNetwork(
-            FriendlyByteBuf buf,
+            @NotNull FriendlyByteBuf buf,
             BeadPolishingRecipe recipe
     ) {
         recipe.input.toNetwork(buf);

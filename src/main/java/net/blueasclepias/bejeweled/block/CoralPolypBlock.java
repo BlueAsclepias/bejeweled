@@ -20,6 +20,7 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Coral Polyp Block that can be attached to coral walls underwater.
@@ -71,13 +72,13 @@ public class CoralPolypBlock extends HorizontalDirectionalBlock implements Simpl
     }
 
     @Override
-    public BlockState updateShape(
+    public @NotNull BlockState updateShape(
             BlockState state,
-            Direction direction,
-            BlockState neighborState,
-            LevelAccessor level,
-            BlockPos pos,
-            BlockPos neighborPos
+            @NotNull Direction direction,
+            @NotNull BlockState neighborState,
+            @NotNull LevelAccessor level,
+            @NotNull BlockPos pos,
+            @NotNull BlockPos neighborPos
     ) {
         Direction facing = state.getValue(FACING);
 
@@ -89,10 +90,13 @@ public class CoralPolypBlock extends HorizontalDirectionalBlock implements Simpl
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
+    public @NotNull VoxelShape getShape(
+            BlockState state,
+            @NotNull BlockGetter level,
+            @NotNull BlockPos pos,
+            @NotNull CollisionContext ctx) {
         return switch (state.getValue(FACING).getOpposite()) {
             case NORTH -> SOUTH_SHAPE;
-            case SOUTH -> NORTH_SHAPE;
             case WEST  -> EAST_SHAPE;
             case EAST  -> WEST_SHAPE;
             default    -> NORTH_SHAPE;
@@ -100,7 +104,7 @@ public class CoralPolypBlock extends HorizontalDirectionalBlock implements Simpl
     }
 
     @Override
-    public FluidState getFluidState(BlockState state) {
+    public @NotNull FluidState getFluidState(BlockState state) {
         return state.getValue(WATERLOGGED)
                 ? Fluids.WATER.getSource(false)
                 : super.getFluidState(state);

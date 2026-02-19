@@ -2,12 +2,12 @@
   "type": "forge:add_features",
   "biomes": [
     "minecraft:savanna",
-    "minecraft:desert",
-    "minecraft:eroded_badlands",
-    "minecraft:savanna_plateau",
-    "minecraft:badlands",
+    "minecraft:windswept_savanna",
     "minecraft:wooded_badlands",
-    "minecraft:windswept_savanna"
+    "minecraft:badlands",
+    "minecraft:savanna_plateau",
+    "minecraft:eroded_badlands",
+    "minecraft:desert"
   ],
   "features": [
     "bejeweled:stone_turquoise_ore"

@@ -3,7 +3,7 @@ package net.blueasclepias.bejeweled.datagen;
 import net.blueasclepias.bejeweled.material.definition.gem.GemCategory;
 import net.blueasclepias.bejeweled.material.registry.ModGemRegistry;
 import net.blueasclepias.bejeweled.material.registry.ModOreRegistry;
-import net.blueasclepias.bejeweled.registry.ModBlocks;
+import net.blueasclepias.bejeweled.material.registry.ModStorageBlockRegistry;
 import net.blueasclepias.bejeweled.registry.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -15,6 +15,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
@@ -33,7 +34,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
     }
 
     @Override
-    protected void addTags(HolderLookup.Provider provider) {
+    protected void addTags(HolderLookup.@NotNull Provider provider) {
 
         ModOreRegistry.allBlocksByFeature().forEach((feat, block) -> {
             Item item = block.asItem();
@@ -46,7 +47,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                     fromNamespaceAndPath("c", "ores/" + path))).add(item);
         });
 
-        ModBlocks.storageBlocks().forEach((block) -> {
+        ModStorageBlockRegistry.allBlocks().forEach((block) -> {
             ResourceLocation blockId = Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block));
             Item item = block.asItem();
             String path = blockId.getPath();

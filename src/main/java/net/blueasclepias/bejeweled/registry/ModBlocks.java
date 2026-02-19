@@ -5,7 +5,9 @@ import net.blueasclepias.bejeweled.block.GemCuttingTableBlock;
 import net.blueasclepias.bejeweled.material.definition.ore.OreFeature;
 import net.blueasclepias.bejeweled.material.definition.ore.OreVariant;
 import net.blueasclepias.bejeweled.material.instance.ore.OreFeatures;
+import net.blueasclepias.bejeweled.material.registry.ModCoralPolypRegistry;
 import net.blueasclepias.bejeweled.material.registry.ModOreRegistry;
+import net.blueasclepias.bejeweled.material.registry.ModStorageBlockRegistry;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -17,9 +19,6 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-
-import java.util.Objects;
-import java.util.stream.Stream;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 import static net.minecraft.resources.ResourceLocation.fromNamespaceAndPath;
@@ -142,19 +141,29 @@ public class ModBlocks {
     // ===== Registration Helpers =====
     // === Storage Blocks ===
     private static RegistryObject<Block> registerStorageBlock(String path, BlockBehaviour.Properties properties) {
-        return BLOCKS.register(path, () -> new Block(properties));
+        return BLOCKS.register(path,
+                () -> {
+                    Block block = new Block(properties);
+                    ModStorageBlockRegistry.bind(block, fromNamespaceAndPath(MOD_ID, path));
+                    return block;
+                });
     }
 
     // === Coral Polyp Blocks ===
     private static RegistryObject<Block> registerCoralPolyp(String path, Block coralBlock){
-        return BLOCKS.register(path, () -> new CoralPolypBlock(
-                coralBlock,
-                BlockBehaviour.Properties.of()
-                        .mapColor(coralBlock.defaultMapColor())
-                        .strength(0.3f)
-                        .sound(SoundType.CORAL_BLOCK)
-                        .noOcclusion()
-                )
+        return BLOCKS.register(path,
+                () -> {
+                    CoralPolypBlock polypBlock = new CoralPolypBlock(
+                            coralBlock,
+                            BlockBehaviour.Properties.of()
+                                    .mapColor(coralBlock.defaultMapColor())
+                                    .strength(0.3f)
+                                    .sound(SoundType.CORAL_BLOCK)
+                                    .noOcclusion()
+                    );
+                    ModCoralPolypRegistry.bind(polypBlock, coralBlock, fromNamespaceAndPath(MOD_ID, path));
+                    return polypBlock;
+                }
         );
     }
 
@@ -174,29 +183,6 @@ public class ModBlocks {
                     return block;
                 }
         );
-    }
-
-    public static Stream<Block> oreBlocks(){
-        return ForgeRegistries.BLOCKS.getValues().stream()
-                .filter(b -> Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(b)).getNamespace().equals(MOD_ID))
-                .filter(b -> Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(b)).getPath().endsWith("_ore"));
-    }
-
-    public static Stream<Block> storageBlocks(){
-        return ForgeRegistries.BLOCKS.getValues().stream()
-                .filter(b -> Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(b)).getNamespace().equals(MOD_ID))
-                .filter(b -> Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(b)).getPath().startsWith("block_of_"));
-    }
-
-    public static Stream<Block> coralPolypBlocks(){
-        return ForgeRegistries.BLOCKS.getValues().stream()
-                .filter(b -> Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(b)).getNamespace().equals(MOD_ID))
-                .filter(b -> Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(b)).getPath().endsWith("_block_polyp"));
-    }
-
-    public static CoralPolypBlock getPolypVariantFor(Block coralBlock) {
-        String path = Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(coralBlock)).getPath() + "_polyp";
-        return (CoralPolypBlock) ForgeRegistries.BLOCKS.getValue(fromNamespaceAndPath(MOD_ID, path));
     }
 
     public static void register(IEventBus eventBus) {

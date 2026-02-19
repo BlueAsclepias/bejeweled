@@ -13,6 +13,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.network.NetworkHooks;
+import org.jetbrains.annotations.NotNull;
 
 public class GemCuttingTableBlock extends BaseEntityBlock {
 
@@ -22,13 +23,13 @@ public class GemCuttingTableBlock extends BaseEntityBlock {
 
     // Forge, please serialize and send the blockpos to the client so it can open the menu
     @Override
-    public InteractionResult use(
-            BlockState state,
+    public @NotNull InteractionResult use(
+            @NotNull BlockState state,
             Level level,
-            BlockPos pos,
-            Player player,
-            InteractionHand hand,
-            BlockHitResult hit
+            @NotNull BlockPos pos,
+            @NotNull Player player,
+            @NotNull InteractionHand hand,
+            @NotNull BlockHitResult hit
     ) {
         if (!level.isClientSide) {
             BlockEntity be = level.getBlockEntity(pos);
@@ -44,12 +45,12 @@ public class GemCuttingTableBlock extends BaseEntityBlock {
     }
 
     @Override
-    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+    public BlockEntity newBlockEntity(@NotNull BlockPos pos, @NotNull BlockState state) {
         return new GemCuttingTableBlockEntity(pos, state);
     }
 
     @Override
-    public RenderShape getRenderShape(BlockState state) {
+    public @NotNull RenderShape getRenderShape(@NotNull BlockState state) {
         return RenderShape.MODEL;
     }
 

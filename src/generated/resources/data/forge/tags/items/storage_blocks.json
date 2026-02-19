@@ -1,14 +1,14 @@
 {
   "values": [
-    "bejeweled:block_of_raw_aquamarine",
+    "bejeweled:block_of_raw_opal",
     "bejeweled:block_of_raw_ruby",
-    "bejeweled:block_of_raw_sapphire",
-    "bejeweled:block_of_raw_garnet",
+    "bejeweled:block_of_raw_pearl",
+    "bejeweled:block_of_raw_aquamarine",
     "bejeweled:block_of_raw_topaz",
+    "bejeweled:block_of_raw_sapphire",
     "bejeweled:block_of_raw_turquoise",
     "bejeweled:block_of_raw_jade",
-    "bejeweled:block_of_raw_opal",
-    "bejeweled:block_of_raw_peridot",
-    "bejeweled:block_of_raw_pearl"
+    "bejeweled:block_of_raw_garnet",
+    "bejeweled:block_of_raw_peridot"
   ]
 }

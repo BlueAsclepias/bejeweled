@@ -7,12 +7,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.ShapedRecipe;
+import org.jetbrains.annotations.NotNull;
 
 public class GemCuttingRecipeSerializer implements RecipeSerializer<GemCuttingRecipe> {
 
     @Override
-    public GemCuttingRecipe fromJson(
-            ResourceLocation id,
+    public @NotNull GemCuttingRecipe fromJson(
+            @NotNull ResourceLocation id,
             JsonObject json
     ) {
         Ingredient input = Ingredient.fromJson(json.get("input"));
@@ -22,8 +23,8 @@ public class GemCuttingRecipeSerializer implements RecipeSerializer<GemCuttingRe
 
     @Override
     public GemCuttingRecipe fromNetwork(
-            ResourceLocation id,
-            FriendlyByteBuf buf
+            @NotNull ResourceLocation id,
+            @NotNull FriendlyByteBuf buf
     ) {
         Ingredient input = Ingredient.fromNetwork(buf);
         ItemStack output = buf.readItem();
@@ -32,7 +33,7 @@ public class GemCuttingRecipeSerializer implements RecipeSerializer<GemCuttingRe
 
     @Override
     public void toNetwork(
-            FriendlyByteBuf buf,
+            @NotNull FriendlyByteBuf buf,
             GemCuttingRecipe recipe
     ) {
         recipe.input.toNetwork(buf);

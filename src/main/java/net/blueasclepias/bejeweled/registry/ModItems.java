@@ -196,9 +196,6 @@ public class ModItems {
             registerBlockItem("tube_coral_block_polyp",ModBlocks.TUBE_CORAL_BLOCK_POLYP);
 
     // ===== JEWEL BASES STUB =====
-    public static final RegistryObject<Item> GEM_SOCKET =
-            ITEMS.register("gem_socket", () -> new Item(new Item.Properties()));
-
     public static final RegistryObject<Item> RING =
             ITEMS.register("ring", () -> new Item(new Item.Properties()));
 

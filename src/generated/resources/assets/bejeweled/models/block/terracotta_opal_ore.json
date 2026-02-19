@@ -83,7 +83,7 @@
     "down": "minecraft:block/terracotta",
     "east": "minecraft:block/terracotta",
     "north": "minecraft:block/terracotta",
-    "overlay": "bejeweled:block/opal_ore",
+    "overlay": "bejeweled:block/ore/opal",
     "particle": "minecraft:block/terracotta",
     "south": "minecraft:block/terracotta",
     "up": "minecraft:block/terracotta",

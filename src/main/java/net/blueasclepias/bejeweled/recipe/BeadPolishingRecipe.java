@@ -13,6 +13,7 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 
 public class BeadPolishingRecipe implements Recipe<Container> {
 
@@ -27,13 +28,12 @@ public class BeadPolishingRecipe implements Recipe<Container> {
     }
 
     @Override
-    public boolean matches(Container container, Level level) {
+    public boolean matches(Container container, @NotNull Level level) {
         return input.test(container.getItem(0));
     }
 
-    // TODO: Grade Gamble
     @Override
-    public ItemStack assemble(Container container, RegistryAccess access) {
+    public @NotNull ItemStack assemble(@NotNull Container container, @NotNull RegistryAccess access) {
         ItemStack result = output.copy();
         RandomSource random = RandomSource.create();
         GemGrade gemGrade = GemGrade.random(random);
@@ -47,22 +47,22 @@ public class BeadPolishingRecipe implements Recipe<Container> {
     }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess access) {
+    public @NotNull ItemStack getResultItem(@NotNull RegistryAccess access) {
         return output;
     }
 
     @Override
-    public ResourceLocation getId() {
+    public @NotNull ResourceLocation getId() {
         return id;
     }
 
     @Override
-    public RecipeSerializer<?> getSerializer() {
+    public @NotNull RecipeSerializer<?> getSerializer() {
         return ModRecipes.BEAD_POLISHING_SERIALIZER.get();
     }
 
     @Override
-    public RecipeType<?> getType() {
+    public @NotNull RecipeType<?> getType() {
         return ModRecipes.BEAD_POLISHING_TYPE.get();
     }
 }

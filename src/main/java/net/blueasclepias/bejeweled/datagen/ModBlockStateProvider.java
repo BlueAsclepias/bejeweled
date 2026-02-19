@@ -3,7 +3,9 @@ package net.blueasclepias.bejeweled.datagen;
 import net.blueasclepias.bejeweled.block.CoralPolypBlock;
 import net.blueasclepias.bejeweled.material.definition.ore.OreFeature;
 import net.blueasclepias.bejeweled.material.definition.ore.OreVariant;
+import net.blueasclepias.bejeweled.material.registry.ModCoralPolypRegistry;
 import net.blueasclepias.bejeweled.material.registry.ModOreRegistry;
+import net.blueasclepias.bejeweled.material.registry.ModStorageBlockRegistry;
 import net.blueasclepias.bejeweled.registry.ModBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
@@ -40,33 +42,31 @@ public class ModBlockStateProvider extends BlockStateProvider {
         ModOreRegistry.allBlocksByFeature().forEach(this::oreBlock);
 
         // Storage blocks
-        ModBlocks.storageBlocks().forEach(block ->
+        ModStorageBlockRegistry.allBlocks().forEach(block ->
                 simpleBlockWithItem(block, cubeAll(block))
         );
 
         // Coral Polyp blocks
-        ModBlocks.coralPolypBlocks().forEach(this::coralPolyp);
+        ModCoralPolypRegistry.allBlocks().forEach(this::coralPolyp);
     }
 
     private void oreBlock(OreFeature feat, Block block){
         OreVariant variant = feat.variant();
-        String oreId = feat.definition().id() + "_ore";
-
         ResourceLocation blockId = Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block));
         ResourceLocation baseBlockId = Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(variant.baseBlock()));
 
         String path = blockId.getPath();
-        String baseName = baseBlockId.getPath();
+        String basePath = baseBlockId.getPath();
 
         ResourceLocation vertical = variant.hasTop()
-                ? mcLoc("block/" + baseName + "_top")
-                : mcLoc("block/" + baseName);
+                ? mcLoc("block/" + basePath + "_top")
+                : mcLoc("block/" + basePath);
 
         ResourceLocation horizontal = variant.hasSide()
-                ? mcLoc("block/" + baseName + "_side")
-                : mcLoc("block/" + baseName);
+                ? mcLoc("block/" + basePath + "_side")
+                : mcLoc("block/" + basePath);
 
-        ResourceLocation overlay = modLoc("block/" + oreId);
+        ResourceLocation overlay = modLoc("block/ore/" + feat.definition().id());
 
         BlockModelBuilder model = models().getBuilder(path)
                 .parent(models().getExistingFile(mcLoc("block/cube")))
