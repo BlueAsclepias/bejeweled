@@ -38,8 +38,9 @@ public class ModRecipeProvider extends RecipeProvider {
 
         ModStorageBlockRegistry.all().forEach((id, block) -> {
             String blockPath = id.getPath();
-            String itemPath = blockPath.replace("block_of_", "");
-            Item item = Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(fromNamespaceAndPath(MOD_ID, itemPath)));
+            ResourceLocation ingredientPath = ModStorageBlockRegistry.getIngredient(id);
+            String itemPath = ingredientPath.getPath();
+            Item item = Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(ingredientPath));
             if(item == Items.AIR)
                 throw new IllegalStateException("No item for storage block recipe: " + itemPath);
             // ===== Compression (9 → 1) =====
@@ -77,19 +78,15 @@ public class ModRecipeProvider extends RecipeProvider {
         ModGemRegistry.getAll(GemCategory.BEAD, false)
                 .forEach((item, def) -> {
                     if(def.equals(GemDefinitions.PEARL)) return;
-                    String itemPath = def.id();
-                    String blockPath = itemPath
-                            .replace("_polyp", "_block")
-                            .replace("raw_", "");
                     Block block = Objects.requireNonNull(
-                            ForgeRegistries.BLOCKS.getValue(fromNamespaceAndPath("minecraft", blockPath))
+                            ForgeRegistries.BLOCKS.getValue(fromNamespaceAndPath("minecraft", def.id()))
                     );
                     ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, block)
                             .define('#', item)
                             .pattern("###")
                             .pattern("###")
                             .pattern("###")
-                            .unlockedBy("has_" + itemPath, has(item))
+                            .unlockedBy("has_" + def.id(), has(item))
                             .save(consumer);
                 });
 

@@ -19,11 +19,11 @@ public class Bejeweled {
     public Bejeweled(FMLJavaModLoadingContext context) {
         IEventBus modEventBus = context.getModEventBus();
 
-        LOGGER.info("Bejeweled is registering blocks...");
-        ModBlocks.register(modEventBus);
-
         LOGGER.info("Bejeweled is registering items...");
         ModItems.register(modEventBus);
+
+        LOGGER.info("Bejeweled is registering blocks...");
+        ModBlocks.register(modEventBus);
 
         LOGGER.info("Bejeweled is registering baseBlock entities...");
         ModBlockEntities.register(modEventBus);

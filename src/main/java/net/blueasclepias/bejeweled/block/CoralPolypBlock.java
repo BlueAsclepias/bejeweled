@@ -2,6 +2,7 @@ package net.blueasclepias.bejeweled.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -30,6 +31,7 @@ public class CoralPolypBlock extends HorizontalDirectionalBlock implements Simpl
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     private final Block supportBlock;
+    private final ResourceLocation drop;
 
     // Attached to NORTH wall (positive Z)
     private static final VoxelShape NORTH_SHAPE =
@@ -44,9 +46,10 @@ public class CoralPolypBlock extends HorizontalDirectionalBlock implements Simpl
     private static final VoxelShape EAST_SHAPE =
             Block.box(0, 5, 5, 6, 11, 11);
 
-    public CoralPolypBlock(Block supportBlock, Properties properties) {
+    public CoralPolypBlock(Block supportBlock, ResourceLocation drop, Properties properties) {
         super(properties);
         this.supportBlock = supportBlock;
+        this.drop = drop;
         this.registerDefaultState(this.stateDefinition.any()
                 .setValue(FACING, Direction.NORTH)
                 .setValue(WATERLOGGED, true));
@@ -116,5 +119,9 @@ public class CoralPolypBlock extends HorizontalDirectionalBlock implements Simpl
 
         return support.isFaceSturdy(level, supportPos, facing)
                 && support.is(supportBlock);
+    }
+
+    public ResourceLocation getDrop(){
+        return this.drop;
     }
 }

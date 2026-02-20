@@ -8,6 +8,7 @@ import net.blueasclepias.bejeweled.material.instance.ore.OreFeatures;
 import net.blueasclepias.bejeweled.material.registry.ModCoralPolypRegistry;
 import net.blueasclepias.bejeweled.material.registry.ModOreRegistry;
 import net.blueasclepias.bejeweled.material.registry.ModStorageBlockRegistry;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -89,39 +90,38 @@ public class ModBlocks {
             registerGemOreBlock(OreFeatures.DEEPSLATE_OLIVINE);
 
     // ===== STORAGE BLOCKS =====
-    // === RAW ===
     public static final RegistryObject<Block> BLOCK_OF_RAW_AQUAMARINE =
-            registerStorageBlock("block_of_raw_aquamarine", rawGemBlock(MapColor.COLOR_CYAN));
+            registerStorageBlock("block_of_raw_aquamarine", fromNamespaceAndPath(MOD_ID, "raw_aquamarine"), rawGemBlock(MapColor.COLOR_CYAN));
     public static final RegistryObject<Block> BLOCK_OF_RAW_RUBY =
-            registerStorageBlock("block_of_raw_ruby", rawGemBlock(MapColor.COLOR_RED));
+            registerStorageBlock("block_of_raw_ruby", fromNamespaceAndPath(MOD_ID, "raw_ruby"), rawGemBlock(MapColor.COLOR_RED));
     public static final RegistryObject<Block> BLOCK_OF_RAW_SAPPHIRE =
-            registerStorageBlock("block_of_raw_sapphire", rawGemBlock(MapColor.COLOR_BLUE));
+            registerStorageBlock("block_of_raw_sapphire", fromNamespaceAndPath(MOD_ID, "raw_sapphire"), rawGemBlock(MapColor.COLOR_BLUE));
     public static final RegistryObject<Block> BLOCK_OF_RAW_GARNET =
-            registerStorageBlock("block_of_raw_garnet", rawGemBlock(MapColor.COLOR_RED));
+            registerStorageBlock("block_of_raw_garnet", fromNamespaceAndPath(MOD_ID, "raw_garnet"), rawGemBlock(MapColor.COLOR_RED));
     public static final RegistryObject<Block> BLOCK_OF_RAW_TOPAZ =
-            registerStorageBlock("block_of_raw_topaz", rawGemBlock(MapColor.COLOR_ORANGE));
+            registerStorageBlock("block_of_raw_topaz", fromNamespaceAndPath(MOD_ID, "raw_topaz"), rawGemBlock(MapColor.COLOR_ORANGE));
     public static final RegistryObject<Block> BLOCK_OF_RAW_TURQUOISE =
-            registerStorageBlock("block_of_raw_turquoise", rawGemBlock(MapColor.COLOR_CYAN));
+            registerStorageBlock("block_of_raw_turquoise", fromNamespaceAndPath(MOD_ID, "raw_turquoise"), rawGemBlock(MapColor.COLOR_CYAN));
     public static final RegistryObject<Block> BLOCK_OF_RAW_JADE =
-            registerStorageBlock("block_of_raw_jade", rawGemBlock(MapColor.COLOR_LIGHT_GREEN));
+            registerStorageBlock("block_of_raw_jade", fromNamespaceAndPath(MOD_ID, "raw_jade"), rawGemBlock(MapColor.COLOR_LIGHT_GREEN));
     public static final RegistryObject<Block> BLOCK_OF_RAW_OPAL =
-            registerStorageBlock("block_of_raw_opal", rawGemBlock(MapColor.COLOR_LIGHT_GRAY));
+            registerStorageBlock("block_of_raw_opal", fromNamespaceAndPath(MOD_ID, "raw_opal"), rawGemBlock(MapColor.COLOR_LIGHT_GRAY));
     public static final RegistryObject<Block> BLOCK_OF_RAW_PERIDOT =
-            registerStorageBlock("block_of_raw_peridot", rawGemBlock(MapColor.COLOR_LIGHT_GREEN));
+            registerStorageBlock("block_of_raw_peridot", fromNamespaceAndPath(MOD_ID, "raw_peridot"), rawGemBlock(MapColor.COLOR_LIGHT_GREEN));
     public static final RegistryObject<Block> BLOCK_OF_RAW_PEARL =
-            registerStorageBlock("block_of_raw_pearl", rawGemBlock(MapColor.COLOR_LIGHT_GRAY));
+            registerStorageBlock("block_of_raw_pearl", fromNamespaceAndPath(MOD_ID, "raw_pearl"), rawGemBlock(MapColor.COLOR_LIGHT_GRAY));
 
     // ===== CORAL POLYP BLOCKS =====
     public static final RegistryObject<Block> FIRE_CORAL_BLOCK_POLYP =
-            registerCoralPolyp("fire_coral_block_polyp", Blocks.FIRE_CORAL_BLOCK);
+            registerCoralPolyp("fire_coral_block_polyp", fromNamespaceAndPath(MOD_ID, "raw_fire_coral_polyp"), Blocks.FIRE_CORAL_BLOCK);
     public static final RegistryObject<Block> BRAIN_CORAL_BLOCK_POLYP =
-            registerCoralPolyp("brain_coral_block_polyp", Blocks.BRAIN_CORAL_BLOCK);
+            registerCoralPolyp("brain_coral_block_polyp", fromNamespaceAndPath(MOD_ID, "raw_brain_coral_polyp"), Blocks.BRAIN_CORAL_BLOCK);
     public static final RegistryObject<Block> BUBBLE_CORAL_BLOCK_POLYP =
-            registerCoralPolyp("bubble_coral_block_polyp", Blocks.BUBBLE_CORAL_BLOCK);
+            registerCoralPolyp("bubble_coral_block_polyp", fromNamespaceAndPath(MOD_ID, "raw_bubble_coral_polyp"), Blocks.BUBBLE_CORAL_BLOCK);
     public static final RegistryObject<Block> HORN_CORAL_BLOCK_POLYP =
-            registerCoralPolyp("horn_coral_block_polyp", Blocks.HORN_CORAL_BLOCK);
+            registerCoralPolyp("horn_coral_block_polyp", fromNamespaceAndPath(MOD_ID, "raw_horn_coral_polyp"), Blocks.HORN_CORAL_BLOCK);
     public static final RegistryObject<Block> TUBE_CORAL_BLOCK_POLYP =
-            registerCoralPolyp("tube_coral_block_polyp", Blocks.TUBE_CORAL_BLOCK);
+            registerCoralPolyp("tube_coral_block_polyp", fromNamespaceAndPath(MOD_ID, "raw_tube_coral_polyp"), Blocks.TUBE_CORAL_BLOCK);
 
     // === Shared properties for gem/raw gem blocks ===
     private static BlockBehaviour.Properties gemBlock(MapColor color) {
@@ -140,21 +140,22 @@ public class ModBlocks {
 
     // ===== Registration Helpers =====
     // === Storage Blocks ===
-    private static RegistryObject<Block> registerStorageBlock(String path, BlockBehaviour.Properties properties) {
+    private static RegistryObject<Block> registerStorageBlock(String path, ResourceLocation ingredient, BlockBehaviour.Properties properties) {
         return BLOCKS.register(path,
                 () -> {
                     Block block = new Block(properties);
-                    ModStorageBlockRegistry.bind(block, fromNamespaceAndPath(MOD_ID, path));
+                    ModStorageBlockRegistry.bind(block, ingredient,fromNamespaceAndPath(MOD_ID, path));
                     return block;
                 });
     }
 
     // === Coral Polyp Blocks ===
-    private static RegistryObject<Block> registerCoralPolyp(String path, Block coralBlock){
+    private static RegistryObject<Block> registerCoralPolyp(String path, ResourceLocation drop, Block coralBlock){
         return BLOCKS.register(path,
                 () -> {
                     CoralPolypBlock polypBlock = new CoralPolypBlock(
                             coralBlock,
+                            drop,
                             BlockBehaviour.Properties.of()
                                     .mapColor(coralBlock.defaultMapColor())
                                     .strength(0.3f)

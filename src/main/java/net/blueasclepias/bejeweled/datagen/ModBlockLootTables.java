@@ -17,9 +17,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 import java.util.Set;
 
-import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
-import static net.minecraft.resources.ResourceLocation.fromNamespaceAndPath;
-
 public class ModBlockLootTables extends BlockLootSubProvider {
 
     public ModBlockLootTables() {
@@ -42,10 +39,9 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
         // === Coral Polyps ===
         ModCoralPolypRegistry.all().forEach((id, block) -> {
-            String path = "raw_" + id.getPath().replace("_block", "");
-            Item item = Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(fromNamespaceAndPath(MOD_ID, path)));
+            Item item = Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(block.getDrop()));
             if(item == Items.AIR)
-                throw new IllegalStateException("Missing item for coral polyp drop: " + path);
+                throw new IllegalStateException("No drop for " + id);
             add(block, createSingleItemTable(item));
         });
 
