@@ -102,19 +102,18 @@ public class ModItems {
     // === PROCESSED ===
     public static final RegistryObject<Item> PEARL =
             registerProcessedGemItem("pearl", GemDefinitions.PEARL);
-    public static final RegistryObject<Item> TUBE_CORAL_BEAD =
-            registerProcessedGemItem("tube_coral_bead", GemDefinitions.TUBE_CORAL);
-    public static final RegistryObject<Item> BRAIN_CORAL_BEAD =
-            registerProcessedGemItem("brain_coral_bead", GemDefinitions.BRAIN_CORAL);
-    public static final RegistryObject<Item> BUBBLE_CORAL_BEAD =
-            registerProcessedGemItem("bubble_coral_bead", GemDefinitions.BUBBLE_CORAL);
-    public static final RegistryObject<Item> FIRE_CORAL_BEAD =
-            registerProcessedGemItem("fire_coral_bead", GemDefinitions.FIRE_CORAL);
-    public static final RegistryObject<Item> HORN_CORAL_BEAD =
-            registerProcessedGemItem("horn_coral_bead", GemDefinitions.HORN_CORAL);
+    public static final RegistryObject<Item> TUBE_CORAL =
+            registerProcessedGemItem("tube_coral", GemDefinitions.TUBE_CORAL);
+    public static final RegistryObject<Item> BRAIN_CORAL =
+            registerProcessedGemItem("brain_coral", GemDefinitions.BRAIN_CORAL);
+    public static final RegistryObject<Item> BUBBLE_CORAL =
+            registerProcessedGemItem("bubble_coral", GemDefinitions.BUBBLE_CORAL);
+    public static final RegistryObject<Item> FIRE_CORAL =
+            registerProcessedGemItem("fire_coral", GemDefinitions.FIRE_CORAL);
+    public static final RegistryObject<Item> HORN_CORAL =
+            registerProcessedGemItem("horn_coral", GemDefinitions.HORN_CORAL);
 
     // ===== BLOCK ITEMS =====
-
     // ==== ORE BLOCKS ====
     public static final RegistryObject<Item> STONE_BERYL_ORE =
             registerBlockItem("stone_beryl_ore", ModBlocks.STONE_BERYL_ORE);
@@ -164,7 +163,6 @@ public class ModItems {
             registerBlockItem("deepslate_olivine_ore", ModBlocks.DEEPSLATE_OLIVINE_ORE);
 
     // ==== STORAGE BLOCKS ====
-
     // === RAW ===
     public static final RegistryObject<Item> BLOCK_OF_RAW_AQUAMARINE =
             registerBlockItem("block_of_raw_aquamarine", ModBlocks.BLOCK_OF_RAW_AQUAMARINE);

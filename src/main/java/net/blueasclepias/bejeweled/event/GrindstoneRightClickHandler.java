@@ -21,7 +21,7 @@ import java.util.Optional;
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
 @Mod.EventBusSubscriber(modid = MOD_ID)
-public class GrindstoneRightClickEvent {
+public class GrindstoneRightClickHandler {
     @SubscribeEvent
     public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
         Level level = event.getLevel();

@@ -88,7 +88,6 @@ public class ModItemModelProvider extends ItemModelProvider {
                         .texture("layer1", modLoc("item/socket/" + overlay));
 
         for (JewelMaterial material : JewelMaterial.values()) {
-            //if (material.ordinal() == 0) continue; // default
             String overrideModelName = path + "_" + material.name().toLowerCase();
 
             withExistingParent(overrideModelName, mcLoc("item/generated"))

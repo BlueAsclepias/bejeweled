@@ -29,7 +29,8 @@ public class JewelSocketingHandler {
         if (isGem(off, main) && isBase(off, main)) {
 
             ItemStack result;
-            if(main.getItem() instanceof ProcessedGemItem)
+            boolean isBaseOnOffHand = off.getItem() instanceof BaseJewelItem;
+            if(isBaseOnOffHand)
                 result = SocketedJewelItemFactory.create(main, off);
             else
                 result = SocketedJewelItemFactory.create(off, main);
@@ -39,7 +40,10 @@ public class JewelSocketingHandler {
                 main.shrink(1);
                 off.shrink(1);
 
-                player.setItemInHand(InteractionHand.MAIN_HAND, result);
+                if(isBaseOnOffHand)
+                    player.setItemInHand(InteractionHand.OFF_HAND, result);
+                else
+                    player.setItemInHand(InteractionHand.MAIN_HAND, result);
 
                 // Play a sound upon crafting
                 player.level().playSound(

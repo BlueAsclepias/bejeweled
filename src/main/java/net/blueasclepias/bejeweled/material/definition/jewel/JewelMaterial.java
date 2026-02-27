@@ -10,13 +10,9 @@ public enum JewelMaterial {
     STEEL("material.bejeweled.steel"),
     NETHERITE("material.bejeweled.netherite");
 
-    private final String translationKey;
+    public final String translationKey;
 
     JewelMaterial(String key) {
         this.translationKey = key;
-    }
-
-    public String getTranslationKey() {
-        return translationKey;
     }
 }

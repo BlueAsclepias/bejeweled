@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "bejeweled:item/gem/processed/brain_coral_bead"
+    "layer0": "bejeweled:item/gem/processed/horn_coral"
   }
 }

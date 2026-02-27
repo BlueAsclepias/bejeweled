@@ -38,7 +38,7 @@ public class SocketedJewelItemFactory {
         String gradeName = gemData.getString("grade");
         GemGrade grade = GemGrade.valueOf(gradeName);
 
-        // Determine correct socketed result item
+        // Determine correct socketed result itemqq
         RegistryObject<Item> resultRegistry =
                 RESULT_ITEMS.get(baseItem.getType());
 

@@ -46,8 +46,8 @@ public class SocketedJewelItem extends Item implements ICurioItem {
 
         Component gradeComponent = Component.translatable(grade.translationKey);
         Component gemComponent = Component.translatable("item.bejeweled." + def.id());
-        Component materialComponent = Component.translatable(material.getTranslationKey());
-        Component typeComponent = Component.translatable(type.getTranslationKey());
+        Component materialComponent = Component.translatable(material.translationKey);
+        Component typeComponent = Component.translatable(type.translationKey);
 
         return Component.translatable(
                 "item.bejeweled.jewel_name",
@@ -83,13 +83,13 @@ public class SocketedJewelItem extends Item implements ICurioItem {
             tooltip.add(
                     Component
                             .translatable("tooltip.bejeweled.type")
-                            .append(Component.literal(type.name()))
+                            .append(Component.translatable(type.translationKey))
             );
 
             tooltip.add(
                     Component
                             .translatable("tooltip.bejeweled.material")
-                            .append(Component.literal(material.name()))
+                            .append(Component.translatable(material.translationKey))
             );
         }
     }

@@ -8,7 +8,7 @@ public class GemDefinitions {
     public static final GemDefinition AQUAMARINE =
             new GemDefinition(
                     "aquamarine",
-                0x9BFFF6,
+                0x21B2D3,
                 GemRarity.COMMON,
                 GemCategory.GEMSTONE,
                 new GemEffects(),
@@ -18,7 +18,7 @@ public class GemDefinitions {
     public static final GemDefinition RUBY =
             new GemDefinition(
                     "ruby",
-                    0xBC0042,
+                    0xEA1243,
                     GemRarity.RARE,
                     GemCategory.GEMSTONE,
                     new GemEffects(),
@@ -28,7 +28,7 @@ public class GemDefinitions {
     public static final GemDefinition SAPPHIRE =
             new GemDefinition(
                     "sapphire",
-                    0x004ABA,
+                    0x1057E5,
                     GemRarity.RARE,
                     GemCategory.GEMSTONE,
                     new GemEffects(),
@@ -38,7 +38,7 @@ public class GemDefinitions {
     public static final GemDefinition GARNET =
             new GemDefinition(
                     "garnet",
-                    0x650402,
+                    0xA00603,
                     GemRarity.COMMON,
                     GemCategory.GEMSTONE,
                     new GemEffects(),
@@ -47,7 +47,7 @@ public class GemDefinitions {
     public static final GemDefinition AMETHYST =
             new GemDefinition(
                     "amethyst",
-                    0x2E0C68,
+                    0xFF8DFD,
                     GemRarity.COMMON,
                     GemCategory.GEMSTONE,
                     new GemEffects(),
@@ -56,7 +56,7 @@ public class GemDefinitions {
     public static final GemDefinition TOPAZ =
             new GemDefinition(
                     "topaz",
-                    0xDD5F16,
+                    0xF38241,
                     GemRarity.COMMON,
                     GemCategory.GEMSTONE,
                     new GemEffects(),
@@ -76,7 +76,7 @@ public class GemDefinitions {
     public static final GemDefinition TURQUOISE =
             new GemDefinition(
                     "turquoise",
-                    0x19CBCD,
+                    0x31D4A4,
                     GemRarity.RARE,
                     GemCategory.GEMSTONE,
                     new GemEffects(),
@@ -86,7 +86,7 @@ public class GemDefinitions {
     public static final GemDefinition JADE =
             new GemDefinition(
                     "jade",
-                    0x51A561,
+                    0x95C585,
                     GemRarity.UNCOMMON,
                     GemCategory.GEMSTONE,
                     new GemEffects(),
@@ -96,7 +96,7 @@ public class GemDefinitions {
     public static final GemDefinition OPAL =
             new GemDefinition(
                     "opal",
-                    0xFFFFFE,
+                    0xDEFFF4,
                     GemRarity.RARE,
                     GemCategory.GEMSTONE,
                     new GemEffects(),
@@ -116,7 +116,7 @@ public class GemDefinitions {
     public static final GemDefinition TUBE_CORAL =
             new GemDefinition(
                     "tube_coral",
-                    0x3545DD,
+                    0x858DFF,
                     GemRarity.COMMON,
                     GemCategory.BEAD,
                     new GemEffects(),
@@ -126,7 +126,7 @@ public class GemDefinitions {
     public static final GemDefinition FIRE_CORAL =
             new GemDefinition(
                     "fire_coral",
-                    0xFF2E3E,
+                    0xE35C5E,
                     GemRarity.COMMON,
                     GemCategory.BEAD,
                     new GemEffects(),
@@ -136,7 +136,7 @@ public class GemDefinitions {
     public static final GemDefinition HORN_CORAL =
             new GemDefinition(
                     "horn_coral",
-                    0xFFCE40,
+                    0x9A711F,
                     GemRarity.COMMON,
                     GemCategory.BEAD,
                     new GemEffects(),
@@ -166,7 +166,7 @@ public class GemDefinitions {
     public static final GemDefinition DIAMOND =
             new GemDefinition(
                     "diamond",
-                    0x4AEDD9,
+                    0x2CE0D8,
                     GemRarity.RARE,
                     GemCategory.GEMSTONE,
                     new GemEffects(),
@@ -176,7 +176,7 @@ public class GemDefinitions {
     public static final GemDefinition PERIDOT =
             new GemDefinition(
                     "peridot",
-                    0x90D40C,
+                    0xADFF0E,
                     GemRarity.RARE,
                     GemCategory.GEMSTONE,
                     new GemEffects(),

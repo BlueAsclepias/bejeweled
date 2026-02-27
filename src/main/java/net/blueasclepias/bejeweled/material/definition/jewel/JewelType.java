@@ -7,13 +7,9 @@ public enum JewelType {
     BRACELET("jeweltype.bejeweled.bracelet"),
     CIRCLET("jeweltype.bejeweled.circlet");
 
-    private final String translationKey;
+    public final String translationKey;
 
     JewelType(String key) {
         this.translationKey = key;
-    }
-
-    public String getTranslationKey() {
-        return translationKey;
     }
 }
