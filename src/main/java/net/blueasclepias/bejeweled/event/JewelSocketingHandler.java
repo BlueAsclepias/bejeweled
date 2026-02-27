@@ -41,7 +41,7 @@ public class JewelSocketingHandler {
 
                 player.setItemInHand(InteractionHand.MAIN_HAND, result);
 
-                // Play a sound upon crafting - TODO: is this sound good?
+                // Play a sound upon crafting
                 player.level().playSound(
                         null,
                         player.blockPosition(),

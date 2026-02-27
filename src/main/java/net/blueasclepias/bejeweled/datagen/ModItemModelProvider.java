@@ -4,16 +4,19 @@ import net.blueasclepias.bejeweled.item.BaseJewelItem;
 import net.blueasclepias.bejeweled.item.ProcessedGemItem;
 import net.blueasclepias.bejeweled.item.RawGemItem;
 import net.blueasclepias.bejeweled.item.SocketedJewelItem;
+import net.blueasclepias.bejeweled.material.definition.jewel.JewelMaterial;
 import net.blueasclepias.bejeweled.registry.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
+import static net.minecraft.resources.ResourceLocation.fromNamespaceAndPath;
 
 /**
  * Provides item models data for the mod.
@@ -47,11 +50,63 @@ public class ModItemModelProvider extends ItemModelProvider {
             folder += "jewel/";
         }
         else if (item instanceof SocketedJewelItem) {
-            folder += "socket/";
+            registerSocketedModel(path, item);
+            return;
         }
 
         withExistingParent(path, mcLoc("item/generated"))
                 .texture("layer0", modLoc(folder + path));
+    }
+
+    private void registerSocketedModel(String path, Item item) {
+
+        String overlay = "";
+        String baseType = "";
+
+        switch (path) {
+            case "socketed_amulet" -> {
+                overlay = "amulet_socket";
+                baseType = "amulet";
+            }
+            case "socketed_bracelet" -> {
+                overlay = "bracelet_socket";
+                baseType = "bracelet";
+            }
+            case "socketed_circlet" -> {
+                overlay = "circlet_socket";
+                baseType = "circlet";
+            }
+            default -> {
+                overlay = "ring_socket";
+                baseType = "ring";
+            }
+        };
+        // Default model - no base material, looks like steel.
+        ItemModelBuilder builder =
+                withExistingParent(path, mcLoc("item/generated"))
+                        .texture("layer0", modLoc("item/socket/socketed_" + baseType))
+                        .texture("layer1", modLoc("item/socket/" + overlay));
+
+        for (JewelMaterial material : JewelMaterial.values()) {
+            //if (material.ordinal() == 0) continue; // default
+            String overrideModelName = path + "_" + material.name().toLowerCase();
+
+            withExistingParent(overrideModelName, mcLoc("item/generated"))
+                    .texture("layer0",
+                            modLoc("item/jewel/"
+                                    + material.name().toLowerCase()
+                                    + "_" + baseType))
+                    .texture("layer1",
+                            modLoc("item/socket/" + overlay));
+
+            builder.override()
+                    .predicate(
+                            fromNamespaceAndPath(MOD_ID, "material"),
+                            material.ordinal()
+                    )
+                    .model(getExistingFile(modLoc("item/" + overrideModelName)))
+                    .end();
+        }
     }
 
 }

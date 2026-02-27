@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "bejeweled:item/jewel/gold_amulet",
+    "layer1": "bejeweled:item/socket/amulet_socket"
+  }
+}

@@ -1,6 +1,51 @@
 {
   "parent": "minecraft:item/generated",
+  "overrides": [
+    {
+      "model": "bejeweled:item/socketed_ring_copper",
+      "predicate": {
+        "bejeweled:material": 0.0
+      }
+    },
+    {
+      "model": "bejeweled:item/socketed_ring_silver",
+      "predicate": {
+        "bejeweled:material": 1.0
+      }
+    },
+    {
+      "model": "bejeweled:item/socketed_ring_bronze",
+      "predicate": {
+        "bejeweled:material": 2.0
+      }
+    },
+    {
+      "model": "bejeweled:item/socketed_ring_iron",
+      "predicate": {
+        "bejeweled:material": 3.0
+      }
+    },
+    {
+      "model": "bejeweled:item/socketed_ring_gold",
+      "predicate": {
+        "bejeweled:material": 4.0
+      }
+    },
+    {
+      "model": "bejeweled:item/socketed_ring_steel",
+      "predicate": {
+        "bejeweled:material": 5.0
+      }
+    },
+    {
+      "model": "bejeweled:item/socketed_ring_netherite",
+      "predicate": {
+        "bejeweled:material": 6.0
+      }
+    }
+  ],
   "textures": {
-    "layer0": "bejeweled:item/socket/socketed_ring"
+    "layer0": "bejeweled:item/socket/socketed_ring",
+    "layer1": "bejeweled:item/socket/ring_socket"
   }
 }

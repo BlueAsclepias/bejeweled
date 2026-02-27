@@ -7,6 +7,7 @@ import net.blueasclepias.bejeweled.material.instance.gem.GemPassives;
 
 public interface IGemDefinition {
     String id();
+    int color();
     GemRarity rarity();
     GemCategory category();
     GemEffects effects();

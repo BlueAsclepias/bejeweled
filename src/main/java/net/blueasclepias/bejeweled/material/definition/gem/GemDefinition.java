@@ -10,17 +10,20 @@ import static net.minecraft.resources.ResourceLocation.fromNamespaceAndPath;
 
 public record GemDefinition(
         String id,
+        int color,
         GemRarity rarity,
         GemCategory category,
         GemEffects effects, // TODO. null for now
         GemPassives passives // TODO. null for now
 ) implements IGemDefinition {
     public GemDefinition(String id,
+                         int color,
                          GemRarity rarity,
                          GemCategory category,
                          GemEffects effects,
                          GemPassives passives){
         this.id = id;
+        this.color = color;
         this.rarity = rarity;
         this.category = category;
         this.effects = effects;

@@ -1,8 +1,8 @@
-// 1.20.1	2026-02-26T21:56:39.466705353	Bejeweled Biome Modifiers
+// 1.20.1	2026-02-26T23:39:40.403949623	Bejeweled Biome Modifiers
 f47b43953cbb9a99bd4fce3aa09beef29124b4f2 data/bejeweled/forge/biome_modifier/all_jadeite_ore.json
-ab188703425abce5507340aa263d70ec2a25523d data/bejeweled/forge/biome_modifier/all_nephrite_ore.json
+73e9789bcacf2009cd4a0b9ab0e7fdcd28628d25 data/bejeweled/forge/biome_modifier/all_nephrite_ore.json
 73de8aa516fb658852b452d46b20d6eccb99ed67 data/bejeweled/forge/biome_modifier/basalt_blue_corundum_ore.json
-c18b11d89ab431647d727da3af656c03ea3f7f91 data/bejeweled/forge/biome_modifier/basic_gem_ore.json
+b82590b0f99d1baf4e0283af68b72391b53328c4 data/bejeweled/forge/biome_modifier/basic_gem_ore.json
 fb19e47339323319f70572fa4f801eb15e71ace8 data/bejeweled/forge/biome_modifier/coral_polyp.json
-3366aad9cab2fe1f18adc52c7697ff6d3e434ed0 data/bejeweled/forge/biome_modifier/stone_turquoise_ore.json
+194b27c684e4fbad6dbcf4dcaed619f322173e34 data/bejeweled/forge/biome_modifier/stone_turquoise_ore.json
 c2f7198f34780bb05a8c3c2396188e5bd16b73f2 data/bejeweled/forge/biome_modifier/terracotta_opal_ore.json

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "bejeweled:item/jewel/netherite_ring",
+    "layer1": "bejeweled:item/socket/ring_socket"
+  }
+}
