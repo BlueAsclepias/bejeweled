@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "bejeweled:item/ring"
+    "layer0": "bejeweled:item/jewel/silver_ring"
   }
 }

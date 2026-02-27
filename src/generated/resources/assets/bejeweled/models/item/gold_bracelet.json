@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "bejeweled:item/amulet"
+    "layer0": "bejeweled:item/jewel/gold_bracelet"
   }
 }

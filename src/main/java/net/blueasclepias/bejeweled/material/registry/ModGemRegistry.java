@@ -41,6 +41,9 @@ public class ModGemRegistry {
     public static @Nullable GemDefinition get(ItemStack stack) {
         return ITEM_BINDINGS.get(stack.getItem());
     }
+    public static @Nullable GemDefinition get(ResourceLocation id) {
+        return DEFINITIONS.get(id);
+    }
 
     public static boolean isProcessed(Item item) {
         return item instanceof ProcessedGemItem;

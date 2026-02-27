@@ -1,16 +1,16 @@
 {
   "values": [
-    "bejeweled:raw_garnet",
-    "bejeweled:raw_aquamarine",
+    "minecraft:emerald",
+    "bejeweled:raw_jade",
+    "bejeweled:raw_sapphire",
     "minecraft:diamond",
     "minecraft:amethyst_shard",
+    "bejeweled:raw_garnet",
+    "bejeweled:raw_aquamarine",
     "bejeweled:raw_topaz",
-    "bejeweled:raw_jade",
+    "bejeweled:raw_ruby",
     "bejeweled:raw_turquoise",
     "bejeweled:raw_opal",
-    "bejeweled:raw_peridot",
-    "minecraft:emerald",
-    "bejeweled:raw_ruby",
-    "bejeweled:raw_sapphire"
+    "bejeweled:raw_peridot"
   ]
 }

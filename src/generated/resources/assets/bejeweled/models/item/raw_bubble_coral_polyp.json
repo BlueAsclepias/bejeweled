@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "bejeweled:item/raw_bubble_coral_polyp"
+    "layer0": "bejeweled:item/gem/raw/raw_bubble_coral_polyp"
   }
 }

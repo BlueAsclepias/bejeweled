@@ -1,0 +1,22 @@
+package net.blueasclepias.bejeweled.material.definition.jewel;
+
+// TODO: modifiers
+public enum JewelMaterial {
+    COPPER("material.bejeweled.copper"),
+    SILVER("material.bejeweled.silver"),
+    BRONZE("material.bejeweled.bronze"),
+    IRON("material.bejeweled.iron"),
+    GOLD("material.bejeweled.gold"),
+    STEEL("material.bejeweled.steel"),
+    NETHERITE("material.bejeweled.netherite");
+
+    private final String translationKey;
+
+    JewelMaterial(String key) {
+        this.translationKey = key;
+    }
+
+    public String getTranslationKey() {
+        return translationKey;
+    }
+}

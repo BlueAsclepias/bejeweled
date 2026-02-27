@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "bejeweled:copper_bracelet",
+    "bejeweled:bronze_bracelet",
+    "bejeweled:silver_bracelet",
+    "bejeweled:iron_bracelet",
+    "bejeweled:gold_bracelet",
+    "bejeweled:steel_bracelet",
+    "bejeweled:netherite_bracelet",
+    "bejeweled:socketed_bracelet"
+  ]
+}

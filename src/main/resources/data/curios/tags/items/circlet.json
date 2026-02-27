@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "bejeweled:copper_circlet",
+    "bejeweled:bronze_circlet",
+    "bejeweled:silver_circlet",
+    "bejeweled:iron_circlet",
+    "bejeweled:gold_circlet",
+    "bejeweled:steel_circlet",
+    "bejeweled:netherite_circlet",
+    "bejeweled:socketed_circlet"
+  ]
+}

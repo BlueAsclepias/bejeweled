@@ -22,20 +22,48 @@ public class ModLangProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        // Tooltips & Titles
         add("creativetab.bejeweled.bejeweled", "Bejeweled");
         add("tooltip.bejeweled.raw_gemstone", "Can be cut at the Gem Cutting Table");
         add("tooltip.bejeweled.raw_bead", "Can be polished with a Grindstone");
         add("tooltip.bejeweled.processed_gem_category", "Processed Gems");
         add("tooltip.bejeweled.grade", "Grade: ");
+        add("tooltip.bejeweled.type", "Type: ");
+        add("tooltip.bejeweled.material", "Material: ");
         add("container.bejeweled.gem_cutting_table", "Gem Cutting Table");
         add("container.bejeweled.gem_cutting", "Gem Cutting");
 
+        // Vanilla Overrides
         add("item.minecraft.amethyst_shard", "Raw Amethyst");
         add("block.minecraft.amethyst_block", "Block of Raw Amethyst");
         add("item.minecraft.diamond", "Raw Diamond");
         add("block.minecraft.diamond_block", "Block of Raw Diamond");
         add("item.minecraft.emerald", "Raw Emerald");
         add("block.minecraft.emerald_block", "Block of Raw Emerald");
+
+        // Jewel Type
+        add("jeweltype.bejeweled.amulet", "Amulet");
+        add("jeweltype.bejeweled.bracelet", "Bracelet");
+        add("jeweltype.bejeweled.circlet", "Circlet");
+        add("jeweltype.bejeweled.ring", "Ring");
+
+        // Jewel Materials
+        add("material.bejeweled.copper", "Copper");
+        add("material.bejeweled.silver", "Silver");
+        add("material.bejeweled.bronze", "Bronze");
+        add("material.bejeweled.iron", "Iron");
+        add("material.bejeweled.gold", "Gold");
+        add("material.bejeweled.steel", "Steel");
+        add("material.bejeweled.netherite", "Netherite");
+
+        // Gem Grades
+        add("grade.bejeweled.superb", "Superb");
+        add("grade.bejeweled.adequate", "Adequate");
+        add("grade.bejeweled.basic", "Basic");
+        add("grade.bejeweled.crummy", "Crummy");
+        add("grade.bejeweled.defective", "Defective");
+
+        add("item.bejeweled.jewel_name", "%s %s %s %s");
 
         ModItems.ITEMS.getEntries().forEach(item ->
                 add(item.get(), formatName(Objects.requireNonNull(item.getId()).getPath()))
