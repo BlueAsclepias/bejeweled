@@ -1,12 +1,12 @@
 package net.blueasclepias.bejeweled.datagen;
 
+import net.blueasclepias.bejeweled.data.definition.jewel.JewelMaterial;
+import net.blueasclepias.bejeweled.data.instance.gem.DefaultGemDefinitions;
 import net.blueasclepias.bejeweled.item.BaseJewelItem;
-import net.blueasclepias.bejeweled.item.ProcessedGemItem;
-import net.blueasclepias.bejeweled.item.RawGemItem;
 import net.blueasclepias.bejeweled.item.SocketedJewelItem;
-import net.blueasclepias.bejeweled.material.definition.jewel.JewelMaterial;
 import net.blueasclepias.bejeweled.registry.ModItems;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
@@ -37,20 +37,18 @@ public class ModItemModelProvider extends ItemModelProvider {
     }
 
     private void registerItemModel(Item item) {
-        String path = ForgeRegistries.ITEMS.getKey(item).getPath();
+        ResourceLocation id = ForgeRegistries.ITEMS.getKey(item);
+        String path = id.getPath();
         String folder = "item/";
 
-        if (item instanceof ProcessedGemItem) {
-            folder += "gem/processed/";
-        }
-        else if (item instanceof RawGemItem) { // if you have one
+        if (DefaultGemDefinitions.containsKey(id)) {
             folder += "gem/raw/";
         }
         else if (item instanceof BaseJewelItem) {
             folder += "jewel/";
         }
         else if (item instanceof SocketedJewelItem) {
-            registerSocketedModel(path, item);
+            registerSocketedModel(path);
             return;
         }
 
@@ -58,7 +56,7 @@ public class ModItemModelProvider extends ItemModelProvider {
                 .texture("layer0", modLoc(folder + path));
     }
 
-    private void registerSocketedModel(String path, Item item) {
+    private void registerSocketedModel(String path) {
 
         String overlay = "";
         String baseType = "";

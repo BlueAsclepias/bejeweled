@@ -1,43 +1,43 @@
 {
   "values": [
     {
-      "id": "bejeweled:block_of_raw_opal",
+      "id": "bejeweled:jade_block",
       "required": false
     },
     {
-      "id": "bejeweled:block_of_raw_ruby",
+      "id": "bejeweled:aquamarine_block",
       "required": false
     },
     {
-      "id": "bejeweled:block_of_raw_pearl",
+      "id": "bejeweled:topaz_block",
       "required": false
     },
     {
-      "id": "bejeweled:block_of_raw_aquamarine",
+      "id": "bejeweled:sapphire_block",
       "required": false
     },
     {
-      "id": "bejeweled:block_of_raw_topaz",
+      "id": "bejeweled:pearl_block",
       "required": false
     },
     {
-      "id": "bejeweled:block_of_raw_sapphire",
+      "id": "bejeweled:garnet_block",
       "required": false
     },
     {
-      "id": "bejeweled:block_of_raw_turquoise",
+      "id": "bejeweled:opal_block",
       "required": false
     },
     {
-      "id": "bejeweled:block_of_raw_jade",
+      "id": "bejeweled:peridot_block",
       "required": false
     },
     {
-      "id": "bejeweled:block_of_raw_garnet",
+      "id": "bejeweled:turquoise_block",
       "required": false
     },
     {
-      "id": "bejeweled:block_of_raw_peridot",
+      "id": "bejeweled:ruby_block",
       "required": false
     }
   ]

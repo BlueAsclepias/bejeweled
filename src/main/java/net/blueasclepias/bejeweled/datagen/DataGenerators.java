@@ -34,6 +34,9 @@ public class DataGenerators {
                     event.getLookupProvider()
             );
 
+            gen.addProvider(event.includeServer(),
+                    new GemDefinitionProvider(packOutput));
+
             gen.addProvider(true, blockTagsProvider);
 
             gen.addProvider(true, new ModItemTagsProvider(

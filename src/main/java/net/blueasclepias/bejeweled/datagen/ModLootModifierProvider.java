@@ -23,12 +23,13 @@ public class ModLootModifierProvider extends GlobalLootModifierProvider {
 
     @Override
     protected void start() {
-        add("add_gems_and_beads_to_chests",
+        add("add_gems_to_chests",
                 new AddGemsToChestsModifier(
                         new LootItemCondition[]{}
                 )
         );
 
+        // TODO: REPLACE
         add("add_beads_to_sea_mobs",
                 new AddBeadsToSeaMobsModifier(
                         new LootItemCondition[]{

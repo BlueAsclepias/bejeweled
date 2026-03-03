@@ -1,8 +1,8 @@
 package net.blueasclepias.bejeweled.datagen;
 
-import net.blueasclepias.bejeweled.material.registry.ModCoralPolypRegistry;
-import net.blueasclepias.bejeweled.material.registry.ModOreRegistry;
-import net.blueasclepias.bejeweled.material.registry.ModStorageBlockRegistry;
+import net.blueasclepias.bejeweled.data.accessor.CoralPolypAccessor;
+import net.blueasclepias.bejeweled.data.accessor.OreAccessor;
+import net.blueasclepias.bejeweled.data.accessor.StorageBlockAccessor;
 import net.blueasclepias.bejeweled.registry.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -34,7 +34,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         TagAppender<Block> forgeOre = tag(ModTags.Blocks.FORGE_GENERIC_ORES);
         TagAppender<Block> crossOre = tag(ModTags.Blocks.CROSS_GENERIC_ORES);
 
-        ModOreRegistry.all().forEach((id, feat) -> {
+        OreAccessor.all().forEach((id, feat) -> {
             pickaxe.addOptional(id);
             iron.addOptional(id);
             gemOres.addOptional(id);
@@ -43,12 +43,12 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         });
 
         TagAppender<Block> storage = tag(ModTags.Blocks.STORAGE_BLOCKS);
-        ModStorageBlockRegistry.all().forEach((id, block) ->
+        StorageBlockAccessor.all().forEach((id, block) ->
                 storage.addOptional(id)
         );
 
         TagAppender<Block> polyps = tag(ModTags.Blocks.CORAL_POLYPS);
-        ModCoralPolypRegistry.all().forEach((id, block) ->
+        CoralPolypAccessor.all().forEach((id, block) ->
                 polyps.addOptional(id)
         );
     }

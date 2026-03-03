@@ -1,8 +1,8 @@
 package net.blueasclepias.bejeweled.interfaces;
 
+import net.blueasclepias.bejeweled.data.definition.ore.OreDefinition;
+import net.blueasclepias.bejeweled.data.definition.ore.OreVariant;
 import net.blueasclepias.bejeweled.feature.biomeplacement.BiomeFeaturePlacement;
-import net.blueasclepias.bejeweled.material.definition.ore.OreDefinition;
-import net.blueasclepias.bejeweled.material.definition.ore.OreVariant;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;

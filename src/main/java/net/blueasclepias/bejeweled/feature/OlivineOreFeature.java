@@ -1,8 +1,8 @@
 package net.blueasclepias.bejeweled.feature;
 
-import net.blueasclepias.bejeweled.material.instance.ore.OreDefinitions;
-import net.blueasclepias.bejeweled.material.instance.ore.OreVariants;
-import net.blueasclepias.bejeweled.material.registry.ModOreRegistry;
+import net.blueasclepias.bejeweled.data.accessor.OreAccessor;
+import net.blueasclepias.bejeweled.data.instance.ore.OreDefinitions;
+import net.blueasclepias.bejeweled.data.instance.ore.OreVariants;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
@@ -28,7 +28,7 @@ public class OlivineOreFeature extends Feature<NoneFeatureConfiguration> {
         if (!current.is(BlockTags.DEEPSLATE_ORE_REPLACEABLES)) return false;
         if (!isNearLava(level, origin)) return false;
 
-        Block block = ModOreRegistry
+        Block block = OreAccessor
                 .getBlock(OreDefinitions.OLIVINE, OreVariants.DEEPSLATE)
                 .orElseThrow();
 

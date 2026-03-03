@@ -1,17 +1,12 @@
 package net.blueasclepias.bejeweled.registry;
 
+import net.blueasclepias.bejeweled.data.definition.jewel.JewelMaterial;
+import net.blueasclepias.bejeweled.data.definition.jewel.JewelType;
 import net.blueasclepias.bejeweled.item.BaseJewelItem;
-import net.blueasclepias.bejeweled.item.ProcessedGemItem;
-import net.blueasclepias.bejeweled.item.RawGemItem;
+import net.blueasclepias.bejeweled.item.GemItem;
 import net.blueasclepias.bejeweled.item.SocketedJewelItem;
-import net.blueasclepias.bejeweled.material.definition.gem.GemDefinition;
-import net.blueasclepias.bejeweled.material.definition.jewel.JewelMaterial;
-import net.blueasclepias.bejeweled.material.definition.jewel.JewelType;
-import net.blueasclepias.bejeweled.material.instance.gem.GemDefinitions;
-import net.blueasclepias.bejeweled.material.registry.ModGemRegistry;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -19,7 +14,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
-import static net.minecraft.resources.ResourceLocation.fromNamespaceAndPath;
 
 /**
  * Register Mod Items and Block Items
@@ -38,81 +32,58 @@ public class ModItems {
                     )
             );
 
+    // TODO: THIS IS THE NEW POC
+    // ===== PROCESSED MASTER GEM =====
+    public static final RegistryObject<Item> GEM_ITEM =
+            ITEMS.register("gem_item", () -> new GemItem(new Item.Properties()));
+
     // ===== GEMSTONES =====
-    // === RAW ===
-    public static final RegistryObject<Item> RAW_AQUAMARINE =
-            registerRawGemItem("raw_aquamarine", GemDefinitions.AQUAMARINE);
-    public static final RegistryObject<Item> RAW_RUBY =
-            registerRawGemItem("raw_ruby", GemDefinitions.RUBY);
-    public static final RegistryObject<Item> RAW_SAPPHIRE =
-            registerRawGemItem("raw_sapphire", GemDefinitions.SAPPHIRE);
-    public static final RegistryObject<Item> RAW_GARNET =
-            registerRawGemItem("raw_garnet", GemDefinitions.GARNET);
-    public static final RegistryObject<Item> RAW_TOPAZ =
-            registerRawGemItem("raw_topaz", GemDefinitions.TOPAZ);
-    public static final RegistryObject<Item> RAW_TURQUOISE =
-            registerRawGemItem("raw_turquoise", GemDefinitions.TURQUOISE);
-    public static final RegistryObject<Item> RAW_JADE =
-            registerRawGemItem("raw_jade", GemDefinitions.JADE);
-    public static final RegistryObject<Item> RAW_OPAL =
-            registerRawGemItem("raw_opal", GemDefinitions.OPAL);
-    public static final RegistryObject<Item> RAW_PERIDOT =
-            registerRawGemItem("raw_peridot", GemDefinitions.PERIDOT);
-    // === PROCESSED ===
     public static final RegistryObject<Item> AQUAMARINE =
-            registerProcessedGemItem("aquamarine", GemDefinitions.AQUAMARINE);
+            ITEMS.register("aquamarine", () -> new Item(new Item.Properties()));
+            
     public static final RegistryObject<Item> RUBY =
-            registerProcessedGemItem("ruby", GemDefinitions.RUBY);
+            ITEMS.register("ruby", () -> new Item(new Item.Properties()));
+            
     public static final RegistryObject<Item> SAPPHIRE =
-            registerProcessedGemItem("sapphire", GemDefinitions.SAPPHIRE);
+            ITEMS.register("sapphire", () -> new Item(new Item.Properties()));
+            
     public static final RegistryObject<Item> GARNET =
-            registerProcessedGemItem("garnet", GemDefinitions.GARNET);
-    public static final RegistryObject<Item> AMETHYST =
-            registerProcessedGemItem("amethyst", GemDefinitions.AMETHYST);
-    public static final RegistryObject<Item> DIAMOND =
-            registerProcessedGemItem("diamond", GemDefinitions.DIAMOND);
-    public static final RegistryObject<Item> EMERALD =
-            registerProcessedGemItem("emerald", GemDefinitions.EMERALD);
+            ITEMS.register("garnet", () -> new Item(new Item.Properties()));
+            
     public static final RegistryObject<Item> TOPAZ =
-            registerProcessedGemItem("topaz", GemDefinitions.TOPAZ);
+            ITEMS.register("topaz", () -> new Item(new Item.Properties()));
+            
     public static final RegistryObject<Item> TURQUOISE =
-            registerProcessedGemItem("turquoise", GemDefinitions.TURQUOISE);
+            ITEMS.register("turquoise", () -> new Item(new Item.Properties()));
+            
     public static final RegistryObject<Item> JADE =
-            registerProcessedGemItem("jade", GemDefinitions.JADE);
+            ITEMS.register("jade", () -> new Item(new Item.Properties()));
+            
     public static final RegistryObject<Item> OPAL =
-            registerProcessedGemItem("opal", GemDefinitions.OPAL);
+            ITEMS.register("opal", () -> new Item(new Item.Properties()));
+            
     public static final RegistryObject<Item> PERIDOT =
-            registerProcessedGemItem("peridot", GemDefinitions.PERIDOT);
+            ITEMS.register("peridot", () -> new Item(new Item.Properties()));
 
     // ===== BEADS =====
-    // === RAW ===
-    public static final RegistryObject<Item> RAW_PEARL =
-            registerRawGemItem("raw_pearl", GemDefinitions.PEARL);
-    public static final RegistryObject<Item> RAW_TUBE_CORAL_POLYP =
-            registerRawGemItem("raw_tube_coral_polyp", GemDefinitions.TUBE_CORAL);
-    public static final RegistryObject<Item> RAW_BRAIN_CORAL_POLYP =
-            registerRawGemItem("raw_brain_coral_polyp", GemDefinitions.BRAIN_CORAL);
-    public static final RegistryObject<Item> RAW_BUBBLE_CORAL_POLYP =
-            registerRawGemItem("raw_bubble_coral_polyp", GemDefinitions.BUBBLE_CORAL);
-    public static final RegistryObject<Item> RAW_FIRE_CORAL_POLYP =
-            registerRawGemItem("raw_fire_coral_polyp", GemDefinitions.FIRE_CORAL);
-    public static final RegistryObject<Item> RAW_HORN_CORAL_POLYP =
-            registerRawGemItem("raw_horn_coral_polyp", GemDefinitions.HORN_CORAL);
-
-    // === PROCESSED ===
     public static final RegistryObject<Item> PEARL =
-            registerProcessedGemItem("pearl", GemDefinitions.PEARL);
-    public static final RegistryObject<Item> TUBE_CORAL =
-            registerProcessedGemItem("tube_coral", GemDefinitions.TUBE_CORAL);
-    public static final RegistryObject<Item> BRAIN_CORAL =
-            registerProcessedGemItem("brain_coral", GemDefinitions.BRAIN_CORAL);
-    public static final RegistryObject<Item> BUBBLE_CORAL =
-            registerProcessedGemItem("bubble_coral", GemDefinitions.BUBBLE_CORAL);
-    public static final RegistryObject<Item> FIRE_CORAL =
-            registerProcessedGemItem("fire_coral", GemDefinitions.FIRE_CORAL);
-    public static final RegistryObject<Item> HORN_CORAL =
-            registerProcessedGemItem("horn_coral", GemDefinitions.HORN_CORAL);
-
+            ITEMS.register("pearl", () -> new Item(new Item.Properties()));
+    
+    public static final RegistryObject<Item> BLUE_CORAL =
+            ITEMS.register("blue_coral", () -> new Item(new Item.Properties()));
+            
+    public static final RegistryObject<Item> PINK_CORAL =
+            ITEMS.register("pink_coral", () -> new Item(new Item.Properties()));
+            
+    public static final RegistryObject<Item> PURPLE_CORAL =
+            ITEMS.register("purple_coral", () -> new Item(new Item.Properties()));
+            
+    public static final RegistryObject<Item> RED_CORAL =
+            ITEMS.register("red_coral", () -> new Item(new Item.Properties()));
+            
+    public static final RegistryObject<Item> YELLOW_CORAL =
+            ITEMS.register("yellow_coral", () -> new Item(new Item.Properties()));
+            
     // ===== BLOCK ITEMS =====
     // ==== ORE BLOCKS ====
     public static final RegistryObject<Item> STONE_BERYL_ORE =
@@ -164,26 +135,26 @@ public class ModItems {
 
     // ==== STORAGE BLOCKS ====
     // === RAW ===
-    public static final RegistryObject<Item> BLOCK_OF_RAW_AQUAMARINE =
-            registerBlockItem("block_of_raw_aquamarine", ModBlocks.BLOCK_OF_RAW_AQUAMARINE);
-    public static final RegistryObject<Item> BLOCK_OF_RAW_RUBY =
-            registerBlockItem("block_of_raw_ruby", ModBlocks.BLOCK_OF_RAW_RUBY);
-    public static final RegistryObject<Item> BLOCK_OF_RAW_SAPPHIRE =
-            registerBlockItem("block_of_raw_sapphire", ModBlocks.BLOCK_OF_RAW_SAPPHIRE);
-    public static final RegistryObject<Item> BLOCK_OF_RAW_GARNET =
-            registerBlockItem("block_of_raw_garnet", ModBlocks.BLOCK_OF_RAW_GARNET);
-    public static final RegistryObject<Item> BLOCK_OF_RAW_TOPAZ =
-            registerBlockItem("block_of_raw_topaz", ModBlocks.BLOCK_OF_RAW_TOPAZ);
-    public static final RegistryObject<Item> BLOCK_OF_RAW_TURQUOISE =
-            registerBlockItem("block_of_raw_turquoise", ModBlocks.BLOCK_OF_RAW_TURQUOISE);
-    public static final RegistryObject<Item> BLOCK_OF_RAW_JADE =
-            registerBlockItem("block_of_raw_jade", ModBlocks.BLOCK_OF_RAW_JADE);
-    public static final RegistryObject<Item> BLOCK_OF_RAW_OPAL =
-            registerBlockItem("block_of_raw_opal", ModBlocks.BLOCK_OF_RAW_OPAL);
-    public static final RegistryObject<Item> BLOCK_OF_RAW_PERIDOT =
-            registerBlockItem("block_of_raw_peridot", ModBlocks.BLOCK_OF_RAW_PERIDOT);
-    public static final RegistryObject<Item> BLOCK_OF_RAW_PEARL =
-            registerBlockItem("block_of_raw_pearl", ModBlocks.BLOCK_OF_RAW_PEARL);
+    public static final RegistryObject<Item> AQUAMARINE_BLOCK =
+            registerBlockItem("aquamarine_block", ModBlocks.AQUAMARINE_BLOCK);
+    public static final RegistryObject<Item> RUBY_BLOCK =
+            registerBlockItem("ruby_block", ModBlocks.RUBY_BLOCK);
+    public static final RegistryObject<Item> SAPPHIRE_BLOCK =
+            registerBlockItem("sapphire_block", ModBlocks.SAPPHIRE_BLOCK);
+    public static final RegistryObject<Item> GARNET_BLOCK =
+            registerBlockItem("garnet_block", ModBlocks.GARNET_BLOCK);
+    public static final RegistryObject<Item> TOPAZ_BLOCK =
+            registerBlockItem("topaz_block", ModBlocks.TOPAZ_BLOCK);
+    public static final RegistryObject<Item> TURQUOISE_BLOCK =
+            registerBlockItem("turquoise_block", ModBlocks.TURQUOISE_BLOCK);
+    public static final RegistryObject<Item> JADE_BLOCK =
+            registerBlockItem("jade_block", ModBlocks.JADE_BLOCK);
+    public static final RegistryObject<Item> OPAL_BLOCK =
+            registerBlockItem("opal_block", ModBlocks.OPAL_BLOCK);
+    public static final RegistryObject<Item> PERIDOT_BLOCK =
+            registerBlockItem("peridot_block", ModBlocks.PERIDOT_BLOCK);
+    public static final RegistryObject<Item> PEARL_BLOCK =
+            registerBlockItem("pearl_block", ModBlocks.PEARL_BLOCK);
 
     // ==== CORAL POLYP BLOCKS ====
     public static final RegistryObject<Item> FIRE_CORAL_BLOCK_POLYP =
@@ -244,30 +215,11 @@ public class ModItems {
             ITEMS.register("socketed_circlet", () -> new SocketedJewelItem(new Item.Properties()));
 
     // ===== HELPER METHODS =====
-    private static RegistryObject<Item> registerRawGemItem(String path, GemDefinition def) {
-        return ITEMS.register(path, () -> {
-            Item item = new RawGemItem(def);
-            ModGemRegistry.bind(item, fromNamespaceAndPath(MOD_ID, def.id()));
-            return item;
-        });
-    }
-
-    private static RegistryObject<Item> registerProcessedGemItem(String path, GemDefinition def) {
-        return ITEMS.register(path, () -> {
-            Item item = new ProcessedGemItem(def);
-            ModGemRegistry.bind(item, fromNamespaceAndPath(MOD_ID, def.id()));
-            return item;
-        });
-    }
-
     private static RegistryObject<Item> registerBlockItem(String path, RegistryObject<Block> block){
         return ITEMS.register(path, () -> new BlockItem(block.get(), new Item.Properties()));
     }
 
     public static void register(IEventBus eventBus) {
-        ModGemRegistry.bind(Items.DIAMOND, fromNamespaceAndPath(MOD_ID, "diamond"));
-        ModGemRegistry.bind(Items.EMERALD, fromNamespaceAndPath(MOD_ID, "emerald"));
-        ModGemRegistry.bind(Items.AMETHYST_SHARD, fromNamespaceAndPath(MOD_ID, "amethyst"));
         ITEMS.register(eventBus);
     }
 }

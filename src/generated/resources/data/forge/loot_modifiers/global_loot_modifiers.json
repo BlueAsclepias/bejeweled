@@ -1,7 +1,7 @@
 {
   "entries": [
     "bejeweled:add_beads_to_sea_mobs",
-    "bejeweled:add_gems_and_beads_to_chests"
+    "bejeweled:add_gems_to_chests"
   ],
   "replace": false
 }

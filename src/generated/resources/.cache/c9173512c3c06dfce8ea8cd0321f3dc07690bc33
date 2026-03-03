@@ -1,7 +1,7 @@
-// 1.20.1	2026-02-19T11:46:32.117977917	Tags for minecraft:block mod id bejeweled
+// 1.20.1	2026-03-03T11:29:06.556117166	Tags for minecraft:block mod id bejeweled
 fbe8a94867ac11a65f7a13fb92c4eb61605eb72c data/bejeweled/tags/blocks/coral_polyps.json
 49fc1dae8d4f815caa47ba3364c0ac1873c7f779 data/bejeweled/tags/blocks/gem_ores.json
-d72bd076fe64a898785ea229b31448c09eb7c52c data/bejeweled/tags/blocks/storage_blocks.json
+74e520a2a98cd637c8e818982c67ccc73367b8e3 data/bejeweled/tags/blocks/storage_blocks.json
 49fc1dae8d4f815caa47ba3364c0ac1873c7f779 data/c/tags/blocks/ores.json
 49fc1dae8d4f815caa47ba3364c0ac1873c7f779 data/forge/tags/blocks/ores.json
 49fc1dae8d4f815caa47ba3364c0ac1873c7f779 data/minecraft/tags/blocks/mineable/pickaxe.json

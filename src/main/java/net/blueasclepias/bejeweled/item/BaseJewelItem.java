@@ -1,7 +1,7 @@
 package net.blueasclepias.bejeweled.item;
 
-import net.blueasclepias.bejeweled.material.definition.jewel.JewelMaterial;
-import net.blueasclepias.bejeweled.material.definition.jewel.JewelType;
+import net.blueasclepias.bejeweled.data.definition.jewel.JewelMaterial;
+import net.blueasclepias.bejeweled.data.definition.jewel.JewelType;
 import net.minecraft.world.item.Item;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 

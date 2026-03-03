@@ -24,7 +24,7 @@ public record ProcessGemCuttingPacket(BlockPos pos) {
             if (player == null) return;
 
             if (player.containerMenu instanceof GemCuttingTableMenu menu) {
-                menu.tryProcessRecipe();
+                menu.tryProcess();
             }
         });
         ctx.get().setPacketHandled(true);

@@ -1,9 +1,9 @@
 package net.blueasclepias.bejeweled.datagen;
 
 
-import net.blueasclepias.bejeweled.material.registry.ModCoralPolypRegistry;
-import net.blueasclepias.bejeweled.material.registry.ModOreRegistry;
-import net.blueasclepias.bejeweled.material.registry.ModStorageBlockRegistry;
+import net.blueasclepias.bejeweled.data.accessor.CoralPolypAccessor;
+import net.blueasclepias.bejeweled.data.accessor.OreAccessor;
+import net.blueasclepias.bejeweled.data.accessor.StorageBlockAccessor;
 import net.blueasclepias.bejeweled.registry.ModBlocks;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
@@ -27,10 +27,10 @@ public class ModBlockLootTables extends BlockLootSubProvider {
     protected void generate() {
 
         // === Storage blocks ===
-        ModStorageBlockRegistry.allBlocks().forEach(this::dropSelf);
+        StorageBlockAccessor.allBlocks().forEach(this::dropSelf);
 
         // === Ores ===
-        ModOreRegistry.allBlocksByFeature().forEach((feat, block) -> {
+        OreAccessor.allBlocksByFeature().forEach((feat, block) -> {
             Item item = Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(feat.definition().drop()));
             if(item == Items.AIR)
                 throw new IllegalStateException("No drop for " + feat.id());
@@ -38,7 +38,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         });
 
         // === Coral Polyps ===
-        ModCoralPolypRegistry.all().forEach((id, block) -> {
+        CoralPolypAccessor.all().forEach((id, block) -> {
             Item item = Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(block.getDrop()));
             if(item == Items.AIR)
                 throw new IllegalStateException("No drop for " + id);

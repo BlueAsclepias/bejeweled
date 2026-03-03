@@ -1,15 +1,15 @@
 package net.blueasclepias.bejeweled.interfaces;
 
-import net.blueasclepias.bejeweled.material.definition.gem.GemCategory;
-import net.blueasclepias.bejeweled.material.definition.gem.GemRarity;
-import net.blueasclepias.bejeweled.material.instance.gem.GemEffects;
-import net.blueasclepias.bejeweled.material.instance.gem.GemPassives;
+import net.blueasclepias.bejeweled.data.definition.gem.GemCategory;
+import net.blueasclepias.bejeweled.data.definition.gem.GemRarity;
+import net.minecraft.resources.ResourceLocation;
 
 public interface IGemDefinition {
-    String id();
+    ResourceLocation id();
     int color();
+    boolean generateLoot();
     GemRarity rarity();
     GemCategory category();
-    GemEffects effects();
-    GemPassives passives();
+    //GemEffects effects();
+    //GemPassives passives();
 }

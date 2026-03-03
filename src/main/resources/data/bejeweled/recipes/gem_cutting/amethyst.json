@@ -1,9 +1,0 @@
-{
-  "type": "bejeweled:gem_cutting",
-  "input": {
-    "item": "minecraft:amethyst_shard"
-  },
-  "output": {
-    "item": "bejeweled:amethyst"
-  }
-}

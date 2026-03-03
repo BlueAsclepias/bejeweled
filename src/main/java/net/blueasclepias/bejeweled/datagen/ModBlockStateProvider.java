@@ -1,11 +1,11 @@
 package net.blueasclepias.bejeweled.datagen;
 
 import net.blueasclepias.bejeweled.block.CoralPolypBlock;
-import net.blueasclepias.bejeweled.material.definition.ore.OreFeature;
-import net.blueasclepias.bejeweled.material.definition.ore.OreVariant;
-import net.blueasclepias.bejeweled.material.registry.ModCoralPolypRegistry;
-import net.blueasclepias.bejeweled.material.registry.ModOreRegistry;
-import net.blueasclepias.bejeweled.material.registry.ModStorageBlockRegistry;
+import net.blueasclepias.bejeweled.data.accessor.CoralPolypAccessor;
+import net.blueasclepias.bejeweled.data.accessor.OreAccessor;
+import net.blueasclepias.bejeweled.data.accessor.StorageBlockAccessor;
+import net.blueasclepias.bejeweled.data.definition.ore.OreFeature;
+import net.blueasclepias.bejeweled.data.definition.ore.OreVariant;
 import net.blueasclepias.bejeweled.registry.ModBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
@@ -39,15 +39,15 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(ModBlocks.GEM_CUTTING_TABLE.get(), cubeAll(ModBlocks.GEM_CUTTING_TABLE.get()));
 
         // Ore blocks
-        ModOreRegistry.allBlocksByFeature().forEach(this::oreBlock);
+        OreAccessor.allBlocksByFeature().forEach(this::oreBlock);
 
         // Storage blocks
-        ModStorageBlockRegistry.allBlocks().forEach(block ->
+        StorageBlockAccessor.allBlocks().forEach(block ->
                 simpleBlockWithItem(block, cubeAll(block))
         );
 
         // Coral Polyp blocks
-        ModCoralPolypRegistry.allBlocks().forEach(this::coralPolyp);
+        CoralPolypAccessor.allBlocks().forEach(this::coralPolyp);
     }
 
     private void oreBlock(OreFeature feat, Block block){

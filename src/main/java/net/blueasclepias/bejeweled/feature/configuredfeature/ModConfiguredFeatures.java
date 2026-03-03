@@ -1,6 +1,6 @@
 package net.blueasclepias.bejeweled.feature.configuredfeature;
 
-import net.blueasclepias.bejeweled.material.definition.ore.OreFeature;
+import net.blueasclepias.bejeweled.data.definition.ore.OreFeature;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Block;

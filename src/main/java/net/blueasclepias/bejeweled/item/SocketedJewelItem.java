@@ -1,10 +1,11 @@
 package net.blueasclepias.bejeweled.item;
 
-import net.blueasclepias.bejeweled.material.definition.gem.GemDefinition;
-import net.blueasclepias.bejeweled.material.definition.gem.GemGrade;
-import net.blueasclepias.bejeweled.material.definition.jewel.JewelMaterial;
-import net.blueasclepias.bejeweled.material.definition.jewel.JewelType;
-import net.blueasclepias.bejeweled.material.registry.ModGemRegistry;
+import net.blueasclepias.bejeweled.data.accessor.GemDefinitionAccessor;
+import net.blueasclepias.bejeweled.data.definition.gem.GemDefinition;
+import net.blueasclepias.bejeweled.data.definition.gem.GemGrade;
+import net.blueasclepias.bejeweled.data.definition.jewel.JewelMaterial;
+import net.blueasclepias.bejeweled.data.definition.jewel.JewelType;
+import net.blueasclepias.bejeweled.data.state.gem.GemState;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -13,11 +14,13 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Optional;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
@@ -30,22 +33,27 @@ public class SocketedJewelItem extends Item implements ICurioItem {
     public @NotNull Component getName(ItemStack stack) {
 
         CompoundTag tag = stack.getTagElement(MOD_ID);
-        if (tag == null) {
-            return super.getName(stack);
-        }
+        if (tag == null) return super.getName(stack);
 
-        String gemId = tag.getString("gem");
-        GemGrade grade = GemGrade.valueOf(tag.getString("grade"));
+        // Get Grade or Default to lowest
+        GemGrade grade = GemState.getGrade(stack).orElse(GemGrade.D);
+
+        Optional<String> path = GemState.getGem(stack);
+        if(path.isEmpty()) return super.getName(stack);;
+
+        ResourceLocation gemId = ResourceLocation.parse(path.get());
+        GemDefinition def = GemDefinitionAccessor.getDefinition(gemId);
         JewelType type = JewelType.valueOf(tag.getString("type"));
         JewelMaterial material = JewelMaterial.valueOf(tag.getString("material"));
 
-        GemDefinition def = ModGemRegistry.get(ResourceLocation.parse(gemId));
-        if (def == null) {
-            return super.getName(stack);
-        }
+        if (def == null) return super.getName(stack);
+
+        Item item = ForgeRegistries.ITEMS.getValue(def.id());
 
         Component gradeComponent = Component.translatable(grade.translationKey);
-        Component gemComponent = Component.translatable("item.bejeweled." + def.id());
+        Component gemComponent = item != null
+                ? item.getDescription()
+                : Component.literal(def.id().getPath());
         Component materialComponent = Component.translatable(material.translationKey);
         Component typeComponent = Component.translatable(type.translationKey);
 

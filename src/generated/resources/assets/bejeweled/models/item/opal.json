@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "bejeweled:item/gem/processed/opal"
+    "layer0": "bejeweled:item/gem/raw/opal"
   }
 }

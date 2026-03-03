@@ -33,14 +33,6 @@ public class ModLangProvider extends LanguageProvider {
         add("container.bejeweled.gem_cutting_table", "Gem Cutting Table");
         add("container.bejeweled.gem_cutting", "Gem Cutting");
 
-        // Vanilla Overrides
-        add("item.minecraft.amethyst_shard", "Raw Amethyst");
-        add("block.minecraft.amethyst_block", "Block of Raw Amethyst");
-        add("item.minecraft.diamond", "Raw Diamond");
-        add("block.minecraft.diamond_block", "Block of Raw Diamond");
-        add("item.minecraft.emerald", "Raw Emerald");
-        add("block.minecraft.emerald_block", "Block of Raw Emerald");
-
         // Jewel Type
         add("jeweltype.bejeweled.amulet", "Amulet");
         add("jeweltype.bejeweled.bracelet", "Bracelet");
@@ -64,6 +56,7 @@ public class ModLangProvider extends LanguageProvider {
         add("grade.bejeweled.defective", "Defective");
 
         add("item.bejeweled.jewel_name", "%s %s %s %s");
+        add("item.bejeweled.gem_name", "%s %s");
 
         ModItems.ITEMS.getEntries().forEach(item ->
                 add(item.get(), formatName(Objects.requireNonNull(item.getId()).getPath()))

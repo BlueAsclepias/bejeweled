@@ -19,9 +19,9 @@ public class ModCreativeTabs {
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MOD_ID);
 
     public static final RegistryObject<CreativeModeTab> TAB =
-            TABS.register("bejeweled", () -> CreativeModeTab.builder()
+            TABS.register(MOD_ID, () -> CreativeModeTab.builder()
                     .title(Component.translatable("creativetab.bejeweled.bejeweled"))
-                    .icon(() -> new ItemStack(ModItems.GARNET.get()))
+                    .icon(() -> new ItemStack(ModItems.GARNET.get())) // TODO: change to custom icon
                     .displayItems((params, output) -> {
                         ModItems.ITEMS.getEntries()
                                 .forEach(item -> output.accept(item.get()));

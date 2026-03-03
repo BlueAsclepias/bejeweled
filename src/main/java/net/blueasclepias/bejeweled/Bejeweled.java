@@ -14,7 +14,7 @@ import org.slf4j.Logger;
 @Mod(Bejeweled.MOD_ID)
 public class Bejeweled {
     public static final String MOD_ID = "bejeweled";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public Bejeweled(FMLJavaModLoadingContext context) {
         IEventBus modEventBus = context.getModEventBus();

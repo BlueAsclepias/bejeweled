@@ -1,7 +1,7 @@
 package net.blueasclepias.bejeweled.feature;
 
 import net.blueasclepias.bejeweled.block.CoralPolypBlock;
-import net.blueasclepias.bejeweled.material.registry.ModCoralPolypRegistry;
+import net.blueasclepias.bejeweled.data.accessor.CoralPolypAccessor;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
@@ -36,7 +36,7 @@ public class CoralPolypFeature extends Feature<NoneFeatureConfiguration> {
         if (anchorPos == null) return false;
 
         Block anchorBlock = level.getBlockState(anchorPos).getBlock();
-        CoralPolypBlock polypVariant = Objects.requireNonNull(ModCoralPolypRegistry.findCoralPolyp(anchorBlock));
+        CoralPolypBlock polypVariant = Objects.requireNonNull(CoralPolypAccessor.findCoralPolyp(anchorBlock));
 
         return placeFeature(level, random, anchorPos, polypVariant);
     }

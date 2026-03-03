@@ -1,10 +1,7 @@
 package net.blueasclepias.bejeweled.datagen;
 
-import net.blueasclepias.bejeweled.material.definition.gem.GemCategory;
-import net.blueasclepias.bejeweled.material.instance.gem.GemDefinitions;
-import net.blueasclepias.bejeweled.material.registry.ModGemRegistry;
-import net.blueasclepias.bejeweled.material.registry.ModOreRegistry;
-import net.blueasclepias.bejeweled.material.registry.ModStorageBlockRegistry;
+import net.blueasclepias.bejeweled.data.accessor.OreAccessor;
+import net.blueasclepias.bejeweled.data.accessor.StorageBlockAccessor;
 import net.blueasclepias.bejeweled.registry.ModBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -14,7 +11,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
@@ -36,9 +32,9 @@ public class ModRecipeProvider extends RecipeProvider {
     @Override
     protected void buildRecipes(@NotNull Consumer<FinishedRecipe> consumer) {
 
-        ModStorageBlockRegistry.all().forEach((id, block) -> {
+        StorageBlockAccessor.all().forEach((id, block) -> {
             String blockPath = id.getPath();
-            ResourceLocation ingredientPath = ModStorageBlockRegistry.getIngredient(id);
+            ResourceLocation ingredientPath = StorageBlockAccessor.getIngredient(id);
             String itemPath = ingredientPath.getPath();
             Item item = Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(ingredientPath));
             if(item == Items.AIR)
@@ -63,7 +59,7 @@ public class ModRecipeProvider extends RecipeProvider {
         });
 
         // ===== Smelting =====
-        ModOreRegistry.allBlocksByFeature().forEach((feat, block) -> {
+        OreAccessor.allBlocksByFeature().forEach((feat, block) -> {
             ResourceLocation id = feat.definition().drop();
             Item result = Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(id));
             if(result == Items.AIR)
@@ -74,21 +70,6 @@ public class ModRecipeProvider extends RecipeProvider {
                     block.asItem()
             );
         });
-
-        ModGemRegistry.getAll(GemCategory.BEAD, false)
-                .forEach((item, def) -> {
-                    if(def.equals(GemDefinitions.PEARL)) return;
-                    Block block = Objects.requireNonNull(
-                            ForgeRegistries.BLOCKS.getValue(fromNamespaceAndPath("minecraft", def.id()))
-                    );
-                    ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, block)
-                            .define('#', item)
-                            .pattern("###")
-                            .pattern("###")
-                            .pattern("###")
-                            .unlockedBy("has_" + def.id(), has(item))
-                            .save(consumer);
-                });
 
         // ===== Workstation =====
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.GEM_CUTTING_TABLE.get())

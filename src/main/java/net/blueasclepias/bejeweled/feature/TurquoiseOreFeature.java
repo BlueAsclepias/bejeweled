@@ -1,8 +1,8 @@
 package net.blueasclepias.bejeweled.feature;
 
-import net.blueasclepias.bejeweled.material.instance.ore.OreDefinitions;
-import net.blueasclepias.bejeweled.material.instance.ore.OreVariants;
-import net.blueasclepias.bejeweled.material.registry.ModOreRegistry;
+import net.blueasclepias.bejeweled.data.accessor.OreAccessor;
+import net.blueasclepias.bejeweled.data.instance.ore.OreDefinitions;
+import net.blueasclepias.bejeweled.data.instance.ore.OreVariants;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
@@ -30,7 +30,7 @@ public class TurquoiseOreFeature extends Feature<NoneFeatureConfiguration> {
         if (!current.is(BlockTags.STONE_ORE_REPLACEABLES)) return false;
         if (!isNearStoneCopperOre(level, origin) || !isNearWater(origin, level)) return false;
 
-        Block block = ModOreRegistry
+        Block block = OreAccessor
                 .getBlock(OreDefinitions.TURQUOISE, OreVariants.STONE)
                 .orElseThrow();
 

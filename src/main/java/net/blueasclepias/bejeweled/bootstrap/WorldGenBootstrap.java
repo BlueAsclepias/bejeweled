@@ -1,8 +1,8 @@
 package net.blueasclepias.bejeweled.bootstrap;
 
+import net.blueasclepias.bejeweled.data.accessor.OreAccessor;
 import net.blueasclepias.bejeweled.feature.configuredfeature.ModConfiguredFeatures;
 import net.blueasclepias.bejeweled.feature.placedfeature.ModPlacedFeature;
-import net.blueasclepias.bejeweled.material.registry.ModOreRegistry;
 import net.blueasclepias.bejeweled.registry.ModFeatures;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
@@ -25,7 +25,7 @@ public class WorldGenBootstrap {
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
 
         // generics
-        ModOreRegistry.allBlocksByGenericFeatures()
+        OreAccessor.allBlocksByGenericFeatures()
                         .forEach((feat, block) -> {
                             context.register(
                                     feat.configuredFeature(),
@@ -94,7 +94,7 @@ public class WorldGenBootstrap {
         );
 
         // ores
-        ModOreRegistry.allFeatures().forEach(feat ->
+        OreAccessor.allFeatures().forEach(feat ->
             context.register(
                     feat.placedFeature(),
                     new PlacedFeature(

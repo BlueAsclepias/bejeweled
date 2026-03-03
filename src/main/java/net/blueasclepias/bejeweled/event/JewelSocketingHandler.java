@@ -1,7 +1,7 @@
 package net.blueasclepias.bejeweled.event;
 
 import net.blueasclepias.bejeweled.item.BaseJewelItem;
-import net.blueasclepias.bejeweled.item.ProcessedGemItem;
+import net.blueasclepias.bejeweled.item.GemItem;
 import net.blueasclepias.bejeweled.item.SocketedJewelItemFactory;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -61,8 +61,8 @@ public class JewelSocketingHandler {
     }
 
     private static boolean isGem(ItemStack off, ItemStack main){
-        return main.getItem() instanceof ProcessedGemItem ||
-                off.getItem() instanceof ProcessedGemItem;
+        return main.getItem() instanceof GemItem ||
+                off.getItem() instanceof GemItem;
     }
 
     private static boolean isBase(ItemStack off, ItemStack main){

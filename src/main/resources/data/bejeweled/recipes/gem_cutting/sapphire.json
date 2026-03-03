@@ -1,9 +1,0 @@
-{
-  "type": "bejeweled:gem_cutting",
-  "input": {
-    "item": "bejeweled:raw_sapphire"
-  },
-  "output": {
-    "item": "bejeweled:sapphire"
-  }
-}

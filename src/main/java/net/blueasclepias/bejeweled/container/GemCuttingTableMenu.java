@@ -5,7 +5,6 @@ import net.blueasclepias.bejeweled.registry.ModMenus;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.Container;
-import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -22,9 +21,6 @@ public class GemCuttingTableMenu extends AbstractContainerMenu {
     private static final int INPUT_SLOT = 0;
     private static final int OUTPUT_SLOT = 1;
     private static final int CONTAINER_SLOT_COUNT = 2;
-
-    // Simple stub inventory (2 slots)
-    private final SimpleContainer container = new SimpleContainer(2);
 
     // Server-side constructor
     public GemCuttingTableMenu(
@@ -46,10 +42,6 @@ public class GemCuttingTableMenu extends AbstractContainerMenu {
             @Override
             public int getMaxStackSize(@NotNull ItemStack stack) {
                 return 1;
-            }
-            @Override
-            public boolean mayPlace(@NotNull ItemStack stack) {
-                return blockEntity.canPlaceInInput(stack);
             }
         });
 
@@ -103,15 +95,13 @@ public class GemCuttingTableMenu extends AbstractContainerMenu {
 
             // Player → input
             else if (index >= CONTAINER_SLOT_COUNT) {
-                if (blockEntity.canPlaceInInput(stack)) {
-                    if (!this.moveItemStackTo(
-                            stack,
-                            INPUT_SLOT,
-                            INPUT_SLOT + 1,
-                            false
-                    )) {
-                        return ItemStack.EMPTY;
-                    }
+                if (!this.moveItemStackTo(
+                        stack,
+                        INPUT_SLOT,
+                        INPUT_SLOT + 1,
+                        false
+                )) {
+                    return ItemStack.EMPTY;
                 }
                 // Inventory ↔ hotbar
                 else if (index < CONTAINER_SLOT_COUNT + 27) {
@@ -212,17 +202,12 @@ public class GemCuttingTableMenu extends AbstractContainerMenu {
         }
     }
 
-    public void tryProcessRecipe() {
-        blockEntity.tryProcessRecipe();
+    public void tryProcess() {
+        blockEntity.tryProcess();
     }
 
     public boolean canProcess() {
         return blockEntity.canProcess();
-    }
-
-    // server-side only; called via packet
-    public void requestProcess() {
-        blockEntity.processOnce();
     }
 
     public BlockPos getBlockPos() {

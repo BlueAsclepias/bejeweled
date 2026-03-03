@@ -1,9 +1,10 @@
 package net.blueasclepias.bejeweled.datagen;
 
-import net.blueasclepias.bejeweled.material.definition.gem.GemCategory;
-import net.blueasclepias.bejeweled.material.registry.ModGemRegistry;
-import net.blueasclepias.bejeweled.material.registry.ModOreRegistry;
-import net.blueasclepias.bejeweled.material.registry.ModStorageBlockRegistry;
+import net.blueasclepias.bejeweled.data.accessor.OreAccessor;
+import net.blueasclepias.bejeweled.data.accessor.StorageBlockAccessor;
+import net.blueasclepias.bejeweled.data.definition.gem.GemCategory;
+import net.blueasclepias.bejeweled.data.instance.gem.DefaultGemDefinitions;
+import net.blueasclepias.bejeweled.registry.ModItems;
 import net.blueasclepias.bejeweled.registry.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -36,7 +37,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
     @Override
     protected void addTags(HolderLookup.@NotNull Provider provider) {
 
-        ModOreRegistry.allBlocksByFeature().forEach((feat, block) -> {
+        OreAccessor.allBlocksByFeature().forEach((feat, block) -> {
             Item item = block.asItem();
             String path = feat.definition().id();
             tag(ModTags.Items.FORGE_GENERIC_ORES).add(item);
@@ -47,7 +48,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                     fromNamespaceAndPath("c", "ores/" + path))).add(item);
         });
 
-        ModStorageBlockRegistry.allBlocks().forEach((block) -> {
+        StorageBlockAccessor.allBlocks().forEach((block) -> {
             ResourceLocation blockId = Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block));
             Item item = block.asItem();
             String path = blockId.getPath();
@@ -61,9 +62,10 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                             path))).add(item);
         });
 
-        ModGemRegistry.getAll(GemCategory.GEMSTONE, false)
-                .forEach((item, def) -> {
-                    String path = def.id();
+        DefaultGemDefinitions.getAllByCategory(GemCategory.GEMSTONE)
+                .forEach((id, def) -> {
+                    String path = id.getPath();
+                    Item item = Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(id));
                     tag(ModTags.Items.RAW_GEMSTONES).add(item);
                     tag(ModTags.Items.CROSS_GENERIC_GEMS).add(item);
                     tag(ModTags.Items.FORGE_GENERIC_GEMS).add(item);
@@ -77,9 +79,10 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                             fromNamespaceAndPath("c", "raw_materials/" + path))).add(item);
         });
 
-        ModGemRegistry.getAll(GemCategory.BEAD, false)
-                .forEach((item, def) -> {
-                    String path = def.id();
+        DefaultGemDefinitions.getAllByCategory(GemCategory.BEAD)
+                .forEach((id, def) -> {
+                    String path = id.getPath();
+                    Item item = Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(id));
                     tag(ModTags.Items.RAW_BEADS).add(item);
                     tag(ModTags.Items.CROSS_GENERIC_GEMS).add(item);
                     tag(ModTags.Items.FORGE_GENERIC_GEMS).add(item);
@@ -93,28 +96,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                             fromNamespaceAndPath("c", "raw_materials/" + path))).add(item);
         });
 
-        ModGemRegistry.getAll(GemCategory.GEMSTONE, true)
-                .forEach((item, def) -> {
-                    String path = def.id();
-                    tag(ModTags.Items.PROCESSED_GEMSTONES).add(item);
-                    tag(ModTags.Items.CROSS_GENERIC_GEMS).add(item);
-                    tag(ModTags.Items.FORGE_GENERIC_GEMS).add(item);
-                    tag(TagKey.create(Registries.ITEM,
-                            fromNamespaceAndPath("forge", "gems/" + path))).add(item);
-                    tag(TagKey.create(Registries.ITEM,
-                            fromNamespaceAndPath("c", "gems/" + path))).add(item);
-        });
+        tag(ModTags.Items.CROSS_GENERIC_GEMS).add(ModItems.GEM_ITEM.get());
+        tag(ModTags.Items.FORGE_GENERIC_GEMS).add(ModItems.GEM_ITEM.get());
 
-        ModGemRegistry.getAll(GemCategory.BEAD, true)
-                .forEach((item, def) -> {
-                    String path = def.id();
-                    tag(ModTags.Items.PROCESSED_BEADS).add(item);
-                    tag(ModTags.Items.CROSS_GENERIC_GEMS).add(item);
-                    tag(ModTags.Items.FORGE_GENERIC_GEMS).add(item);
-                    tag(TagKey.create(Registries.ITEM,
-                            fromNamespaceAndPath("forge", "gems/" + path))).add(item);
-                    tag(TagKey.create(Registries.ITEM,
-                            fromNamespaceAndPath("c", "gems/" + path))).add(item);
-        });
     }
 }

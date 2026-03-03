@@ -1,4 +1,4 @@
-// 1.20.1	2026-02-18T15:20:23.702735756	Global Loot Modifiers : bejeweled
+// 1.20.1	2026-03-03T11:29:06.555772829	Global Loot Modifiers : bejeweled
 a6d63bef9246aa0ba61dadb550252407bcf6dd4c data/bejeweled/loot_modifiers/add_beads_to_sea_mobs.json
-a1244d346a412aa1bc34e166c7c29e94ba49e613 data/bejeweled/loot_modifiers/add_gems_and_beads_to_chests.json
-4e4867d651bff40e4b201a0dfb1043c2b89aee70 data/forge/loot_modifiers/global_loot_modifiers.json
+a1244d346a412aa1bc34e166c7c29e94ba49e613 data/bejeweled/loot_modifiers/add_gems_to_chests.json
+1f3e3a8a8d595235eb7d4bcc01f149ec386dfd56 data/forge/loot_modifiers/global_loot_modifiers.json

@@ -32,44 +32,25 @@ public class ModEntityLoot extends EntityLootSubProvider {
 
     @Override
     public void generate() {
-        add(EntityType.DROWNED, waterMobLoot(.025f, .05f));
-        add(EntityType.GUARDIAN, waterMobLoot(.05f, .1f));
-        add(EntityType.ELDER_GUARDIAN, waterMobLoot(.1f, .2f));
+        add(EntityType.DROWNED, mobLoot(.05f));
+        add(EntityType.GUARDIAN, mobLoot(.1f));
+        add(EntityType.ELDER_GUARDIAN, mobLoot(.2f));
     }
 
-    private static LootTable.Builder waterMobLoot(float processedChance, float rawChance) {
+    private static LootTable.Builder mobLoot(float chance) {
         return LootTable.lootTable()
-                // === PROCESSED ===
                 .withPool(
                         LootPool.lootPool()
                                 .setRolls(ConstantValue.exactly(1))
                                 .add(LootItem.lootTableItem(ModItems.PEARL.get()))
-                                .add(LootItem.lootTableItem(ModItems.TUBE_CORAL.get()))
-                                .add(LootItem.lootTableItem(ModItems.BRAIN_CORAL.get()))
-                                .add(LootItem.lootTableItem(ModItems.BUBBLE_CORAL.get()))
-                                .add(LootItem.lootTableItem(ModItems.FIRE_CORAL.get()))
-                                .add(LootItem.lootTableItem(ModItems.HORN_CORAL.get()))
+                                .add(LootItem.lootTableItem(ModItems.BLUE_CORAL.get()))
+                                .add(LootItem.lootTableItem(ModItems.PINK_CORAL.get()))
+                                .add(LootItem.lootTableItem(ModItems.PURPLE_CORAL.get()))
+                                .add(LootItem.lootTableItem(ModItems.RED_CORAL.get()))
+                                .add(LootItem.lootTableItem(ModItems.YELLOW_CORAL.get()))
                                 .when(LootItemKilledByPlayerCondition.killedByPlayer())
                                 .when(LootItemRandomChanceWithLootingCondition
-                                        .randomChanceAndLootingBoost(processedChance, 0.05f))
-                                .apply(ApplyBonusCount.addUniformBonusCount(
-                                        Enchantments.MOB_LOOTING, 1
-                                ))
-                )
-
-                // === RAW ===
-                .withPool(
-                        LootPool.lootPool()
-                                .setRolls(ConstantValue.exactly(1))
-                                .add(LootItem.lootTableItem(ModItems.RAW_PEARL.get()))
-                                .add(LootItem.lootTableItem(ModItems.RAW_TUBE_CORAL_POLYP.get()))
-                                .add(LootItem.lootTableItem(ModItems.RAW_BRAIN_CORAL_POLYP.get()))
-                                .add(LootItem.lootTableItem(ModItems.RAW_BUBBLE_CORAL_POLYP.get()))
-                                .add(LootItem.lootTableItem(ModItems.RAW_FIRE_CORAL_POLYP.get()))
-                                .add(LootItem.lootTableItem(ModItems.RAW_HORN_CORAL_POLYP.get()))
-                                .when(LootItemKilledByPlayerCondition.killedByPlayer())
-                                .when(LootItemRandomChanceWithLootingCondition
-                                        .randomChanceAndLootingBoost(rawChance, 0.05f))
+                                        .randomChanceAndLootingBoost(chance, 0.05f))
                                 .apply(ApplyBonusCount.addUniformBonusCount(
                                         Enchantments.MOB_LOOTING, 1
                                 ))

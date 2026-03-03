@@ -1,9 +1,0 @@
-{
-  "type": "bejeweled:bead_polishing",
-  "input": {
-    "item": "bejeweled:raw_horn_coral_polyp"
-  },
-  "output": {
-    "item": "bejeweled:horn_coral"
-  }
-}
