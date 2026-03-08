@@ -4,13 +4,11 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.blueasclepias.bejeweled.common.data.gem.definition.GemDefinition;
-import net.blueasclepias.bejeweled.common.data.gem.definition.GemGrade;
+import net.blueasclepias.bejeweled.common.data.gem.loot.GemLootHelper;
 import net.blueasclepias.bejeweled.common.data.gem.registry.GemDefinitionRegistry;
-import net.blueasclepias.bejeweled.common.item.factory.GemItemFactory;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.LootContext;
@@ -18,10 +16,9 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.loot.LootModifier;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Map;
+import java.util.Optional;
 
 public class GemsToChestsModifier extends LootModifier {
 
@@ -86,39 +83,27 @@ public class GemsToChestsModifier extends LootModifier {
 
         // Roll for gems
         if (random.nextFloat() < processedChance) {
-            ItemStack result = pickWeighted(random, false);
+            ItemStack result = rollWeighted(random, false);
             generatedLoot.add(result);
         }
 
         // Roll for raw gems
         if (random.nextFloat() < rawChance) {
-            generatedLoot.add(pickWeighted(random, true));
+            generatedLoot.add(rollWeighted(random, true));
         }
 
         return generatedLoot;
     }
 
-    private static ItemStack pickWeighted(RandomSource random, boolean generateRaw) {
-        Map<ResourceLocation, GemDefinition> definitions = GemDefinitionRegistry.getAllLoot();
-        int total = definitions.values().stream()
-                .mapToInt(def -> def.rarity().weight).sum();
+    private static ItemStack rollWeighted(RandomSource random, boolean generateRaw) {
+        Optional<GemDefinition> gem =
+                GemLootHelper.pickWeighted(
+                        GemDefinitionRegistry.getAllLoot().values(),
+                        random
+                );
 
-        if (total <= 0)
-            throw new IllegalStateException("No weighted entries for gem pool");
-        int roll = random.nextInt(total);
-
-        for (var entry : definitions.entrySet()) {
-            roll -= entry.getValue().rarity().weight;
-            if (roll < 0) {
-                if(generateRaw) {
-                    Item item = ForgeRegistries.ITEMS.getValue(entry.getKey());
-                    if (item == null)
-                        throw new IllegalStateException("Missing item for GemDefinition: " + entry.getKey());
-                    return new ItemStack(item);
-                } else {
-                    return GemItemFactory.create(entry.getValue(), GemGrade.random(random));
-                }
-            }
+        if(gem.isPresent()){
+            return GemLootHelper.roll(gem.get(), random, generateRaw);
         }
         throw new IllegalStateException("Weighted roll failed");
     }

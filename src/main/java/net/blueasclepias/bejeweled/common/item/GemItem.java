@@ -41,19 +41,15 @@ public class GemItem extends Item implements IClientItemExtensions {
         // Get Grade or Default to lowest
         GemGrade grade = GemState.getGrade(stack).orElse(GemGrade.D);
 
-        Optional<String> path = GemState.getGem(stack);
-        if(path.isEmpty()) return super.getName(stack);
+        Optional<GemDefinition> def = GemState.getDefinition(stack);
+        if (def.isEmpty()) return super.getName(stack);
 
-        ResourceLocation gemId = ResourceLocation.parse(path.get());
-        GemDefinition def = GemDefinitionRegistry.getDefinition(gemId);
-        if (def == null) return super.getName(stack);
-
-        Item item = ForgeRegistries.ITEMS.getValue(def.id());
+        Item item = ForgeRegistries.ITEMS.getValue(def.get().id());
 
         Component gradeComponent = Component.translatable(grade.translationKey);
         Component gemComponent = item != null
                 ? item.getDescription()
-                : Component.literal(def.id().getPath());
+                : Component.literal(def.get().id().getPath());
 
         return Component.translatable(
                 "item.bejeweled.gem_name",

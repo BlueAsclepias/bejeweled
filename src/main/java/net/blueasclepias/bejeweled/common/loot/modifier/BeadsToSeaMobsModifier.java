@@ -6,25 +6,22 @@ import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.blueasclepias.bejeweled.common.data.gem.definition.GemCategory;
 import net.blueasclepias.bejeweled.common.data.gem.definition.GemDefinition;
 import net.blueasclepias.bejeweled.common.data.gem.definition.GemGrade;
+import net.blueasclepias.bejeweled.common.data.gem.loot.GemLootHelper;
 import net.blueasclepias.bejeweled.common.data.gem.registry.GemDefinitionRegistry;
 import net.blueasclepias.bejeweled.common.data.gem.state.GemState;
-import net.blueasclepias.bejeweled.common.item.factory.GemItemFactory;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.monster.ElderGuardian;
 import net.minecraft.world.entity.monster.Guardian;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.common.loot.LootModifier;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Map;
+import java.util.Optional;
 
 
 public class BeadsToSeaMobsModifier extends LootModifier {
@@ -94,13 +91,13 @@ public class BeadsToSeaMobsModifier extends LootModifier {
 
         // Mutually Exclusive Rolls
         if (roll < processedChance) {
-            ItemStack result = pickWeighted(random, false);
-            GemState.set(result, GemGrade.random(random));
+            ItemStack result = rollWeighted(random, false);
+            GemState.setGrade(result, GemGrade.random(random));
             return result;
         }
 
         if (roll < processedChance + rawChance)
-            return pickWeighted(random, true);
+            return rollWeighted(random, true);
 
         return null;
     }
@@ -118,27 +115,14 @@ public class BeadsToSeaMobsModifier extends LootModifier {
         return .5f; // Drowned
     }
 
-    private static ItemStack pickWeighted(RandomSource random, boolean isRaw) {
-        Map<ResourceLocation, GemDefinition> definitions = GemDefinitionRegistry.getAllLootByCategory(GemCategory.BEAD);
-        int total = definitions.values().stream()
-                .mapToInt(def -> def.rarity().weight).sum();
-
-        if (total <= 0)
-            throw new IllegalStateException("No weighted entries for gem pool");
-        int roll = random.nextInt(total);
-
-        for (var entry : definitions.entrySet()) {
-            roll -= entry.getValue().rarity().weight;
-            if (roll < 0) {
-                if(isRaw) {
-                    Item item = ForgeRegistries.ITEMS.getValue(entry.getKey());
-                    if (item == null)
-                        throw new IllegalStateException("Missing item for GemDefinition: " + entry.getKey());
-                    return new ItemStack(item);
-                } else {
-                    return GemItemFactory.create(entry.getValue(), GemGrade.random(random));
-                }
-            }
+    private static ItemStack rollWeighted(RandomSource random, boolean generateRaw) {
+        Optional<GemDefinition> gem =
+                GemLootHelper.pickWeighted(
+                        GemDefinitionRegistry.getAllLootByCategory(GemCategory.BEAD).values(),
+                        random
+                );
+        if(gem.isPresent()){
+            return GemLootHelper.roll(gem.get(), random, generateRaw);
         }
         throw new IllegalStateException("Weighted roll failed");
     }

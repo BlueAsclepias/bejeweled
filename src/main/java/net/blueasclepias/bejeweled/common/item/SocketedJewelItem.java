@@ -2,14 +2,13 @@ package net.blueasclepias.bejeweled.common.item;
 
 import net.blueasclepias.bejeweled.common.data.gem.definition.GemDefinition;
 import net.blueasclepias.bejeweled.common.data.gem.definition.GemGrade;
-import net.blueasclepias.bejeweled.common.data.gem.registry.GemDefinitionRegistry;
 import net.blueasclepias.bejeweled.common.data.gem.state.GemState;
 import net.blueasclepias.bejeweled.common.data.jewel.definition.JewelMaterial;
 import net.blueasclepias.bejeweled.common.data.jewel.definition.JewelType;
+import net.blueasclepias.bejeweled.common.data.jewel.state.JewelState;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -38,22 +37,18 @@ public class SocketedJewelItem extends Item implements ICurioItem {
         // Get Grade or Default to lowest
         GemGrade grade = GemState.getGrade(stack).orElse(GemGrade.D);
 
-        Optional<String> path = GemState.getGem(stack);
-        if(path.isEmpty()) return super.getName(stack);;
+        Optional<GemDefinition> def = GemState.getDefinition(stack);
+        if (def.isEmpty()) return super.getName(stack);
 
-        ResourceLocation gemId = ResourceLocation.parse(path.get());
-        GemDefinition def = GemDefinitionRegistry.getDefinition(gemId);
         JewelType type = JewelType.valueOf(tag.getString("type"));
         JewelMaterial material = JewelMaterial.valueOf(tag.getString("material"));
 
-        if (def == null) return super.getName(stack);
-
-        Item item = ForgeRegistries.ITEMS.getValue(def.id());
+        Item item = ForgeRegistries.ITEMS.getValue(def.get().id());
 
         Component gradeComponent = Component.translatable(grade.translationKey);
         Component gemComponent = item != null
                 ? item.getDescription()
-                : Component.literal(def.id().getPath());
+                : Component.literal(def.get().id().getPath());
         Component materialComponent = Component.translatable(material.translationKey);
         Component typeComponent = Component.translatable(type.translationKey);
 
@@ -73,13 +68,7 @@ public class SocketedJewelItem extends Item implements ICurioItem {
                                 @NotNull TooltipFlag flag) {
 
         super.appendHoverText(stack, level, tooltip, flag);
-
-        CompoundTag bejeweled = stack.getTagElement(MOD_ID);
-        if (bejeweled != null) {
-            GemGrade grade =  GemGrade.valueOf(bejeweled.getString("grade"));
-            JewelType type = JewelType.valueOf(bejeweled.getString("type"));
-            JewelMaterial material = JewelMaterial.valueOf(bejeweled.getString("material"));
-
+        GemState.getGrade(stack).ifPresent(grade -> {
             tooltip.add(
                     Component
                             .translatable("tooltip.bejeweled.grade")
@@ -87,18 +76,22 @@ public class SocketedJewelItem extends Item implements ICurioItem {
                                     .withStyle(grade.color, ChatFormatting.BOLD)
                             )
             );
+        });
 
+        JewelState.getType(stack).ifPresent(type -> {
             tooltip.add(
                     Component
                             .translatable("tooltip.bejeweled.type")
                             .append(Component.translatable(type.translationKey))
             );
+        });
 
+        JewelState.getMaterial(stack).ifPresent(material -> {
             tooltip.add(
                     Component
                             .translatable("tooltip.bejeweled.material")
                             .append(Component.translatable(material.translationKey))
             );
-        }
+        });
     }
 }
