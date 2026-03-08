@@ -1,7 +1,10 @@
 package net.blueasclepias.bejeweled;
 
 import com.mojang.logging.LogUtils;
-import net.blueasclepias.bejeweled.registry.*;
+import net.blueasclepias.bejeweled.common.creative.ModCreativeTabs;
+import net.blueasclepias.bejeweled.common.network.ModNetwork;
+import net.blueasclepias.bejeweled.common.registry.*;
+import net.blueasclepias.bejeweled.server.worldgen.registry.CustomFeatures;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -36,7 +39,7 @@ public class Bejeweled {
         ModLootModifiers.register(modEventBus);
 
         LOGGER.info("Bejeweled is registering features...");
-        ModFeatures.register(modEventBus);
+        CustomFeatures.register(modEventBus);
 
         // TODO should this run in common setup?
         LOGGER.info("Bejeweled is registering recipes...");
