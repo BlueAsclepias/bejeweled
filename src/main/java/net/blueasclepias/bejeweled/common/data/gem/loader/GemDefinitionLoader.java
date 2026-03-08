@@ -8,10 +8,12 @@ import net.blueasclepias.bejeweled.common.data.gem.definition.GemCategory;
 import net.blueasclepias.bejeweled.common.data.gem.definition.GemDefinition;
 import net.blueasclepias.bejeweled.common.data.gem.definition.GemRarity;
 import net.blueasclepias.bejeweled.common.data.gem.registry.GemDefinitionRegistry;
+import net.blueasclepias.bejeweled.common.data.gem.serialization.GemDefinitionCodec;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimpleJsonResourceReloadListener;
 import net.minecraft.util.profiling.ProfilerFiller;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,24 +29,25 @@ public class GemDefinitionLoader extends SimpleJsonResourceReloadListener {
     }
 
     @Override
-    protected void apply(Map<ResourceLocation, JsonElement> jsons, ResourceManager manager, ProfilerFiller profiler) {
+    protected void apply(Map<ResourceLocation, JsonElement> jsons,
+                         @NotNull ResourceManager manager,
+                         @NotNull ProfilerFiller profiler) {
         LOGGER.info("Reloading {} gem definitions", jsons.size());
         Map<ResourceLocation, GemDefinition> loaded = new HashMap<>();
 
         for (Map.Entry<ResourceLocation, JsonElement> entry : jsons.entrySet()) {
-
-            JsonObject json = entry.getValue().getAsJsonObject();
-
-            ResourceLocation itemId = ResourceLocation.parse(json.get("id").getAsString());
-            int color = Integer.decode(json.get("color").getAsString());
-            boolean generateLoot = json.has("generate_loot") && json.get("generate_loot").getAsBoolean();
-            GemRarity rarity = GemRarity.fromString(json.get("rarity").getAsString());
-            GemCategory category = GemCategory.fromString(json.get("category").getAsString());
-            //GemEffects
-            //GemPassives
-            GemDefinition def = new GemDefinition(itemId, color, generateLoot, rarity, category, null, null);
-
-            loaded.put(itemId, def);
+            ResourceLocation fileId = entry.getKey();
+            try {
+                JsonObject json = entry.getValue().getAsJsonObject();
+                GemDefinition def = GemDefinitionCodec.fromJson(json);
+                loaded.put(def.id(), def);
+            } catch (Exception e) {
+                LOGGER.error(
+                        "Failed to load gem definition {}: {}",
+                        fileId,
+                        e.getMessage()
+                );
+            }
         }
 
         GemDefinitionRegistry.setDefinitions(loaded);
