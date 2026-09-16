@@ -15,7 +15,11 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Menu for the gem cutting table.
+ * Container menu for the gem cutting table workstation.
+ * It binds the block entity's two-slot inventory to the client screen and exposes helpers the screen and packet
+ * handler use to query or trigger processing.
+ * Its slot layout and shift-click behavior mirror vanilla workstations, while keeping the output extract-only and
+ * the input slot limited to a single item.
  */
 public class GemCuttingTableMenu extends AbstractContainerMenu {
 
@@ -74,6 +78,11 @@ public class GemCuttingTableMenu extends AbstractContainerMenu {
         );
     }
 
+    /**
+     * Routes shift-clicked stacks between the table, the player inventory, and the hotbar.
+     * Output items are moved into player storage, player-held items first try to enter the single input slot, and
+     * anything that cannot go into the table falls back to the usual inventory-hotbar transfer behavior.
+     */
     @Override
     public @NotNull ItemStack quickMoveStack(@NotNull Player player, int index) {
         ItemStack result = ItemStack.EMPTY;
@@ -156,6 +165,10 @@ public class GemCuttingTableMenu extends AbstractContainerMenu {
         return result;
     }
 
+    /**
+     * Keeps the menu usable only while the original block entity still exists and the player remains within the
+     * normal 8-block workstation interaction range.
+     */
     @Override
     public boolean stillValid(@NotNull Player player) {
         return isBlockEntityValid() &&

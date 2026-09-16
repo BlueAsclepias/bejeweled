@@ -16,10 +16,18 @@ import net.minecraftforge.fml.common.Mod;
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
 /**
- * Handles socketing gems into jewelry items
+ * Global right-click handler for socketing gemstones into empty jewelry.
+ * It listens for players using two items together and treats the main hand and offhand symmetrically, so the
+ * gemstone and base jewel may be held in either order.
+ * On success it consumes both inputs and replaces the hand that held the empty jewel with the new socketed item.
  */
 @Mod.EventBusSubscriber(modid = MOD_ID)
 public class JewelSocketingHandler {
+    /**
+     * Attempts to combine the player's two held items into a socketed jewel on the server.
+     * One hand must hold a {@link GemItem} and the other a {@link BaseJewelItem}; whichever hand held the base
+     * jewel receives the crafted result.
+     */
     @SubscribeEvent
     public static void onRightClick(PlayerInteractEvent.RightClickItem event) {
         Player player = event.getEntity();

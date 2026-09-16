@@ -24,7 +24,11 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Coral Polyp Block that can be attached to coral walls underwater.
+ * Waterloggable wall coral growth that can only attach to a specific supporting coral block.
+ * The block stores which horizontal face it was placed against, uses that direction to choose
+ * a wall-hugging voxel shape, and survives only while the matching support block remains in
+ * place behind it. Because it implements {@link SimpleWaterloggedBlock}, placement and survival
+ * also preserve whether the occupied space currently contains water.
  */
 public class CoralPolypBlock extends HorizontalDirectionalBlock implements SimpleWaterloggedBlock {
 
@@ -60,6 +64,11 @@ public class CoralPolypBlock extends HorizontalDirectionalBlock implements Simpl
         builder.add(FACING, WATERLOGGED);
     }
 
+    /**
+     * Places the polyp only on horizontal faces backed by the configured support block. The
+     * resulting state stores both the attachment direction and whether the target space is
+     * currently waterlogged.
+     */
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         Direction face = context.getClickedFace();
@@ -74,6 +83,11 @@ public class CoralPolypBlock extends HorizontalDirectionalBlock implements Simpl
                 .setValue(WATERLOGGED, level.getFluidState(pos).is(FluidTags.WATER));
     }
 
+    /**
+     * Watches the supporting block behind the attached face. If that neighbor changes and the
+     * polyp no longer passes {@link #canSurvive(LevelAccessor, BlockPos, Direction)}, it pops
+     * off immediately by reverting to air.
+     */
     @Override
     public @NotNull BlockState updateShape(
             BlockState state,
@@ -92,6 +106,10 @@ public class CoralPolypBlock extends HorizontalDirectionalBlock implements Simpl
         return state;
     }
 
+    /**
+     * Returns the collision/selection shape that matches the wall this polyp is attached to, so
+     * the voxel volume projects outward from the supporting coral rather than filling the block.
+     */
     @Override
     public @NotNull VoxelShape getShape(
             BlockState state,
@@ -113,6 +131,10 @@ public class CoralPolypBlock extends HorizontalDirectionalBlock implements Simpl
                 : super.getFluidState(state);
     }
 
+    /**
+     * Checks whether the block behind the stored facing is both the configured support coral
+     * block and sturdy on the face the polyp is attached to.
+     */
     public boolean canSurvive(LevelAccessor level, BlockPos pos, Direction facing) {
         BlockPos supportPos = pos.relative(facing.getOpposite());
         BlockState support = level.getBlockState(supportPos);

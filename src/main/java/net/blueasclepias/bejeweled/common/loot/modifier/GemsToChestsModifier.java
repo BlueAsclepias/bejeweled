@@ -21,7 +21,11 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Optional;
 
 /**
- * Loot modifier that swaps vanilla chest gems for Bejeweled gem rolls.
+ * Global loot modifier that injects Bejeweled gem rolls into chest loot tables.
+ * For loot tables whose path starts with {@code chests/}, it first removes vanilla diamonds, emeralds, and
+ * amethyst shards, then rolls from every loaded definition with {@code generateLoot=true}. The raw and processed
+ * chances are adjusted by depth, luck, and a few special-case chest types such as mineshafts, buried treasure,
+ * and simple dungeons.
  */
 public class GemsToChestsModifier extends LootModifier {
 
@@ -33,6 +37,10 @@ public class GemsToChestsModifier extends LootModifier {
         super(conditions);
     }
 
+    /**
+     * Rewrites qualifying chest loot by stripping vanilla gem entries, then independently rolling one processed gem
+     * and one raw gem using the context-sensitive chance calculations for that chest.
+     */
     @Override
     protected @NotNull ObjectArrayList<ItemStack> doApply(
             ObjectArrayList<ItemStack> generatedLoot,
@@ -116,4 +124,3 @@ public class GemsToChestsModifier extends LootModifier {
         return CODEC;
     }
 }
-

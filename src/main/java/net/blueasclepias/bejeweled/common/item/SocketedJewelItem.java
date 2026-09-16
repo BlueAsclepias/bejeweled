@@ -24,13 +24,22 @@ import java.util.Optional;
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
 /**
- * Curios jewelry item that stores a socketed gem.
+ * Curios-compatible jewelry item representing a base jewel after a gemstone has been socketed into it.
+ * Its display data is fully driven by the Bejeweled NBT stored on the stack, letting each item derive the correct
+ * gem grade, gemstone identity, jewel material, and jewel type at runtime.
+ * The presentation closely mirrors {@link GemItem}, but expands the generated name and tooltip to include the
+ * underlying jewelry information as well.
  */
 public class SocketedJewelItem extends Item implements ICurioItem {
     public SocketedJewelItem(Properties pProperties) {
         super(pProperties.stacksTo(1));
     }
 
+    /**
+     * Builds the display name from the stored gem and jewel metadata.
+     * If the expected Bejeweled tag or referenced gem definition is missing, the base item name is used as a safe
+     * fallback instead of attempting to assemble a partial socketed name.
+     */
     @Override
     public @NotNull Component getName(ItemStack stack) {
 
@@ -64,6 +73,10 @@ public class SocketedJewelItem extends Item implements ICurioItem {
         ).withStyle(grade.color);
     }
 
+    /**
+     * Adds tooltip lines describing the socketed gem's grade together with the jewel's type and material.
+     * All values are read from the same stack metadata that drives the generated display name.
+     */
     @Override
     public void appendHoverText(@NotNull ItemStack stack,
                                 @Nullable Level level,

@@ -14,18 +14,26 @@ import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
 /**
- * Feature that places deepslate olivine ore near lava.
+ * Places deepslate olivine ore only in deepslate-replaceable blocks that lie close to lava.
+ * The feature searches a 5x5x5 cube around the origin for any lava fluid, causing successful placements to cluster
+ * around hot deep underground pockets rather than ordinary deepslate.
  */
 public class OlivineOreFeature extends Feature<NoneFeatureConfiguration> {
     public OlivineOreFeature()  {
         super(NoneFeatureConfiguration.CODEC);
     }
 
+    /**
+     * Tries to replace the origin with deepslate olivine ore when lava is present within two blocks.
+     */
     @Override
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> ctx) {
         return placeFeature(ctx.level(), ctx.origin());
     }
 
+    /**
+     * Applies the full olivine placement check to a single candidate block.
+     */
     private static boolean placeFeature(WorldGenLevel level, BlockPos origin) {
         BlockState current = level.getBlockState(origin);
         if (!current.is(BlockTags.DEEPSLATE_ORE_REPLACEABLES)) return false;
@@ -44,6 +52,9 @@ public class OlivineOreFeature extends Feature<NoneFeatureConfiguration> {
         return true;
     }
 
+    /**
+     * Scans a two-block radius cube around the origin for any lava fluid state.
+     */
     private static boolean isNearLava(WorldGenLevel level, BlockPos origin) {
         boolean isNearLava = false;
         BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();

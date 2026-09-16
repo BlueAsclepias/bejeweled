@@ -25,7 +25,10 @@ import java.util.Optional;
 
 
 /**
- * Loot modifier that adds bead drops to sea mobs.
+ * Global loot modifier that adds bead-category gem drops to player-killed drowned, guardians, and elder guardians.
+ * It only rolls definitions that are both bead-category and loot-enabled, then performs one mutually exclusive
+ * processed-vs-raw roll whose base chances are scaled by mob type and Looting. Each Looting level also grants one
+ * extra reroll after the main roll, while elder guardians receive the strongest multiplier and drowned the weakest.
  */
 public class BeadsToSeaMobsModifier extends LootModifier {
 
@@ -46,6 +49,10 @@ public class BeadsToSeaMobsModifier extends LootModifier {
         super(conditionsIn);
     }
 
+    /**
+     * Applies the main sea-mob bead roll and then adds one bonus reroll per Looting level. Each successful roll
+     * contributes at most one additional bead stack to the generated loot list.
+     */
     @Override
     protected @NotNull ObjectArrayList<ItemStack> doApply(
             ObjectArrayList<ItemStack> generatedLoot,

@@ -11,7 +11,10 @@ import net.minecraftforge.network.NetworkEvent;
 import java.util.function.Supplier;
 
 /**
- * Packet that requests gem cutting table processing on the server.
+ * Client-to-server request sent when the gem cutting screen's process button is pressed.
+ * The packet only identifies the target table position; all actual processing remains server-authoritative.
+ * Handling includes menu, block-entity, and distance checks so stale or spoofed requests cannot trigger arbitrary
+ * workstation actions.
  */
 public record ProcessGemCuttingPacket(BlockPos pos) {
 
@@ -23,6 +26,12 @@ public record ProcessGemCuttingPacket(BlockPos pos) {
         return new ProcessGemCuttingPacket(buf.readBlockPos());
     }
 
+    /**
+     * Processes the request on the server thread after re-checking that the sender is still interacting with the
+     * same table.
+     * The packet is ignored unless the open menu matches the position, a real gem cutting table block entity exists
+     * there, and the player is within the normal 8-block interaction distance.
+     */
     public static void handle(ProcessGemCuttingPacket msg, Supplier<NetworkEvent.Context> ctx) {
 
         ctx.get().enqueueWork(() -> {

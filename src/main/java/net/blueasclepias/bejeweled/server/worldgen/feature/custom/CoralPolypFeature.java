@@ -19,13 +19,20 @@ import javax.annotation.Nullable;
 import java.util.Objects;
 
 /**
- * Feature that places coral polyp blocks adjacent to existing coral blocks underwater.
+ * Searches a small randomized neighborhood for an existing coral block, resolves the matching
+ * {@link CoralPolypBlock} variant, and then tries to attach it to a horizontal water space beside that anchor.
+ * Successful placements preserve facing and waterlogging so generated polyps appear as submerged growths attached to
+ * the source coral.
  */
 public class CoralPolypFeature extends Feature<NoneFeatureConfiguration> {
     public CoralPolypFeature() {
         super(NoneFeatureConfiguration.CODEC);
     }
 
+    /**
+     * Finds a nearby coral block, looks up its matching polyp variant, and tries to attach that polyp to adjacent
+     * water.
+     */
     @Override
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> ctx) {
         WorldGenLevel level = ctx.level();
@@ -41,6 +48,10 @@ public class CoralPolypFeature extends Feature<NoneFeatureConfiguration> {
         return placeFeature(level, random, anchorPos, polypVariant);
     }
 
+    /**
+     * Performs up to eight random samples in a 7x5x7 box centered on the origin and returns the first coral block
+     * found.
+     */
     @Nullable
     private BlockPos findCoralAnchor(LevelAccessor level, RandomSource random, BlockPos origin) {
         for (int i = 0; i < 8; i++) {
@@ -57,6 +68,10 @@ public class CoralPolypFeature extends Feature<NoneFeatureConfiguration> {
         return null;
     }
 
+    /**
+     * Checks horizontal faces around the anchor for water and, on a 70% roll, places a facing and waterlogged polyp
+     * in the first eligible spot.
+     */
     private boolean placeFeature(LevelAccessor level, RandomSource random, BlockPos pos, CoralPolypBlock block) {
         for(Direction direction : Direction.Plane.HORIZONTAL) {
             BlockPos supportPos = pos.relative(direction);

@@ -19,7 +19,11 @@ import java.util.Map;
 import static net.blueasclepias.bejeweled.Bejeweled.LOGGER;
 
 /**
- * Reload listener that loads gem definitions from datapack JSON.
+ * Datapack reload listener that discovers gem definition JSON files under any namespace's {@code gems/} folder.
+ * This is the server-side entry point for Bejeweled's data-driven gem pipeline: this mod, other mods, and ordinary
+ * datapacks can all add gemstones or beads by shipping compatible JSON, without a helper integration mod. Each file
+ * is parsed independently through {@link GemDefinitionCodec}; failures are logged and skipped so one bad resource
+ * does not abort the rest of the reload.
  */
 public class GemDefinitionLoader extends SimpleJsonResourceReloadListener {
 
@@ -29,6 +33,10 @@ public class GemDefinitionLoader extends SimpleJsonResourceReloadListener {
         super(GSON, "gems");
     }
 
+    /**
+     * Parses every discovered JSON resource, merges the successfully decoded definitions into a single map keyed by
+     * each definition's declared id, and swaps the runtime registry once at the end of the reload pass.
+     */
     @Override
     protected void apply(Map<ResourceLocation, JsonElement> jsons,
                          @NotNull ResourceManager manager,

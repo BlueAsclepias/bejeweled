@@ -24,10 +24,18 @@ import org.jetbrains.annotations.NotNull;
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
 /**
- * Handles grindstone polishing for bead gems
+ * Global interaction handler that repurposes the vanilla grindstone as a bead-polishing station.
+ * Sneak-right-clicking a grindstone with a bead-category gem consumes one item and produces the polished result,
+ * complete with grindstone sound and swing feedback.
+ * The actual quality roll is still stubbed, so polished beads currently receive a random grade instead of a
+ * finished polishing outcome.
  */
 @Mod.EventBusSubscriber(modid = MOD_ID)
 public class GrindstoneRightClickHandler {
+    /**
+     * Intercepts crouching right-clicks on vanilla grindstones and performs the server-side bead polishing exchange
+     * when the held item is a valid bead input.
+     */
     @SubscribeEvent
     public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
         Level level = event.getLevel();
@@ -72,6 +80,11 @@ public class GrindstoneRightClickHandler {
         player.swing(event.getHand(), true);
     }
 
+    /**
+     * Creates the polished bead output for the supplied item.
+     * This is currently placeholder logic that accepts bead definitions and assigns a random grade until the real
+     * polishing rules or minigame are implemented.
+     */
     private static @NotNull ItemStack assemble(@NotNull Item item) {
         // STUB
         RandomSource random = RandomSource.create();

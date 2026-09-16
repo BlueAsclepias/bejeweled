@@ -13,13 +13,18 @@ import javax.annotation.Nullable;
 import java.util.Optional;
 
 /**
- * Swaps the generic "gem_item" model for a lazily-baked, gem-specific model
- * whenever the stack carries a {@link GemDefinition} that ships its own
- * "processed" texture (from this mod, another mod, or a datapack). Falls
- * back to the passed-in (generic, tinted) model otherwise, exactly like
- * vanilla's own {@link ItemOverrides#resolve} no-op contract.
+ * Item override hook for the shared {@code gem_item} model. Each time Minecraft resolves a
+ * model for a specific {@link net.minecraft.world.item.ItemStack}, this class reads the gem
+ * definition from {@link GemState} and decides whether that stack should keep the generic base
+ * model or swap to a lazily baked processed-texture model. Returning the incoming model
+ * unchanged when no gem data is present preserves vanilla's normal {@link ItemOverrides}
+ * contract and keeps the generic tinted rendering path untouched.
  */
 public class GemModelOverrides extends ItemOverrides {
+    /**
+     * Resolves a per-stack model based on the gem id stored in the stack's NBT. Stacks without
+     * a valid gem definition simply continue using the already-selected base model.
+     */
     @Override
     public BakedModel resolve(
             @NotNull BakedModel model,

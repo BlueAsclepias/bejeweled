@@ -13,7 +13,13 @@ import org.jetbrains.annotations.NotNull;
 import java.util.*;
 
 /**
- * Registry for ore generation features and blocks
+ * Static registry that connects {@link OreGenerationFeature} metadata to the actual ore blocks created for those
+ * features.
+ * {@link OreGenerationFeature} instances register themselves here when constructed, and block registration later
+ * binds each created ore block back to the corresponding feature id. Worldgen and datagen reuse this registry to
+ * iterate every feature, to access only generic feature variants, and to resolve the canonical block for a specific
+ * ore definition and block variant pair. The reverse lookup helpers compare definitions and variants by instance
+ * identity, so callers are expected to use the shared objects already stored in the registry.
  */
 public final class OreFeatureRegistry {
 
@@ -24,6 +30,10 @@ public final class OreFeatureRegistry {
         FEATURES.put(id, feat);
     }
 
+    /**
+     * Associates a newly registered block with a previously registered feature id. Missing ids fail fast instead of
+     * silently creating an orphaned binding.
+     */
     public static void bind(Block block, @NotNull ResourceLocation id) {
         OreGenerationFeature feat = Objects.requireNonNull(FEATURES.get(id));
         BLOCKS_BY_FEATURE.put(feat,block);
@@ -41,6 +51,9 @@ public final class OreFeatureRegistry {
         return BLOCKS_BY_FEATURE.values();
     }
 
+    /**
+     * Returns a filtered multimap view containing only features flagged as generic.
+     */
     public static Multimap<OreGenerationFeature, Block> allBlocksByGenericFeatures() {
         return Multimaps.filterKeys(BLOCKS_BY_FEATURE, OreGenerationFeature::isGeneric);
     }
@@ -49,12 +62,19 @@ public final class OreFeatureRegistry {
         return BLOCKS_BY_FEATURE;
     }
 
+    /**
+     * Finds the registered feature whose ore definition and block variant are the exact instances supplied here.
+     */
     public static Optional<OreGenerationFeature> find(OreDefinition def, OreBlockVariant variant) {
         return allFeatures().stream()
                 .filter(f -> f.definition() == def && f.variant() == variant)
                 .findFirst();
     }
 
+    /**
+     * Resolves the first block bound to the matching feature pair, if that feature has already been associated with a
+     * block.
+     */
     public static Optional<Block> getBlock(OreDefinition def, OreBlockVariant variant) {
         return find(def, variant)
                 .map(BLOCKS_BY_FEATURE::get)

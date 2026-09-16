@@ -8,7 +8,11 @@ import net.blueasclepias.bejeweled.common.data.gem.definition.GemRarity;
 import net.minecraft.resources.ResourceLocation;
 
 /**
- * JSON codec for reading gem definitions.
+ * Manual Gson-based parser for {@link GemDefinition} JSON resources.
+ * Instead of a DFU codec, it reads fields one by one with small helper methods that supply defaults for optional or
+ * malformed values; only the required {@code id} field is allowed to hard-fail. The commented {@code GemEffects} and
+ * {@code GemPassives} markers are intentional placeholders for future expansion points—{@code GemEffect} is still a
+ * stub elsewhere in the codebase, so those record slots are currently left {@code null}.
  */
 public class GemDefinitionCodec {
 
@@ -59,6 +63,10 @@ public class GemDefinitionCodec {
         }
     }
 
+    /**
+     * Parses one gem definition JSON object using permissive field readers. Invalid or missing optional values fall
+     * back to defaults instead of aborting the entire definition load.
+     */
     public static GemDefinition fromJson(JsonObject json) {
 
         ResourceLocation id = getId(json, "id");

@@ -14,7 +14,10 @@ import org.jetbrains.annotations.NotNull;
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
 /**
- * Screen for the gem cutting table.
+ * Client-side screen for the gem cutting table menu.
+ * It renders the workstation background, the vanilla-style slot overlays, and the button that asks the server to
+ * process the current gemstone.
+ * The screen never performs the cut locally; it only reflects menu state and sends the process request packet.
  */
 public class GemCuttingTableScreen extends AbstractContainerScreen<GemCuttingTableMenu> {
 
@@ -49,6 +52,10 @@ public class GemCuttingTableScreen extends AbstractContainerScreen<GemCuttingTab
         addRenderableWidget(processButton);
     }
 
+    /**
+     * Mirrors the table's current processability each tick so the client only enables the action button when the
+     * menu reports a valid input/output state.
+     */
     @Override
     public void containerTick() {
         super.containerTick();
@@ -130,6 +137,10 @@ public class GemCuttingTableScreen extends AbstractContainerScreen<GemCuttingTab
         renderTooltip(gui, mouseX, mouseY);
     }
 
+    /**
+     * Sends a request for the currently opened table to process its input on the server.
+     * The server re-validates the open menu and block position before any item state is changed.
+     */
     private void sendProcess() {
         ModNetwork.CHANNEL.sendToServer(
                 new ProcessGemCuttingPacket(menu.getBlockPos())

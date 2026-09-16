@@ -17,7 +17,9 @@ import net.minecraftforge.registries.RegistryObject;
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
 /**
- * Provides item models data for the mod.
+ * Generates item model JSON for every non-block item registered by the mod.
+ * Most items become simple single-layer generated models chosen by item category, while socketed jewelry also emits
+ * predicate-based override models so the client can swap metal textures from stack NBT.
  */
 public class ItemModelProvider extends net.minecraftforge.client.model.generators.ItemModelProvider {
 
@@ -25,6 +27,10 @@ public class ItemModelProvider extends net.minecraftforge.client.model.generator
         super(output, MOD_ID, existingFileHelper);
     }
 
+    /**
+     * Walks the item registry and generates models only for non-{@link BlockItem} entries, leaving block items to the
+     * blockstate provider.
+     */
     @Override
     protected void registerModels() {
         // Non-baseBlock items >> registerItemModel
@@ -34,6 +40,12 @@ public class ItemModelProvider extends net.minecraftforge.client.model.generator
                 .forEach(this::registerItemModel);
     }
 
+    /**
+     * Chooses the texture folder for a simple generated item model or delegates socketed jewelry to the override-based
+     * generator.
+     * Raw gems use {@code item/gem/raw/}, unsocketed jewelry uses {@code item/jewel/}, and other non-block items use
+     * the default {@code item/} folder.
+     */
     private void registerItemModel(Item item) {
         ResourceLocation id = ForgeRegistries.ITEMS.getKey(item);
         String path = id.getPath();
@@ -54,6 +66,12 @@ public class ItemModelProvider extends net.minecraftforge.client.model.generator
                 .texture("layer0", modLoc(folder + path));
     }
 
+    /**
+     * Builds the fallback socketed model plus one material-specific override model per {@link JewelMaterial}.
+     * Each override reuses the same socket overlay but swaps the metal base texture, then binds that model to the
+     * {@code bejeweled:material} predicate value matching the material's ordinal so
+     * {@code DynamicItemModelHandler.registerMaterialPredicate} can select the correct skin at runtime.
+     */
     private void registerSocketedModel(String path) {
 
         String overlay = "";

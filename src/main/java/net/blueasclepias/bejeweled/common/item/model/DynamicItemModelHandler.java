@@ -16,10 +16,18 @@ import java.util.Optional;
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
 /**
- * Handles dynamic item model predicates and tinting.
+ * Client-side bridge between gem or jewelry NBT and the model and color hooks that render those items.
+ * The registered item-property predicates expose a reload-time gem index and a {@link JewelMaterial} ordinal so
+ * ordinary model overrides can pick the correct processed-gem or metal variant without per-gem item classes. When a
+ * gem does not ship its own dedicated processed texture, the tint functions recolor the shared fallback layers from
+ * the loaded definition, and {@link #hasCustomTexture(ResourceLocation)} gates that dedicated-texture path.
  */
 public class DynamicItemModelHandler {
 
+    /**
+     * Registers the {@code bejeweled:material} predicate for a jewelry item. The resulting override value is the
+     * stored {@link JewelMaterial#ordinal()}, or {@code 0} when no material NBT is present.
+     */
     public static void registerMaterialPredicate(Item item) {
         ItemProperties.register(
                 item,
@@ -28,6 +36,10 @@ public class DynamicItemModelHandler {
         );
     }
 
+    /**
+     * Registers the {@code bejeweled:gem} predicate for the shared cut-gem item. The resulting override value is the
+     * 1-based index assigned by {@link GemDefinitionRegistry} during the current reload, or {@code 0} when unresolved.
+     */
     public static void registerGemPredicate(Item item) {
         ItemProperties.register(
                 item,
@@ -49,6 +61,10 @@ public class DynamicItemModelHandler {
         return material.isPresent() ? material.get().ordinal() : 0F;
     }
 
+    /**
+     * Tints the generic processed-gem fallback texture with the loaded gem color. Gems that provide their own
+     * dedicated texture return {@code -1} so the original texture colors are used instead.
+     */
     public static int tintGemLayer(ItemStack stack, int tintIndex) {
         Optional<GemDefinition> def = GemState.getDefinition(stack);
 
@@ -59,6 +75,10 @@ public class DynamicItemModelHandler {
         return 0xFF000000 | def.get().color(); // add alpha
     }
 
+    /**
+     * Tints only the socket overlay layer on jewelry items. Non-overlay layers are left white so the base jewelry
+     * texture renders unchanged even when no gem is present.
+     */
     public static int tintSocketLayer(ItemStack stack, int tintIndex) {
         // Only tint overlay
         if (tintIndex != 1) return 0xFFFFFFFF;
@@ -73,6 +93,10 @@ public class DynamicItemModelHandler {
         return hasCustomTexture(def.id());
     }
 
+    /**
+     * Checks whether a dedicated processed-gem texture exists at the resource path derived by
+     * {@link #processedTextureId(ResourceLocation)}.
+     */
     public static boolean hasCustomTexture(ResourceLocation gemId) {
         ResourceLocation atlasId = processedTextureId(gemId);
         ResourceLocation tex = ResourceLocation.fromNamespaceAndPath(
@@ -87,9 +111,9 @@ public class DynamicItemModelHandler {
     }
 
     /**
-     * The sprite id (atlas-relative, no "textures/" prefix or ".png" suffix)
-     * of the dedicated texture a gem uses when it opts out of the generic
-     * tinted look.
+     * Returns the atlas-relative sprite id for a gem's dedicated processed texture, without the
+     * {@code textures/} prefix or {@code .png} suffix. This is the path used both for existence checks and for
+     * baking a per-gem model when the gem opts out of the generic tinted fallback.
      */
     public static ResourceLocation processedTextureId(ResourceLocation gemId) {
         return ResourceLocation.fromNamespaceAndPath(

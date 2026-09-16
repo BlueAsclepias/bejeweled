@@ -23,7 +23,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Block entity for the gem cutting table.
+ * Server-side inventory and processing state for the gem cutting table workstation.
+ * It owns the shared two-slot container used by the block, menu, and screen during the gem-cutting loop.
+ * The current cutting result is still placeholder logic: processing simply rolls a random grade for gemstone
+ * inputs until the real minigame or skill-check system is implemented.
  */
 public class GemCuttingTableBlockEntity extends BlockEntity implements MenuProvider {
 
@@ -61,6 +64,10 @@ public class GemCuttingTableBlockEntity extends BlockEntity implements MenuProvi
         return inventory;
     }
 
+    /**
+     * Consumes the current input and writes the assembled result into the output slot when processing succeeds.
+     * This is the server-authoritative entry point invoked after the menu and packet flow have been validated.
+     */
     public void tryProcess() {
         ItemStack result = assemble(inventory);
         if (result.isEmpty()) return;
@@ -70,10 +77,19 @@ public class GemCuttingTableBlockEntity extends BlockEntity implements MenuProvi
         setChanged();
     }
 
+    /**
+     * Reports whether the table is ready to process its contents.
+     * Processing is only allowed when an input item is present and the output slot is empty.
+     */
     public boolean canProcess() {
         return inventory.getItem(OUTPUT_SLOT).isEmpty() && (!inventory.getItem(INPUT_SLOT).isEmpty());
     }
 
+    /**
+     * Builds the output stack for the current input item.
+     * This is intentionally a stub: valid gemstone inputs are accepted, but their resulting grade is chosen at
+     * random instead of being determined by a finished gem-cutting mechanic.
+     */
     private @NotNull ItemStack assemble(@NotNull Container container) {
         // STUB
         RandomSource random = RandomSource.create();

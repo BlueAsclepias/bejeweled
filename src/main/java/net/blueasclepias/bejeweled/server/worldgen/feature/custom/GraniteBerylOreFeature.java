@@ -14,18 +14,27 @@ import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
 /**
- * Feature that places granite beryl ore in larger granite patches away from caves.
+ * Places the granite aquamarine ore variant only inside thicker granite masses.
+ * The origin must already be granite, and cave-exposed candidates with fewer than three adjacent granite blocks are
+ * rejected so vein edges along open caves stay clear.
  */
 public class GraniteBerylOreFeature extends Feature<NoneFeatureConfiguration> {
     public GraniteBerylOreFeature() {
         super(NoneFeatureConfiguration.CODEC);
     }
 
+    /**
+     * Attempts to replace a granite block with the granite aquamarine variant when it is not part of a thin
+     * cave-exposed granite edge.
+     */
     @Override
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> ctx) {
         return placeFeature(ctx.level(), ctx.origin());
     }
 
+    /**
+     * Applies the full granite-beryl placement rule to the origin block.
+     */
     private static boolean placeFeature(WorldGenLevel level, BlockPos origin) {
         BlockState current = level.getBlockState(origin);
         if (!current.is(Blocks.GRANITE)) return false;
@@ -45,6 +54,10 @@ public class GraniteBerylOreFeature extends Feature<NoneFeatureConfiguration> {
         return true;
     }
 
+    /**
+     * Treats a candidate as a cave-edge granite patch when it borders underground air and has fewer than three
+     * granite neighbors.
+     */
     private static boolean isInCaveGranitePatch(WorldGenLevel level, BlockPos origin) {
         boolean isExposedInCave = false;
         int graniteNeighbors = 0;

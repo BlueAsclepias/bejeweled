@@ -20,7 +20,9 @@ import java.util.function.Consumer;
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
 /**
- * Provides crafting, smelting, and blasting recipes for data the mod.
+ * Generates recipes from the mod's data-driven registries instead of hand-written JSON.
+ * It emits 3x3 storage block compression and decompression pairs, smelting and blasting recipes for every registered
+ * ore block to its configured drop item, and the gem cutting table crafting recipe.
  */
 public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 
@@ -28,6 +30,10 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
         super(output);
     }
 
+    /**
+     * Builds the complete recipe set by iterating storage blocks and ore features from their registries, then adds the
+     * fixed workstation crafting recipe.
+     */
     @Override
     protected void buildRecipes(@NotNull Consumer<FinishedRecipe> consumer) {
 
@@ -83,6 +89,11 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
                 .save(consumer);
     }
 
+    /**
+     * Emits both furnace and blast furnace recipes for each supplied ore block.
+     * Every recipe uses the ore itself as the unlock condition and awards the same result with 1.0 experience at the
+     * standard 200-tick smelting or 100-tick blasting time.
+     */
     private void gemOreCooking(
             Consumer<FinishedRecipe> consumer,
             ItemLike result,

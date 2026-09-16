@@ -13,13 +13,14 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 /**
- * Wraps the baked "gem_item" model so it can hand out a gem-specific,
- * lazily-baked model (see {@link GemModelOverrides}) for gem stacks that
- * carry a dedicated texture, while behaving exactly like the base model in
- * every other respect. Unlike the old custom-renderer approach, this model
- * is rendered through the standard, cheap quad pipeline (same as any
- * vanilla item), giving proper extrusion and vanilla-identical transforms
- * for free.
+ * Thin wrapper around the baked {@code gem_item} inventory model that replaces only the parts
+ * needed for per-stack gem selection. All normal baked-model behavior still comes from the
+ * wrapped base model, but {@link #getOverrides()} now points at {@link GemModelOverrides} so a
+ * stack can swap itself to a gem-specific baked model at render time. The wrapper also forces
+ * {@link #isCustomRenderer()} to stay false, ensuring gem items render through Minecraft's
+ * normal static quad pipeline instead of a per-frame Java renderer. Its explicit
+ * {@link #getTransforms()} delegation is important as well: the previous wrapper forgot that
+ * override and accidentally fell back to {@link ItemTransforms#NO_TRANSFORMS}.
  */
 public class GemItemModel implements BakedModel {
 
@@ -50,6 +51,11 @@ public class GemItemModel implements BakedModel {
         return base.usesBlockLight();
     }
 
+    /**
+     * Keeps gem items on the normal baked-model render path. Per-stack specialization now
+     * happens by swapping baked models through overrides, so a custom renderer is no longer
+     * needed.
+     */
     @Override
     public boolean isCustomRenderer() {
         return false;
@@ -60,11 +66,20 @@ public class GemItemModel implements BakedModel {
         return base.getParticleIcon();
     }
 
+    /**
+     * Delegates the original GUI/hand/ground transforms from the wrapped model. Without this
+     * override, the interface default would silently return
+     * {@link ItemTransforms#NO_TRANSFORMS}.
+     */
     @Override
     public @NotNull ItemTransforms getTransforms() {
         return base.getTransforms();
     }
 
+    /**
+     * Returns the custom override handler that inspects stack NBT and swaps to a gem-specific
+     * baked model when appropriate, while leaving all other base-model behavior alone.
+     */
     @Override
     public @NotNull ItemOverrides getOverrides() {
         return overrides;

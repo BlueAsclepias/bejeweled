@@ -16,7 +16,10 @@ import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Block for the gem cutting table.
+ * Placed workstation block for the gem-cutting gameplay loop.
+ * It creates the matching block entity and, when used on the server, opens the gem cutting menu by passing that
+ * block entity to {@code NetworkHooks.openScreen} as the {@link net.minecraft.world.MenuProvider}.
+ * This keeps the menu tied to the exact table position and shared inventory instance.
  */
 public class GemCuttingTableBlock extends BaseEntityBlock {
 
@@ -25,6 +28,11 @@ public class GemCuttingTableBlock extends BaseEntityBlock {
     }
 
     // Forge, please serialize and send the blockpos to the client so it can open the menu
+    /**
+     * Opens the gem cutting table menu from the server side using the block entity at this position.
+     * Returning sided success lets the interaction feel immediate on the client while leaving menu creation
+     * authoritative on the server.
+     */
     @Override
     public @NotNull InteractionResult use(
             @NotNull BlockState state,
@@ -58,4 +66,3 @@ public class GemCuttingTableBlock extends BaseEntityBlock {
     }
 
 }
-
