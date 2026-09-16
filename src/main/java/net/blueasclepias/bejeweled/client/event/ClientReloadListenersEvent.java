@@ -1,6 +1,6 @@
 package net.blueasclepias.bejeweled.client.event;
 
-import net.blueasclepias.bejeweled.client.texture.GemSpriteCache;
+import net.blueasclepias.bejeweled.client.model.GemModelBakery;
 import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
@@ -9,6 +9,9 @@ import net.minecraftforge.fml.common.Mod;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
+/**
+ * Registers client reload listeners for gem models.
+ */
 @Mod.EventBusSubscriber(
         modid = MOD_ID,
         bus = Mod.EventBusSubscriber.Bus.MOD,
@@ -18,6 +21,6 @@ public class ClientReloadListenersEvent {
     @SubscribeEvent
     public static void onReload(RegisterClientReloadListenersEvent event) {
         event.registerReloadListener(
-                (ResourceManagerReloadListener) resourceManager -> GemSpriteCache.clear());
+                (ResourceManagerReloadListener) resourceManager -> GemModelBakery.clear());
     }
 }

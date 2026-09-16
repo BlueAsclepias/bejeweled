@@ -15,6 +15,9 @@ import java.util.List;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
+/**
+ * Ore generation feature definition
+ */
 public record OreGenerationFeature(
         @NotBlank String id,
         @NotNull OreDefinition definition, // identity

@@ -16,6 +16,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.stream.Stream;
 
+/**
+ * Provides entity loot tables for the mod.
+ */
 public class EntityLootProvider extends EntityLootSubProvider {
 
     public EntityLootProvider() {

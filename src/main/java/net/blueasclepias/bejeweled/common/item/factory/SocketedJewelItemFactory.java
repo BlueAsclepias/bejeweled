@@ -16,6 +16,9 @@ import java.util.Optional;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
+/**
+ * Factory for creating socketed jewel item stacks.
+ */
 public class SocketedJewelItemFactory {
 
     private static final Map<JewelType, RegistryObject<Item>> RESULT_ITEMS = Map.of(

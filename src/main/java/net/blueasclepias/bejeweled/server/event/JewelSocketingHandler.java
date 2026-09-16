@@ -15,6 +15,9 @@ import net.minecraftforge.fml.common.Mod;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
+/**
+ * Handles socketing gems into jewelry items
+ */
 @Mod.EventBusSubscriber(modid = MOD_ID)
 public class JewelSocketingHandler {
     @SubscribeEvent

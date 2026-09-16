@@ -23,6 +23,9 @@ import org.jetbrains.annotations.NotNull;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
+/**
+ * Handles grindstone polishing for bead gems
+ */
 @Mod.EventBusSubscriber(modid = MOD_ID)
 public class GrindstoneRightClickHandler {
     @SubscribeEvent

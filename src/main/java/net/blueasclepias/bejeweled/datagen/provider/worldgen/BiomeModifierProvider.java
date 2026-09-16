@@ -17,6 +17,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * Provides biome modifiers for the mod.
+ */
 public class BiomeModifierProvider implements DataProvider {
 
     private final PackOutput output;
@@ -75,4 +78,3 @@ public class BiomeModifierProvider implements DataProvider {
         return "Bejeweled Biome Modifiers";
     }
 }
-

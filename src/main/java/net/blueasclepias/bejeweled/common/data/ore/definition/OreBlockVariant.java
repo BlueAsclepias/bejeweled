@@ -5,6 +5,9 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 
+/**
+ * Ore block variant definition
+ */
 public record OreBlockVariant(
         String id,
         Block baseBlock,

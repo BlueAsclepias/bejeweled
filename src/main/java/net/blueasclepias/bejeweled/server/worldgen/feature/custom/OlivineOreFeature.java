@@ -13,6 +13,9 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
+/**
+ * Feature that places deepslate olivine ore near lava.
+ */
 public class OlivineOreFeature extends Feature<NoneFeatureConfiguration> {
     public OlivineOreFeature()  {
         super(NoneFeatureConfiguration.CODEC);

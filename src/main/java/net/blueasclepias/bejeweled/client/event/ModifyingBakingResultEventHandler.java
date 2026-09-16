@@ -1,6 +1,6 @@
 package net.blueasclepias.bejeweled.client.event;
 
-import net.blueasclepias.bejeweled.client.render.CustomRendererModel;
+import net.blueasclepias.bejeweled.client.model.GemItemModel;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.resources.ResourceLocation;
@@ -13,6 +13,9 @@ import java.util.Map;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
+/**
+ * Replaces the baked gem item model with the dynamic gem item model.
+ */
 @Mod.EventBusSubscriber(
         modid = MOD_ID,
         bus = Mod.EventBusSubscriber.Bus.MOD,
@@ -32,6 +35,6 @@ public class ModifyingBakingResultEventHandler {
 
         BakedModel base = models.get(id);
 
-        if (base != null) models.put(id, new CustomRendererModel(base));
+        if (base != null) models.put(id, new GemItemModel(base));
     }
 }

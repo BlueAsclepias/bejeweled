@@ -15,6 +15,9 @@ import java.util.concurrent.CompletableFuture;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
+/**
+ * Provides gem definition data for the mod.
+ */
 public class GemDefinitionProvider implements DataProvider {
 
     private final PackOutput output;

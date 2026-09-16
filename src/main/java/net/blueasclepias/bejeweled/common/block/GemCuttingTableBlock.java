@@ -15,6 +15,9 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Block for the gem cutting table.
+ */
 public class GemCuttingTableBlock extends BaseEntityBlock {
 
     public GemCuttingTableBlock(Properties properties) {

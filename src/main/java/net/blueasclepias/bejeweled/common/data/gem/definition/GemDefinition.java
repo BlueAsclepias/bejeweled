@@ -4,6 +4,9 @@ import com.google.gson.JsonObject;
 import net.blueasclepias.bejeweled.common.api.IGemDefinition;
 import net.minecraft.resources.ResourceLocation;
 
+/**
+ * Data-driven definition for a gemstone or bead.
+ */
 public record GemDefinition (
         ResourceLocation id,
         int color,

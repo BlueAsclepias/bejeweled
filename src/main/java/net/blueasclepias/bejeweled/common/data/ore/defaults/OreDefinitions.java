@@ -5,6 +5,9 @@ import net.minecraft.resources.ResourceLocation;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
+/**
+ * Default gemstone ore definitions
+ */
 public final class OreDefinitions {
 
     public static final OreDefinition AQUAMARINE = new OreDefinition(

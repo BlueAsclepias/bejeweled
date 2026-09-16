@@ -1,6 +1,9 @@
 package net.blueasclepias.bejeweled.common.data.jewel.definition;
 
 // TODO: modifiers
+/**
+ * Materials used by jewelry items.
+ */
 public enum JewelMaterial {
     COPPER("material.bejeweled.copper"),
     SILVER("material.bejeweled.silver"),

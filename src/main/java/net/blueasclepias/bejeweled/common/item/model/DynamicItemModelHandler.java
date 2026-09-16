@@ -15,6 +15,9 @@ import java.util.Optional;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
+/**
+ * Handles dynamic item model predicates and tinting.
+ */
 public class DynamicItemModelHandler {
 
     public static void registerMaterialPredicate(Item item) {
@@ -67,15 +70,32 @@ public class DynamicItemModelHandler {
     }
 
     public static boolean hasCustomTexture(GemDefinition def) {
+        return hasCustomTexture(def.id());
+    }
+
+    public static boolean hasCustomTexture(ResourceLocation gemId) {
+        ResourceLocation atlasId = processedTextureId(gemId);
         ResourceLocation tex = ResourceLocation.fromNamespaceAndPath(
-                def.id().getNamespace(),
-                "textures/item/gem/processed/" + def.id().getPath() + ".png"
+                atlasId.getNamespace(),
+                "textures/" + atlasId.getPath() + ".png"
         );
 
         return Minecraft.getInstance()
                 .getResourceManager()
                 .getResource(tex)
                 .isPresent();
+    }
+
+    /**
+     * The sprite id (atlas-relative, no "textures/" prefix or ".png" suffix)
+     * of the dedicated texture a gem uses when it opts out of the generic
+     * tinted look.
+     */
+    public static ResourceLocation processedTextureId(ResourceLocation gemId) {
+        return ResourceLocation.fromNamespaceAndPath(
+                gemId.getNamespace(),
+                "item/gem/processed/" + gemId.getPath()
+        );
     }
 
 }

@@ -4,6 +4,9 @@ import net.blueasclepias.bejeweled.common.data.gem.definition.GemCategory;
 import net.blueasclepias.bejeweled.common.data.gem.definition.GemRarity;
 import net.minecraft.resources.ResourceLocation;
 
+/**
+ * Common contract for gemstone definitions.
+ */
 public interface IGemDefinition {
     ResourceLocation id();
     int color();

@@ -1,13 +1,18 @@
 package net.blueasclepias.bejeweled.common.network.packet;
 
+import net.blueasclepias.bejeweled.common.block.entity.GemCuttingTableBlockEntity;
 import net.blueasclepias.bejeweled.common.container.GemCuttingTableMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
+/**
+ * Packet that requests gem cutting table processing on the server.
+ */
 public record ProcessGemCuttingPacket(BlockPos pos) {
 
     public static void encode(ProcessGemCuttingPacket msg, FriendlyByteBuf buf) {
@@ -19,14 +24,33 @@ public record ProcessGemCuttingPacket(BlockPos pos) {
     }
 
     public static void handle(ProcessGemCuttingPacket msg, Supplier<NetworkEvent.Context> ctx) {
-        ctx.get().enqueueWork(() -> {
-            ServerPlayer player = ctx.get().getSender();
-            if (player == null) return;
 
-            if (player.containerMenu instanceof GemCuttingTableMenu menu) {
-                menu.tryProcess();
-            }
+        ctx.get().enqueueWork(() -> {
+
+            ServerPlayer player = ctx.get().getSender();
+            if(player == null) return;
+
+            if(!(player.containerMenu instanceof GemCuttingTableMenu menu))
+                return;
+
+            if(!menu.getBlockPos().equals(msg.pos()))
+                return;
+
+            BlockEntity be = player.level().getBlockEntity(msg.pos());
+            if(!(be instanceof GemCuttingTableBlockEntity))
+                return;
+
+            if(player.distanceToSqr(
+                    msg.pos().getX() + 0.5,
+                    msg.pos().getY() + 0.5,
+                    msg.pos().getZ() + 0.5
+            ) > 64)
+                return;
+
+            menu.tryProcess();
+
         });
+
         ctx.get().setPacketHandled(true);
     }
 }

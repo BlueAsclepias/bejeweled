@@ -7,6 +7,9 @@ import net.minecraftforge.fml.common.Mod;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
+/**
+ * Adds the gem definition reload listener
+ */
 @Mod.EventBusSubscriber(
         modid = MOD_ID,
         bus = Mod.EventBusSubscriber.Bus.FORGE)

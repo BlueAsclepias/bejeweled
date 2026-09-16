@@ -1,32 +1,29 @@
 package net.blueasclepias.bejeweled.common.item;
 
-import net.blueasclepias.bejeweled.client.render.gem.GemItemRenderer;
 import net.blueasclepias.bejeweled.common.data.gem.definition.GemDefinition;
 import net.blueasclepias.bejeweled.common.data.gem.definition.GemGrade;
-import net.blueasclepias.bejeweled.common.data.gem.registry.GemDefinitionRegistry;
 import net.blueasclepias.bejeweled.common.data.gem.state.GemState;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Consumer;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
-public class GemItem extends Item implements IClientItemExtensions {
+/**
+ * Data-driven cut gem item.
+ */
+public class GemItem extends Item {
     public GemItem(Item.Properties props) {
         super(props);
     }
@@ -89,16 +86,5 @@ public class GemItem extends Item implements IClientItemExtensions {
             case B -> Rarity.UNCOMMON;
             default -> Rarity.COMMON;
         };
-    }
-
-    @Override
-    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-        consumer.accept(new IClientItemExtensions() {
-            private final GemItemRenderer renderer = new GemItemRenderer();
-            @Override
-            public BlockEntityWithoutLevelRenderer getCustomRenderer() {
-                return renderer;
-            }
-        });
     }
 }

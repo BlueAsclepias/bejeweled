@@ -7,6 +7,9 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 
+/**
+ * Default ore block variants
+ */
 public class OreVariants {
 
     public static final OreBlockVariant STONE =

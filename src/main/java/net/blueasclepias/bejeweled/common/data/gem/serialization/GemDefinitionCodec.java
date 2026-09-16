@@ -7,6 +7,9 @@ import net.blueasclepias.bejeweled.common.data.gem.definition.GemDefinition;
 import net.blueasclepias.bejeweled.common.data.gem.definition.GemRarity;
 import net.minecraft.resources.ResourceLocation;
 
+/**
+ * JSON codec for reading gem definitions.
+ */
 public class GemDefinitionCodec {
 
     private static ResourceLocation getId(JsonObject json, String key) {

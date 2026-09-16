@@ -22,6 +22,9 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Block entity for the gem cutting table.
+ */
 public class GemCuttingTableBlockEntity extends BlockEntity implements MenuProvider {
 
     private final SimpleContainer inventory = new SimpleContainer(2);

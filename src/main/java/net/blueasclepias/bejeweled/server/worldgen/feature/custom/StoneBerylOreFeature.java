@@ -14,6 +14,9 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
+/**
+ * Feature that places stone beryl ore away from exposed cave granite.
+ */
 public class StoneBerylOreFeature extends Feature<NoneFeatureConfiguration> {
     public StoneBerylOreFeature()  {
         super(NoneFeatureConfiguration.CODEC);

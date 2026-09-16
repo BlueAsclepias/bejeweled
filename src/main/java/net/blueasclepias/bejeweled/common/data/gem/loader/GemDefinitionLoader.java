@@ -4,9 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import net.blueasclepias.bejeweled.common.data.gem.definition.GemCategory;
 import net.blueasclepias.bejeweled.common.data.gem.definition.GemDefinition;
-import net.blueasclepias.bejeweled.common.data.gem.definition.GemRarity;
 import net.blueasclepias.bejeweled.common.data.gem.registry.GemDefinitionRegistry;
 import net.blueasclepias.bejeweled.common.data.gem.serialization.GemDefinitionCodec;
 import net.minecraft.resources.ResourceLocation;
@@ -20,6 +18,9 @@ import java.util.Map;
 
 import static net.blueasclepias.bejeweled.Bejeweled.LOGGER;
 
+/**
+ * Reload listener that loads gem definitions from datapack JSON.
+ */
 public class GemDefinitionLoader extends SimpleJsonResourceReloadListener {
 
     public static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();

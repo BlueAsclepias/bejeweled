@@ -12,6 +12,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
+/**
+ * Registry for ore generation features and blocks
+ */
 public final class OreFeatureRegistry {
 
     private static final Map<ResourceLocation, OreGenerationFeature> FEATURES = new HashMap<>();

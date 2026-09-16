@@ -4,6 +4,9 @@ import net.blueasclepias.bejeweled.common.api.IOreDefinition;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Ore definition data
+ */
 public record OreDefinition(
         @NotNull String id,
         @NotNull ResourceLocation drop

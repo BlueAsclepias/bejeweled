@@ -8,6 +8,9 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Registry for storage blocks and ingredients
+ */
 public final class StorageBlockRegistry {
     private static final Map<ResourceLocation, Block> BLOCKS = new HashMap<>();
     private static final Map<ResourceLocation, ResourceLocation> INGREDIENTS_BY_ID = new HashMap<>();

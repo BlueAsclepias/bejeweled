@@ -13,6 +13,9 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
+/**
+ * Feature that places granite beryl ore in larger granite patches away from caves.
+ */
 public class GraniteBerylOreFeature extends Feature<NoneFeatureConfiguration> {
     public GraniteBerylOreFeature() {
         super(NoneFeatureConfiguration.CODEC);

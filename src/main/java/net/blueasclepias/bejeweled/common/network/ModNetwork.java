@@ -7,6 +7,9 @@ import net.minecraftforge.network.simple.SimpleChannel;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
+/**
+ * Registers mod network channels and packets.
+ */
 public class ModNetwork {
 
     private static final String PROTOCOL_VERSION = "1";

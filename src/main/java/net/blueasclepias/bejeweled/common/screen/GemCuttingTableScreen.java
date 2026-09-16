@@ -13,6 +13,9 @@ import org.jetbrains.annotations.NotNull;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
+/**
+ * Screen for the gem cutting table.
+ */
 public class GemCuttingTableScreen extends AbstractContainerScreen<GemCuttingTableMenu> {
 
     private static final ResourceLocation TEXTURE =

@@ -10,6 +10,9 @@ import net.minecraftforge.registries.RegistryObject;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
+/**
+ * Register Mod Menus
+ */
 public class ModMenus {
 
     public static final DeferredRegister<MenuType<?>> MENUS =

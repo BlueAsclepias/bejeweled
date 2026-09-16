@@ -1,5 +1,8 @@
 package net.blueasclepias.bejeweled.common.data.gem.definition;
 
+/**
+ * Categories for gem definitions, such as gemstones and beads.
+ */
 public enum GemCategory {
     GEMSTONE,
     BEAD;

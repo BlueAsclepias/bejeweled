@@ -9,6 +9,9 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
+/**
+ * Register Mod Recipe Types and Serializers
+ */
 public class ModRecipes {
 
     public static final DeferredRegister<RecipeSerializer<?>> SERIALIZERS =

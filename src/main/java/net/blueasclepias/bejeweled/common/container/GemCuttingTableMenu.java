@@ -14,6 +14,9 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Menu for the gem cutting table.
+ */
 public class GemCuttingTableMenu extends AbstractContainerMenu {
 
     private final GemCuttingTableBlockEntity blockEntity;

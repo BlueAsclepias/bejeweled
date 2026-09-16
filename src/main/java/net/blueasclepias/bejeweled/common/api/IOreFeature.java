@@ -10,6 +10,9 @@ import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 
 import java.util.List;
 
+/**
+ * Common contract for ore generation features.
+ */
 public interface IOreFeature {
     String id();
     OreDefinition definition();

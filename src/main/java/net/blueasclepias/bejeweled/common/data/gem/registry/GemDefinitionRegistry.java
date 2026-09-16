@@ -10,6 +10,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * Runtime registry for loaded gem definitions.
+ */
 public final class GemDefinitionRegistry {
     private static Map<ResourceLocation, GemDefinition> DEFINITIONS = new HashMap<>();
     private static final Map<ResourceLocation, Integer> GEM_INDEX = new HashMap<>();

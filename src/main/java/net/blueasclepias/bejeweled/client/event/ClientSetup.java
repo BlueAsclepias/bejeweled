@@ -13,6 +13,9 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
+/**
+ * Registers client screens, colors, and item model predicates.
+ */
 @Mod.EventBusSubscriber(
         modid = MOD_ID,
         bus = Mod.EventBusSubscriber.Bus.MOD,

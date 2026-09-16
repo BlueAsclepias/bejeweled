@@ -23,6 +23,9 @@ import java.util.Optional;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
+/**
+ * Curios jewelry item that stores a socketed gem.
+ */
 public class SocketedJewelItem extends Item implements ICurioItem {
     public SocketedJewelItem(Properties pProperties) {
         super(pProperties.stacksTo(1));

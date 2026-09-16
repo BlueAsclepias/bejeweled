@@ -3,6 +3,9 @@ package net.blueasclepias.bejeweled.common.data.gem.definition;
 import net.minecraft.ChatFormatting;
 import net.minecraft.util.RandomSource;
 
+/**
+ * Quality grades used for gems and socketed jewelry.
+ */
 public enum GemGrade {
     S("grade.bejeweled.superb", ChatFormatting.GOLD, 5, .5f, 5, 1),
     A("grade.bejeweled.adequate", ChatFormatting.LIGHT_PURPLE, 4, .35f, 5, 2),

@@ -9,6 +9,9 @@ import net.minecraftforge.registries.RegistryObject;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
+/**
+ * Register Mod Block Entities
+ */
 public class ModBlockEntities {
 
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =

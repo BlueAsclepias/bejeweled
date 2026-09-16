@@ -22,6 +22,9 @@ import java.util.concurrent.CompletableFuture;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
+/**
+ * Generates Item Tags for the mod.
+ */
 public class ItemTagsProvider extends net.minecraft.data.tags.ItemTagsProvider {
 
     public ItemTagsProvider(

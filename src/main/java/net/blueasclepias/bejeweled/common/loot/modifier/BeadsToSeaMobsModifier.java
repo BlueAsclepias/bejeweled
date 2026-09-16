@@ -24,6 +24,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Optional;
 
 
+/**
+ * Loot modifier that adds bead drops to sea mobs.
+ */
 public class BeadsToSeaMobsModifier extends LootModifier {
 
     // === Base chances ===

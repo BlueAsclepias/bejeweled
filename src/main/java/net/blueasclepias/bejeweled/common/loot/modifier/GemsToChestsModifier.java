@@ -20,6 +20,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
 
+/**
+ * Loot modifier that swaps vanilla chest gems for Bejeweled gem rolls.
+ */
 public class GemsToChestsModifier extends LootModifier {
 
     public static final Codec<GemsToChestsModifier> CODEC =

@@ -9,6 +9,9 @@ import java.util.Optional;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
+/**
+ * NBT Helper Class
+ */
 public class JewelState {
 
     public static final String ROOT = MOD_ID;

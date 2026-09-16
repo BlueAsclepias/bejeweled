@@ -1,5 +1,8 @@
 package net.blueasclepias.bejeweled.common.data.gem.definition;
 
+/**
+ * Rarity tiers used for gem definitions and loot weighting.
+ */
 public enum GemRarity {
     COMMON(8,0),
     UNCOMMON(4,1),

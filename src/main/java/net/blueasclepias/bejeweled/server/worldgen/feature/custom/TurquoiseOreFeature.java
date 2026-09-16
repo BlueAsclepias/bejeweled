@@ -15,6 +15,9 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
+/**
+ * Feature that places stone turquoise ore near copper ore and water.
+ */
 public class TurquoiseOreFeature extends Feature<NoneFeatureConfiguration> {
     public TurquoiseOreFeature() {
         super(NoneFeatureConfiguration.CODEC);

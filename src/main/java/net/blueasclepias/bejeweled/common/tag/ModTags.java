@@ -8,6 +8,9 @@ import net.minecraft.world.level.block.Block;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
+/**
+ * Defines item and block tag keys used by the mod.
+ */
 public class ModTags {
 
     public static class Items {

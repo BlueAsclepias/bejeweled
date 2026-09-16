@@ -17,6 +17,9 @@ import java.util.Set;
 
 // TODO: simplify placement and biome
 // TODO: ModConfiguredFeatures should already exist, don't create them here
+/**
+ * Default ore generation features
+ */
 public final class OreFeatures {
     public static final OreGenerationFeature STONE_BERYL = new OreGenerationFeature(
             "stone_beryl_ore",

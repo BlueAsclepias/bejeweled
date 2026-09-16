@@ -4,6 +4,9 @@ import net.minecraft.resources.ResourceLocation;
 
 import java.util.Set;
 
+/**
+ * Biome filter definitions for worldgen placements
+ */
 public sealed interface IBiomeFilter
         permits IBiomeFilter.Tag, IBiomeFilter.List {
     record Tag(ResourceLocation tag) implements IBiomeFilter {}
@@ -15,4 +18,3 @@ public sealed interface IBiomeFilter
         }
     }
 }
-

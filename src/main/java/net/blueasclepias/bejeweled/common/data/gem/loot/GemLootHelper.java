@@ -13,6 +13,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Helper for selecting gem definitions and creating loot item stacks.
+ */
 public class GemLootHelper {
 
     public static ItemStack roll(GemDefinition def, RandomSource random, boolean generateRaw) {

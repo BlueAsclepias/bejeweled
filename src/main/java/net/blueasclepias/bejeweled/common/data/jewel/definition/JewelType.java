@@ -1,6 +1,9 @@
 package net.blueasclepias.bejeweled.common.data.jewel.definition;
 
 // TODO: Modifiers
+/**
+ * Types of jewelry items, such as rings and amulets.
+ */
 public enum JewelType {
     RING("jeweltype.bejeweled.ring"),
     AMULET("jeweltype.bejeweled.amulet"),

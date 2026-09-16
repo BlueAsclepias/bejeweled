@@ -17,6 +17,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 import java.util.Set;
 
+/**
+ * Provides block loot tables for the mod.
+ */
 public class BlockLootTables extends BlockLootSubProvider {
 
     public BlockLootTables() {

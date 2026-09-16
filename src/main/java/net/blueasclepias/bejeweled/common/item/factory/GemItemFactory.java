@@ -7,6 +7,9 @@ import net.blueasclepias.bejeweled.common.registry.ModItems;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Factory for creating gem item stacks.
+ */
 public class GemItemFactory {
     public static ItemStack create(@NotNull GemDefinition def, @NotNull GemGrade grade) {
         ItemStack result = new ItemStack(ModItems.GEM_ITEM.get());

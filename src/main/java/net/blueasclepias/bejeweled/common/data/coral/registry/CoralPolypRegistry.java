@@ -9,6 +9,9 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Registry for coral polyp blocks by coral type
+ */
 public final class CoralPolypRegistry {
     private static final Map<ResourceLocation, CoralPolypBlock> POLYPS = new HashMap<>();
     private static final Map<Block, CoralPolypBlock> BLOCKS_BY_POLYP = new HashMap<>();

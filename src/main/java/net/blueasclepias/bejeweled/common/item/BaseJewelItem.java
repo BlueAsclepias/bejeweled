@@ -5,6 +5,9 @@ import net.blueasclepias.bejeweled.common.data.jewel.definition.JewelType;
 import net.minecraft.world.item.Item;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 
+/**
+ * Base item for unsocketed Curios jewelry.
+ */
 public class BaseJewelItem extends Item implements ICurioItem {
     private final JewelType type;
     private final JewelMaterial material;

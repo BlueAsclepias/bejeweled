@@ -11,6 +11,9 @@ import java.util.stream.Collectors;
 
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
+/**
+ * Built-in gem definitions used for data generation.
+ */
 public class DefaultGemDefinitions {
 
     private static final Map<ResourceLocation, GemDefinition> DEFINITIONS = new HashMap<>();
