@@ -39,7 +39,9 @@ public class ModBlocks {
             BLOCKS.register(
                     "gem_cutting_table",
                     () -> new GemCuttingTableBlock(
-                            BlockBehaviour.Properties.copy(Blocks.CRAFTING_TABLE)
+                            BlockBehaviour.Properties.of()
+                                    .strength(2.5F)
+                                    .sound(SoundType.WOOD)
                     )
             );
 

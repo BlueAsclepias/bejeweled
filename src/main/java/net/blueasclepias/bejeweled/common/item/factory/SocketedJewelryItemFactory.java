@@ -5,7 +5,7 @@ import net.blueasclepias.bejeweled.common.data.gem.definition.GemGrade;
 import net.blueasclepias.bejeweled.common.data.gem.state.GemState;
 import net.blueasclepias.bejeweled.common.data.jewel.definition.JewelType;
 import net.blueasclepias.bejeweled.common.data.jewel.state.JewelState;
-import net.blueasclepias.bejeweled.common.item.BaseJewelItem;
+import net.blueasclepias.bejeweled.common.item.BaseJewelryItem;
 import net.blueasclepias.bejeweled.common.registry.ModItems;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -19,7 +19,7 @@ import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 /**
  * Factory for creating socketed jewel item stacks.
  */
-public class SocketedJewelItemFactory {
+public class SocketedJewelryItemFactory {
 
     private static final Map<JewelType, RegistryObject<Item>> RESULT_ITEMS = Map.of(
             JewelType.RING, ModItems.SOCKETED_RING,
@@ -30,7 +30,7 @@ public class SocketedJewelItemFactory {
 
     public static ItemStack create(ItemStack gemStack, ItemStack baseStack) {
 
-        BaseJewelItem baseItem = (BaseJewelItem) baseStack.getItem();
+        BaseJewelryItem baseItem = (BaseJewelryItem) baseStack.getItem();
 
         // Check if NBT root exists
         if (gemStack.getTagElement(MOD_ID) == null) return ItemStack.EMPTY;

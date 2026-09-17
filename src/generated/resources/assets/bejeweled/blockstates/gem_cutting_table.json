@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
+    "facing=east": {
+      "model": "bejeweled:block/gem_cutting_table",
+      "y": 90
+    },
+    "facing=north": {
       "model": "bejeweled:block/gem_cutting_table"
+    },
+    "facing=south": {
+      "model": "bejeweled:block/gem_cutting_table",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bejeweled:block/gem_cutting_table",
+      "y": 270
     }
   }
 }

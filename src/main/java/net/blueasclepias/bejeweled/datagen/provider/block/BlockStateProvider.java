@@ -10,6 +10,7 @@ import net.blueasclepias.bejeweled.common.registry.ModBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.BlockModelBuilder;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
@@ -34,15 +35,49 @@ public class BlockStateProvider extends net.minecraftforge.client.model.generato
     }
 
     /**
-     * Generates simple cube models for the workstation and storage blocks, layered ore models from the ore registry,
+     * Generates models for the workstation and storage blocks, layered ore models from the ore registry,
      * and directional coral polyp states and items from the coral registry.
      */
     @Override
     protected void registerStatesAndModels() {
 
+
         // Gem Cutting Table
-        // TODO: PROPER TEXTURES FOR A CUSTOM MODEL BLOCK
-        simpleBlockWithItem(ModBlocks.GEM_CUTTING_TABLE.get(), cubeAll(ModBlocks.GEM_CUTTING_TABLE.get()));
+        ModelFile gemCuttingTableModel = new ModelFile.UncheckedModelFile(
+                modLoc("block/gem_cutting_table")
+        );
+
+        horizontalBlock(
+                ModBlocks.GEM_CUTTING_TABLE.get(),
+                gemCuttingTableModel
+        );
+
+        itemModels()
+                .getBuilder("gem_cutting_table")
+                .parent(gemCuttingTableModel)
+                .transforms()
+                .transform(ItemDisplayContext.GUI)
+                .rotation(30, 225, 0)
+                .scale(0.625F, 0.625F, 0.625F)
+                .end()
+                .transform(ItemDisplayContext.FIRST_PERSON_RIGHT_HAND)
+                .rotation(0, 45, 0)
+                .scale(0.4F, 0.4F, 0.4F)
+                .end()
+                .transform(ItemDisplayContext.FIRST_PERSON_LEFT_HAND)
+                .rotation(0, 225, 0)
+                .scale(0.4F, 0.4F, 0.4F)
+                .end()
+                .transform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND)
+                .rotation(10, -45, 170)
+                .translation(0, 1.5F, -2.75F)
+                .scale(0.4F, 0.4F, 0.4F)
+                .end()
+                .transform(ItemDisplayContext.THIRD_PERSON_LEFT_HAND)
+                .rotation(10, 135, 170)
+                .translation(0, 1.5F, -2.75F)
+                .scale(0.4F, 0.4F, 0.4F)
+                .end();
 
         // Ore blocks
         OreRegistry.blocksByEntry().forEach(this::oreBlock);

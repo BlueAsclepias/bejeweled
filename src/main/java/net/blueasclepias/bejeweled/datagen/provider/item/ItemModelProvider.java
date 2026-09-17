@@ -2,8 +2,8 @@ package net.blueasclepias.bejeweled.datagen.provider.item;
 
 import net.blueasclepias.bejeweled.common.data.gem.defaults.DefaultGemDefinitions;
 import net.blueasclepias.bejeweled.common.data.jewel.definition.JewelMaterial;
-import net.blueasclepias.bejeweled.common.item.BaseJewelItem;
-import net.blueasclepias.bejeweled.common.item.SocketedJewelItem;
+import net.blueasclepias.bejeweled.common.item.BaseJewelryItem;
+import net.blueasclepias.bejeweled.common.item.SocketedJeweleryItem;
 import net.blueasclepias.bejeweled.common.registry.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -54,10 +54,10 @@ public class ItemModelProvider extends net.minecraftforge.client.model.generator
         if (DefaultGemDefinitions.containsKey(id)) {
             folder += "gem/raw/";
         }
-        else if (item instanceof BaseJewelItem) {
+        else if (item instanceof BaseJewelryItem) {
             folder += "jewel/";
         }
-        else if (item instanceof SocketedJewelItem) {
+        else if (item instanceof SocketedJeweleryItem) {
             registerSocketedModel(path);
             return;
         }

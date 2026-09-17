@@ -8,13 +8,13 @@ import top.theillusivec4.curios.api.type.capability.ICurioItem;
 /**
  * Base item for unsocketed Curios jewelry.
  */
-public class BaseJewelItem extends Item implements ICurioItem {
+public class BaseJewelryItem extends Item implements ICurioItem {
     private final JewelType type;
     private final JewelMaterial material;
 
-    public BaseJewelItem(Properties props,
-                         JewelType type,
-                         JewelMaterial material) {
+    public BaseJewelryItem(Properties props,
+                           JewelType type,
+                           JewelMaterial material) {
         super(props.stacksTo(1));
         this.type = type;
         this.material = material;

@@ -1,8 +1,8 @@
 package net.blueasclepias.bejeweled.server.event;
 
-import net.blueasclepias.bejeweled.common.item.BaseJewelItem;
+import net.blueasclepias.bejeweled.common.item.BaseJewelryItem;
 import net.blueasclepias.bejeweled.common.item.GemItem;
-import net.blueasclepias.bejeweled.common.item.factory.SocketedJewelItemFactory;
+import net.blueasclepias.bejeweled.common.item.factory.SocketedJewelryItemFactory;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -22,10 +22,10 @@ import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
  * On success it consumes both inputs and replaces the hand that held the empty jewel with the new socketed item.
  */
 @Mod.EventBusSubscriber(modid = MOD_ID)
-public class JewelSocketingHandler {
+public class JewelrySocketingHandler {
     /**
      * Attempts to combine the player's two held items into a socketed jewel on the server.
-     * One hand must hold a {@link GemItem} and the other a {@link BaseJewelItem}; whichever hand held the base
+     * One hand must hold a {@link GemItem} and the other a {@link BaseJewelryItem}; whichever hand held the base
      * jewel receives the crafted result.
      */
     @SubscribeEvent
@@ -40,11 +40,11 @@ public class JewelSocketingHandler {
         if (isGem(off, main) && isBase(off, main)) {
 
             ItemStack result;
-            boolean isBaseOnOffHand = off.getItem() instanceof BaseJewelItem;
+            boolean isBaseOnOffHand = off.getItem() instanceof BaseJewelryItem;
             if(isBaseOnOffHand)
-                result = SocketedJewelItemFactory.create(main, off);
+                result = SocketedJewelryItemFactory.create(main, off);
             else
-                result = SocketedJewelItemFactory.create(off, main);
+                result = SocketedJewelryItemFactory.create(off, main);
 
             if (!result.isEmpty()) {
 
@@ -77,7 +77,7 @@ public class JewelSocketingHandler {
     }
 
     private static boolean isBase(ItemStack off, ItemStack main){
-        return main.getItem() instanceof BaseJewelItem ||
-                off.getItem() instanceof BaseJewelItem;
+        return main.getItem() instanceof BaseJewelryItem ||
+                off.getItem() instanceof BaseJewelryItem;
     }
 }

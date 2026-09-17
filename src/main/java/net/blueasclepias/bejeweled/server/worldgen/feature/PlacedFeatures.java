@@ -10,7 +10,7 @@ import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 /**
  * Registers Placed Features for the mod.
  */
-public class ModPlacedFeatures {
+public class PlacedFeatures {
 
     public static final ResourceKey<PlacedFeature> CORAL_POLYP = create("coral_polyp");
 

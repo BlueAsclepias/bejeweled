@@ -1,6 +1,6 @@
 package net.blueasclepias.bejeweled.server.worldgen.placement;
 
-import net.blueasclepias.bejeweled.server.worldgen.feature.ModPlacedFeatures;
+import net.blueasclepias.bejeweled.server.worldgen.feature.PlacedFeatures;
 import net.blueasclepias.bejeweled.server.worldgen.util.IBiomeFilter;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -33,7 +33,7 @@ public class BiomePlacements {
 
     public static final BiomeFeaturePlacement CORAL_POLYP =
             create("coral_polyp",
-            Set.of(ModPlacedFeatures.CORAL_POLYP),
+            Set.of(PlacedFeatures.CORAL_POLYP),
             new IBiomeFilter.List(
                     Set.of(
                             ResourceLocation.fromNamespaceAndPath("minecraft", "warm_ocean")

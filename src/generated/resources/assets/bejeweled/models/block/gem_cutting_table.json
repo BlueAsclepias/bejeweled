@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "bejeweled:block/gem_cutting_table"
-  }
-}

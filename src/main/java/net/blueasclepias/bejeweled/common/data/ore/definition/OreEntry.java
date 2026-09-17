@@ -1,7 +1,7 @@
 package net.blueasclepias.bejeweled.common.data.ore.definition;
 
 import net.blueasclepias.bejeweled.server.worldgen.feature.ConfiguredFeatures;
-import net.blueasclepias.bejeweled.server.worldgen.feature.ModPlacedFeatures;
+import net.blueasclepias.bejeweled.server.worldgen.feature.PlacedFeatures;
 import net.blueasclepias.bejeweled.server.worldgen.placement.BiomeFeaturePlacement;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -34,6 +34,6 @@ public record OreEntry(
     }
 
     public ResourceKey<PlacedFeature> placedFeatureKey() {
-        return ModPlacedFeatures.create(id);
+        return PlacedFeatures.create(id);
     }
 }

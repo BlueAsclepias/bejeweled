@@ -4,7 +4,7 @@ import net.blueasclepias.bejeweled.common.data.ore.definition.OreEntry;
 import net.blueasclepias.bejeweled.common.data.ore.definition.OrePlacement;
 import net.blueasclepias.bejeweled.common.data.ore.registry.OreRegistry;
 import net.blueasclepias.bejeweled.server.worldgen.feature.ConfiguredFeatures;
-import net.blueasclepias.bejeweled.server.worldgen.feature.ModPlacedFeatures;
+import net.blueasclepias.bejeweled.server.worldgen.feature.PlacedFeatures;
 import net.blueasclepias.bejeweled.server.worldgen.registry.CustomFeatures;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
@@ -57,7 +57,7 @@ public class WorldGenBootstrap {
 
         // all polyps use the same feature
         context.register(
-                ModPlacedFeatures.CORAL_POLYP,
+                PlacedFeatures.CORAL_POLYP,
                 new PlacedFeature(
                         configured.getOrThrow(ConfiguredFeatures.ALL_CORAL_POLYP_CONFIGURED),
                         List.of(

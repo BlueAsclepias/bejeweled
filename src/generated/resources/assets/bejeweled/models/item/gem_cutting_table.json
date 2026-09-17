@@ -1,3 +1,75 @@
 {
-  "parent": "bejeweled:block/gem_cutting_table"
+  "parent": "bejeweled:block/gem_cutting_table",
+  "display": {
+    "firstperson_lefthand": {
+      "rotation": [
+        0,
+        225,
+        0
+      ],
+      "scale": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        0,
+        45,
+        0
+      ],
+      "scale": [
+        0.4,
+        0.4,
+        0.4
+      ]
+    },
+    "gui": {
+      "rotation": [
+        30,
+        225,
+        0
+      ],
+      "scale": [
+        0.625,
+        0.625,
+        0.625
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        10,
+        135,
+        170
+      ],
+      "scale": [
+        0.4,
+        0.4,
+        0.4
+      ],
+      "translation": [
+        0,
+        1.5,
+        -2.75
+      ]
+    },
+    "thirdperson_righthand": {
+      "rotation": [
+        10,
+        -45,
+        170
+      ],
+      "scale": [
+        0.4,
+        0.4,
+        0.4
+      ],
+      "translation": [
+        0,
+        1.5,
+        -2.75
+      ]
+    }
+  }
 }

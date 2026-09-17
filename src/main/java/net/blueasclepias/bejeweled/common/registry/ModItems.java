@@ -2,9 +2,9 @@ package net.blueasclepias.bejeweled.common.registry;
 
 import net.blueasclepias.bejeweled.common.data.jewel.definition.JewelMaterial;
 import net.blueasclepias.bejeweled.common.data.jewel.definition.JewelType;
-import net.blueasclepias.bejeweled.common.item.BaseJewelItem;
+import net.blueasclepias.bejeweled.common.item.BaseJewelryItem;
 import net.blueasclepias.bejeweled.common.item.GemItem;
-import net.blueasclepias.bejeweled.common.item.SocketedJewelItem;
+import net.blueasclepias.bejeweled.common.item.SocketedJeweleryItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -127,50 +127,50 @@ public class ModItems {
             registerBlockItem("tube_coral_block_polyp",ModBlocks.TUBE_CORAL_BLOCK_POLYP);
 
     // ====== CRAFTABLE JEWEL BASES =====
-    public static final RegistryObject<Item> COPPER_RING = ITEMS.register("copper_ring", () -> new BaseJewelItem(new Item.Properties(), JewelType.RING, JewelMaterial.COPPER));
-    public static final RegistryObject<Item> BRONZE_RING = ITEMS.register("bronze_ring", () -> new BaseJewelItem(new Item.Properties(), JewelType.RING, JewelMaterial.BRONZE));
-    public static final RegistryObject<Item> SILVER_RING = ITEMS.register("silver_ring", () -> new BaseJewelItem(new Item.Properties(), JewelType.RING, JewelMaterial.SILVER));
-    public static final RegistryObject<Item> IRON_RING = ITEMS.register("iron_ring", () -> new BaseJewelItem(new Item.Properties(), JewelType.RING, JewelMaterial.IRON));
-    public static final RegistryObject<Item> GOLD_RING = ITEMS.register("gold_ring", () -> new BaseJewelItem(new Item.Properties(), JewelType.RING, JewelMaterial.GOLD));
-    public static final RegistryObject<Item> STEEL_RING = ITEMS.register("steel_ring", () -> new BaseJewelItem(new Item.Properties(), JewelType.RING, JewelMaterial.STEEL));
-    public static final RegistryObject<Item> NETHERITE_RING = ITEMS.register("netherite_ring", () -> new BaseJewelItem(new Item.Properties(), JewelType.RING, JewelMaterial.NETHERITE));
+    public static final RegistryObject<Item> COPPER_RING = ITEMS.register("copper_ring", () -> new BaseJewelryItem(new Item.Properties(), JewelType.RING, JewelMaterial.COPPER));
+    public static final RegistryObject<Item> BRONZE_RING = ITEMS.register("bronze_ring", () -> new BaseJewelryItem(new Item.Properties(), JewelType.RING, JewelMaterial.BRONZE));
+    public static final RegistryObject<Item> SILVER_RING = ITEMS.register("silver_ring", () -> new BaseJewelryItem(new Item.Properties(), JewelType.RING, JewelMaterial.SILVER));
+    public static final RegistryObject<Item> IRON_RING = ITEMS.register("iron_ring", () -> new BaseJewelryItem(new Item.Properties(), JewelType.RING, JewelMaterial.IRON));
+    public static final RegistryObject<Item> GOLD_RING = ITEMS.register("gold_ring", () -> new BaseJewelryItem(new Item.Properties(), JewelType.RING, JewelMaterial.GOLD));
+    public static final RegistryObject<Item> STEEL_RING = ITEMS.register("steel_ring", () -> new BaseJewelryItem(new Item.Properties(), JewelType.RING, JewelMaterial.STEEL));
+    public static final RegistryObject<Item> NETHERITE_RING = ITEMS.register("netherite_ring", () -> new BaseJewelryItem(new Item.Properties(), JewelType.RING, JewelMaterial.NETHERITE));
 
-    public static final RegistryObject<Item> COPPER_AMULET = ITEMS.register("copper_amulet", () -> new BaseJewelItem(new Item.Properties(), JewelType.AMULET, JewelMaterial.COPPER));
-    public static final RegistryObject<Item> BRONZE_AMULET = ITEMS.register("bronze_amulet", () -> new BaseJewelItem(new Item.Properties(), JewelType.AMULET, JewelMaterial.BRONZE));
-    public static final RegistryObject<Item> SILVER_AMULET = ITEMS.register("silver_amulet", () -> new BaseJewelItem(new Item.Properties(), JewelType.AMULET, JewelMaterial.SILVER));
-    public static final RegistryObject<Item> IRON_AMULET = ITEMS.register("iron_amulet", () -> new BaseJewelItem(new Item.Properties(), JewelType.AMULET, JewelMaterial.IRON));
-    public static final RegistryObject<Item> GOLD_AMULET = ITEMS.register("gold_amulet", () -> new BaseJewelItem(new Item.Properties(), JewelType.AMULET, JewelMaterial.GOLD));
-    public static final RegistryObject<Item> STEEL_AMULET = ITEMS.register("steel_amulet", () -> new BaseJewelItem(new Item.Properties(), JewelType.AMULET, JewelMaterial.STEEL));
-    public static final RegistryObject<Item> NETHERITE_AMULET = ITEMS.register("netherite_amulet", () -> new BaseJewelItem(new Item.Properties(), JewelType.AMULET, JewelMaterial.NETHERITE));
+    public static final RegistryObject<Item> COPPER_AMULET = ITEMS.register("copper_amulet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.AMULET, JewelMaterial.COPPER));
+    public static final RegistryObject<Item> BRONZE_AMULET = ITEMS.register("bronze_amulet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.AMULET, JewelMaterial.BRONZE));
+    public static final RegistryObject<Item> SILVER_AMULET = ITEMS.register("silver_amulet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.AMULET, JewelMaterial.SILVER));
+    public static final RegistryObject<Item> IRON_AMULET = ITEMS.register("iron_amulet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.AMULET, JewelMaterial.IRON));
+    public static final RegistryObject<Item> GOLD_AMULET = ITEMS.register("gold_amulet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.AMULET, JewelMaterial.GOLD));
+    public static final RegistryObject<Item> STEEL_AMULET = ITEMS.register("steel_amulet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.AMULET, JewelMaterial.STEEL));
+    public static final RegistryObject<Item> NETHERITE_AMULET = ITEMS.register("netherite_amulet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.AMULET, JewelMaterial.NETHERITE));
 
-    public static final RegistryObject<Item> COPPER_BRACELET = ITEMS.register("copper_bracelet", () -> new BaseJewelItem(new Item.Properties(), JewelType.BRACELET, JewelMaterial.COPPER));
-    public static final RegistryObject<Item> BRONZE_BRACELET = ITEMS.register("bronze_bracelet", () -> new BaseJewelItem(new Item.Properties(), JewelType.BRACELET, JewelMaterial.BRONZE));
-    public static final RegistryObject<Item> SILVER_BRACELET = ITEMS.register("silver_bracelet", () -> new BaseJewelItem(new Item.Properties(), JewelType.BRACELET, JewelMaterial.SILVER));
-    public static final RegistryObject<Item> IRON_BRACELET = ITEMS.register("iron_bracelet", () -> new BaseJewelItem(new Item.Properties(), JewelType.BRACELET, JewelMaterial.IRON));
-    public static final RegistryObject<Item> GOLD_BRACELET = ITEMS.register("gold_bracelet", () -> new BaseJewelItem(new Item.Properties(), JewelType.BRACELET, JewelMaterial.GOLD));
-    public static final RegistryObject<Item> STEEL_BRACELET = ITEMS.register("steel_bracelet", () -> new BaseJewelItem(new Item.Properties(), JewelType.BRACELET, JewelMaterial.STEEL));
-    public static final RegistryObject<Item> NETHERITE_BRACELET = ITEMS.register("netherite_bracelet", () -> new BaseJewelItem(new Item.Properties(), JewelType.BRACELET, JewelMaterial.NETHERITE));
+    public static final RegistryObject<Item> COPPER_BRACELET = ITEMS.register("copper_bracelet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.BRACELET, JewelMaterial.COPPER));
+    public static final RegistryObject<Item> BRONZE_BRACELET = ITEMS.register("bronze_bracelet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.BRACELET, JewelMaterial.BRONZE));
+    public static final RegistryObject<Item> SILVER_BRACELET = ITEMS.register("silver_bracelet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.BRACELET, JewelMaterial.SILVER));
+    public static final RegistryObject<Item> IRON_BRACELET = ITEMS.register("iron_bracelet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.BRACELET, JewelMaterial.IRON));
+    public static final RegistryObject<Item> GOLD_BRACELET = ITEMS.register("gold_bracelet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.BRACELET, JewelMaterial.GOLD));
+    public static final RegistryObject<Item> STEEL_BRACELET = ITEMS.register("steel_bracelet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.BRACELET, JewelMaterial.STEEL));
+    public static final RegistryObject<Item> NETHERITE_BRACELET = ITEMS.register("netherite_bracelet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.BRACELET, JewelMaterial.NETHERITE));
 
-    public static final RegistryObject<Item> COPPER_CIRCLET = ITEMS.register("copper_circlet", () -> new BaseJewelItem(new Item.Properties(), JewelType.CIRCLET, JewelMaterial.COPPER));
-    public static final RegistryObject<Item> BRONZE_CIRCLET = ITEMS.register("bronze_circlet", () -> new BaseJewelItem(new Item.Properties(), JewelType.CIRCLET, JewelMaterial.BRONZE));
-    public static final RegistryObject<Item> SILVER_CIRCLET = ITEMS.register("silver_circlet", () -> new BaseJewelItem(new Item.Properties(), JewelType.CIRCLET, JewelMaterial.SILVER));
-    public static final RegistryObject<Item> IRON_CIRCLET = ITEMS.register("iron_circlet", () -> new BaseJewelItem(new Item.Properties(), JewelType.CIRCLET, JewelMaterial.IRON));
-    public static final RegistryObject<Item> GOLD_CIRCLET = ITEMS.register("gold_circlet", () -> new BaseJewelItem(new Item.Properties(), JewelType.CIRCLET, JewelMaterial.GOLD));
-    public static final RegistryObject<Item> STEEL_CIRCLET = ITEMS.register("steel_circlet", () -> new BaseJewelItem(new Item.Properties(), JewelType.CIRCLET, JewelMaterial.STEEL));
-    public static final RegistryObject<Item> NETHERITE_CIRCLET = ITEMS.register("netherite_circlet", () -> new BaseJewelItem(new Item.Properties(), JewelType.CIRCLET, JewelMaterial.NETHERITE));
+    public static final RegistryObject<Item> COPPER_CIRCLET = ITEMS.register("copper_circlet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.CIRCLET, JewelMaterial.COPPER));
+    public static final RegistryObject<Item> BRONZE_CIRCLET = ITEMS.register("bronze_circlet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.CIRCLET, JewelMaterial.BRONZE));
+    public static final RegistryObject<Item> SILVER_CIRCLET = ITEMS.register("silver_circlet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.CIRCLET, JewelMaterial.SILVER));
+    public static final RegistryObject<Item> IRON_CIRCLET = ITEMS.register("iron_circlet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.CIRCLET, JewelMaterial.IRON));
+    public static final RegistryObject<Item> GOLD_CIRCLET = ITEMS.register("gold_circlet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.CIRCLET, JewelMaterial.GOLD));
+    public static final RegistryObject<Item> STEEL_CIRCLET = ITEMS.register("steel_circlet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.CIRCLET, JewelMaterial.STEEL));
+    public static final RegistryObject<Item> NETHERITE_CIRCLET = ITEMS.register("netherite_circlet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.CIRCLET, JewelMaterial.NETHERITE));
 
     // ===== SOCKETED JEWELS =====
     public static final RegistryObject<Item> SOCKETED_RING =
-            ITEMS.register("socketed_ring", () -> new SocketedJewelItem(new Item.Properties()));
+            ITEMS.register("socketed_ring", () -> new SocketedJeweleryItem(new Item.Properties()));
 
     public static final RegistryObject<Item> SOCKETED_BRACELET =
-            ITEMS.register("socketed_bracelet", () -> new SocketedJewelItem(new Item.Properties()));
+            ITEMS.register("socketed_bracelet", () -> new SocketedJeweleryItem(new Item.Properties()));
 
     public static final RegistryObject<Item> SOCKETED_AMULET =
-            ITEMS.register("socketed_amulet", () -> new SocketedJewelItem(new Item.Properties()));
+            ITEMS.register("socketed_amulet", () -> new SocketedJeweleryItem(new Item.Properties()));
 
     public static final RegistryObject<Item> SOCKETED_CIRCLET =
-            ITEMS.register("socketed_circlet", () -> new SocketedJewelItem(new Item.Properties()));
+            ITEMS.register("socketed_circlet", () -> new SocketedJeweleryItem(new Item.Properties()));
 
     // ===== HELPER METHODS =====
     private static RegistryObject<Item> registerBlockItem(String path, RegistryObject<Block> block){
