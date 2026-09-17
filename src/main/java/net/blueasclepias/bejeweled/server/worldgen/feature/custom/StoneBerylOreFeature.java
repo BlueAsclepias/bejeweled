@@ -2,7 +2,7 @@ package net.blueasclepias.bejeweled.server.worldgen.feature.custom;
 
 import net.blueasclepias.bejeweled.common.data.ore.defaults.OreDefinitions;
 import net.blueasclepias.bejeweled.common.data.ore.defaults.OreVariants;
-import net.blueasclepias.bejeweled.common.data.ore.registry.OreFeatureRegistry;
+import net.blueasclepias.bejeweled.common.data.ore.registry.OreRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
@@ -42,8 +42,8 @@ public class StoneBerylOreFeature extends Feature<NoneFeatureConfiguration> {
         if (!current.is(BlockTags.STONE_ORE_REPLACEABLES)) return false;
         if (isInCaveNextToGranite(level, origin)) return false;
 
-        Block block = OreFeatureRegistry
-                .getBlock(OreDefinitions.AQUAMARINE, OreVariants.STONE)
+        Block block = OreRegistry
+                .blockFor(OreDefinitions.AQUAMARINE, OreVariants.STONE)
                 .orElseThrow();
 
         level.setBlock(

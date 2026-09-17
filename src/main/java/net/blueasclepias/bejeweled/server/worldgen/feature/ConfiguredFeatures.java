@@ -1,6 +1,6 @@
 package net.blueasclepias.bejeweled.server.worldgen.feature;
 
-import net.blueasclepias.bejeweled.common.data.ore.definition.OreGenerationFeature;
+import net.blueasclepias.bejeweled.common.data.ore.definition.OreEntry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -22,10 +22,6 @@ public class ConfiguredFeatures {
 
     // ===== Specific Configured Features =====
     public static final ResourceKey<ConfiguredFeature<?, ?>> ALL_CORAL_POLYP_CONFIGURED = create("all_coral_polyp");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> STONE_BERYL_CONFIGURED = create("stone_beryl_ore");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> GRANITE_BERYL_CONFIGURED = create("granite_beryl_ore");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ALL_TURQUOISE_CONFIGURED = create("all_turquoise_ore");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ALL_OLIVINE_CONFIGURED = create("all_olivine_ore");
 
     public static @NotNull ResourceKey<ConfiguredFeature<?,?>> create(String id) {
         return ResourceKey.create(
@@ -35,17 +31,17 @@ public class ConfiguredFeatures {
     }
 
     @Contract("_, _ -> new")
-    public static @NotNull ConfiguredFeature<OreConfiguration, Feature<OreConfiguration>> createGenericOreConfigFeat(@NotNull OreGenerationFeature feat, @NotNull Block block) {
+    public static @NotNull ConfiguredFeature<OreConfiguration, Feature<OreConfiguration>> createGenericOreConfigFeat(@NotNull OreEntry entry, @NotNull Block block) {
         return new ConfiguredFeature<>(
                 Feature.ORE,
                 new OreConfiguration(
                         List.of(
                                 OreConfiguration.target(
-                                        feat.variant().ruleTest(),
+                                        entry.variant().ruleTest(),
                                         block.defaultBlockState()
                                 )
                         ),
-                        feat.size()
+                        entry.size()
                 )
         );
     }

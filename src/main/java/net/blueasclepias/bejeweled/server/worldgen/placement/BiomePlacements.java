@@ -1,10 +1,11 @@
 package net.blueasclepias.bejeweled.server.worldgen.placement;
 
-import net.blueasclepias.bejeweled.server.worldgen.feature.PlacedFeatures;
+import net.blueasclepias.bejeweled.server.worldgen.feature.ModPlacedFeatures;
 import net.blueasclepias.bejeweled.server.worldgen.util.IBiomeFilter;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,7 +33,7 @@ public class BiomePlacements {
 
     public static final BiomeFeaturePlacement CORAL_POLYP =
             create("coral_polyp",
-            Set.of(PlacedFeatures.CORAL_POLYP),
+            Set.of(ModPlacedFeatures.CORAL_POLYP),
             new IBiomeFilter.List(
                     Set.of(
                             ResourceLocation.fromNamespaceAndPath("minecraft", "warm_ocean")
@@ -41,7 +42,7 @@ public class BiomePlacements {
             GenerationStep.Decoration.VEGETAL_DECORATION);
 
     public static BiomeFeaturePlacement create(String name,
-                                               Set<ResourceKey<net.minecraft.world.level.levelgen.placement.PlacedFeature>> placedFeatures,
+                                               Set<ResourceKey<PlacedFeature>> placedFeatures,
                                                IBiomeFilter IBiomeFilter,
                                                GenerationStep.Decoration step) {
         BiomeFeaturePlacement placement = new BiomeFeaturePlacement(
@@ -55,7 +56,7 @@ public class BiomePlacements {
     }
 
     public static BiomeFeaturePlacement update(BiomeFeaturePlacement existing,
-                                               ResourceKey<net.minecraft.world.level.levelgen.placement.PlacedFeature> placedFeature) {
+                                               ResourceKey<PlacedFeature> placedFeature) {
         if(ALL.containsValue(existing)){
             BiomeFeaturePlacement updatedExisting = ALL.get(existing.name());
             updatedExisting.features().add(placedFeature);
@@ -66,7 +67,7 @@ public class BiomePlacements {
     }
 
     public static BiomeFeaturePlacement update(String name,
-                                               ResourceKey<net.minecraft.world.level.levelgen.placement.PlacedFeature> placedFeature) {
+                                               ResourceKey<PlacedFeature> placedFeature) {
         if(ALL.containsKey(name)){
             BiomeFeaturePlacement updatedExisting = ALL.get(name);
             updatedExisting.features().add(placedFeature);

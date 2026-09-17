@@ -2,7 +2,7 @@ package net.blueasclepias.bejeweled.datagen.provider.tag;
 
 import net.blueasclepias.bejeweled.common.data.gem.defaults.DefaultGemDefinitions;
 import net.blueasclepias.bejeweled.common.data.gem.definition.GemCategory;
-import net.blueasclepias.bejeweled.common.data.ore.registry.OreFeatureRegistry;
+import net.blueasclepias.bejeweled.common.data.ore.registry.OreRegistry;
 import net.blueasclepias.bejeweled.common.data.storage.registry.StorageBlockRegistry;
 import net.blueasclepias.bejeweled.common.registry.ModItems;
 import net.blueasclepias.bejeweled.common.tag.ModTags;
@@ -38,9 +38,9 @@ public class ItemTagsProvider extends net.minecraft.data.tags.ItemTagsProvider {
     @Override
     protected void addTags(HolderLookup.@NotNull Provider provider) {
 
-        OreFeatureRegistry.allBlocksByFeature().forEach((feat, block) -> {
+        OreRegistry.blocksByEntry().forEach((entry, block) -> {
             Item item = block.asItem();
-            String path = feat.definition().id();
+            String path = entry.definition().id();
             tag(ModTags.Items.FORGE_GENERIC_ORES).add(item);
             tag(ModTags.Items.CROSS_GENERIC_ORES).add(item);
             tag(TagKey.create(Registries.ITEM,

@@ -2,7 +2,7 @@ package net.blueasclepias.bejeweled.server.worldgen.feature.custom;
 
 import net.blueasclepias.bejeweled.common.data.ore.defaults.OreDefinitions;
 import net.blueasclepias.bejeweled.common.data.ore.defaults.OreVariants;
-import net.blueasclepias.bejeweled.common.data.ore.registry.OreFeatureRegistry;
+import net.blueasclepias.bejeweled.common.data.ore.registry.OreRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
@@ -39,8 +39,8 @@ public class OlivineOreFeature extends Feature<NoneFeatureConfiguration> {
         if (!current.is(BlockTags.DEEPSLATE_ORE_REPLACEABLES)) return false;
         if (!isNearLava(level, origin)) return false;
 
-        Block block = OreFeatureRegistry
-                .getBlock(OreDefinitions.OLIVINE, OreVariants.DEEPSLATE)
+        Block block = OreRegistry
+                .blockFor(OreDefinitions.OLIVINE, OreVariants.DEEPSLATE)
                 .orElseThrow();
 
         level.setBlock(

@@ -13,6 +13,9 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
 
 /**
@@ -85,52 +88,8 @@ public class ModItems {
             
     // ===== BLOCK ITEMS =====
     // ==== ORE BLOCKS ====
-    public static final RegistryObject<Item> STONE_BERYL_ORE =
-            registerBlockItem("stone_beryl_ore", ModBlocks.STONE_BERYL_ORE);
-    public static final RegistryObject<Item> GRANITE_BERYL_ORE =
-            registerBlockItem("granite_beryl_ore", ModBlocks.GRANITE_BERYL_ORE);
-
-    public static final RegistryObject<Item> STONE_RED_CORUNDUM_ORE =
-            registerBlockItem("stone_red_corundum_ore", ModBlocks.STONE_RED_CORUNDUM_ORE);
-    public static final RegistryObject<Item> DEEPSLATE_RED_CORUNDUM_ORE =
-            registerBlockItem("deepslate_red_corundum_ore", ModBlocks.DEEPSLATE_RED_CORUNDUM_ORE);
-
-    public static final RegistryObject<Item> DEEPSLATE_BLUE_CORUNDUM_ORE =
-            registerBlockItem("deepslate_blue_corundum_ore", ModBlocks.DEEPSLATE_BLUE_CORUNDUM_ORE);
-    public static final RegistryObject<Item> BASALT_BLUE_CORUNDUM_ORE =
-            registerBlockItem("basalt_blue_corundum_ore", ModBlocks.BASALT_BLUE_CORUNDUM_ORE);
-
-    public static final RegistryObject<Item> STONE_GARNET_ORE =
-            registerBlockItem("stone_garnet_ore", ModBlocks.STONE_GARNET_ORE);
-    public static final RegistryObject<Item> DEEPSLATE_GARNET_ORE =
-            registerBlockItem("deepslate_garnet_ore", ModBlocks.DEEPSLATE_GARNET_ORE);
-
-    public static final RegistryObject<Item> STONE_TOPAZ_ORE =
-            registerBlockItem("stone_topaz_ore", ModBlocks.STONE_TOPAZ_ORE);
-    public static final RegistryObject<Item> GRANITE_TOPAZ_ORE =
-            registerBlockItem("granite_topaz_ore", ModBlocks.GRANITE_TOPAZ_ORE);
-    public static final RegistryObject<Item> DEEPSLATE_TOPAZ_ORE =
-            registerBlockItem("deepslate_topaz_ore", ModBlocks.DEEPSLATE_TOPAZ_ORE);
-
-    public static final RegistryObject<Item> STONE_TURQUOISE_ORE =
-            registerBlockItem("stone_turquoise_ore", ModBlocks.STONE_TURQUOISE_ORE);
-
-    public static final RegistryObject<Item> STONE_NEPHRITE_ORE =
-            registerBlockItem("stone_nephrite_ore", ModBlocks.STONE_NEPHRITE_ORE);
-    public static final RegistryObject<Item> DEEPSLATE_NEPHRITE_ORE =
-            registerBlockItem("deepslate_nephrite_ore", ModBlocks.DEEPSLATE_NEPHRITE_ORE);
-
-    public static final RegistryObject<Item> STONE_JADEITE_ORE =
-            registerBlockItem("stone_jadeite_ore", ModBlocks.STONE_JADEITE_ORE);
-    public static final RegistryObject<Item> DEEPSLATE_JADEITE_ORE =
-            registerBlockItem("deepslate_jadeite_ore", ModBlocks.DEEPSLATE_JADEITE_ORE);
-
-
-    public static final RegistryObject<Item> TERRACOTTA_OPAL_ORE =
-            registerBlockItem("terracotta_opal_ore", ModBlocks.TERRACOTTA_OPAL_ORE);
-
-    public static final RegistryObject<Item> DEEPSLATE_OLIVINE_ORE =
-            registerBlockItem("deepslate_olivine_ore", ModBlocks.DEEPSLATE_OLIVINE_ORE);
+    // One item per ModBlocks.ORE_BLOCKS entry, keyed by ore id (see OreEntries for the ore list itself).
+    public static final Map<String, RegistryObject<Item>> ORE_ITEMS = registerOreItems();
 
     // ==== STORAGE BLOCKS ====
     // === RAW ===
@@ -216,6 +175,12 @@ public class ModItems {
     // ===== HELPER METHODS =====
     private static RegistryObject<Item> registerBlockItem(String path, RegistryObject<Block> block){
         return ITEMS.register(path, () -> new BlockItem(block.get(), new Item.Properties()));
+    }
+
+    private static Map<String, RegistryObject<Item>> registerOreItems() {
+        Map<String, RegistryObject<Item>> items = new LinkedHashMap<>();
+        ModBlocks.ORE_BLOCKS.forEach((id, block) -> items.put(id, registerBlockItem(id, block)));
+        return items;
     }
 
     public static void register(IEventBus eventBus) {

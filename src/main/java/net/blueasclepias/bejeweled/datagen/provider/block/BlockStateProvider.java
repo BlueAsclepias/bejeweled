@@ -3,8 +3,8 @@ package net.blueasclepias.bejeweled.datagen.provider.block;
 import net.blueasclepias.bejeweled.common.block.CoralPolypBlock;
 import net.blueasclepias.bejeweled.common.data.coral.registry.CoralPolypRegistry;
 import net.blueasclepias.bejeweled.common.data.ore.definition.OreBlockVariant;
-import net.blueasclepias.bejeweled.common.data.ore.definition.OreGenerationFeature;
-import net.blueasclepias.bejeweled.common.data.ore.registry.OreFeatureRegistry;
+import net.blueasclepias.bejeweled.common.data.ore.definition.OreEntry;
+import net.blueasclepias.bejeweled.common.data.ore.registry.OreRegistry;
 import net.blueasclepias.bejeweled.common.data.storage.registry.StorageBlockRegistry;
 import net.blueasclepias.bejeweled.common.registry.ModBlocks;
 import net.minecraft.core.Direction;
@@ -45,7 +45,7 @@ public class BlockStateProvider extends net.minecraftforge.client.model.generato
         simpleBlockWithItem(ModBlocks.GEM_CUTTING_TABLE.get(), cubeAll(ModBlocks.GEM_CUTTING_TABLE.get()));
 
         // Ore blocks
-        OreFeatureRegistry.allBlocksByFeature().forEach(this::oreBlock);
+        OreRegistry.blocksByEntry().forEach(this::oreBlock);
 
         // Storage blocks
         StorageBlockRegistry.allBlocks().forEach(block ->
@@ -60,8 +60,8 @@ public class BlockStateProvider extends net.minecraftforge.client.model.generato
      * Builds a two-layer cube model for an ore block by borrowing top and side textures from its configured host block
      * variant and rendering the gem overlay as a cutout second element.
      */
-    private void oreBlock(OreGenerationFeature feat, Block block){
-        OreBlockVariant variant = feat.variant();
+    private void oreBlock(OreEntry entry, Block block){
+        OreBlockVariant variant = entry.variant();
         ResourceLocation blockId = Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(block));
         ResourceLocation baseBlockId = Objects.requireNonNull(ForgeRegistries.BLOCKS.getKey(variant.baseBlock()));
 
@@ -76,7 +76,7 @@ public class BlockStateProvider extends net.minecraftforge.client.model.generato
                 ? mcLoc("block/" + basePath + "_side")
                 : mcLoc("block/" + basePath);
 
-        ResourceLocation overlay = modLoc("block/ore/" + feat.definition().id());
+        ResourceLocation overlay = modLoc("block/ore/" + entry.definition().id());
 
         BlockModelBuilder model = models().getBuilder(path)
                 .parent(models().getExistingFile(mcLoc("block/cube")))

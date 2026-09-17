@@ -2,7 +2,7 @@ package net.blueasclepias.bejeweled.datagen.provider.loot;
 
 
 import net.blueasclepias.bejeweled.common.data.coral.registry.CoralPolypRegistry;
-import net.blueasclepias.bejeweled.common.data.ore.registry.OreFeatureRegistry;
+import net.blueasclepias.bejeweled.common.data.ore.registry.OreRegistry;
 import net.blueasclepias.bejeweled.common.data.storage.registry.StorageBlockRegistry;
 import net.blueasclepias.bejeweled.common.registry.ModBlocks;
 import net.minecraft.data.loot.BlockLootSubProvider;
@@ -33,10 +33,10 @@ public class BlockLootTables extends BlockLootSubProvider {
         StorageBlockRegistry.allBlocks().forEach(this::dropSelf);
 
         // === Ores ===
-        OreFeatureRegistry.allBlocksByFeature().forEach((feat, block) -> {
-            Item item = Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(feat.definition().drop()));
+        OreRegistry.blocksByEntry().forEach((entry, block) -> {
+            Item item = Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(entry.definition().drop()));
             if(item == Items.AIR)
-                throw new IllegalStateException("No drop for " + feat.id());
+                throw new IllegalStateException("No drop for " + entry.id());
             add(block, createOreDrop(block, item));
         });
 

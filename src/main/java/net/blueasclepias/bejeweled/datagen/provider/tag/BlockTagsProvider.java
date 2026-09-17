@@ -1,7 +1,7 @@
 package net.blueasclepias.bejeweled.datagen.provider.tag;
 
 import net.blueasclepias.bejeweled.common.data.coral.registry.CoralPolypRegistry;
-import net.blueasclepias.bejeweled.common.data.ore.registry.OreFeatureRegistry;
+import net.blueasclepias.bejeweled.common.data.ore.registry.OreRegistry;
 import net.blueasclepias.bejeweled.common.data.storage.registry.StorageBlockRegistry;
 import net.blueasclepias.bejeweled.common.tag.ModTags;
 import net.minecraft.core.HolderLookup;
@@ -33,7 +33,7 @@ public class BlockTagsProvider extends net.minecraftforge.common.data.BlockTagsP
         TagAppender<Block> forgeOre = tag(ModTags.Blocks.FORGE_GENERIC_ORES);
         TagAppender<Block> crossOre = tag(ModTags.Blocks.CROSS_GENERIC_ORES);
 
-        OreFeatureRegistry.all().forEach((id, feat) -> {
+        OreRegistry.all().forEach((id, entry) -> {
             pickaxe.addOptional(id);
             iron.addOptional(id);
             gemOres.addOptional(id);

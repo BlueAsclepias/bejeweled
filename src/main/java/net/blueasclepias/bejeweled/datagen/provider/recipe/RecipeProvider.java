@@ -1,6 +1,6 @@
 package net.blueasclepias.bejeweled.datagen.provider.recipe;
 
-import net.blueasclepias.bejeweled.common.data.ore.registry.OreFeatureRegistry;
+import net.blueasclepias.bejeweled.common.data.ore.registry.OreRegistry;
 import net.blueasclepias.bejeweled.common.data.storage.registry.StorageBlockRegistry;
 import net.blueasclepias.bejeweled.common.registry.ModBlocks;
 import net.minecraft.data.PackOutput;
@@ -64,8 +64,8 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
         });
 
         // ===== Smelting =====
-        OreFeatureRegistry.allBlocksByFeature().forEach((feat, block) -> {
-            ResourceLocation id = feat.definition().drop();
+        OreRegistry.blocksByEntry().forEach((entry, block) -> {
+            ResourceLocation id = entry.definition().drop();
             Item result = Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(id));
             if(result == Items.AIR)
                 throw new IllegalStateException("No item for storage block recipe: " + id);

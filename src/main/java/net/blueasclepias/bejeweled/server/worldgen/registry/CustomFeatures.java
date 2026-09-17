@@ -33,7 +33,7 @@ public class CustomFeatures {
             FEATURES.register("turquoise",
                     TurquoiseOreFeature::new);
 
-    public static final RegistryObject<Feature<NoneFeatureConfiguration>> OLIVINE_CONFIGURED =
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> OLIVINE =
             FEATURES.register("olivine",
                     OlivineOreFeature::new);
 

@@ -1,9 +1,11 @@
 package net.blueasclepias.bejeweled.common.data.ore.defaults;
 
-import net.blueasclepias.bejeweled.common.data.ore.definition.OreGenerationFeature;
-import net.blueasclepias.bejeweled.server.worldgen.feature.ConfiguredFeatures;
-import net.blueasclepias.bejeweled.server.worldgen.feature.PlacedFeatures;
+import net.blueasclepias.bejeweled.common.data.ore.definition.OreEntry;
+import net.blueasclepias.bejeweled.common.data.ore.definition.OrePlacement;
+import net.blueasclepias.bejeweled.common.data.ore.registry.OreRegistry;
+import net.blueasclepias.bejeweled.server.worldgen.feature.ModPlacedFeatures;
 import net.blueasclepias.bejeweled.server.worldgen.placement.BiomePlacements;
+import net.blueasclepias.bejeweled.server.worldgen.registry.CustomFeatures;
 import net.blueasclepias.bejeweled.server.worldgen.util.IBiomeFilter;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.GenerationStep;
@@ -15,19 +17,20 @@ import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
 import java.util.List;
 import java.util.Set;
 
-// TODO: simplify placement and biome
-// TODO: ModConfiguredFeatures should already exist, don't create them here
 /**
- * Default ore generation features
+ * The mod's complete list of generated ore entries.
+ * Each {@link OreEntry} is plain data; registering it into {@link OreRegistry} happens explicitly via
+ * {@link #register(OreEntry)} below instead of as a hidden constructor side effect. {@link #ALL} lets consumers
+ * (block/item registration, worldgen bootstrap, datagen) iterate every entry without needing one named field per
+ * ore block.
  */
-public final class OreFeatures {
-    public static final OreGenerationFeature STONE_BERYL = new OreGenerationFeature(
+public final class OreEntries {
+
+    public static final OreEntry STONE_BERYL = register(new OreEntry(
             "stone_beryl_ore",
             OreDefinitions.AQUAMARINE,
             OreVariants.STONE,
-            ConfiguredFeatures.STONE_BERYL_CONFIGURED,
-            false,
-            PlacedFeatures.STONE_BERYL_ORE,
+            2,
             List.of(
                     CountPlacement.of(6),
                     InSquarePlacement.spread(),
@@ -36,20 +39,15 @@ public final class OreFeatures {
                             VerticalAnchor.absolute(64)
                     )
             ),
-            BiomePlacements.update(
-                    BiomePlacements.BASIC_GEM_ORE,
-                    PlacedFeatures.STONE_BERYL_ORE
-            ),
-            2
-    );
+            BiomePlacements.update(BiomePlacements.BASIC_GEM_ORE, ModPlacedFeatures.create("stone_beryl_ore")),
+            OrePlacement.custom(CustomFeatures.STONE_BERYL)
+    ));
 
-    public static final OreGenerationFeature GRANITE_BERYL = new OreGenerationFeature(
+    public static final OreEntry GRANITE_BERYL = register(new OreEntry(
             "granite_beryl_ore",
             OreDefinitions.AQUAMARINE,
             OreVariants.GRANITE,
-            ConfiguredFeatures.GRANITE_BERYL_CONFIGURED,
-            false,
-            PlacedFeatures.GRANITE_BERYL_ORE,
+            4,
             List.of(
                     CountPlacement.of(10),
                     InSquarePlacement.spread(),
@@ -58,20 +56,15 @@ public final class OreFeatures {
                             VerticalAnchor.absolute(64)
                     )
             ),
-            BiomePlacements.update(
-                    BiomePlacements.BASIC_GEM_ORE,
-                    PlacedFeatures.GRANITE_BERYL_ORE
-            ),
-            4
-    );
+            BiomePlacements.update(BiomePlacements.BASIC_GEM_ORE, ModPlacedFeatures.create("granite_beryl_ore")),
+            OrePlacement.custom(CustomFeatures.GRANITE_BERYL)
+    ));
 
-    public static final OreGenerationFeature STONE_RED_CORUNDUM = new OreGenerationFeature(
+    public static final OreEntry STONE_RED_CORUNDUM = register(new OreEntry(
             "stone_red_corundum_ore",
             OreDefinitions.RED_CORUNDUM,
             OreVariants.STONE,
-            ConfiguredFeatures.create("stone_red_corundum_ore"),
-            true,
-            PlacedFeatures.STONE_RED_CORUNDUM_ORE,
+            1,
             List.of(
                     CountPlacement.of(6),
                     InSquarePlacement.spread(),
@@ -80,20 +73,15 @@ public final class OreFeatures {
                             VerticalAnchor.absolute(32)
                     )
             ),
-            BiomePlacements.update(
-                    BiomePlacements.BASIC_GEM_ORE,
-                    PlacedFeatures.STONE_RED_CORUNDUM_ORE
-            ),
-            1
-    );
+            BiomePlacements.update(BiomePlacements.BASIC_GEM_ORE, ModPlacedFeatures.create("stone_red_corundum_ore")),
+            OrePlacement.generic()
+    ));
 
-    public static final OreGenerationFeature DEEPSLATE_RED_CORUNDUM = new OreGenerationFeature(
+    public static final OreEntry DEEPSLATE_RED_CORUNDUM = register(new OreEntry(
             "deepslate_red_corundum_ore",
             OreDefinitions.RED_CORUNDUM,
             OreVariants.DEEPSLATE,
-            ConfiguredFeatures.create("deepslate_red_corundum_ore"),
-            true,
-            PlacedFeatures.DEEPSLATE_RED_CORUNDUM_ORE,
+            1,
             List.of(
                     CountPlacement.of(12),
                     InSquarePlacement.spread(),
@@ -102,20 +90,15 @@ public final class OreFeatures {
                             VerticalAnchor.absolute(7)
                     )
             ),
-            BiomePlacements.update(
-                    BiomePlacements.BASIC_GEM_ORE,
-                    PlacedFeatures.DEEPSLATE_RED_CORUNDUM_ORE
-            ),
-            1
-    );
+            BiomePlacements.update(BiomePlacements.BASIC_GEM_ORE, ModPlacedFeatures.create("deepslate_red_corundum_ore")),
+            OrePlacement.generic()
+    ));
 
-    public static final OreGenerationFeature DEEPSLATE_BLUE_CORUNDUM = new OreGenerationFeature(
+    public static final OreEntry DEEPSLATE_BLUE_CORUNDUM = register(new OreEntry(
             "deepslate_blue_corundum_ore",
             OreDefinitions.BLUE_CORUNDUM,
             OreVariants.DEEPSLATE,
-            ConfiguredFeatures.create("deepslate_blue_corundum_ore"),
-            true,
-            PlacedFeatures.DEEPSLATE_BLUE_CORUNDUM_ORE,
+            1,
             List.of(
                     CountPlacement.of(4),
                     InSquarePlacement.spread(),
@@ -124,20 +107,15 @@ public final class OreFeatures {
                             VerticalAnchor.absolute(7)
                     )
             ),
-            BiomePlacements.update(
-                    BiomePlacements.BASIC_GEM_ORE,
-                    PlacedFeatures.DEEPSLATE_BLUE_CORUNDUM_ORE
-            ),
-            1
-    );
+            BiomePlacements.update(BiomePlacements.BASIC_GEM_ORE, ModPlacedFeatures.create("deepslate_blue_corundum_ore")),
+            OrePlacement.generic()
+    ));
 
-    public static final OreGenerationFeature BASALT_BLUE_CORUNDUM = new OreGenerationFeature(
+    public static final OreEntry BASALT_BLUE_CORUNDUM = register(new OreEntry(
             "basalt_blue_corundum_ore",
             OreDefinitions.BLUE_CORUNDUM,
             OreVariants.BASALT,
-            ConfiguredFeatures.create("basalt_blue_corundum_ore"),
-            true,
-            PlacedFeatures.BASALT_BLUE_CORUNDUM_ORE,
+            1,
             List.of(
                     CountPlacement.of(12),
                     InSquarePlacement.spread(),
@@ -148,7 +126,7 @@ public final class OreFeatures {
             ),
             BiomePlacements.create(
                     "basalt_blue_corundum_ore",
-                    Set.of(PlacedFeatures.BASALT_BLUE_CORUNDUM_ORE),
+                    Set.of(ModPlacedFeatures.create("basalt_blue_corundum_ore")),
                     new IBiomeFilter.List(
                             Set.of(
                                     ResourceLocation.fromNamespaceAndPath("minecraft", "basalt_deltas")
@@ -156,16 +134,14 @@ public final class OreFeatures {
                     ),
                     GenerationStep.Decoration.UNDERGROUND_ORES
             ),
-            1
-    );
+            OrePlacement.generic()
+    ));
 
-    public static final OreGenerationFeature STONE_GARNET = new OreGenerationFeature(
+    public static final OreEntry STONE_GARNET = register(new OreEntry(
             "stone_garnet_ore",
             OreDefinitions.GARNET,
             OreVariants.STONE,
-            ConfiguredFeatures.create("stone_garnet_ore"),
-            true,
-            PlacedFeatures.STONE_GARNET_ORE,
+            3,
             List.of(
                     CountPlacement.of(10),
                     InSquarePlacement.spread(),
@@ -174,20 +150,15 @@ public final class OreFeatures {
                             VerticalAnchor.absolute(96)
                     )
             ),
-            BiomePlacements.update(
-                    BiomePlacements.BASIC_GEM_ORE,
-                    PlacedFeatures.STONE_GARNET_ORE
-            ),
-            3
-    );
+            BiomePlacements.update(BiomePlacements.BASIC_GEM_ORE, ModPlacedFeatures.create("stone_garnet_ore")),
+            OrePlacement.generic()
+    ));
 
-    public static final OreGenerationFeature DEEPSLATE_GARNET =new OreGenerationFeature(
+    public static final OreEntry DEEPSLATE_GARNET = register(new OreEntry(
             "deepslate_garnet_ore",
             OreDefinitions.GARNET,
             OreVariants.DEEPSLATE,
-            ConfiguredFeatures.create("deepslate_garnet_ore"),
-            true,
-            PlacedFeatures.DEEPSLATE_GARNET_ORE,
+            1,
             List.of(
                     CountPlacement.of(6),
                     InSquarePlacement.spread(),
@@ -196,20 +167,15 @@ public final class OreFeatures {
                             VerticalAnchor.absolute(32)
                     )
             ),
-            BiomePlacements.update(
-                    BiomePlacements.BASIC_GEM_ORE,
-                    PlacedFeatures.DEEPSLATE_GARNET_ORE
-            ),
-            1
-    );
+            BiomePlacements.update(BiomePlacements.BASIC_GEM_ORE, ModPlacedFeatures.create("deepslate_garnet_ore")),
+            OrePlacement.generic()
+    ));
 
-    public static final OreGenerationFeature STONE_TOPAZ = new OreGenerationFeature(
+    public static final OreEntry STONE_TOPAZ = register(new OreEntry(
             "stone_topaz_ore",
             OreDefinitions.TOPAZ,
             OreVariants.STONE,
-            ConfiguredFeatures.create("stone_topaz_ore"),
-            true,
-            PlacedFeatures.STONE_TOPAZ_ORE,
+            3,
             List.of(
                     CountPlacement.of(6),
                     InSquarePlacement.spread(),
@@ -218,20 +184,15 @@ public final class OreFeatures {
                             VerticalAnchor.absolute(96)
                     )
             ),
-            BiomePlacements.update(
-                    BiomePlacements.BASIC_GEM_ORE,
-                    PlacedFeatures.STONE_TOPAZ_ORE
-            ),
-            3
-    );
+            BiomePlacements.update(BiomePlacements.BASIC_GEM_ORE, ModPlacedFeatures.create("stone_topaz_ore")),
+            OrePlacement.generic()
+    ));
 
-    public static final OreGenerationFeature GRANITE_TOPAZ = new OreGenerationFeature(
+    public static final OreEntry GRANITE_TOPAZ = register(new OreEntry(
             "granite_topaz_ore",
             OreDefinitions.TOPAZ,
             OreVariants.GRANITE,
-            ConfiguredFeatures.create("granite_topaz_ore"),
-            true,
-            PlacedFeatures.GRANITE_TOPAZ_ORE,
+            6,
             List.of(
                     CountPlacement.of(12),
                     InSquarePlacement.spread(),
@@ -240,20 +201,15 @@ public final class OreFeatures {
                             VerticalAnchor.absolute(96)
                     )
             ),
-            BiomePlacements.update(
-                    BiomePlacements.BASIC_GEM_ORE,
-                    PlacedFeatures.GRANITE_TOPAZ_ORE
-            ),
-            6
-    );
+            BiomePlacements.update(BiomePlacements.BASIC_GEM_ORE, ModPlacedFeatures.create("granite_topaz_ore")),
+            OrePlacement.generic()
+    ));
 
-    public static final OreGenerationFeature DEEPSLATE_TOPAZ = new OreGenerationFeature(
+    public static final OreEntry DEEPSLATE_TOPAZ = register(new OreEntry(
             "deepslate_topaz_ore",
             OreDefinitions.TOPAZ,
             OreVariants.DEEPSLATE,
-            ConfiguredFeatures.create("deepslate_topaz_ore"),
-            true,
-            PlacedFeatures.DEEPSLATE_TOPAZ_ORE,
+            1,
             List.of(
                     CountPlacement.of(6),
                     InSquarePlacement.spread(),
@@ -262,20 +218,15 @@ public final class OreFeatures {
                             VerticalAnchor.absolute(8)
                     )
             ),
-            BiomePlacements.update(
-                    BiomePlacements.BASIC_GEM_ORE,
-                    PlacedFeatures.DEEPSLATE_TOPAZ_ORE
-            ),
-            1
-    );
+            BiomePlacements.update(BiomePlacements.BASIC_GEM_ORE, ModPlacedFeatures.create("deepslate_topaz_ore")),
+            OrePlacement.generic()
+    ));
 
-    public static final OreGenerationFeature STONE_TURQUOISE = new OreGenerationFeature(
+    public static final OreEntry STONE_TURQUOISE = register(new OreEntry(
             "stone_turquoise_ore",
             OreDefinitions.TURQUOISE,
             OreVariants.STONE,
-            ConfiguredFeatures.ALL_TURQUOISE_CONFIGURED,
-            false,
-            PlacedFeatures.STONE_TURQUOISE_ORE,
+            2,
             List.of(
                     CountPlacement.of(10),
                     InSquarePlacement.spread(),
@@ -286,7 +237,7 @@ public final class OreFeatures {
             ),
             BiomePlacements.create(
                     "stone_turquoise_ore",
-                    Set.of(PlacedFeatures.STONE_TURQUOISE_ORE),
+                    Set.of(ModPlacedFeatures.create("stone_turquoise_ore")),
                     new IBiomeFilter.List(
                             Set.of(
                                     ResourceLocation.fromNamespaceAndPath("minecraft", "desert"),
@@ -296,21 +247,18 @@ public final class OreFeatures {
                                     ResourceLocation.fromNamespaceAndPath("minecraft", "savanna"),
                                     ResourceLocation.fromNamespaceAndPath("minecraft", "savanna_plateau"),
                                     ResourceLocation.fromNamespaceAndPath("minecraft", "windswept_savanna")
-
                             )
                     ),
                     GenerationStep.Decoration.UNDERGROUND_ORES
             ),
-            2
-    );
+            OrePlacement.custom(CustomFeatures.TURQUOISE)
+    ));
 
-    public static final OreGenerationFeature STONE_NEPHRITE = new OreGenerationFeature(
+    public static final OreEntry STONE_NEPHRITE = register(new OreEntry(
             "stone_nephrite_ore",
             OreDefinitions.NEPHRITE,
             OreVariants.STONE,
-            ConfiguredFeatures.create("stone_nephrite_ore"),
-            true,
-            PlacedFeatures.STONE_NEPHRITE_ORE,
+            1,
             List.of(
                     CountPlacement.of(6),
                     InSquarePlacement.spread(),
@@ -321,22 +269,20 @@ public final class OreFeatures {
             ),
             BiomePlacements.create(
                     "all_nephrite_ore",
-                    Set.of(PlacedFeatures.STONE_NEPHRITE_ORE),
+                    Set.of(ModPlacedFeatures.create("stone_nephrite_ore")),
                     new IBiomeFilter.Tag(
                             ResourceLocation.fromNamespaceAndPath("minecraft", "is_beach")
                     ),
                     GenerationStep.Decoration.UNDERGROUND_ORES
             ),
-            1
-    );
+            OrePlacement.generic()
+    ));
 
-    public static final OreGenerationFeature DEEPSLATE_NEPHRITE = new OreGenerationFeature(
+    public static final OreEntry DEEPSLATE_NEPHRITE = register(new OreEntry(
             "deepslate_nephrite_ore",
             OreDefinitions.NEPHRITE,
             OreVariants.DEEPSLATE,
-            ConfiguredFeatures.create("deepslate_nephrite_ore"),
-            true,
-            PlacedFeatures.DEEPSLATE_NEPHRITE_ORE,
+            2,
             List.of(
                     CountPlacement.of(12),
                     InSquarePlacement.spread(),
@@ -345,20 +291,15 @@ public final class OreFeatures {
                             VerticalAnchor.absolute(8)
                     )
             ),
-            BiomePlacements.update(
-                    "all_nephrite_ore",
-                    PlacedFeatures.DEEPSLATE_NEPHRITE_ORE
-            ),
-            2
-    );
+            BiomePlacements.update("all_nephrite_ore", ModPlacedFeatures.create("deepslate_nephrite_ore")),
+            OrePlacement.generic()
+    ));
 
-    public static final OreGenerationFeature STONE_JADEITE = new OreGenerationFeature(
+    public static final OreEntry STONE_JADEITE = register(new OreEntry(
             "stone_jadeite_ore",
             OreDefinitions.JADEITE,
             OreVariants.STONE,
-            ConfiguredFeatures.create("stone_jadeite_ore"),
-            true,
-            PlacedFeatures.STONE_JADEITE_ORE,
+            1,
             List.of(
                     CountPlacement.of(6),
                     InSquarePlacement.spread(),
@@ -369,22 +310,20 @@ public final class OreFeatures {
             ),
             BiomePlacements.create(
                     "all_jadeite_ore",
-                    Set.of(PlacedFeatures.STONE_JADEITE_ORE),
+                    Set.of(ModPlacedFeatures.create("stone_jadeite_ore")),
                     new IBiomeFilter.Tag(
                             ResourceLocation.fromNamespaceAndPath("minecraft", "is_mountain")
                     ),
                     GenerationStep.Decoration.UNDERGROUND_ORES
             ),
-            1
-    );
+            OrePlacement.generic()
+    ));
 
-    public static final OreGenerationFeature DEEPSLATE_JADEITE = new OreGenerationFeature(
+    public static final OreEntry DEEPSLATE_JADEITE = register(new OreEntry(
             "deepslate_jadeite_ore",
             OreDefinitions.JADEITE,
             OreVariants.DEEPSLATE,
-            ConfiguredFeatures.create("deepslate_jadeite_ore"),
-            true,
-            PlacedFeatures.DEEPSLATE_JADEITE_ORE,
+            2,
             List.of(
                     CountPlacement.of(12),
                     InSquarePlacement.spread(),
@@ -393,20 +332,15 @@ public final class OreFeatures {
                             VerticalAnchor.absolute(0)
                     )
             ),
-            BiomePlacements.update(
-                    "all_jadeite_ore",
-                    PlacedFeatures.DEEPSLATE_JADEITE_ORE
-            ),
-            2
-    );
+            BiomePlacements.update("all_jadeite_ore", ModPlacedFeatures.create("deepslate_jadeite_ore")),
+            OrePlacement.generic()
+    ));
 
-    public static final OreGenerationFeature TERRACOTTA_OPAL = new OreGenerationFeature(
+    public static final OreEntry TERRACOTTA_OPAL = register(new OreEntry(
             "terracotta_opal_ore",
             OreDefinitions.OPAL,
             OreVariants.TERRACOTTA,
-            ConfiguredFeatures.create("terracotta_opal_ore"),
-            true,
-            PlacedFeatures.TERRACOTTA_OPAL_ORE,
+            2,
             List.of(
                     CountPlacement.of(8),
                     InSquarePlacement.spread(),
@@ -417,22 +351,20 @@ public final class OreFeatures {
             ),
             BiomePlacements.create(
                     "terracotta_opal_ore",
-                    Set.of(PlacedFeatures.TERRACOTTA_OPAL_ORE),
+                    Set.of(ModPlacedFeatures.create("terracotta_opal_ore")),
                     new IBiomeFilter.Tag(
                             ResourceLocation.fromNamespaceAndPath("minecraft", "is_badlands")
                     ),
                     GenerationStep.Decoration.UNDERGROUND_ORES
             ),
-            2
-    );
+            OrePlacement.generic()
+    ));
 
-    public static final OreGenerationFeature DEEPSLATE_OLIVINE = new OreGenerationFeature(
+    public static final OreEntry DEEPSLATE_OLIVINE = register(new OreEntry(
             "deepslate_olivine_ore",
             OreDefinitions.OLIVINE,
             OreVariants.DEEPSLATE,
-            ConfiguredFeatures.ALL_OLIVINE_CONFIGURED,
-            false,
-            PlacedFeatures.DEEPSLATE_OLIVINE_ORE,
+            1,
             List.of(
                     CountPlacement.of(8),
                     InSquarePlacement.spread(),
@@ -441,10 +373,29 @@ public final class OreFeatures {
                             VerticalAnchor.absolute(-32)
                     )
             ),
-            BiomePlacements.update(
-                    BiomePlacements.BASIC_GEM_ORE,
-                    PlacedFeatures.DEEPSLATE_OLIVINE_ORE
-            ),
-            1
+            BiomePlacements.update(BiomePlacements.BASIC_GEM_ORE, ModPlacedFeatures.create("deepslate_olivine_ore")),
+            OrePlacement.custom(CustomFeatures.OLIVINE)
+    ));
+
+    /**
+     * Every ore entry the mod defines, in declaration order. Block/item registration and worldgen bootstrap iterate
+     * this list instead of needing a dedicated field per ore block.
+     */
+    public static final List<OreEntry> ALL = List.of(
+            STONE_BERYL, GRANITE_BERYL,
+            STONE_RED_CORUNDUM, DEEPSLATE_RED_CORUNDUM,
+            DEEPSLATE_BLUE_CORUNDUM, BASALT_BLUE_CORUNDUM,
+            STONE_GARNET, DEEPSLATE_GARNET,
+            STONE_TOPAZ, GRANITE_TOPAZ, DEEPSLATE_TOPAZ,
+            STONE_TURQUOISE,
+            STONE_NEPHRITE, DEEPSLATE_NEPHRITE,
+            STONE_JADEITE, DEEPSLATE_JADEITE,
+            TERRACOTTA_OPAL,
+            DEEPSLATE_OLIVINE
     );
+
+    private static OreEntry register(OreEntry entry) {
+        OreRegistry.register(entry);
+        return entry;
+    }
 }
