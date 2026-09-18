@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " A ",
+    " C ",
+    " C "
+  ],
+  "key": {
+    "A": {
+      "tag": "bejeweled:raw_gemstones"
+    },
+    "C": {
+      "item": "minecraft:copper_ingot"
+    }
+  },
+  "result": {
+    "item": "minecraft:spyglass"
+  }
+}
