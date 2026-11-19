@@ -22,7 +22,7 @@ public class ModCreativeTabs {
     public static final RegistryObject<CreativeModeTab> TAB =
             TABS.register(MOD_ID, () -> CreativeModeTab.builder()
                     .title(Component.translatable("creativetab.bejeweled.bejeweled"))
-                    .icon(() -> new ItemStack(ModItems.GARNET.get())) // TODO: change to custom icon
+                    .icon(() -> new ItemStack(ModItems.RAW_GEM_ITEMS.get("garnet").get())) // TODO: change to custom icon
                     .displayItems((params, output) -> {
                         ModItems.ITEMS.getEntries()
                                 .forEach(item -> output.accept(item.get()));

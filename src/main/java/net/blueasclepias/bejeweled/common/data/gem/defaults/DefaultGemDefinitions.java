@@ -5,7 +5,7 @@ import net.blueasclepias.bejeweled.common.data.gem.definition.GemDefinition;
 import net.blueasclepias.bejeweled.common.data.gem.definition.GemRarity;
 import net.minecraft.resources.ResourceLocation;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -16,7 +16,7 @@ import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
  */
 public class DefaultGemDefinitions {
 
-    private static final Map<ResourceLocation, GemDefinition> DEFINITIONS = new HashMap<>();
+    private static final Map<ResourceLocation, GemDefinition> DEFINITIONS = new LinkedHashMap<>();
 
     private static final GemDefinition AQUAMARINE =
             register(new GemDefinition(

@@ -1,6 +1,8 @@
 {
   "entries": [
-    "bejeweled:add_beads_to_sea_mobs",
+    "bejeweled:add_gems_to_drowned",
+    "bejeweled:add_gems_to_guardians",
+    "bejeweled:add_gems_to_elder_guardians",
     "bejeweled:add_gems_to_chests"
   ],
   "replace": false

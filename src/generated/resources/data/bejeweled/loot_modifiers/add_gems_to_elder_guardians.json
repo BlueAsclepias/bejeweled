@@ -1,0 +1,18 @@
+{
+  "type": "bejeweled:add_gems_to_mobs",
+  "category": "bead",
+  "conditions": [
+    {
+      "condition": "minecraft:killed_by_player"
+    },
+    {
+      "condition": "minecraft:entity_properties",
+      "entity": "this",
+      "predicate": {
+        "type": "minecraft:elder_guardian"
+      }
+    }
+  ],
+  "processed_chance": 0.075,
+  "raw_chance": 0.15
+}

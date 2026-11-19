@@ -6,6 +6,7 @@ import net.blueasclepias.bejeweled.common.registry.ModMenus;
 import net.blueasclepias.bejeweled.common.screen.GemCuttingTableScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -43,19 +44,17 @@ public class ClientSetup {
         });
 
         event.enqueueWork(() -> {
-            DynamicItemModelHandler.registerMaterialPredicate(ModItems.SOCKETED_RING.get());
-            DynamicItemModelHandler.registerMaterialPredicate(ModItems.SOCKETED_AMULET.get());
-            DynamicItemModelHandler.registerMaterialPredicate(ModItems.SOCKETED_BRACELET.get());
-            DynamicItemModelHandler.registerMaterialPredicate(ModItems.SOCKETED_CIRCLET.get());
+            ModItems.SOCKETED_JEWELRY_ITEMS.values().forEach(item ->
+                    DynamicItemModelHandler.registerMaterialPredicate(item.get())
+            );
         });
 
         event.enqueueWork(() -> {
             Minecraft.getInstance().getItemColors().register(
                     DynamicItemModelHandler::tintSocketLayer,
-                    ModItems.SOCKETED_RING.get(),
-                    ModItems.SOCKETED_AMULET.get(),
-                    ModItems.SOCKETED_BRACELET.get(),
-                    ModItems.SOCKETED_CIRCLET.get()
+                    ModItems.SOCKETED_JEWELRY_ITEMS.values().stream()
+                            .map(item -> (Item) item.get())
+                            .toArray(Item[]::new)
             );
         });
     }

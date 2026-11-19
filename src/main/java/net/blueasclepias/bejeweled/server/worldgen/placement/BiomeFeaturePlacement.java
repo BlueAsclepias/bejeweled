@@ -13,19 +13,16 @@ import java.util.Set;
 
 /**
  * Defines the placement of a feature in specific biomes during a certain generation step.
- * @param features
- * @param IBiomeFilter
- * @param step
  */
 public record BiomeFeaturePlacement(
         @NotBlank String name,
         @NotNull Set<ResourceKey<PlacedFeature>> features,
-        @NotNull IBiomeFilter IBiomeFilter,
+        @NotNull IBiomeFilter biomeFilter,
         @NotNull GenerationStep.Decoration step
 ) {
     public BiomeFeaturePlacement {
         Objects.requireNonNull(features);
-        Objects.requireNonNull(IBiomeFilter);
+        Objects.requireNonNull(biomeFilter);
         Objects.requireNonNull(step);
 
         // 🔑 Make it mutable
@@ -36,13 +33,13 @@ public record BiomeFeaturePlacement(
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof BiomeFeaturePlacement other)) return false;
-        return IBiomeFilter.equals(other.IBiomeFilter)
+        return biomeFilter.equals(other.biomeFilter)
                 && step == other.step
                 && name.equals(other.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(IBiomeFilter, step);
+        return Objects.hash(biomeFilter, step);
     }
 }

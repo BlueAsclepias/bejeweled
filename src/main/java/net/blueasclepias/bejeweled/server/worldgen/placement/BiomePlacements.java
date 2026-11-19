@@ -43,12 +43,12 @@ public class BiomePlacements {
 
     public static BiomeFeaturePlacement create(String name,
                                                Set<ResourceKey<PlacedFeature>> placedFeatures,
-                                               IBiomeFilter IBiomeFilter,
+                                               IBiomeFilter biomeFilter,
                                                GenerationStep.Decoration step) {
         BiomeFeaturePlacement placement = new BiomeFeaturePlacement(
                 name,
                 placedFeatures,
-                IBiomeFilter,
+                biomeFilter,
                 step
         );
         ALL.put(name, placement);

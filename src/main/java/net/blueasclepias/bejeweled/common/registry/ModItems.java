@@ -1,10 +1,12 @@
 package net.blueasclepias.bejeweled.common.registry;
 
+import net.blueasclepias.bejeweled.common.data.gem.defaults.DefaultGemDefinitions;
 import net.blueasclepias.bejeweled.common.data.jewel.definition.JewelMaterial;
 import net.blueasclepias.bejeweled.common.data.jewel.definition.JewelType;
 import net.blueasclepias.bejeweled.common.item.BaseJewelryItem;
 import net.blueasclepias.bejeweled.common.item.GemItem;
-import net.blueasclepias.bejeweled.common.item.SocketedJeweleryItem;
+import net.blueasclepias.bejeweled.common.item.RawGemItem;
+import net.blueasclepias.bejeweled.common.item.SocketedJewelryItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -13,6 +15,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import java.util.EnumMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -39,148 +42,77 @@ public class ModItems {
     public static final RegistryObject<Item> GEM_ITEM =
             ITEMS.register("gem_item", () -> new GemItem(new Item.Properties()));
 
-    // ===== GEMSTONES =====
-    public static final RegistryObject<Item> AQUAMARINE =
-            ITEMS.register("aquamarine", () -> new Item(new Item.Properties()));
-            
-    public static final RegistryObject<Item> RUBY =
-            ITEMS.register("ruby", () -> new Item(new Item.Properties()));
-            
-    public static final RegistryObject<Item> SAPPHIRE =
-            ITEMS.register("sapphire", () -> new Item(new Item.Properties()));
-            
-    public static final RegistryObject<Item> GARNET =
-            ITEMS.register("garnet", () -> new Item(new Item.Properties()));
-            
-    public static final RegistryObject<Item> TOPAZ =
-            ITEMS.register("topaz", () -> new Item(new Item.Properties()));
-            
-    public static final RegistryObject<Item> TURQUOISE =
-            ITEMS.register("turquoise", () -> new Item(new Item.Properties()));
-            
-    public static final RegistryObject<Item> JADE =
-            ITEMS.register("jade", () -> new Item(new Item.Properties()));
-            
-    public static final RegistryObject<Item> OPAL =
-            ITEMS.register("opal", () -> new Item(new Item.Properties()));
-            
-    public static final RegistryObject<Item> PERIDOT =
-            ITEMS.register("peridot", () -> new Item(new Item.Properties()));
+    // ===== RAW GEMSTONES & BEADS =====
+    // One item per DefaultGemDefinitions entry that belongs to this mod's own namespace, keyed by id, so adding a
+    // new gem or bead only requires a change in DefaultGemDefinitions rather than also hand-registering an item here.
+    // Vanilla-sourced definitions (diamond, emerald, amethyst shard) are skipped, since they already have their own
+    // vanilla item.
+    public static final Map<String, RegistryObject<Item>> RAW_GEM_ITEMS = registerRawGemItems();
 
-    // ===== BEADS =====
-    public static final RegistryObject<Item> PEARL =
-            ITEMS.register("pearl", () -> new Item(new Item.Properties()));
-    
-    public static final RegistryObject<Item> BLUE_CORAL =
-            ITEMS.register("blue_coral", () -> new Item(new Item.Properties()));
-            
-    public static final RegistryObject<Item> PINK_CORAL =
-            ITEMS.register("pink_coral", () -> new Item(new Item.Properties()));
-            
-    public static final RegistryObject<Item> PURPLE_CORAL =
-            ITEMS.register("purple_coral", () -> new Item(new Item.Properties()));
-            
-    public static final RegistryObject<Item> RED_CORAL =
-            ITEMS.register("red_coral", () -> new Item(new Item.Properties()));
-            
-    public static final RegistryObject<Item> YELLOW_CORAL =
-            ITEMS.register("yellow_coral", () -> new Item(new Item.Properties()));
-            
     // ===== BLOCK ITEMS =====
     // ==== ORE BLOCKS ====
     // One item per ModBlocks.ORE_BLOCKS entry, keyed by ore id (see OreEntries for the ore list itself).
-    public static final Map<String, RegistryObject<Item>> ORE_ITEMS = registerOreItems();
+    public static final Map<String, RegistryObject<Item>> ORE_ITEMS = registerBlockItems(ModBlocks.ORE_BLOCKS);
 
     // ==== STORAGE BLOCKS ====
-    // === RAW ===
-    public static final RegistryObject<Item> AQUAMARINE_BLOCK =
-            registerBlockItem("aquamarine_block", ModBlocks.AQUAMARINE_BLOCK);
-    public static final RegistryObject<Item> RUBY_BLOCK =
-            registerBlockItem("ruby_block", ModBlocks.RUBY_BLOCK);
-    public static final RegistryObject<Item> SAPPHIRE_BLOCK =
-            registerBlockItem("sapphire_block", ModBlocks.SAPPHIRE_BLOCK);
-    public static final RegistryObject<Item> GARNET_BLOCK =
-            registerBlockItem("garnet_block", ModBlocks.GARNET_BLOCK);
-    public static final RegistryObject<Item> TOPAZ_BLOCK =
-            registerBlockItem("topaz_block", ModBlocks.TOPAZ_BLOCK);
-    public static final RegistryObject<Item> TURQUOISE_BLOCK =
-            registerBlockItem("turquoise_block", ModBlocks.TURQUOISE_BLOCK);
-    public static final RegistryObject<Item> JADE_BLOCK =
-            registerBlockItem("jade_block", ModBlocks.JADE_BLOCK);
-    public static final RegistryObject<Item> OPAL_BLOCK =
-            registerBlockItem("opal_block", ModBlocks.OPAL_BLOCK);
-    public static final RegistryObject<Item> PERIDOT_BLOCK =
-            registerBlockItem("peridot_block", ModBlocks.PERIDOT_BLOCK);
-    public static final RegistryObject<Item> PEARL_BLOCK =
-            registerBlockItem("pearl_block", ModBlocks.PEARL_BLOCK);
+    // One item per ModBlocks.STORAGE_BLOCKS entry, keyed by block id (see StorageBlockEntries for the block list).
+    public static final Map<String, RegistryObject<Item>> STORAGE_BLOCK_ITEMS = registerBlockItems(ModBlocks.STORAGE_BLOCKS);
 
     // ==== CORAL POLYP BLOCKS ====
-    public static final RegistryObject<Item> FIRE_CORAL_BLOCK_POLYP =
-            registerBlockItem("fire_coral_block_polyp",ModBlocks.FIRE_CORAL_BLOCK_POLYP);
-    public static final RegistryObject<Item> BRAIN_CORAL_BLOCK_POLYP =
-            registerBlockItem("brain_coral_block_polyp",ModBlocks.BRAIN_CORAL_BLOCK_POLYP);
-    public static final RegistryObject<Item> BUBBLE_CORAL_BLOCK_POLYP =
-            registerBlockItem("bubble_coral_block_polyp",ModBlocks.BUBBLE_CORAL_BLOCK_POLYP);
-    public static final RegistryObject<Item> HORN_CORAL_BLOCK_POLYP =
-            registerBlockItem("horn_coral_block_polyp",ModBlocks.HORN_CORAL_BLOCK_POLYP);
-    public static final RegistryObject<Item> TUBE_CORAL_BLOCK_POLYP =
-            registerBlockItem("tube_coral_block_polyp",ModBlocks.TUBE_CORAL_BLOCK_POLYP);
+    // One item per ModBlocks.CORAL_POLYP_BLOCKS entry, keyed by block id (see CoralPolypEntries for the block list).
+    public static final Map<String, RegistryObject<Item>> CORAL_POLYP_ITEMS = registerBlockItems(ModBlocks.CORAL_POLYP_BLOCKS);
 
     // ====== CRAFTABLE JEWEL BASES =====
-    public static final RegistryObject<Item> COPPER_RING = ITEMS.register("copper_ring", () -> new BaseJewelryItem(new Item.Properties(), JewelType.RING, JewelMaterial.COPPER));
-    public static final RegistryObject<Item> BRONZE_RING = ITEMS.register("bronze_ring", () -> new BaseJewelryItem(new Item.Properties(), JewelType.RING, JewelMaterial.BRONZE));
-    public static final RegistryObject<Item> SILVER_RING = ITEMS.register("silver_ring", () -> new BaseJewelryItem(new Item.Properties(), JewelType.RING, JewelMaterial.SILVER));
-    public static final RegistryObject<Item> IRON_RING = ITEMS.register("iron_ring", () -> new BaseJewelryItem(new Item.Properties(), JewelType.RING, JewelMaterial.IRON));
-    public static final RegistryObject<Item> GOLD_RING = ITEMS.register("gold_ring", () -> new BaseJewelryItem(new Item.Properties(), JewelType.RING, JewelMaterial.GOLD));
-    public static final RegistryObject<Item> STEEL_RING = ITEMS.register("steel_ring", () -> new BaseJewelryItem(new Item.Properties(), JewelType.RING, JewelMaterial.STEEL));
-    public static final RegistryObject<Item> NETHERITE_RING = ITEMS.register("netherite_ring", () -> new BaseJewelryItem(new Item.Properties(), JewelType.RING, JewelMaterial.NETHERITE));
-
-    public static final RegistryObject<Item> COPPER_AMULET = ITEMS.register("copper_amulet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.AMULET, JewelMaterial.COPPER));
-    public static final RegistryObject<Item> BRONZE_AMULET = ITEMS.register("bronze_amulet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.AMULET, JewelMaterial.BRONZE));
-    public static final RegistryObject<Item> SILVER_AMULET = ITEMS.register("silver_amulet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.AMULET, JewelMaterial.SILVER));
-    public static final RegistryObject<Item> IRON_AMULET = ITEMS.register("iron_amulet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.AMULET, JewelMaterial.IRON));
-    public static final RegistryObject<Item> GOLD_AMULET = ITEMS.register("gold_amulet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.AMULET, JewelMaterial.GOLD));
-    public static final RegistryObject<Item> STEEL_AMULET = ITEMS.register("steel_amulet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.AMULET, JewelMaterial.STEEL));
-    public static final RegistryObject<Item> NETHERITE_AMULET = ITEMS.register("netherite_amulet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.AMULET, JewelMaterial.NETHERITE));
-
-    public static final RegistryObject<Item> COPPER_BRACELET = ITEMS.register("copper_bracelet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.BRACELET, JewelMaterial.COPPER));
-    public static final RegistryObject<Item> BRONZE_BRACELET = ITEMS.register("bronze_bracelet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.BRACELET, JewelMaterial.BRONZE));
-    public static final RegistryObject<Item> SILVER_BRACELET = ITEMS.register("silver_bracelet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.BRACELET, JewelMaterial.SILVER));
-    public static final RegistryObject<Item> IRON_BRACELET = ITEMS.register("iron_bracelet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.BRACELET, JewelMaterial.IRON));
-    public static final RegistryObject<Item> GOLD_BRACELET = ITEMS.register("gold_bracelet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.BRACELET, JewelMaterial.GOLD));
-    public static final RegistryObject<Item> STEEL_BRACELET = ITEMS.register("steel_bracelet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.BRACELET, JewelMaterial.STEEL));
-    public static final RegistryObject<Item> NETHERITE_BRACELET = ITEMS.register("netherite_bracelet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.BRACELET, JewelMaterial.NETHERITE));
-
-    public static final RegistryObject<Item> COPPER_CIRCLET = ITEMS.register("copper_circlet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.CIRCLET, JewelMaterial.COPPER));
-    public static final RegistryObject<Item> BRONZE_CIRCLET = ITEMS.register("bronze_circlet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.CIRCLET, JewelMaterial.BRONZE));
-    public static final RegistryObject<Item> SILVER_CIRCLET = ITEMS.register("silver_circlet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.CIRCLET, JewelMaterial.SILVER));
-    public static final RegistryObject<Item> IRON_CIRCLET = ITEMS.register("iron_circlet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.CIRCLET, JewelMaterial.IRON));
-    public static final RegistryObject<Item> GOLD_CIRCLET = ITEMS.register("gold_circlet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.CIRCLET, JewelMaterial.GOLD));
-    public static final RegistryObject<Item> STEEL_CIRCLET = ITEMS.register("steel_circlet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.CIRCLET, JewelMaterial.STEEL));
-    public static final RegistryObject<Item> NETHERITE_CIRCLET = ITEMS.register("netherite_circlet", () -> new BaseJewelryItem(new Item.Properties(), JewelType.CIRCLET, JewelMaterial.NETHERITE));
+    // One item per JewelType x JewelMaterial combination, keyed by type then material, so adding a new jewel type or
+    // material only requires adding the enum constant rather than also hand-registering every combination here.
+    public static final Map<JewelType, Map<JewelMaterial, RegistryObject<Item>>> JEWELRY_ITEMS = registerJewelryItems();
 
     // ===== SOCKETED JEWELS =====
-    public static final RegistryObject<Item> SOCKETED_RING =
-            ITEMS.register("socketed_ring", () -> new SocketedJeweleryItem(new Item.Properties()));
-
-    public static final RegistryObject<Item> SOCKETED_BRACELET =
-            ITEMS.register("socketed_bracelet", () -> new SocketedJeweleryItem(new Item.Properties()));
-
-    public static final RegistryObject<Item> SOCKETED_AMULET =
-            ITEMS.register("socketed_amulet", () -> new SocketedJeweleryItem(new Item.Properties()));
-
-    public static final RegistryObject<Item> SOCKETED_CIRCLET =
-            ITEMS.register("socketed_circlet", () -> new SocketedJeweleryItem(new Item.Properties()));
+    // One item per JewelType, keyed by type. Shared with SocketedJewelryItemFactory so the result item for a given
+    // type is only defined in one place.
+    public static final Map<JewelType, RegistryObject<Item>> SOCKETED_JEWELRY_ITEMS = registerSocketedJewelryItems();
 
     // ===== HELPER METHODS =====
     private static RegistryObject<Item> registerBlockItem(String path, RegistryObject<Block> block){
         return ITEMS.register(path, () -> new BlockItem(block.get(), new Item.Properties()));
     }
 
-    private static Map<String, RegistryObject<Item>> registerOreItems() {
+    private static Map<String, RegistryObject<Item>> registerBlockItems(Map<String, RegistryObject<Block>> blocks) {
         Map<String, RegistryObject<Item>> items = new LinkedHashMap<>();
-        ModBlocks.ORE_BLOCKS.forEach((id, block) -> items.put(id, registerBlockItem(id, block)));
+        blocks.forEach((id, block) -> items.put(id, registerBlockItem(id, block)));
         return items;
+    }
+
+    private static Map<String, RegistryObject<Item>> registerRawGemItems() {
+        Map<String, RegistryObject<Item>> items = new LinkedHashMap<>();
+        DefaultGemDefinitions.getAll().forEach((id, def) -> {
+            if (!id.getNamespace().equals(MOD_ID)) return;
+            items.put(id.getPath(), ITEMS.register(id.getPath(), () -> new RawGemItem(new Item.Properties())));
+        });
+        return items;
+    }
+
+    private static Map<JewelType, Map<JewelMaterial, RegistryObject<Item>>> registerJewelryItems() {
+        Map<JewelType, Map<JewelMaterial, RegistryObject<Item>>> result = new EnumMap<>(JewelType.class);
+        for (JewelType type : JewelType.values()) {
+            Map<JewelMaterial, RegistryObject<Item>> byMaterial = new EnumMap<>(JewelMaterial.class);
+            for (JewelMaterial material : JewelMaterial.values()) {
+                String path = material.name().toLowerCase() + "_" + type.name().toLowerCase();
+                byMaterial.put(material, ITEMS.register(path,
+                        () -> new BaseJewelryItem(new Item.Properties(), type, material)));
+            }
+            result.put(type, byMaterial);
+        }
+        return result;
+    }
+
+    private static Map<JewelType, RegistryObject<Item>> registerSocketedJewelryItems() {
+        Map<JewelType, RegistryObject<Item>> result = new EnumMap<>(JewelType.class);
+        for (JewelType type : JewelType.values()) {
+            String path = "socketed_" + type.name().toLowerCase();
+            result.put(type, ITEMS.register(path, () -> new SocketedJewelryItem(new Item.Properties())));
+        }
+        return result;
     }
 
     public static void register(IEventBus eventBus) {

@@ -30,8 +30,8 @@ import static net.blueasclepias.bejeweled.Bejeweled.MOD_ID;
  * The presentation closely mirrors {@link GemItem}, but expands the generated name and tooltip to include the
  * underlying jewelry information as well.
  */
-public class SocketedJeweleryItem extends Item implements ICurioItem {
-    public SocketedJeweleryItem(Properties pProperties) {
+public class SocketedJewelryItem extends Item implements ICurioItem {
+    public SocketedJewelryItem(Properties pProperties) {
         super(pProperties.stacksTo(1));
     }
 

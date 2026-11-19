@@ -1,14 +1,14 @@
 {
   "values": [
-    "bejeweled:jade_block",
     "bejeweled:aquamarine_block",
-    "bejeweled:topaz_block",
+    "bejeweled:ruby_block",
     "bejeweled:sapphire_block",
-    "bejeweled:pearl_block",
     "bejeweled:garnet_block",
+    "bejeweled:topaz_block",
+    "bejeweled:turquoise_block",
+    "bejeweled:jade_block",
     "bejeweled:opal_block",
     "bejeweled:peridot_block",
-    "bejeweled:turquoise_block",
-    "bejeweled:ruby_block"
+    "bejeweled:pearl_block"
   ]
 }

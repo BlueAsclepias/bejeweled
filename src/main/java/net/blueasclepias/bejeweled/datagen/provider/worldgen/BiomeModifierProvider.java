@@ -46,7 +46,7 @@ public class BiomeModifierProvider implements DataProvider {
             JsonObject json = new JsonObject();
             json.addProperty("type", "forge:add_features");
 
-            IBiomeFilter filter = placement.IBiomeFilter();
+            IBiomeFilter filter = placement.biomeFilter();
             if(filter instanceof IBiomeFilter.Tag tagFilter){
                 json.addProperty(
                         "biomes",
